@@ -1,5 +1,6 @@
 import 'package:live_life/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:live_life/generated/l10n.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({Key? key, this.screenIndex, this.iconAnimationController, this.callBackIndex}) : super(key: key);
@@ -24,7 +25,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
     drawerList = <DrawerList>[
       DrawerList(
         index: DrawerIndex.HOME,
-        labelName: 'Home',
+        labelName: S.current.HOME,
         icon: Icon(Icons.home),
       ),
       DrawerList(
