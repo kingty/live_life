@@ -73,6 +73,7 @@ flutter:
     - assets/fitness_app/
     - assets/hotel/
     - assets/keep_accounts/
+    - assets/keep_accounts/bank/
     - assets/introduction_animation/
 
   # An image asset can refer to one or more resolution-specific "variants", see

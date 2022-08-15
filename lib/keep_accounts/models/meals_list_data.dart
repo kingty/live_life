@@ -17,7 +17,7 @@ class MealsListData {
 
   static List<MealsListData> tabIconsList = <MealsListData>[
     MealsListData(
-      imagePath: 'assets/fitness_app/Kd6atO.png',
+      imagePath: 'assets/keep_accounts/bank/BOC.png',
       titleTxt: 'Breakfast',
       kacl: 525,
       meals: <String>['Bread,', 'Peanut butter,', 'Apple'],
@@ -25,7 +25,7 @@ class MealsListData {
       endColor: '#FFB295',
     ),
     MealsListData(
-      imagePath: 'assets/fitness_app/ABC.png',
+      imagePath: 'assets/keep_accounts/bank/CCB.png',
       titleTxt: 'Lunch',
       kacl: 602,
       meals: <String>['Salmon,', 'Mixed veggies,', 'Avocado'],
@@ -33,7 +33,7 @@ class MealsListData {
       endColor: '#5C5EDD',
     ),
     MealsListData(
-      imagePath: 'assets/fitness_app/ABC.png',
+      imagePath: 'assets/keep_accounts/bank/ABC.png',
       titleTxt: 'Snack',
       kacl: 0,
       meals: <String>['Recommend:', '800 kcal'],
@@ -41,7 +41,7 @@ class MealsListData {
       endColor: '#FF5287',
     ),
     MealsListData(
-      imagePath: 'assets/fitness_app/Kd6atO.png',
+      imagePath: 'assets/keep_accounts/bank/CMB.png',
       titleTxt: 'Dinner',
       kacl: 0,
       meals: <String>['Recommend:', '703 kcal'],
