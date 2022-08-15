@@ -70,11 +70,81 @@ class S {
     );
   }
 
-  /// `Dashboard`
-  String get KEEP_ACCOUNTS_DASHBOARD {
+  /// `Income`
+  String get KEEP_ACCOUNTS_INCOME {
     return Intl.message(
-      'Dashboard',
-      name: 'KEEP_ACCOUNTS_DASHBOARD',
+      'Income',
+      name: 'KEEP_ACCOUNTS_INCOME',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Balance`
+  String get KEEP_ACCOUNTS_BALANCE {
+    return Intl.message(
+      'Balance',
+      name: 'KEEP_ACCOUNTS_BALANCE',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expenses`
+  String get KEEP_ACCOUNTS_EXPENSES {
+    return Intl.message(
+      'Expenses',
+      name: 'KEEP_ACCOUNTS_EXPENSES',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RMB`
+  String get KEEP_ACCOUNTS_RMB {
+    return Intl.message(
+      'RMB',
+      name: 'KEEP_ACCOUNTS_RMB',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accounts`
+  String get KEEP_ACCOUNTS_ACCOUNT {
+    return Intl.message(
+      'Accounts',
+      name: 'KEEP_ACCOUNTS_ACCOUNT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Today`
+  String get KEEP_ACCOUNTS_TODAY {
+    return Intl.message(
+      'Today',
+      name: 'KEEP_ACCOUNTS_TODAY',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This week`
+  String get KEEP_ACCOUNTS_THIS_WEEK {
+    return Intl.message(
+      'This week',
+      name: 'KEEP_ACCOUNTS_THIS_WEEK',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get KEEP_ACCOUNTS_THIS_MORE {
+    return Intl.message(
+      'Edit',
+      name: 'KEEP_ACCOUNTS_THIS_MORE',
       desc: '',
       args: [],
     );

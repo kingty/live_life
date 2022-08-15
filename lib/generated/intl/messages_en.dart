@@ -23,9 +23,19 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "HOME": MessageLookupByLibrary.simpleMessage("HOME"),
-        "KEEP_ACCOUNTS_DASHBOARD":
-            MessageLookupByLibrary.simpleMessage("Dashboard"),
+        "KEEP_ACCOUNTS_ACCOUNT":
+            MessageLookupByLibrary.simpleMessage("Accounts"),
+        "KEEP_ACCOUNTS_BALANCE":
+            MessageLookupByLibrary.simpleMessage("Balance"),
+        "KEEP_ACCOUNTS_EXPENSES":
+            MessageLookupByLibrary.simpleMessage("Expenses"),
+        "KEEP_ACCOUNTS_INCOME": MessageLookupByLibrary.simpleMessage("Income"),
         "KEEP_ACCOUNTS_OVERVIEW":
-            MessageLookupByLibrary.simpleMessage("Overview")
+            MessageLookupByLibrary.simpleMessage("Overview"),
+        "KEEP_ACCOUNTS_RMB": MessageLookupByLibrary.simpleMessage("RMB"),
+        "KEEP_ACCOUNTS_THIS_MORE": MessageLookupByLibrary.simpleMessage("Edit"),
+        "KEEP_ACCOUNTS_THIS_WEEK":
+            MessageLookupByLibrary.simpleMessage("This week"),
+        "KEEP_ACCOUNTS_TODAY": MessageLookupByLibrary.simpleMessage("Today")
       };
 }

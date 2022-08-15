@@ -51,7 +51,7 @@ class _MealsListViewState extends State<MealsListView>
             transform: Matrix4.translationValues(
                 0.0, 30 * (1.0 - widget.mainScreenAnimation!.value), 0.0),
             child: Container(
-              height: 216,
+              height: 200,
               width: double.infinity,
               child: ListView.builder(
                 padding: const EdgeInsets.only(
@@ -109,7 +109,7 @@ class MealsView extends StatelessWidget {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(
-                        top: 32, left: 8, right: 8, bottom: 16),
+                        top: 16, left: 8, right: 8, bottom: 16),
                     child: Container(
                       decoration: BoxDecoration(
                         boxShadow: <BoxShadow>[
@@ -144,7 +144,7 @@ class MealsView extends StatelessWidget {
                             Text(
                               mealsListData!.titleTxt,
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontFamily: KeepAccountsTheme.fontName,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
@@ -162,7 +162,7 @@ class MealsView extends StatelessWidget {
                                   children: <Widget>[
                                     Text(
                                       mealsListData!.meals!.join('\n'),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: KeepAccountsTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 10,
@@ -182,7 +182,7 @@ class MealsView extends StatelessWidget {
                                       Text(
                                         mealsListData!.kacl.toString(),
                                         textAlign: TextAlign.center,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontFamily: KeepAccountsTheme.fontName,
                                           fontWeight: FontWeight.w500,
                                           fontSize: 24,
@@ -190,8 +190,8 @@ class MealsView extends StatelessWidget {
                                           color: KeepAccountsTheme.white,
                                         ),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
+                                      const Padding(
+                                        padding: EdgeInsets.only(
                                             left: 4, bottom: 3),
                                         child: Text(
                                           'kcal',
@@ -215,7 +215,7 @@ class MealsView extends StatelessWidget {
                                         BoxShadow(
                                             color: KeepAccountsTheme.nearlyBlack
                                                 .withOpacity(0.4),
-                                            offset: Offset(8.0, 8.0),
+                                            offset: const Offset(8.0, 8.0),
                                             blurRadius: 8.0),
                                       ],
                                     ),
@@ -235,7 +235,7 @@ class MealsView extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 0,
+                    top: -16,
                     left: 0,
                     child: Container(
                       width: 84,
@@ -247,11 +247,11 @@ class MealsView extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 0,
-                    left: 8,
+                    top: 24,
+                    left: 30,
                     child: SizedBox(
-                      width: 80,
-                      height: 80,
+                      width: 30,
+                      height: 30,
                       child: Image.asset(mealsListData!.imagePath),
                     ),
                   )

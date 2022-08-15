@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
 import 'keep_accounts_them.dart';
 import 'models/tabIcon_data.dart';
-import 'my_diary/my_diary_screen.dart';
+import 'overview/keep_accounts_overview_screen.dart';
 
 class KeepAccountsHomeScreen extends StatefulWidget {
   @override
@@ -28,7 +28,8 @@ class _KeepAccountsHomeScreenState extends State<KeepAccountsHomeScreen>
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    tabBody = MyDiaryScreen(animationController: animationController);
+    tabBody =
+        KeepAccountsOverviewScreen(animationController: animationController);
     super.initState();
   }
 
@@ -84,8 +85,8 @@ class _KeepAccountsHomeScreenState extends State<KeepAccountsHomeScreen>
                   return;
                 }
                 setState(() {
-                  tabBody =
-                      MyDiaryScreen(animationController: animationController);
+                  tabBody = KeepAccountsOverviewScreen(
+                      animationController: animationController);
                 });
               });
             } else if (index == 1 || index == 3) {
@@ -94,8 +95,8 @@ class _KeepAccountsHomeScreenState extends State<KeepAccountsHomeScreen>
                   return;
                 }
                 setState(() {
-                  tabBody =
-                      MyDiaryScreen(animationController: animationController);
+                  tabBody = KeepAccountsOverviewScreen(
+                      animationController: animationController);
                 });
               });
             }

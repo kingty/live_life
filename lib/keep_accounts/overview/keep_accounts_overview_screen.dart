@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/generated/l10n.dart';
-import 'package:live_life/keep_accounts/my_diary/water_view.dart';
+import 'package:live_life/keep_accounts/overview/water_view.dart';
 import '../keep_accounts_them.dart';
 import '../ui_view/body_measurement.dart';
 import '../ui_view/glass_view.dart';
 import '../ui_view/mediterranean_diet_view.dart';
+import '../ui_view/month_overview_view.dart';
 import '../ui_view/title_view.dart';
 import 'meals_list_view.dart';
 
-class MyDiaryScreen extends StatefulWidget {
-  const MyDiaryScreen({Key? key, this.animationController}) : super(key: key);
+class KeepAccountsOverviewScreen extends StatefulWidget {
+  const KeepAccountsOverviewScreen({Key? key, this.animationController})
+      : super(key: key);
 
   final AnimationController? animationController;
+
   @override
-  _MyDiaryScreenState createState() => _MyDiaryScreenState();
+  // ignore: library_private_types_in_public_api
+  _KeepAccountsOverviewScreenState createState() =>
+      _KeepAccountsOverviewScreenState();
 }
 
-class _MyDiaryScreenState extends State<MyDiaryScreen>
+class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
     with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
@@ -60,24 +65,23 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   void addAllListData() {
     const int count = 9;
 
-
     listViews.add(
-      MediterranesnDietView(
+      MonthOverviewView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
+            curve: const Interval((1 / count) * 1, 1.0,
+                curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
       ),
     );
     listViews.add(
       TitleView(
-        titleTxt: 'Meals today',
-        subTxt: 'Customize',
+        titleTxt: S.current.KEEP_ACCOUNTS_ACCOUNT,
+        subTxt: S.current.KEEP_ACCOUNTS_THIS_MORE,
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+            curve: const Interval((1 / count) * 2, 1.0,
+                curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
       ),
     );
@@ -87,7 +91,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
                 parent: widget.animationController!,
-                curve: Interval((1 / count) * 3, 1.0,
+                curve: const Interval((1 / count) * 3, 1.0,
                     curve: Curves.fastOutSlowIn))),
         mainScreenAnimationController: widget.animationController,
       ),
@@ -99,8 +103,8 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         subTxt: 'Today',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn))),
+            curve: const Interval((1 / count) * 4, 1.0,
+                curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
       ),
     );
@@ -109,8 +113,8 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       BodyMeasurementView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn))),
+            curve: const Interval((1 / count) * 5, 1.0,
+                curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
       ),
     );
@@ -120,8 +124,8 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         subTxt: 'Aqua SmartBottle',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn))),
+            curve: const Interval((1 / count) * 6, 1.0,
+                curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
       ),
     );
@@ -131,7 +135,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
                 parent: widget.animationController!,
-                curve: Interval((1 / count) * 7, 1.0,
+                curve: const Interval((1 / count) * 7, 1.0,
                     curve: Curves.fastOutSlowIn))),
         mainScreenAnimationController: widget.animationController!,
       ),
@@ -141,7 +145,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
           animation: Tween<double>(begin: 0.0, end: 1.0).animate(
               CurvedAnimation(
                   parent: widget.animationController!,
-                  curve: Interval((1 / count) * 8, 1.0,
+                  curve: const Interval((1 / count) * 8, 1.0,
                       curve: Curves.fastOutSlowIn))),
           animationController: widget.animationController!),
     );
@@ -253,31 +257,15 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              height: 38,
-                              width: 38,
-                              child: InkWell(
-                                highlightColor: Colors.transparent,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(32.0)),
-                                onTap: () {},
-                                child: Center(
-                                  child: Icon(
-                                    Icons.keyboard_arrow_left,
-                                    color: KeepAccountsTheme.grey,
-                                  ),
-                                ),
-                              ),
-                            ),
                             Padding(
                               padding: const EdgeInsets.only(
                                 left: 8,
                                 right: 8,
                               ),
                               child: Row(
-                                children: <Widget>[
+                                children: const <Widget>[
                                   Padding(
-                                    padding: const EdgeInsets.only(right: 8),
+                                    padding: EdgeInsets.only(right: 8),
                                     child: Icon(
                                       Icons.calendar_today,
                                       color: KeepAccountsTheme.grey,
@@ -296,22 +284,6 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                     ),
                                   ),
                                 ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 38,
-                              width: 38,
-                              child: InkWell(
-                                highlightColor: Colors.transparent,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(32.0)),
-                                onTap: () {},
-                                child: Center(
-                                  child: Icon(
-                                    Icons.keyboard_arrow_right,
-                                    color: KeepAccountsTheme.grey,
-                                  ),
-                                ),
                               ),
                             ),
                           ],

@@ -1,5 +1,12 @@
 {
   "HOME": "HOME",
   "KEEP_ACCOUNTS_OVERVIEW": "Overview",
-  "KEEP_ACCOUNTS_DASHBOARD": "Dashboard"
+  "KEEP_ACCOUNTS_INCOME": "Income",
+  "KEEP_ACCOUNTS_BALANCE": "Balance",
+  "KEEP_ACCOUNTS_EXPENSES": "Expenses",
+  "KEEP_ACCOUNTS_RMB": "RMB",
+  "KEEP_ACCOUNTS_ACCOUNT": "Accounts",
+  "KEEP_ACCOUNTS_TODAY": "Today",
+  "KEEP_ACCOUNTS_THIS_WEEK": "This week",
+  "KEEP_ACCOUNTS_THIS_MORE": "Edit"
 }
