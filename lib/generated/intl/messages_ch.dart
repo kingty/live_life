@@ -21,6 +21,9 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ch';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) =>
-      <String, Function>{"HOME": MessageLookupByLibrary.simpleMessage("主页")};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "HOME": MessageLookupByLibrary.simpleMessage("主页"),
+        "KEEP_ACCOUNTS_DASHBOARD": MessageLookupByLibrary.simpleMessage(""),
+        "KEEP_ACCOUNTS_OVERVIEW": MessageLookupByLibrary.simpleMessage("总览")
+      };
 }

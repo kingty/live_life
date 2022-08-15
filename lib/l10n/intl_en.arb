@@ -1,3 +1,5 @@
 {
-  "HOME": "HOME"
+  "HOME": "HOME",
+  "KEEP_ACCOUNTS_OVERVIEW": "Overview",
+  "KEEP_ACCOUNTS_DASHBOARD": "Dashboard"
 }

@@ -59,6 +59,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Overview`
+  String get KEEP_ACCOUNTS_OVERVIEW {
+    return Intl.message(
+      'Overview',
+      name: 'KEEP_ACCOUNTS_OVERVIEW',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dashboard`
+  String get KEEP_ACCOUNTS_DASHBOARD {
+    return Intl.message(
+      'Dashboard',
+      name: 'KEEP_ACCOUNTS_DASHBOARD',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

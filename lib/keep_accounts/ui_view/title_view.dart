@@ -1,5 +1,6 @@
-import 'package:live_life/fitness_app/fitness_app_theme.dart';
 import 'package:flutter/material.dart';
+
+import '../keep_accounts_them.dart';
 
 class TitleView extends StatelessWidget {
   final String titleTxt;
@@ -35,11 +36,11 @@ class TitleView extends StatelessWidget {
                         titleTxt,
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                          fontFamily: FitnessAppTheme.fontName,
+                          fontFamily: KeepAccountsTheme.fontName,
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
                           letterSpacing: 0.5,
-                          color: FitnessAppTheme.lightText,
+                          color: KeepAccountsTheme.lightText,
                         ),
                       ),
                     ),
@@ -55,11 +56,11 @@ class TitleView extends StatelessWidget {
                               subTxt,
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                fontFamily: FitnessAppTheme.fontName,
+                                fontFamily: KeepAccountsTheme.fontName,
                                 fontWeight: FontWeight.normal,
                                 fontSize: 16,
                                 letterSpacing: 0.5,
-                                color: FitnessAppTheme.nearlyDarkBlue,
+                                color: KeepAccountsTheme.nearlyDarkBlue,
                               ),
                             ),
                             SizedBox(
@@ -67,7 +68,7 @@ class TitleView extends StatelessWidget {
                               width: 26,
                               child: Icon(
                                 Icons.arrow_forward,
-                                color: FitnessAppTheme.darkText,
+                                color: KeepAccountsTheme.darkText,
                                 size: 18,
                               ),
                             ),
