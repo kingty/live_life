@@ -50,100 +50,100 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `HOME`
+  /// `主页`
   String get HOME {
     return Intl.message(
-      'HOME',
+      '主页',
       name: 'HOME',
       desc: '',
       args: [],
     );
   }
 
-  /// `Overview`
+  /// `总览`
   String get KEEP_ACCOUNTS_OVERVIEW {
     return Intl.message(
-      'Overview',
+      '总览',
       name: 'KEEP_ACCOUNTS_OVERVIEW',
       desc: '',
       args: [],
     );
   }
 
-  /// `Income`
+  /// `收入`
   String get KEEP_ACCOUNTS_INCOME {
     return Intl.message(
-      'Income',
+      '收入',
       name: 'KEEP_ACCOUNTS_INCOME',
       desc: '',
       args: [],
     );
   }
 
-  /// `Balance`
+  /// `结余`
   String get KEEP_ACCOUNTS_BALANCE {
     return Intl.message(
-      'Balance',
+      '结余',
       name: 'KEEP_ACCOUNTS_BALANCE',
       desc: '',
       args: [],
     );
   }
 
-  /// `Expenses`
+  /// `支出`
   String get KEEP_ACCOUNTS_EXPENSES {
     return Intl.message(
-      'Expenses',
+      '支出',
       name: 'KEEP_ACCOUNTS_EXPENSES',
       desc: '',
       args: [],
     );
   }
 
-  /// `RMB`
+  /// `元`
   String get KEEP_ACCOUNTS_RMB {
     return Intl.message(
-      'RMB',
+      '元',
       name: 'KEEP_ACCOUNTS_RMB',
       desc: '',
       args: [],
     );
   }
 
-  /// `Accounts`
+  /// `账户`
   String get KEEP_ACCOUNTS_ACCOUNT {
     return Intl.message(
-      'Accounts',
+      '账户',
       name: 'KEEP_ACCOUNTS_ACCOUNT',
       desc: '',
       args: [],
     );
   }
 
-  /// `Today`
+  /// `今天`
   String get KEEP_ACCOUNTS_TODAY {
     return Intl.message(
-      'Today',
+      '今天',
       name: 'KEEP_ACCOUNTS_TODAY',
       desc: '',
       args: [],
     );
   }
 
-  /// `This week`
+  /// `本周`
   String get KEEP_ACCOUNTS_THIS_WEEK {
     return Intl.message(
-      'This week',
+      '本周',
       name: 'KEEP_ACCOUNTS_THIS_WEEK',
       desc: '',
       args: [],
     );
   }
 
-  /// `Edit`
+  /// `管理`
   String get KEEP_ACCOUNTS_THIS_MORE {
     return Intl.message(
-      'Edit',
+      '管理',
       name: 'KEEP_ACCOUNTS_THIS_MORE',
       desc: '',
       args: [],

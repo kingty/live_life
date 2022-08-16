@@ -22,15 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "HOME": MessageLookupByLibrary.simpleMessage("主页"),
-        "KEEP_ACCOUNTS_ACCOUNT": MessageLookupByLibrary.simpleMessage("账户"),
-        "KEEP_ACCOUNTS_BALANCE": MessageLookupByLibrary.simpleMessage("结余"),
-        "KEEP_ACCOUNTS_EXPENSES": MessageLookupByLibrary.simpleMessage("支出"),
-        "KEEP_ACCOUNTS_INCOME": MessageLookupByLibrary.simpleMessage("收入"),
-        "KEEP_ACCOUNTS_OVERVIEW": MessageLookupByLibrary.simpleMessage("总览"),
-        "KEEP_ACCOUNTS_RMB": MessageLookupByLibrary.simpleMessage("元"),
-        "KEEP_ACCOUNTS_THIS_MORE": MessageLookupByLibrary.simpleMessage("管理"),
-        "KEEP_ACCOUNTS_THIS_WEEK": MessageLookupByLibrary.simpleMessage("本周"),
-        "KEEP_ACCOUNTS_TODAY": MessageLookupByLibrary.simpleMessage("今天")
+        "HOME": MessageLookupByLibrary.simpleMessage("HOME"),
+        "KEEP_ACCOUNTS_ACCOUNT":
+            MessageLookupByLibrary.simpleMessage("Accounts"),
+        "KEEP_ACCOUNTS_BALANCE":
+            MessageLookupByLibrary.simpleMessage("Balance"),
+        "KEEP_ACCOUNTS_EXPENSES":
+            MessageLookupByLibrary.simpleMessage("Expenses"),
+        "KEEP_ACCOUNTS_INCOME": MessageLookupByLibrary.simpleMessage("Income"),
+        "KEEP_ACCOUNTS_OVERVIEW":
+            MessageLookupByLibrary.simpleMessage("Overview"),
+        "KEEP_ACCOUNTS_RMB": MessageLookupByLibrary.simpleMessage("RMB"),
+        "KEEP_ACCOUNTS_THIS_MORE": MessageLookupByLibrary.simpleMessage("Edit"),
+        "KEEP_ACCOUNTS_THIS_WEEK":
+            MessageLookupByLibrary.simpleMessage("This week"),
+        "KEEP_ACCOUNTS_TODAY": MessageLookupByLibrary.simpleMessage("Today")
       };
 }
