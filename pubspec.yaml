@@ -75,67 +75,10 @@ flutter:
     - assets/introduction_animation/
     # keepaccounts
     - assets/keep_accounts/
-    - assets/keep_accounts/bank/cssyyh
-    - assets/keep_accounts/bank/gfzsyyh
-    - assets/keep_accounts/bank/gydxsyyh
-    - assets/keep_accounts/bank/wzfryh
-    # icons
-    - assets/keep_accounts/icons/icons_dark/music
-    - assets/keep_accounts/icons/icons_light/music
-    - assets/keep_accounts/icons/icons_dark/design
-    - assets/keep_accounts/icons/icons_light/design
-    - assets/keep_accounts/icons/icons_dark/interface
-    - assets/keep_accounts/icons/icons_light/interface
-    - assets/keep_accounts/icons/icons_dark/holiday
-    - assets/keep_accounts/icons/icons_light/holiday
-    - assets/keep_accounts/icons/icons_dark/transportation
-    - assets/keep_accounts/icons/icons_light/transportation
-    - assets/keep_accounts/icons/icons_dark/ecommerce
-    - assets/keep_accounts/icons/icons_light/ecommerce
-    - assets/keep_accounts/icons/icons_dark/file
-    - assets/keep_accounts/icons/icons_light/file
-    - assets/keep_accounts/icons/icons_dark/technology
-    - assets/keep_accounts/icons/icons_light/technology
-    - assets/keep_accounts/icons/icons_dark/arrow
-    - assets/keep_accounts/icons/icons_light/arrow
-    - assets/keep_accounts/icons/icons_dark/development
-    - assets/keep_accounts/icons/icons_light/development
-    - assets/keep_accounts/icons/icons_dark/emoji
-    - assets/keep_accounts/icons/icons_light/emoji
-    - assets/keep_accounts/icons/icons_dark/fashion
-    - assets/keep_accounts/icons/icons_light/fashion
-    - assets/keep_accounts/icons/icons_dark/game
-    - assets/keep_accounts/icons/icons_light/game
-    - assets/keep_accounts/icons/icons_dark/nature
-    - assets/keep_accounts/icons/icons_light/nature
-    - assets/keep_accounts/icons/icons_dark/sports
-    - assets/keep_accounts/icons/icons_light/sports
-    - assets/keep_accounts/icons/icons_dark/furniture
-    - assets/keep_accounts/icons/icons_light/furniture
-    - assets/keep_accounts/icons/icons_dark/gesture
-    - assets/keep_accounts/icons/icons_light/gesture
-    - assets/keep_accounts/icons/icons_dark/users
-    - assets/keep_accounts/icons/icons_light/users
-    - assets/keep_accounts/icons/icons_dark/medical
-    - assets/keep_accounts/icons/icons_light/medical
-    - assets/keep_accounts/icons/icons_dark/food
-    - assets/keep_accounts/icons/icons_light/food
-    - assets/keep_accounts/icons/icons_dark/animal
-    - assets/keep_accounts/icons/icons_light/animal
-    - assets/keep_accounts/icons/icons_dark/finance
-    - assets/keep_accounts/icons/icons_light/finance
-    - assets/keep_accounts/icons/icons_dark/weather
-    - assets/keep_accounts/icons/icons_light/weather
-    - assets/keep_accounts/icons/icons_dark/text
-    - assets/keep_accounts/icons/icons_light/text
-    - assets/keep_accounts/icons/icons_dark/space
-    - assets/keep_accounts/icons/icons_light/space
-    - assets/keep_accounts/icons/icons_dark/kitchen
-    - assets/keep_accounts/icons/icons_light/kitchen
-    - assets/keep_accounts/icons/icons_dark/accessibility
-    - assets/keep_accounts/icons/icons_light/accessibility
-    - assets/keep_accounts/icons/icons_dark/building
-    - assets/keep_accounts/icons/icons_light/building
+    - assets/keep_accounts/bank/cssyyh/
+    - assets/keep_accounts/bank/gfzsyyh/
+    - assets/keep_accounts/bank/gydxsyyh/
+    - assets/keep_accounts/bank/wzfryh/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -162,6 +105,9 @@ flutter:
   #         weight: 700
   #
   fonts:
+    - family: IconFont
+      fonts:
+        - asset: assets/fonts/IconFont.ttf
     - family: WorkSans
       fonts:
         - asset: assets/fonts/WorkSans-Regular.ttf

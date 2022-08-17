@@ -1,0 +1,5177 @@
+[
+    {
+        "name": "accessibility/accessibility",
+        "className": "accessibility/accessibility",
+        "unicode": "e900"
+    },
+    {
+        "name": "accessibility/blind-eyes",
+        "className": "accessibility/blind-eyes",
+        "unicode": "e901"
+    },
+    {
+        "name": "accessibility/couple",
+        "className": "accessibility/couple",
+        "unicode": "e902"
+    },
+    {
+        "name": "accessibility/disability",
+        "className": "accessibility/disability",
+        "unicode": "e903"
+    },
+    {
+        "name": "accessibility/enter-people",
+        "className": "accessibility/enter-people",
+        "unicode": "e904"
+    },
+    {
+        "name": "accessibility/escalator-down",
+        "className": "accessibility/escalator-down",
+        "unicode": "e905"
+    },
+    {
+        "name": "accessibility/escalator-up",
+        "className": "accessibility/escalator-up",
+        "unicode": "e906"
+    },
+    {
+        "name": "accessibility/eye-plus",
+        "className": "accessibility/eye-plus",
+        "unicode": "e907"
+    },
+    {
+        "name": "accessibility/female",
+        "className": "accessibility/female",
+        "unicode": "e908"
+    },
+    {
+        "name": "accessibility/female-gesture",
+        "className": "accessibility/female-gesture",
+        "unicode": "e909"
+    },
+    {
+        "name": "accessibility/male",
+        "className": "accessibility/male",
+        "unicode": "e90a"
+    },
+    {
+        "name": "accessibility/male-gesture",
+        "className": "accessibility/male-gesture",
+        "unicode": "e90b"
+    },
+    {
+        "name": "accessibility/people",
+        "className": "accessibility/people",
+        "unicode": "e90c"
+    },
+    {
+        "name": "accessibility/people-gesture",
+        "className": "accessibility/people-gesture",
+        "unicode": "e90d"
+    },
+    {
+        "name": "accessibility/walk",
+        "className": "accessibility/walk",
+        "unicode": "e90e"
+    },
+    {
+        "name": "animal/bat",
+        "className": "animal/bat",
+        "unicode": "e90f"
+    },
+    {
+        "name": "animal/bear",
+        "className": "animal/bear",
+        "unicode": "e910"
+    },
+    {
+        "name": "animal/bird",
+        "className": "animal/bird",
+        "unicode": "e911"
+    },
+    {
+        "name": "animal/bone",
+        "className": "animal/bone",
+        "unicode": "e912"
+    },
+    {
+        "name": "animal/cat",
+        "className": "animal/cat",
+        "unicode": "e913"
+    },
+    {
+        "name": "animal/chicken",
+        "className": "animal/chicken",
+        "unicode": "e914"
+    },
+    {
+        "name": "animal/corgi",
+        "className": "animal/corgi",
+        "unicode": "e915"
+    },
+    {
+        "name": "animal//cow",
+        "className": "animal//cow",
+        "unicode": "e916"
+    },
+    {
+        "name": "animal/crab",
+        "className": "animal/crab",
+        "unicode": "e917"
+    },
+    {
+        "name": "animal/fish",
+        "className": "animal/fish",
+        "unicode": "e918"
+    },
+    {
+        "name": "animal/fish-bone",
+        "className": "animal/fish-bone",
+        "unicode": "e919"
+    },
+    {
+        "name": "animal/monkey",
+        "className": "animal/monkey",
+        "unicode": "e91a"
+    },
+    {
+        "name": "animal/monkey-2",
+        "className": "animal/monkey-2",
+        "unicode": "e91b"
+    },
+    {
+        "name": "animal/monkey-3",
+        "className": "animal/monkey-3",
+        "unicode": "e91c"
+    },
+    {
+        "name": "animal/octopus",
+        "className": "animal/octopus",
+        "unicode": "e91d"
+    },
+    {
+        "name": "animal/panda",
+        "className": "animal/panda",
+        "unicode": "e91e"
+    },
+    {
+        "name": "animal/paw",
+        "className": "animal/paw",
+        "unicode": "e91f"
+    },
+    {
+        "name": "animal/pig",
+        "className": "animal/pig",
+        "unicode": "e920"
+    },
+    {
+        "name": "animal/rabbit",
+        "className": "animal/rabbit",
+        "unicode": "e921"
+    },
+    {
+        "name": "animal/shark",
+        "className": "animal/shark",
+        "unicode": "e922"
+    },
+    {
+        "name": "animal/shrimp",
+        "className": "animal/shrimp",
+        "unicode": "e923"
+    },
+    {
+        "name": "animal/spider",
+        "className": "animal/spider",
+        "unicode": "e924"
+    },
+    {
+        "name": "animal/squid",
+        "className": "animal/squid",
+        "unicode": "e925"
+    },
+    {
+        "name": "animal/turtle",
+        "className": "animal/turtle",
+        "unicode": "e926"
+    },
+    {
+        "name": "animal/whale",
+        "className": "animal/whale",
+        "unicode": "e927"
+    },
+    {
+        "name": "arrow/chevron",
+        "className": "arrow/chevron",
+        "unicode": "e928"
+    },
+    {
+        "name": "arrow/chevron-down",
+        "className": "arrow/chevron-down",
+        "unicode": "e929"
+    },
+    {
+        "name": "arrow/chevron-left",
+        "className": "arrow/chevron-left",
+        "unicode": "e92a"
+    },
+    {
+        "name": "arrow/chevron-right",
+        "className": "arrow/chevron-right",
+        "unicode": "e92b"
+    },
+    {
+        "name": "arrow/chevron-up",
+        "className": "arrow/chevron-up",
+        "unicode": "e92c"
+    },
+    {
+        "name": "arrow/down-lg",
+        "className": "arrow/down-lg",
+        "unicode": "e92d"
+    },
+    {
+        "name": "arrow/down-md",
+        "className": "arrow/down-md",
+        "unicode": "e92e"
+    },
+    {
+        "name": "arrow/down-sm",
+        "className": "arrow/down-sm",
+        "unicode": "e92f"
+    },
+    {
+        "name": "arrow/expand-lg",
+        "className": "arrow/expand-lg",
+        "unicode": "e930"
+    },
+    {
+        "name": "arrow/expand-md",
+        "className": "arrow/expand-md",
+        "unicode": "e931"
+    },
+    {
+        "name": "arrow/expand-sm",
+        "className": "arrow/expand-sm",
+        "unicode": "e932"
+    },
+    {
+        "name": "arrow/left-lg",
+        "className": "arrow/left-lg",
+        "unicode": "e933"
+    },
+    {
+        "name": "arrow/left-md",
+        "className": "arrow/left-md",
+        "unicode": "e934"
+    },
+    {
+        "name": "arrow/left-sm",
+        "className": "arrow/left-sm",
+        "unicode": "e935"
+    },
+    {
+        "name": "arrow/refresh",
+        "className": "arrow/refresh",
+        "unicode": "e936"
+    },
+    {
+        "name": "arrow/reload",
+        "className": "arrow/reload",
+        "unicode": "e937"
+    },
+    {
+        "name": "arrow/reload-left",
+        "className": "arrow/reload-left",
+        "unicode": "e938"
+    },
+    {
+        "name": "arrow/reload-right",
+        "className": "arrow/reload-right",
+        "unicode": "e939"
+    },
+    {
+        "name": "arrow/right-lg",
+        "className": "arrow/right-lg",
+        "unicode": "e93a"
+    },
+    {
+        "name": "arrow/right-md",
+        "className": "arrow/right-md",
+        "unicode": "e93b"
+    },
+    {
+        "name": "arrow/right-sm",
+        "className": "arrow/right-sm",
+        "unicode": "e93c"
+    },
+    {
+        "name": "arrow/scroll-h",
+        "className": "arrow/scroll-h",
+        "unicode": "e93d"
+    },
+    {
+        "name": "arrow/scroll-v",
+        "className": "arrow/scroll-v",
+        "unicode": "e93e"
+    },
+    {
+        "name": "arrow/turn-left",
+        "className": "arrow/turn-left",
+        "unicode": "e93f"
+    },
+    {
+        "name": "arrow/turn-left-2",
+        "className": "arrow/turn-left-2",
+        "unicode": "e940"
+    },
+    {
+        "name": "arrow/turn-right",
+        "className": "arrow/turn-right",
+        "unicode": "e941"
+    },
+    {
+        "name": "arrow/turn-right-2",
+        "className": "arrow/turn-right-2",
+        "unicode": "e942"
+    },
+    {
+        "name": "arrow/up-lg",
+        "className": "arrow/up-lg",
+        "unicode": "e943"
+    },
+    {
+        "name": "arrow/up-md",
+        "className": "arrow/up-md",
+        "unicode": "e944"
+    },
+    {
+        "name": "arrow/up-sm",
+        "className": "arrow/up-sm",
+        "unicode": "e945"
+    },
+    {
+        "name": "building/amusement-park",
+        "className": "building/amusement-park",
+        "unicode": "e946"
+    },
+    {
+        "name": "building/apartment",
+        "className": "building/apartment",
+        "unicode": "e947"
+    },
+    {
+        "name": "building/building",
+        "className": "building/building",
+        "unicode": "e948"
+    },
+    {
+        "name": "building/cabin-house",
+        "className": "building/cabin-house",
+        "unicode": "e949"
+    },
+    {
+        "name": "building/church",
+        "className": "building/church",
+        "unicode": "e94a"
+    },
+    {
+        "name": "building/city",
+        "className": "building/city",
+        "unicode": "e94b"
+    },
+    {
+        "name": "building/company",
+        "className": "building/company",
+        "unicode": "e94c"
+    },
+    {
+        "name": "building/factory",
+        "className": "building/factory",
+        "unicode": "e94d"
+    },
+    {
+        "name": "building/ferris-wheel",
+        "className": "building/ferris-wheel",
+        "unicode": "e94e"
+    },
+    {
+        "name": "building/landmark",
+        "className": "building/landmark",
+        "unicode": "e94f"
+    },
+    {
+        "name": "building/monument",
+        "className": "building/monument",
+        "unicode": "e950"
+    },
+    {
+        "name": "building/mosque",
+        "className": "building/mosque",
+        "unicode": "e951"
+    },
+    {
+        "name": "building/mosque-2",
+        "className": "building/mosque-2",
+        "unicode": "e952"
+    },
+    {
+        "name": "building/office",
+        "className": "building/office",
+        "unicode": "e953"
+    },
+    {
+        "name": "building/park",
+        "className": "building/park",
+        "unicode": "e954"
+    },
+    {
+        "name": "building/police-station",
+        "className": "building/police-station",
+        "unicode": "e955"
+    },
+    {
+        "name": "building/real-estate",
+        "className": "building/real-estate",
+        "unicode": "e956"
+    },
+    {
+        "name": "building/skyscrapers",
+        "className": "building/skyscrapers",
+        "unicode": "e957"
+    },
+    {
+        "name": "building/temple",
+        "className": "building/temple",
+        "unicode": "e958"
+    },
+    {
+        "name": "building/torii-gate",
+        "className": "building/torii-gate",
+        "unicode": "e959"
+    },
+    {
+        "name": "business_and_finance/affiliate",
+        "className": "business_and_finance/affiliate",
+        "unicode": "e95a"
+    },
+    {
+        "name": "business_and_finance/bag",
+        "className": "business_and_finance/bag",
+        "unicode": "e95b"
+    },
+    {
+        "name": "business_and_finance/bank",
+        "className": "business_and_finance/bank",
+        "unicode": "e95c"
+    },
+    {
+        "name": "business_and_finance/bill",
+        "className": "business_and_finance/bill",
+        "unicode": "e95d"
+    },
+    {
+        "name": "business_and_finance/calculator",
+        "className": "business_and_finance/calculator",
+        "unicode": "e95e"
+    },
+    {
+        "name": "business_and_finance/canvas",
+        "className": "business_and_finance/canvas",
+        "unicode": "e95f"
+    },
+    {
+        "name": "business_and_finance/canvas-down",
+        "className": "business_and_finance/canvas-down",
+        "unicode": "e960"
+    },
+    {
+        "name": "business_and_finance/canvas-statistic",
+        "className": "business_and_finance/canvas-statistic",
+        "unicode": "e961"
+    },
+    {
+        "name": "business_and_finance/canvas-up",
+        "className": "business_and_finance/canvas-up",
+        "unicode": "e962"
+    },
+    {
+        "name": "business_and_finance/cash",
+        "className": "business_and_finance/cash",
+        "unicode": "e963"
+    },
+    {
+        "name": "business_and_finance/chess-castle",
+        "className": "business_and_finance/chess-castle",
+        "unicode": "e964"
+    },
+    {
+        "name": "business_and_finance/coin",
+        "className": "business_and_finance/coin",
+        "unicode": "e965"
+    },
+    {
+        "name": "business_and_finance/coin-2",
+        "className": "business_and_finance/coin-2",
+        "unicode": "e966"
+    },
+    {
+        "name": "business_and_finance/contact-book",
+        "className": "business_and_finance/contact-book",
+        "unicode": "e967"
+    },
+    {
+        "name": "business_and_finance/discount",
+        "className": "business_and_finance/discount",
+        "unicode": "e968"
+    },
+    {
+        "name": "business_and_finance/document",
+        "className": "business_and_finance/document",
+        "unicode": "e969"
+    },
+    {
+        "name": "business_and_finance/document-tick",
+        "className": "business_and_finance/document-tick",
+        "unicode": "e96a"
+    },
+    {
+        "name": "business_and_finance/dollar",
+        "className": "business_and_finance/dollar",
+        "unicode": "e96b"
+    },
+    {
+        "name": "business_and_finance/drawer",
+        "className": "business_and_finance/drawer",
+        "unicode": "e96c"
+    },
+    {
+        "name": "business_and_finance/envelope",
+        "className": "business_and_finance/envelope",
+        "unicode": "e96d"
+    },
+    {
+        "name": "business_and_finance/euro",
+        "className": "business_and_finance/euro",
+        "unicode": "e96e"
+    },
+    {
+        "name": "business_and_finance/failed-plan",
+        "className": "business_and_finance/failed-plan",
+        "unicode": "e96f"
+    },
+    {
+        "name": "business_and_finance/globe",
+        "className": "business_and_finance/globe",
+        "unicode": "e970"
+    },
+    {
+        "name": "business_and_finance/gold",
+        "className": "business_and_finance/gold",
+        "unicode": "e971"
+    },
+    {
+        "name": "business_and_finance/hotel",
+        "className": "business_and_finance/hotel",
+        "unicode": "e972"
+    },
+    {
+        "name": "business_and_finance/invest",
+        "className": "business_and_finance/invest",
+        "unicode": "e973"
+    },
+    {
+        "name": "business_and_finance/invoice",
+        "className": "business_and_finance/invoice",
+        "unicode": "e974"
+    },
+    {
+        "name": "business_and_finance/law",
+        "className": "business_and_finance/law",
+        "unicode": "e975"
+    },
+    {
+        "name": "business_and_finance/lightbulb",
+        "className": "business_and_finance/lightbulb",
+        "unicode": "e976"
+    },
+    {
+        "name": "business_and_finance/lightbulb-creative",
+        "className": "business_and_finance/lightbulb-creative",
+        "unicode": "e977"
+    },
+    {
+        "name": "business_and_finance/lightbulb-on",
+        "className": "business_and_finance/lightbulb-on",
+        "unicode": "e978"
+    },
+    {
+        "name": "business_and_finance/lightbulb-power",
+        "className": "business_and_finance/lightbulb-power",
+        "unicode": "e979"
+    },
+    {
+        "name": "business_and_finance/money",
+        "className": "business_and_finance/money",
+        "unicode": "e97a"
+    },
+    {
+        "name": "business_and_finance/multi-level-marketing",
+        "className": "business_and_finance/multi-level-marketing",
+        "unicode": "e97b"
+    },
+    {
+        "name": "business_and_finance/pie-chart",
+        "className": "business_and_finance/pie-chart",
+        "unicode": "e97c"
+    },
+    {
+        "name": "business_and_finance/poundsterling",
+        "className": "business_and_finance/poundsterling",
+        "unicode": "e97d"
+    },
+    {
+        "name": "business_and_finance/referral",
+        "className": "business_and_finance/referral",
+        "unicode": "e97e"
+    },
+    {
+        "name": "business_and_finance/referral-2",
+        "className": "business_and_finance/referral-2",
+        "unicode": "e97f"
+    },
+    {
+        "name": "business_and_finance/statistic-board",
+        "className": "business_and_finance/statistic-board",
+        "unicode": "e980"
+    },
+    {
+        "name": "business_and_finance/statistic-down",
+        "className": "business_and_finance/statistic-down",
+        "unicode": "e981"
+    },
+    {
+        "name": "business_and_finance/statistic-up",
+        "className": "business_and_finance/statistic-up",
+        "unicode": "e982"
+    },
+    {
+        "name": "business_and_finance/strategy",
+        "className": "business_and_finance/strategy",
+        "unicode": "e983"
+    },
+    {
+        "name": "business_and_finance/success-plan",
+        "className": "business_and_finance/success-plan",
+        "unicode": "e984"
+    },
+    {
+        "name": "business_and_finance/tuxedo",
+        "className": "business_and_finance/tuxedo",
+        "unicode": "e985"
+    },
+    {
+        "name": "business_and_finance/tuxedo-2",
+        "className": "business_and_finance/tuxedo-2",
+        "unicode": "e986"
+    },
+    {
+        "name": "business_and_finance/wallet",
+        "className": "business_and_finance/wallet",
+        "unicode": "e987"
+    },
+    {
+        "name": "business_and_finance/working-bag-2",
+        "className": "business_and_finance/working-bag-2",
+        "unicode": "e988"
+    },
+    {
+        "name": "business_and_finance/working-bag-3",
+        "className": "business_and_finance/working-bag-3",
+        "unicode": "e989"
+    },
+    {
+        "name": "business_and_finance/working-bag-4",
+        "className": "business_and_finance/working-bag-4",
+        "unicode": "e98a"
+    },
+    {
+        "name": "business_and_finance/yen",
+        "className": "business_and_finance/yen",
+        "unicode": "e98b"
+    },
+    {
+        "name": "design/arrow",
+        "className": "design/arrow",
+        "unicode": "e98c"
+    },
+    {
+        "name": "design/blank",
+        "className": "design/blank",
+        "unicode": "e98d"
+    },
+    {
+        "name": "design/brush",
+        "className": "design/brush",
+        "unicode": "e98e"
+    },
+    {
+        "name": "design/bucket-paint",
+        "className": "design/bucket-paint",
+        "unicode": "e98f"
+    },
+    {
+        "name": "design/capture",
+        "className": "design/capture",
+        "unicode": "e990"
+    },
+    {
+        "name": "design/color",
+        "className": "design/color",
+        "unicode": "e991"
+    },
+    {
+        "name": "design/compress",
+        "className": "design/compress",
+        "unicode": "e992"
+    },
+    {
+        "name": "design/crop",
+        "className": "design/crop",
+        "unicode": "e993"
+    },
+    {
+        "name": "design/cube",
+        "className": "design/cube",
+        "unicode": "e994"
+    },
+    {
+        "name": "design/divide",
+        "className": "design/divide",
+        "unicode": "e995"
+    },
+    {
+        "name": "design/eclipse",
+        "className": "design/eclipse",
+        "unicode": "e996"
+    },
+    {
+        "name": "design/edit-path",
+        "className": "design/edit-path",
+        "unicode": "e997"
+    },
+    {
+        "name": "design/eyedropper-tool",
+        "className": "design/eyedropper-tool",
+        "unicode": "e998"
+    },
+    {
+        "name": "design/file-structure",
+        "className": "design/file-structure",
+        "unicode": "e999"
+    },
+    {
+        "name": "design/folder-structure",
+        "className": "design/folder-structure",
+        "unicode": "e99a"
+    },
+    {
+        "name": "design/free-transform",
+        "className": "design/free-transform",
+        "unicode": "e99b"
+    },
+    {
+        "name": "design/h-align-center",
+        "className": "design/h-align-center",
+        "unicode": "e99c"
+    },
+    {
+        "name": "design/h-align-left",
+        "className": "design/h-align-left",
+        "unicode": "e99d"
+    },
+    {
+        "name": "design/h-align-right",
+        "className": "design/h-align-right",
+        "unicode": "e99e"
+    },
+    {
+        "name": "design/hue-saturation",
+        "className": "design/hue-saturation",
+        "unicode": "e99f"
+    },
+    {
+        "name": "design/img",
+        "className": "design/img",
+        "unicode": "e9a0"
+    },
+    {
+        "name": "design/intersect",
+        "className": "design/intersect",
+        "unicode": "e9a1"
+    },
+    {
+        "name": "design/line",
+        "className": "design/line",
+        "unicode": "e9a2"
+    },
+    {
+        "name": "design/magic-wand",
+        "className": "design/magic-wand",
+        "unicode": "e9a3"
+    },
+    {
+        "name": "design/magnet",
+        "className": "design/magnet",
+        "unicode": "e9a4"
+    },
+    {
+        "name": "design/mathematical-anchor",
+        "className": "design/mathematical-anchor",
+        "unicode": "e9a5"
+    },
+    {
+        "name": "design/mesh-fill",
+        "className": "design/mesh-fill",
+        "unicode": "e9a6"
+    },
+    {
+        "name": "design/minus-front",
+        "className": "design/minus-front",
+        "unicode": "e9a7"
+    },
+    {
+        "name": "design/new-artboard",
+        "className": "design/new-artboard",
+        "unicode": "e9a8"
+    },
+    {
+        "name": "design/paint-brush",
+        "className": "design/paint-brush",
+        "unicode": "e9a9"
+    },
+    {
+        "name": "design/palette",
+        "className": "design/palette",
+        "unicode": "e9aa"
+    },
+    {
+        "name": "design/pencil",
+        "className": "design/pencil",
+        "unicode": "e9ab"
+    },
+    {
+        "name": "design/pen-tool",
+        "className": "design/pen-tool",
+        "unicode": "e9ac"
+    },
+    {
+        "name": "design/picture",
+        "className": "design/picture",
+        "unicode": "e9ad"
+    },
+    {
+        "name": "design/polygon",
+        "className": "design/polygon",
+        "unicode": "e9ae"
+    },
+    {
+        "name": "design/prism",
+        "className": "design/prism",
+        "unicode": "e9af"
+    },
+    {
+        "name": "design/rectangle",
+        "className": "design/rectangle",
+        "unicode": "e9b0"
+    },
+    {
+        "name": "design/rounded-rectangle",
+        "className": "design/rounded-rectangle",
+        "unicode": "e9b1"
+    },
+    {
+        "name": "design/ruler",
+        "className": "design/ruler",
+        "unicode": "e9b2"
+    },
+    {
+        "name": "design/ruler-pencil",
+        "className": "design/ruler-pencil",
+        "unicode": "e9b3"
+    },
+    {
+        "name": "design/select",
+        "className": "design/select",
+        "unicode": "e9b4"
+    },
+    {
+        "name": "design/structure",
+        "className": "design/structure",
+        "unicode": "e9b5"
+    },
+    {
+        "name": "design/transform",
+        "className": "design/transform",
+        "unicode": "e9b6"
+    },
+    {
+        "name": "design/triangle",
+        "className": "design/triangle",
+        "unicode": "e9b7"
+    },
+    {
+        "name": "design/trim",
+        "className": "design/trim",
+        "unicode": "e9b8"
+    },
+    {
+        "name": "design/tube",
+        "className": "design/tube",
+        "unicode": "e9b9"
+    },
+    {
+        "name": "design/unite",
+        "className": "design/unite",
+        "unicode": "e9ba"
+    },
+    {
+        "name": "design/v-align-bottom",
+        "className": "design/v-align-bottom",
+        "unicode": "e9bb"
+    },
+    {
+        "name": "design/v-align-center",
+        "className": "design/v-align-center",
+        "unicode": "e9bc"
+    },
+    {
+        "name": "design/v-align-top",
+        "className": "design/v-align-top",
+        "unicode": "e9bd"
+    },
+    {
+        "name": "development/add-node",
+        "className": "development/add-node",
+        "unicode": "e9be"
+    },
+    {
+        "name": "development/all-out",
+        "className": "development/all-out",
+        "unicode": "e9bf"
+    },
+    {
+        "name": "development/animation",
+        "className": "development/animation",
+        "unicode": "e9c0"
+    },
+    {
+        "name": "development/binary",
+        "className": "development/binary",
+        "unicode": "e9c1"
+    },
+    {
+        "name": "development/compare",
+        "className": "development/compare",
+        "unicode": "e9c2"
+    },
+    {
+        "name": "development/data-quality",
+        "className": "development/data-quality",
+        "unicode": "e9c3"
+    },
+    {
+        "name": "development/data-usage",
+        "className": "development/data-usage",
+        "unicode": "e9c4"
+    },
+    {
+        "name": "development/delete-node",
+        "className": "development/delete-node",
+        "unicode": "e9c5"
+    },
+    {
+        "name": "development/description",
+        "className": "development/description",
+        "unicode": "e9c6"
+    },
+    {
+        "name": "development/diagram-venn",
+        "className": "development/diagram-venn",
+        "unicode": "e9c7"
+    },
+    {
+        "name": "development/drag-indicator",
+        "className": "development/drag-indicator",
+        "unicode": "e9c8"
+    },
+    {
+        "name": "development/extension",
+        "className": "development/extension",
+        "unicode": "e9c9"
+    },
+    {
+        "name": "development/h-split",
+        "className": "development/h-split",
+        "unicode": "e9ca"
+    },
+    {
+        "name": "development/mind-map",
+        "className": "development/mind-map",
+        "unicode": "e9cb"
+    },
+    {
+        "name": "development/more-h",
+        "className": "development/more-h",
+        "unicode": "e9cc"
+    },
+    {
+        "name": "development/more-v",
+        "className": "development/more-v",
+        "unicode": "e9cd"
+    },
+    {
+        "name": "development/nat",
+        "className": "development/nat",
+        "unicode": "e9ce"
+    },
+    {
+        "name": "development/node",
+        "className": "development/node",
+        "unicode": "e9cf"
+    },
+    {
+        "name": "development/present-to-all",
+        "className": "development/present-to-all",
+        "unicode": "e9d0"
+    },
+    {
+        "name": "development/privacy-tips",
+        "className": "development/privacy-tips",
+        "unicode": "e9d1"
+    },
+    {
+        "name": "development/qr-code",
+        "className": "development/qr-code",
+        "unicode": "e9d2"
+    },
+    {
+        "name": "development/radar",
+        "className": "development/radar",
+        "unicode": "e9d3"
+    },
+    {
+        "name": "development/select-all",
+        "className": "development/select-all",
+        "unicode": "e9d4"
+    },
+    {
+        "name": "development/seo",
+        "className": "development/seo",
+        "unicode": "e9d5"
+    },
+    {
+        "name": "development/settings",
+        "className": "development/settings",
+        "unicode": "e9d6"
+    },
+    {
+        "name": "development/timeline",
+        "className": "development/timeline",
+        "unicode": "e9d7"
+    },
+    {
+        "name": "development/toll",
+        "className": "development/toll",
+        "unicode": "e9d8"
+    },
+    {
+        "name": "development/v-split",
+        "className": "development/v-split",
+        "unicode": "e9d9"
+    },
+    {
+        "name": "development/website-dashboard",
+        "className": "development/website-dashboard",
+        "unicode": "e9da"
+    },
+    {
+        "name": "development/workflow",
+        "className": "development/workflow",
+        "unicode": "e9db"
+    },
+    {
+        "name": "ecommerce/add-price",
+        "className": "ecommerce/add-price",
+        "unicode": "e9dc"
+    },
+    {
+        "name": "ecommerce/balance",
+        "className": "ecommerce/balance",
+        "unicode": "e9dd"
+    },
+    {
+        "name": "ecommerce/barcode",
+        "className": "ecommerce/barcode",
+        "unicode": "e9de"
+    },
+    {
+        "name": "ecommerce/credit-card",
+        "className": "ecommerce/credit-card",
+        "unicode": "e9df"
+    },
+    {
+        "name": "ecommerce/credit-card-2",
+        "className": "ecommerce/credit-card-2",
+        "unicode": "e9e0"
+    },
+    {
+        "name": "ecommerce/cvv",
+        "className": "ecommerce/cvv",
+        "unicode": "e9e1"
+    },
+    {
+        "name": "ecommerce/delete-price",
+        "className": "ecommerce/delete-price",
+        "unicode": "e9e2"
+    },
+    {
+        "name": "ecommerce/grocery-bag",
+        "className": "ecommerce/grocery-bag",
+        "unicode": "e9e3"
+    },
+    {
+        "name": "ecommerce/grocery-bags",
+        "className": "ecommerce/grocery-bags",
+        "unicode": "e9e4"
+    },
+    {
+        "name": "ecommerce/invoice-paper",
+        "className": "ecommerce/invoice-paper",
+        "unicode": "e9e5"
+    },
+    {
+        "name": "ecommerce/marketplace-love",
+        "className": "ecommerce/marketplace-love",
+        "unicode": "e9e6"
+    },
+    {
+        "name": "ecommerce/marketplace-stars",
+        "className": "ecommerce/marketplace-stars",
+        "unicode": "e9e7"
+    },
+    {
+        "name": "ecommerce/package",
+        "className": "ecommerce/package",
+        "unicode": "e9e8"
+    },
+    {
+        "name": "ecommerce/price-tag",
+        "className": "ecommerce/price-tag",
+        "unicode": "e9e9"
+    },
+    {
+        "name": "ecommerce/price-tag-rotate",
+        "className": "ecommerce/price-tag-rotate",
+        "unicode": "e9ea"
+    },
+    {
+        "name": "ecommerce/remove-price",
+        "className": "ecommerce/remove-price",
+        "unicode": "e9eb"
+    },
+    {
+        "name": "ecommerce/shipping-box",
+        "className": "ecommerce/shipping-box",
+        "unicode": "e9ec"
+    },
+    {
+        "name": "ecommerce/shipping-car",
+        "className": "ecommerce/shipping-car",
+        "unicode": "e9ed"
+    },
+    {
+        "name": "ecommerce/shopping",
+        "className": "ecommerce/shopping",
+        "unicode": "e9ee"
+    },
+    {
+        "name": "ecommerce/shopping-bags",
+        "className": "ecommerce/shopping-bags",
+        "unicode": "e9ef"
+    },
+    {
+        "name": "ecommerce/store-sign",
+        "className": "ecommerce/store-sign",
+        "unicode": "e9f0"
+    },
+    {
+        "name": "ecommerce/ticket",
+        "className": "ecommerce/ticket",
+        "unicode": "e9f1"
+    },
+    {
+        "name": "ecommerce/top-up-balance",
+        "className": "ecommerce/top-up-balance",
+        "unicode": "e9f2"
+    },
+    {
+        "name": "ecommerce/wallet-coin",
+        "className": "ecommerce/wallet-coin",
+        "unicode": "e9f3"
+    },
+    {
+        "name": "ecommerce/woman-bag",
+        "className": "ecommerce/woman-bag",
+        "unicode": "e9f4"
+    },
+    {
+        "name": "emoji/emoji-blink",
+        "className": "emoji/emoji-blink",
+        "unicode": "e9f5"
+    },
+    {
+        "name": "emoji/emoji-cheer-up",
+        "className": "emoji/emoji-cheer-up",
+        "unicode": "e9f6"
+    },
+    {
+        "name": "emoji/emoji-cool",
+        "className": "emoji/emoji-cool",
+        "unicode": "e9f7"
+    },
+    {
+        "name": "emoji/emoji-cool-2",
+        "className": "emoji/emoji-cool-2",
+        "unicode": "e9f8"
+    },
+    {
+        "name": "emoji/emoji-dead",
+        "className": "emoji/emoji-dead",
+        "unicode": "e9f9"
+    },
+    {
+        "name": "emoji/emoji-disappointed",
+        "className": "emoji/emoji-disappointed",
+        "unicode": "e9fa"
+    },
+    {
+        "name": "emoji/emoji-evil",
+        "className": "emoji/emoji-evil",
+        "unicode": "e9fb"
+    },
+    {
+        "name": "emoji/emoji-geek",
+        "className": "emoji/emoji-geek",
+        "unicode": "e9fc"
+    },
+    {
+        "name": "emoji/emoji-happy",
+        "className": "emoji/emoji-happy",
+        "unicode": "e9fd"
+    },
+    {
+        "name": "emoji/emoji-kids",
+        "className": "emoji/emoji-kids",
+        "unicode": "e9fe"
+    },
+    {
+        "name": "emoji/emoji-love",
+        "className": "emoji/emoji-love",
+        "unicode": "e9ff"
+    },
+    {
+        "name": "emoji/emoji-mask",
+        "className": "emoji/emoji-mask",
+        "unicode": "ea00"
+    },
+    {
+        "name": "emoji/emoji-mustache",
+        "className": "emoji/emoji-mustache",
+        "unicode": "ea01"
+    },
+    {
+        "name": "emoji/emoji-pirate",
+        "className": "emoji/emoji-pirate",
+        "unicode": "ea02"
+    },
+    {
+        "name": "emoji/emoji-sad",
+        "className": "emoji/emoji-sad",
+        "unicode": "ea03"
+    },
+    {
+        "name": "emoji/emoji-sad-2",
+        "className": "emoji/emoji-sad-2",
+        "unicode": "ea04"
+    },
+    {
+        "name": "emoji/emoji-smile",
+        "className": "emoji/emoji-smile",
+        "unicode": "ea05"
+    },
+    {
+        "name": "emoji/emoji-smile-plain",
+        "className": "emoji/emoji-smile-plain",
+        "unicode": "ea06"
+    },
+    {
+        "name": "emoji/emoji-tongue",
+        "className": "emoji/emoji-tongue",
+        "unicode": "ea07"
+    },
+    {
+        "name": "emoji/emoji-wonder",
+        "className": "emoji/emoji-wonder",
+        "unicode": "ea08"
+    },
+    {
+        "name": "fashion/basketball-jersey",
+        "className": "fashion/basketball-jersey",
+        "unicode": "ea09"
+    },
+    {
+        "name": "fashion/belt",
+        "className": "fashion/belt",
+        "unicode": "ea0a"
+    },
+    {
+        "name": "fashion/bikini",
+        "className": "fashion/bikini",
+        "unicode": "ea0b"
+    },
+    {
+        "name": "fashion/boots",
+        "className": "fashion/boots",
+        "unicode": "ea0c"
+    },
+    {
+        "name": "fashion/bowties",
+        "className": "fashion/bowties",
+        "unicode": "ea0d"
+    },
+    {
+        "name": "fashion/bra",
+        "className": "fashion/bra",
+        "unicode": "ea0e"
+    },
+    {
+        "name": "fashion/braidshirt",
+        "className": "fashion/braidshirt",
+        "unicode": "ea0f"
+    },
+    {
+        "name": "fashion/diamond-jewel",
+        "className": "fashion/diamond-jewel",
+        "unicode": "ea10"
+    },
+    {
+        "name": "fashion/earrings",
+        "className": "fashion/earrings",
+        "unicode": "ea11"
+    },
+    {
+        "name": "fashion/glasses",
+        "className": "fashion/glasses",
+        "unicode": "ea12"
+    },
+    {
+        "name": "fashion/hat",
+        "className": "fashion/hat",
+        "unicode": "ea13"
+    },
+    {
+        "name": "fashion/high-heels",
+        "className": "fashion/high-heels",
+        "unicode": "ea14"
+    },
+    {
+        "name": "fashion/hoodie",
+        "className": "fashion/hoodie",
+        "unicode": "ea15"
+    },
+    {
+        "name": "fashion/iron",
+        "className": "fashion/iron",
+        "unicode": "ea16"
+    },
+    {
+        "name": "fashion/lipstick",
+        "className": "fashion/lipstick",
+        "unicode": "ea17"
+    },
+    {
+        "name": "fashion/loafers",
+        "className": "fashion/loafers",
+        "unicode": "ea18"
+    },
+    {
+        "name": "fashion/make-up",
+        "className": "fashion/make-up",
+        "unicode": "ea19"
+    },
+    {
+        "name": "fashion/necklace",
+        "className": "fashion/necklace",
+        "unicode": "ea1a"
+    },
+    {
+        "name": "fashion/no-iron",
+        "className": "fashion/no-iron",
+        "unicode": "ea1b"
+    },
+    {
+        "name": "fashion/pants",
+        "className": "fashion/pants",
+        "unicode": "ea1c"
+    },
+    {
+        "name": "fashion/ring",
+        "className": "fashion/ring",
+        "unicode": "ea1d"
+    },
+    {
+        "name": "fashion/sandals",
+        "className": "fashion/sandals",
+        "unicode": "ea1e"
+    },
+    {
+        "name": "fashion/short-pants",
+        "className": "fashion/short-pants",
+        "unicode": "ea1f"
+    },
+    {
+        "name": "fashion/skirt",
+        "className": "fashion/skirt",
+        "unicode": "ea20"
+    },
+    {
+        "name": "fashion/skullcaps",
+        "className": "fashion/skullcaps",
+        "unicode": "ea21"
+    },
+    {
+        "name": "fashion/slipper",
+        "className": "fashion/slipper",
+        "unicode": "ea22"
+    },
+    {
+        "name": "fashion/sneakers",
+        "className": "fashion/sneakers",
+        "unicode": "ea23"
+    },
+    {
+        "name": "fashion/socks",
+        "className": "fashion/socks",
+        "unicode": "ea24"
+    },
+    {
+        "name": "fashion/tie",
+        "className": "fashion/tie",
+        "unicode": "ea25"
+    },
+    {
+        "name": "fashion/tshirt",
+        "className": "fashion/tshirt",
+        "unicode": "ea26"
+    },
+    {
+        "name": "fashion/t-shirt",
+        "className": "fashion/t-shirt",
+        "unicode": "ea27"
+    },
+    {
+        "name": "fashion/tuxedo-fashion",
+        "className": "fashion/tuxedo-fashion",
+        "unicode": "ea28"
+    },
+    {
+        "name": "fashion/tuxedo-fashion-2",
+        "className": "fashion/tuxedo-fashion-2",
+        "unicode": "ea29"
+    },
+    {
+        "name": "fashion/tuxedo-fashion-3",
+        "className": "fashion/tuxedo-fashion-3",
+        "unicode": "ea2a"
+    },
+    {
+        "name": "fashion/tuxedo-formal",
+        "className": "fashion/tuxedo-formal",
+        "unicode": "ea2b"
+    },
+    {
+        "name": "fashion/tuxedo-vallet",
+        "className": "fashion/tuxedo-vallet",
+        "unicode": "ea2c"
+    },
+    {
+        "name": "fashion/underwear",
+        "className": "fashion/underwear",
+        "unicode": "ea2d"
+    },
+    {
+        "name": "fashion/underwear-2",
+        "className": "fashion/underwear-2",
+        "unicode": "ea2e"
+    },
+    {
+        "name": "fashion/vest",
+        "className": "fashion/vest",
+        "unicode": "ea2f"
+    },
+    {
+        "name": "fashion/watch",
+        "className": "fashion/watch",
+        "unicode": "ea30"
+    },
+    {
+        "name": "fashion/wedding-dress",
+        "className": "fashion/wedding-dress",
+        "unicode": "ea31"
+    },
+    {
+        "name": "fashion/woman-boot",
+        "className": "fashion/woman-boot",
+        "unicode": "ea32"
+    },
+    {
+        "name": "fashion/unique-glasses",
+        "className": "fashion/unique-glasses",
+        "unicode": "ea33"
+    },
+    {
+        "name": "fashion/woman-bag-2",
+        "className": "fashion/woman-bag-2",
+        "unicode": "ea34"
+    },
+    {
+        "name": "fashion/woman-bag-3",
+        "className": "fashion/woman-bag-3",
+        "unicode": "ea35"
+    },
+    {
+        "name": "file/add-bracket",
+        "className": "file/add-bracket",
+        "unicode": "ea36"
+    },
+    {
+        "name": "file/add-file",
+        "className": "file/add-file",
+        "unicode": "ea37"
+    },
+    {
+        "name": "file/add-folder",
+        "className": "file/add-folder",
+        "unicode": "ea38"
+    },
+    {
+        "name": "file/alert-file",
+        "className": "file/alert-file",
+        "unicode": "ea39"
+    },
+    {
+        "name": "file/blank-note",
+        "className": "file/blank-note",
+        "unicode": "ea3a"
+    },
+    {
+        "name": "file/bookmark-book",
+        "className": "file/bookmark-book",
+        "unicode": "ea3b"
+    },
+    {
+        "name": "file/book-open-2",
+        "className": "file/book-open-2",
+        "unicode": "ea3c"
+    },
+    {
+        "name": "file/delete-file",
+        "className": "file/delete-file",
+        "unicode": "ea3d"
+    },
+    {
+        "name": "file/delete-folder",
+        "className": "file/delete-folder",
+        "unicode": "ea3e"
+    },
+    {
+        "name": "file/documents",
+        "className": "file/documents",
+        "unicode": "ea3f"
+    },
+    {
+        "name": "file/drawer-office",
+        "className": "file/drawer-office",
+        "unicode": "ea40"
+    },
+    {
+        "name": "file/faq-file",
+        "className": "file/faq-file",
+        "unicode": "ea41"
+    },
+    {
+        "name": "file/file",
+        "className": "file/file",
+        "unicode": "ea42"
+    },
+    {
+        "name": "file/file-down",
+        "className": "file/file-down",
+        "unicode": "ea43"
+    },
+    {
+        "name": "file/file-tick",
+        "className": "file/file-tick",
+        "unicode": "ea44"
+    },
+    {
+        "name": "file/file-up",
+        "className": "file/file-up",
+        "unicode": "ea45"
+    },
+    {
+        "name": "file/folder-2",
+        "className": "file/folder-2",
+        "unicode": "ea46"
+    },
+    {
+        "name": "file/folder-tick",
+        "className": "file/folder-tick",
+        "unicode": "ea47"
+    },
+    {
+        "name": "file/inbox",
+        "className": "file/inbox",
+        "unicode": "ea48"
+    },
+    {
+        "name": "file/inbox-full",
+        "className": "file/inbox-full",
+        "unicode": "ea49"
+    },
+    {
+        "name": "file/media-file",
+        "className": "file/media-file",
+        "unicode": "ea4a"
+    },
+    {
+        "name": "file/note",
+        "className": "file/note",
+        "unicode": "ea4b"
+    },
+    {
+        "name": "file/remove-bracket",
+        "className": "file/remove-bracket",
+        "unicode": "ea4c"
+    },
+    {
+        "name": "file/remove-file",
+        "className": "file/remove-file",
+        "unicode": "ea4d"
+    },
+    {
+        "name": "file/remove-folder",
+        "className": "file/remove-folder",
+        "unicode": "ea4e"
+    },
+    {
+        "name": "food/apple",
+        "className": "food/apple",
+        "unicode": "ea4f"
+    },
+    {
+        "name": "food/avocado",
+        "className": "food/avocado",
+        "unicode": "ea50"
+    },
+    {
+        "name": "food/bacon",
+        "className": "food/bacon",
+        "unicode": "ea51"
+    },
+    {
+        "name": "food/beer-glass",
+        "className": "food/beer-glass",
+        "unicode": "ea52"
+    },
+    {
+        "name": "food/black-pepper",
+        "className": "food/black-pepper",
+        "unicode": "ea53"
+    },
+    {
+        "name": "food/bottle",
+        "className": "food/bottle",
+        "unicode": "ea54"
+    },
+    {
+        "name": "food/bread",
+        "className": "food/bread",
+        "unicode": "ea55"
+    },
+    {
+        "name": "food/burger",
+        "className": "food/burger",
+        "unicode": "ea56"
+    },
+    {
+        "name": "food/cherry",
+        "className": "food/cherry",
+        "unicode": "ea57"
+    },
+    {
+        "name": "food/coffee",
+        "className": "food/coffee",
+        "unicode": "ea58"
+    },
+    {
+        "name": "food/coffee-cup",
+        "className": "food/coffee-cup",
+        "unicode": "ea59"
+    },
+    {
+        "name": "food/cone",
+        "className": "food/cone",
+        "unicode": "ea5a"
+    },
+    {
+        "name": "food/donut",
+        "className": "food/donut",
+        "unicode": "ea5b"
+    },
+    {
+        "name": "food/egg",
+        "className": "food/egg",
+        "unicode": "ea5c"
+    },
+    {
+        "name": "food/glass-fill",
+        "className": "food/glass-fill",
+        "unicode": "ea5d"
+    },
+    {
+        "name": "food/grape",
+        "className": "food/grape",
+        "unicode": "ea5e"
+    },
+    {
+        "name": "food/hotdog",
+        "className": "food/hotdog",
+        "unicode": "ea5f"
+    },
+    {
+        "name": "food/hot-tea",
+        "className": "food/hot-tea",
+        "unicode": "ea60"
+    },
+    {
+        "name": "food/ice-coffee",
+        "className": "food/ice-coffee",
+        "unicode": "ea61"
+    },
+    {
+        "name": "food/knife-fork",
+        "className": "food/knife-fork",
+        "unicode": "ea62"
+    },
+    {
+        "name": "food/lemon",
+        "className": "food/lemon",
+        "unicode": "ea63"
+    },
+    {
+        "name": "food/meat",
+        "className": "food/meat",
+        "unicode": "ea64"
+    },
+    {
+        "name": "food/onigiri",
+        "className": "food/onigiri",
+        "unicode": "ea65"
+    },
+    {
+        "name": "food/pinneaple",
+        "className": "food/pinneaple",
+        "unicode": "ea66"
+    },
+    {
+        "name": "food/popsicle",
+        "className": "food/popsicle",
+        "unicode": "ea67"
+    },
+    {
+        "name": "food/rice-bowl",
+        "className": "food/rice-bowl",
+        "unicode": "ea68"
+    },
+    {
+        "name": "food/spoon-fork",
+        "className": "food/spoon-fork",
+        "unicode": "ea69"
+    },
+    {
+        "name": "food/strawberry",
+        "className": "food/strawberry",
+        "unicode": "ea6a"
+    },
+    {
+        "name": "food/watermelon",
+        "className": "food/watermelon",
+        "unicode": "ea6b"
+    },
+    {
+        "name": "food/wine",
+        "className": "food/wine",
+        "unicode": "ea6c"
+    },
+    {
+        "name": "furniture/air-conditioner",
+        "className": "furniture/air-conditioner",
+        "unicode": "ea6d"
+    },
+    {
+        "name": "furniture/bath-tube",
+        "className": "furniture/bath-tube",
+        "unicode": "ea6e"
+    },
+    {
+        "name": "furniture/bed",
+        "className": "furniture/bed",
+        "unicode": "ea6f"
+    },
+    {
+        "name": "furniture/chair",
+        "className": "furniture/chair",
+        "unicode": "ea70"
+    },
+    {
+        "name": "furniture/chair-2",
+        "className": "furniture/chair-2",
+        "unicode": "ea71"
+    },
+    {
+        "name": "furniture/couch",
+        "className": "furniture/couch",
+        "unicode": "ea72"
+    },
+    {
+        "name": "furniture/cupboard",
+        "className": "furniture/cupboard",
+        "unicode": "ea73"
+    },
+    {
+        "name": "furniture/cupboard-shelf",
+        "className": "furniture/cupboard-shelf",
+        "unicode": "ea74"
+    },
+    {
+        "name": "furniture/door",
+        "className": "furniture/door",
+        "unicode": "ea75"
+    },
+    {
+        "name": "furniture/drawer-2",
+        "className": "furniture/drawer-2",
+        "unicode": "ea76"
+    },
+    {
+        "name": "furniture/drawer-3",
+        "className": "furniture/drawer-3",
+        "unicode": "ea77"
+    },
+    {
+        "name": "furniture/lamp",
+        "className": "furniture/lamp",
+        "unicode": "ea78"
+    },
+    {
+        "name": "furniture/lamp-on",
+        "className": "furniture/lamp-on",
+        "unicode": "ea79"
+    },
+    {
+        "name": "furniture/library",
+        "className": "furniture/library",
+        "unicode": "ea7a"
+    },
+    {
+        "name": "furniture/mirror-make-up",
+        "className": "furniture/mirror-make-up",
+        "unicode": "ea7b"
+    },
+    {
+        "name": "furniture/room-lamp",
+        "className": "furniture/room-lamp",
+        "unicode": "ea7c"
+    },
+    {
+        "name": "furniture/shower",
+        "className": "furniture/shower",
+        "unicode": "ea7d"
+    },
+    {
+        "name": "furniture/sofa",
+        "className": "furniture/sofa",
+        "unicode": "ea7e"
+    },
+    {
+        "name": "furniture/table",
+        "className": "furniture/table",
+        "unicode": "ea7f"
+    },
+    {
+        "name": "furniture/table-drawer",
+        "className": "furniture/table-drawer",
+        "unicode": "ea80"
+    },
+    {
+        "name": "furniture/toilet",
+        "className": "furniture/toilet",
+        "unicode": "ea81"
+    },
+    {
+        "name": "furniture/toilet-squad",
+        "className": "furniture/toilet-squad",
+        "unicode": "ea82"
+    },
+    {
+        "name": "furniture/tv-table",
+        "className": "furniture/tv-table",
+        "unicode": "ea83"
+    },
+    {
+        "name": "furniture/umbrella-table",
+        "className": "furniture/umbrella-table",
+        "unicode": "ea84"
+    },
+    {
+        "name": "furniture/washing-machine",
+        "className": "furniture/washing-machine",
+        "unicode": "ea85"
+    },
+    {
+        "name": "game/achievement",
+        "className": "game/achievement",
+        "unicode": "ea86"
+    },
+    {
+        "name": "game/block-toys",
+        "className": "game/block-toys",
+        "unicode": "ea87"
+    },
+    {
+        "name": "game/bomb",
+        "className": "game/bomb",
+        "unicode": "ea88"
+    },
+    {
+        "name": "game/card-game",
+        "className": "game/card-game",
+        "unicode": "ea89"
+    },
+    {
+        "name": "game/chess-pion",
+        "className": "game/chess-pion",
+        "unicode": "ea8a"
+    },
+    {
+        "name": "game/console-game",
+        "className": "game/console-game",
+        "unicode": "ea8b"
+    },
+    {
+        "name": "game/controller",
+        "className": "game/controller",
+        "unicode": "ea8c"
+    },
+    {
+        "name": "game/crown",
+        "className": "game/crown",
+        "unicode": "ea8d"
+    },
+    {
+        "name": "game/diamond-game",
+        "className": "game/diamond-game",
+        "unicode": "ea8e"
+    },
+    {
+        "name": "game/fire",
+        "className": "game/fire",
+        "unicode": "ea8f"
+    },
+    {
+        "name": "game/game-console",
+        "className": "game/game-console",
+        "unicode": "ea90"
+    },
+    {
+        "name": "game/ghost",
+        "className": "game/ghost",
+        "unicode": "ea91"
+    },
+    {
+        "name": "game/helmet-game",
+        "className": "game/helmet-game",
+        "unicode": "ea92"
+    },
+    {
+        "name": "game/leaderboard",
+        "className": "game/leaderboard",
+        "unicode": "ea93"
+    },
+    {
+        "name": "game/medal-game",
+        "className": "game/medal-game",
+        "unicode": "ea94"
+    },
+    {
+        "name": "game/mushroom",
+        "className": "game/mushroom",
+        "unicode": "ea95"
+    },
+    {
+        "name": "game/pacman",
+        "className": "game/pacman",
+        "unicode": "ea96"
+    },
+    {
+        "name": "game/pipe",
+        "className": "game/pipe",
+        "unicode": "ea97"
+    },
+    {
+        "name": "game/potion",
+        "className": "game/potion",
+        "unicode": "ea98"
+    },
+    {
+        "name": "game/puzzle",
+        "className": "game/puzzle",
+        "unicode": "ea99"
+    },
+    {
+        "name": "game/shield-game",
+        "className": "game/shield-game",
+        "unicode": "ea9a"
+    },
+    {
+        "name": "game/skull-head",
+        "className": "game/skull-head",
+        "unicode": "ea9b"
+    },
+    {
+        "name": "game/soul",
+        "className": "game/soul",
+        "unicode": "ea9c"
+    },
+    {
+        "name": "game/sword",
+        "className": "game/sword",
+        "unicode": "ea9d"
+    },
+    {
+        "name": "game/tetris",
+        "className": "game/tetris",
+        "unicode": "ea9e"
+    },
+    {
+        "name": "gesture/expand-view",
+        "className": "gesture/expand-view",
+        "unicode": "ea9f"
+    },
+    {
+        "name": "gesture/hold",
+        "className": "gesture/hold",
+        "unicode": "eaa0"
+    },
+    {
+        "name": "gesture/move",
+        "className": "gesture/move",
+        "unicode": "eaa1"
+    },
+    {
+        "name": "gesture/password-pattern",
+        "className": "gesture/password-pattern",
+        "unicode": "eaa2"
+    },
+    {
+        "name": "gesture/pinch",
+        "className": "gesture/pinch",
+        "unicode": "eaa3"
+    },
+    {
+        "name": "gesture/scan-barcode",
+        "className": "gesture/scan-barcode",
+        "unicode": "eaa4"
+    },
+    {
+        "name": "gesture/swipe-down",
+        "className": "gesture/swipe-down",
+        "unicode": "eaa5"
+    },
+    {
+        "name": "gesture/swipe-left",
+        "className": "gesture/swipe-left",
+        "unicode": "eaa6"
+    },
+    {
+        "name": "gesture/swipe-left-hand",
+        "className": "gesture/swipe-left-hand",
+        "unicode": "eaa7"
+    },
+    {
+        "name": "gesture/swipe-left-three-fingers",
+        "className": "gesture/swipe-left-three-fingers",
+        "unicode": "eaa8"
+    },
+    {
+        "name": "gesture/swipe-left-two-fingers",
+        "className": "gesture/swipe-left-two-fingers",
+        "unicode": "eaa9"
+    },
+    {
+        "name": "gesture/swipe-right",
+        "className": "gesture/swipe-right",
+        "unicode": "eaaa"
+    },
+    {
+        "name": "gesture/swipe-right-hand",
+        "className": "gesture/swipe-right-hand",
+        "unicode": "eaab"
+    },
+    {
+        "name": "gesture/swipe-right-three-fingers",
+        "className": "gesture/swipe-right-three-fingers",
+        "unicode": "eaac"
+    },
+    {
+        "name": "gesture/swipe-right-two-fingers",
+        "className": "gesture/swipe-right-two-fingers",
+        "unicode": "eaad"
+    },
+    {
+        "name": "gesture/swipe-up",
+        "className": "gesture/swipe-up",
+        "unicode": "eaae"
+    },
+    {
+        "name": "gesture/tap",
+        "className": "gesture/tap",
+        "unicode": "eaaf"
+    },
+    {
+        "name": "gesture/touch",
+        "className": "gesture/touch",
+        "unicode": "eab0"
+    },
+    {
+        "name": "gesture/touch-2",
+        "className": "gesture/touch-2",
+        "unicode": "eab1"
+    },
+    {
+        "name": "gesture/direction",
+        "className": "gesture/direction",
+        "unicode": "eab2"
+    },
+    {
+        "name": "holiday/balloon",
+        "className": "holiday/balloon",
+        "unicode": "eab3"
+    },
+    {
+        "name": "holiday/bowtie",
+        "className": "holiday/bowtie",
+        "unicode": "eab4"
+    },
+    {
+        "name": "holiday/candle",
+        "className": "holiday/candle",
+        "unicode": "eab5"
+    },
+    {
+        "name": "holiday/christmas-lamp",
+        "className": "holiday/christmas-lamp",
+        "unicode": "eab6"
+    },
+    {
+        "name": "holiday/christmas-tree",
+        "className": "holiday/christmas-tree",
+        "unicode": "eab7"
+    },
+    {
+        "name": "holiday/coffin",
+        "className": "holiday/coffin",
+        "unicode": "eab8"
+    },
+    {
+        "name": "holiday/decoration",
+        "className": "holiday/decoration",
+        "unicode": "eab9"
+    },
+    {
+        "name": "holiday/dog-bone",
+        "className": "holiday/dog-bone",
+        "unicode": "eaba"
+    },
+    {
+        "name": "holiday/easter-egg",
+        "className": "holiday/easter-egg",
+        "unicode": "eabb"
+    },
+    {
+        "name": "holiday/easter-egg-2",
+        "className": "holiday/easter-egg-2",
+        "unicode": "eabc"
+    },
+    {
+        "name": "holiday/easter-egg-3",
+        "className": "holiday/easter-egg-3",
+        "unicode": "eabd"
+    },
+    {
+        "name": "holiday/easter-egg-4",
+        "className": "holiday/easter-egg-4",
+        "unicode": "eabe"
+    },
+    {
+        "name": "holiday/easter-egg-5",
+        "className": "holiday/easter-egg-5",
+        "unicode": "eabf"
+    },
+    {
+        "name": "holiday/fireworks",
+        "className": "holiday/fireworks",
+        "unicode": "eac0"
+    },
+    {
+        "name": "holiday/fox",
+        "className": "holiday/fox",
+        "unicode": "eac1"
+    },
+    {
+        "name": "holiday/glass",
+        "className": "holiday/glass",
+        "unicode": "eac2"
+    },
+    {
+        "name": "holiday/glove",
+        "className": "holiday/glove",
+        "unicode": "eac3"
+    },
+    {
+        "name": "holiday/grave",
+        "className": "holiday/grave",
+        "unicode": "eac4"
+    },
+    {
+        "name": "holiday/new-year",
+        "className": "holiday/new-year",
+        "unicode": "eac5"
+    },
+    {
+        "name": "holiday/present",
+        "className": "holiday/present",
+        "unicode": "eac6"
+    },
+    {
+        "name": "holiday/pumpkin",
+        "className": "holiday/pumpkin",
+        "unicode": "eac7"
+    },
+    {
+        "name": "holiday/snowman",
+        "className": "holiday/snowman",
+        "unicode": "eac8"
+    },
+    {
+        "name": "holiday/socks-winter",
+        "className": "holiday/socks-winter",
+        "unicode": "eac9"
+    },
+    {
+        "name": "holiday/spider-insect",
+        "className": "holiday/spider-insect",
+        "unicode": "eaca"
+    },
+    {
+        "name": "holiday/spider-web",
+        "className": "holiday/spider-web",
+        "unicode": "eacb"
+    },
+    {
+        "name": "holiday/travel-bag",
+        "className": "holiday/travel-bag",
+        "unicode": "eacc"
+    },
+    {
+        "name": "holiday/umbrella-holiday",
+        "className": "holiday/umbrella-holiday",
+        "unicode": "eacd"
+    },
+    {
+        "name": "holiday/volleyball",
+        "className": "holiday/volleyball",
+        "unicode": "eace"
+    },
+    {
+        "name": "holiday/witch",
+        "className": "holiday/witch",
+        "unicode": "eacf"
+    },
+    {
+        "name": "holiday/zombie",
+        "className": "holiday/zombie",
+        "unicode": "ead0"
+    },
+    {
+        "name": "interface/activity",
+        "className": "interface/activity",
+        "unicode": "ead1"
+    },
+    {
+        "name": "interface/add-call",
+        "className": "interface/add-call",
+        "unicode": "ead2"
+    },
+    {
+        "name": "interface/add-circle",
+        "className": "interface/add-circle",
+        "unicode": "ead3"
+    },
+    {
+        "name": "interface/add-lg",
+        "className": "interface/add-lg",
+        "unicode": "ead4"
+    },
+    {
+        "name": "interface/add-sm",
+        "className": "interface/add-sm",
+        "unicode": "ead5"
+    },
+    {
+        "name": "interface/add-to-cart",
+        "className": "interface/add-to-cart",
+        "unicode": "ead6"
+    },
+    {
+        "name": "interface/adjustmen-h-lg",
+        "className": "interface/adjustmen-h-lg",
+        "unicode": "ead7"
+    },
+    {
+        "name": "interface/adjustment-h-lg-2",
+        "className": "interface/adjustment-h-lg-2",
+        "unicode": "ead8"
+    },
+    {
+        "name": "interface/adjustment-h-md",
+        "className": "interface/adjustment-h-md",
+        "unicode": "ead9"
+    },
+    {
+        "name": "interface/adjustment-v-lg",
+        "className": "interface/adjustment-v-lg",
+        "unicode": "eada"
+    },
+    {
+        "name": "interface/adjustment-v-lg-2",
+        "className": "interface/adjustment-v-lg-2",
+        "unicode": "eadb"
+    },
+    {
+        "name": "interface/adjustment-v-md",
+        "className": "interface/adjustment-v-md",
+        "unicode": "eadc"
+    },
+    {
+        "name": "interface/airplay",
+        "className": "interface/airplay",
+        "unicode": "eadd"
+    },
+    {
+        "name": "interface/alarm",
+        "className": "interface/alarm",
+        "unicode": "eade"
+    },
+    {
+        "name": "interface/anchor",
+        "className": "interface/anchor",
+        "unicode": "eadf"
+    },
+    {
+        "name": "interface/announcer",
+        "className": "interface/announcer",
+        "unicode": "eae0"
+    },
+    {
+        "name": "interface/archive",
+        "className": "interface/archive",
+        "unicode": "eae1"
+    },
+    {
+        "name": "interface/attachment",
+        "className": "interface/attachment",
+        "unicode": "eae2"
+    },
+    {
+        "name": "interface/attachment-rotate",
+        "className": "interface/attachment-rotate",
+        "unicode": "eae3"
+    },
+    {
+        "name": "interface/audio-ui",
+        "className": "interface/audio-ui",
+        "unicode": "eae4"
+    },
+    {
+        "name": "interface/bar",
+        "className": "interface/bar",
+        "unicode": "eae5"
+    },
+    {
+        "name": "interface/bar-2",
+        "className": "interface/bar-2",
+        "unicode": "eae6"
+    },
+    {
+        "name": "interface/basket",
+        "className": "interface/basket",
+        "unicode": "eae7"
+    },
+    {
+        "name": "interface/battery-charging",
+        "className": "interface/battery-charging",
+        "unicode": "eae8"
+    },
+    {
+        "name": "interface/battery-full",
+        "className": "interface/battery-full",
+        "unicode": "eae9"
+    },
+    {
+        "name": "interface/battery-half",
+        "className": "interface/battery-half",
+        "unicode": "eaea"
+    },
+    {
+        "name": "interface/bluetooth",
+        "className": "interface/bluetooth",
+        "unicode": "eaeb"
+    },
+    {
+        "name": "interface/book",
+        "className": "interface/book",
+        "unicode": "eaec"
+    },
+    {
+        "name": "interface/bookmark",
+        "className": "interface/bookmark",
+        "unicode": "eaed"
+    },
+    {
+        "name": "interface/book-open",
+        "className": "interface/book-open",
+        "unicode": "eaee"
+    },
+    {
+        "name": "interface/brightness",
+        "className": "interface/brightness",
+        "unicode": "eaef"
+    },
+    {
+        "name": "interface/browse",
+        "className": "interface/browse",
+        "unicode": "eaf0"
+    },
+    {
+        "name": "interface/calling",
+        "className": "interface/calling",
+        "unicode": "eaf1"
+    },
+    {
+        "name": "interface/camera",
+        "className": "interface/camera",
+        "unicode": "eaf2"
+    },
+    {
+        "name": "interface/cart",
+        "className": "interface/cart",
+        "unicode": "eaf3"
+    },
+    {
+        "name": "interface/cast",
+        "className": "interface/cast",
+        "unicode": "eaf4"
+    },
+    {
+        "name": "interface/cd",
+        "className": "interface/cd",
+        "unicode": "eaf5"
+    },
+    {
+        "name": "interface/chat-circle",
+        "className": "interface/chat-circle",
+        "unicode": "eaf6"
+    },
+    {
+        "name": "interface/chat-circle-plain",
+        "className": "interface/chat-circle-plain",
+        "unicode": "eaf7"
+    },
+    {
+        "name": "interface/chat-square",
+        "className": "interface/chat-square",
+        "unicode": "eaf8"
+    },
+    {
+        "name": "interface/chat-square-plain",
+        "className": "interface/chat-square-plain",
+        "unicode": "eaf9"
+    },
+    {
+        "name": "interface/chat-square-plain-2",
+        "className": "interface/chat-square-plain-2",
+        "unicode": "eafa"
+    },
+    {
+        "name": "interface/checkmark",
+        "className": "interface/checkmark",
+        "unicode": "eafb"
+    },
+    {
+        "name": "interface/clock",
+        "className": "interface/clock",
+        "unicode": "eafc"
+    },
+    {
+        "name": "interface/close-circle",
+        "className": "interface/close-circle",
+        "unicode": "eafd"
+    },
+    {
+        "name": "interface/close-lg",
+        "className": "interface/close-lg",
+        "unicode": "eafe"
+    },
+    {
+        "name": "interface/close-sm",
+        "className": "interface/close-sm",
+        "unicode": "eaff"
+    },
+    {
+        "name": "interface/cloud-ui",
+        "className": "interface/cloud-ui",
+        "unicode": "eb00"
+    },
+    {
+        "name": "interface/cmd",
+        "className": "interface/cmd",
+        "unicode": "eb01"
+    },
+    {
+        "name": "interface/compass",
+        "className": "interface/compass",
+        "unicode": "eb02"
+    },
+    {
+        "name": "interface/copy",
+        "className": "interface/copy",
+        "unicode": "eb03"
+    },
+    {
+        "name": "interface/cursor",
+        "className": "interface/cursor",
+        "unicode": "eb04"
+    },
+    {
+        "name": "interface/cut",
+        "className": "interface/cut",
+        "unicode": "eb05"
+    },
+    {
+        "name": "interface/date",
+        "className": "interface/date",
+        "unicode": "eb06"
+    },
+    {
+        "name": "interface/delete",
+        "className": "interface/delete",
+        "unicode": "eb07"
+    },
+    {
+        "name": "interface/detail",
+        "className": "interface/detail",
+        "unicode": "eb08"
+    },
+    {
+        "name": "interface/detail-2",
+        "className": "interface/detail-2",
+        "unicode": "eb09"
+    },
+    {
+        "name": "interface/document-ui",
+        "className": "interface/document-ui",
+        "unicode": "eb0a"
+    },
+    {
+        "name": "interface/download",
+        "className": "interface/download",
+        "unicode": "eb0b"
+    },
+    {
+        "name": "interface/download-bracket",
+        "className": "interface/download-bracket",
+        "unicode": "eb0c"
+    },
+    {
+        "name": "interface/drop",
+        "className": "interface/drop",
+        "unicode": "eb0d"
+    },
+    {
+        "name": "interface/edit-ui",
+        "className": "interface/edit-ui",
+        "unicode": "eb0e"
+    },
+    {
+        "name": "interface/edit-ui-2",
+        "className": "interface/edit-ui-2",
+        "unicode": "eb0f"
+    },
+    {
+        "name": "interface/email",
+        "className": "interface/email",
+        "unicode": "eb10"
+    },
+    {
+        "name": "interface/emoji",
+        "className": "interface/emoji",
+        "unicode": "eb11"
+    },
+    {
+        "name": "interface/energy",
+        "className": "interface/energy",
+        "unicode": "eb12"
+    },
+    {
+        "name": "interface/expand-content",
+        "className": "interface/expand-content",
+        "unicode": "eb13"
+    },
+    {
+        "name": "interface/external-link",
+        "className": "interface/external-link",
+        "unicode": "eb14"
+    },
+    {
+        "name": "interface/eye",
+        "className": "interface/eye",
+        "unicode": "eb15"
+    },
+    {
+        "name": "interface/eye-off",
+        "className": "interface/eye-off",
+        "unicode": "eb16"
+    },
+    {
+        "name": "interface/face-scan",
+        "className": "interface/face-scan",
+        "unicode": "eb17"
+    },
+    {
+        "name": "interface/faq",
+        "className": "interface/faq",
+        "unicode": "eb18"
+    },
+    {
+        "name": "interface/file-ui",
+        "className": "interface/file-ui",
+        "unicode": "eb19"
+    },
+    {
+        "name": "interface/filter",
+        "className": "interface/filter",
+        "unicode": "eb1a"
+    },
+    {
+        "name": "interface/filter-ascending",
+        "className": "interface/filter-ascending",
+        "unicode": "eb1b"
+    },
+    {
+        "name": "interface/filter-descending",
+        "className": "interface/filter-descending",
+        "unicode": "eb1c"
+    },
+    {
+        "name": "interface/find",
+        "className": "interface/find",
+        "unicode": "eb1d"
+    },
+    {
+        "name": "interface/fingerprint",
+        "className": "interface/fingerprint",
+        "unicode": "eb1e"
+    },
+    {
+        "name": "interface/flag",
+        "className": "interface/flag",
+        "unicode": "eb1f"
+    },
+    {
+        "name": "interface/flag-2",
+        "className": "interface/flag-2",
+        "unicode": "eb20"
+    },
+    {
+        "name": "interface/folder-ui",
+        "className": "interface/folder-ui",
+        "unicode": "eb21"
+    },
+    {
+        "name": "interface/gift",
+        "className": "interface/gift",
+        "unicode": "eb22"
+    },
+    {
+        "name": "interface/gps",
+        "className": "interface/gps",
+        "unicode": "eb23"
+    },
+    {
+        "name": "interface/hamburger-menu",
+        "className": "interface/hamburger-menu",
+        "unicode": "eb24"
+    },
+    {
+        "name": "interface/hand",
+        "className": "interface/hand",
+        "unicode": "eb25"
+    },
+    {
+        "name": "interface/hold-hand-ui",
+        "className": "interface/hold-hand-ui",
+        "unicode": "eb26"
+    },
+    {
+        "name": "interface/home",
+        "className": "interface/home",
+        "unicode": "eb27"
+    },
+    {
+        "name": "interface/home-2",
+        "className": "interface/home-2",
+        "unicode": "eb28"
+    },
+    {
+        "name": "interface/home-3",
+        "className": "interface/home-3",
+        "unicode": "eb29"
+    },
+    {
+        "name": "interface/home-4",
+        "className": "interface/home-4",
+        "unicode": "eb2a"
+    },
+    {
+        "name": "interface/home-5",
+        "className": "interface/home-5",
+        "unicode": "eb2b"
+    },
+    {
+        "name": "interface/image",
+        "className": "interface/image",
+        "unicode": "eb2c"
+    },
+    {
+        "name": "interface/info",
+        "className": "interface/info",
+        "unicode": "eb2d"
+    },
+    {
+        "name": "interface/information-triangle",
+        "className": "interface/information-triangle",
+        "unicode": "eb2e"
+    },
+    {
+        "name": "interface/layer",
+        "className": "interface/layer",
+        "unicode": "eb2f"
+    },
+    {
+        "name": "interface/layout",
+        "className": "interface/layout",
+        "unicode": "eb30"
+    },
+    {
+        "name": "interface/layout-2",
+        "className": "interface/layout-2",
+        "unicode": "eb31"
+    },
+    {
+        "name": "interface/layout-3",
+        "className": "interface/layout-3",
+        "unicode": "eb32"
+    },
+    {
+        "name": "interface/layout-4",
+        "className": "interface/layout-4",
+        "unicode": "eb33"
+    },
+    {
+        "name": "interface/leaf-ui",
+        "className": "interface/leaf-ui",
+        "unicode": "eb34"
+    },
+    {
+        "name": "interface/loading",
+        "className": "interface/loading",
+        "unicode": "eb35"
+    },
+    {
+        "name": "interface/loading-2",
+        "className": "interface/loading-2",
+        "unicode": "eb36"
+    },
+    {
+        "name": "interface/lock-circle",
+        "className": "interface/lock-circle",
+        "unicode": "eb37"
+    },
+    {
+        "name": "interface/lock-square",
+        "className": "interface/lock-square",
+        "unicode": "eb38"
+    },
+    {
+        "name": "interface/login",
+        "className": "interface/login",
+        "unicode": "eb39"
+    },
+    {
+        "name": "interface/magnifier-glass",
+        "className": "interface/magnifier-glass",
+        "unicode": "eb3a"
+    },
+    {
+        "name": "interface/mail",
+        "className": "interface/mail",
+        "unicode": "eb3b"
+    },
+    {
+        "name": "interface/mailbox",
+        "className": "interface/mailbox",
+        "unicode": "eb3c"
+    },
+    {
+        "name": "interface/map",
+        "className": "interface/map",
+        "unicode": "eb3d"
+    },
+    {
+        "name": "interface/marketplace",
+        "className": "interface/marketplace",
+        "unicode": "eb3e"
+    },
+    {
+        "name": "interface/notication-off",
+        "className": "interface/notication-off",
+        "unicode": "eb3f"
+    },
+    {
+        "name": "interface/notifcation",
+        "className": "interface/notifcation",
+        "unicode": "eb40"
+    },
+    {
+        "name": "interface/notification-bell",
+        "className": "interface/notification-bell",
+        "unicode": "eb41"
+    },
+    {
+        "name": "interface/notification-on",
+        "className": "interface/notification-on",
+        "unicode": "eb42"
+    },
+    {
+        "name": "interface/numeric-password",
+        "className": "interface/numeric-password",
+        "unicode": "eb43"
+    },
+    {
+        "name": "interface/pencil-ui-2",
+        "className": "interface/pencil-ui-2",
+        "unicode": "eb44"
+    },
+    {
+        "name": "interface/pencil-ui-3",
+        "className": "interface/pencil-ui-3",
+        "unicode": "eb45"
+    },
+    {
+        "name": "interface/pencil-ui-circle",
+        "className": "interface/pencil-ui-circle",
+        "unicode": "eb46"
+    },
+    {
+        "name": "interface/phone",
+        "className": "interface/phone",
+        "unicode": "eb47"
+    },
+    {
+        "name": "interface/pie-chart-ui",
+        "className": "interface/pie-chart-ui",
+        "unicode": "eb48"
+    },
+    {
+        "name": "interface/refresh-square",
+        "className": "interface/refresh-square",
+        "unicode": "eb49"
+    },
+    {
+        "name": "interface/reload-square-ui-2",
+        "className": "interface/reload-square-ui-2",
+        "unicode": "eb4a"
+    },
+    {
+        "name": "interface/reload-square",
+        "className": "interface/reload-square",
+        "unicode": "eb4b"
+    },
+    {
+        "name": "interface/reload-square-ui",
+        "className": "interface/reload-square-ui",
+        "unicode": "eb4c"
+    },
+    {
+        "name": "interface/reload-ui-2",
+        "className": "interface/reload-ui-2",
+        "unicode": "eb4d"
+    },
+    {
+        "name": "interface/scanner-female",
+        "className": "interface/scanner-female",
+        "unicode": "eb4e"
+    },
+    {
+        "name": "interface/scanner-profile",
+        "className": "interface/scanner-profile",
+        "unicode": "eb4f"
+    },
+    {
+        "name": "interface/scroll-ui",
+        "className": "interface/scroll-ui",
+        "unicode": "eb50"
+    },
+    {
+        "name": "interface/search",
+        "className": "interface/search",
+        "unicode": "eb51"
+    },
+    {
+        "name": "interface/seen",
+        "className": "interface/seen",
+        "unicode": "eb52"
+    },
+    {
+        "name": "interface/share-bracket",
+        "className": "interface/share-bracket",
+        "unicode": "eb53"
+    },
+    {
+        "name": "interface/shopping-bag-ui",
+        "className": "interface/shopping-bag-ui",
+        "unicode": "eb54"
+    },
+    {
+        "name": "interface/shrink-content",
+        "className": "interface/shrink-content",
+        "unicode": "eb55"
+    },
+    {
+        "name": "interface/signal",
+        "className": "interface/signal",
+        "unicode": "eb56"
+    },
+    {
+        "name": "interface/slider-h-lg",
+        "className": "interface/slider-h-lg",
+        "unicode": "eb57"
+    },
+    {
+        "name": "interface/speedometer",
+        "className": "interface/speedometer",
+        "unicode": "eb58"
+    },
+    {
+        "name": "interface/stars",
+        "className": "interface/stars",
+        "unicode": "eb59"
+    },
+    {
+        "name": "interface/stopwatch",
+        "className": "interface/stopwatch",
+        "unicode": "eb5a"
+    },
+    {
+        "name": "interface/store",
+        "className": "interface/store",
+        "unicode": "eb5b"
+    },
+    {
+        "name": "interface/target",
+        "className": "interface/target",
+        "unicode": "eb5c"
+    },
+    {
+        "name": "interface/toggle",
+        "className": "interface/toggle",
+        "unicode": "eb5d"
+    },
+    {
+        "name": "interface/trash",
+        "className": "interface/trash",
+        "unicode": "eb5e"
+    },
+    {
+        "name": "interface/trash-bin",
+        "className": "interface/trash-bin",
+        "unicode": "eb5f"
+    },
+    {
+        "name": "interface/unlock-circle",
+        "className": "interface/unlock-circle",
+        "unicode": "eb60"
+    },
+    {
+        "name": "interface/unlock-square",
+        "className": "interface/unlock-square",
+        "unicode": "eb61"
+    },
+    {
+        "name": "interface/leaf-ui-2",
+        "className": "interface/leaf-ui-2",
+        "unicode": "eb62"
+    },
+    {
+        "name": "interface/lifebuoy",
+        "className": "interface/lifebuoy",
+        "unicode": "eb63"
+    },
+    {
+        "name": "interface/like",
+        "className": "interface/like",
+        "unicode": "eb64"
+    },
+    {
+        "name": "interface/link",
+        "className": "interface/link",
+        "unicode": "eb65"
+    },
+    {
+        "name": "interface/link-rotate",
+        "className": "interface/link-rotate",
+        "unicode": "eb66"
+    },
+    {
+        "name": "interface/login-bracket",
+        "className": "interface/login-bracket",
+        "unicode": "eb67"
+    },
+    {
+        "name": "interface/logout",
+        "className": "interface/logout",
+        "unicode": "eb68"
+    },
+    {
+        "name": "interface/logout-bracket",
+        "className": "interface/logout-bracket",
+        "unicode": "eb69"
+    },
+    {
+        "name": "interface/loop",
+        "className": "interface/loop",
+        "unicode": "eb6a"
+    },
+    {
+        "name": "interface/love",
+        "className": "interface/love",
+        "unicode": "eb6b"
+    },
+    {
+        "name": "interface/menu",
+        "className": "interface/menu",
+        "unicode": "eb6c"
+    },
+    {
+        "name": "interface/minus-circle",
+        "className": "interface/minus-circle",
+        "unicode": "eb6d"
+    },
+    {
+        "name": "interface/minus-lg",
+        "className": "interface/minus-lg",
+        "unicode": "eb6e"
+    },
+    {
+        "name": "interface/minus-sm",
+        "className": "interface/minus-sm",
+        "unicode": "eb6f"
+    },
+    {
+        "name": "interface/mobile-signal",
+        "className": "interface/mobile-signal",
+        "unicode": "eb70"
+    },
+    {
+        "name": "interface/option",
+        "className": "interface/option",
+        "unicode": "eb71"
+    },
+    {
+        "name": "interface/paper-plane",
+        "className": "interface/paper-plane",
+        "unicode": "eb72"
+    },
+    {
+        "name": "interface/paste",
+        "className": "interface/paste",
+        "unicode": "eb73"
+    },
+    {
+        "name": "interface/path",
+        "className": "interface/path",
+        "unicode": "eb74"
+    },
+    {
+        "name": "interface/pencil-ui",
+        "className": "interface/pencil-ui",
+        "unicode": "eb75"
+    },
+    {
+        "name": "interface/pin",
+        "className": "interface/pin",
+        "unicode": "eb76"
+    },
+    {
+        "name": "interface/pin-location",
+        "className": "interface/pin-location",
+        "unicode": "eb77"
+    },
+    {
+        "name": "interface/power",
+        "className": "interface/power",
+        "unicode": "eb78"
+    },
+    {
+        "name": "interface/price-ui",
+        "className": "interface/price-ui",
+        "unicode": "eb79"
+    },
+    {
+        "name": "interface/printer",
+        "className": "interface/printer",
+        "unicode": "eb7a"
+    },
+    {
+        "name": "interface/reload-ui",
+        "className": "interface/reload-ui",
+        "unicode": "eb7b"
+    },
+    {
+        "name": "interface/remove-call",
+        "className": "interface/remove-call",
+        "unicode": "eb7c"
+    },
+    {
+        "name": "interface/resolution",
+        "className": "interface/resolution",
+        "unicode": "eb7d"
+    },
+    {
+        "name": "interface/resolution-ui",
+        "className": "interface/resolution-ui",
+        "unicode": "eb7e"
+    },
+    {
+        "name": "interface/save",
+        "className": "interface/save",
+        "unicode": "eb7f"
+    },
+    {
+        "name": "interface/seen-2",
+        "className": "interface/seen-2",
+        "unicode": "eb80"
+    },
+    {
+        "name": "interface/seen-3",
+        "className": "interface/seen-3",
+        "unicode": "eb81"
+    },
+    {
+        "name": "interface/server",
+        "className": "interface/server",
+        "unicode": "eb82"
+    },
+    {
+        "name": "interface/settings-ui",
+        "className": "interface/settings-ui",
+        "unicode": "eb83"
+    },
+    {
+        "name": "interface/share",
+        "className": "interface/share",
+        "unicode": "eb84"
+    },
+    {
+        "name": "interface/slider-h-md",
+        "className": "interface/slider-h-md",
+        "unicode": "eb85"
+    },
+    {
+        "name": "interface/slider-v-lg",
+        "className": "interface/slider-v-lg",
+        "unicode": "eb86"
+    },
+    {
+        "name": "interface/slider-v-md",
+        "className": "interface/slider-v-md",
+        "unicode": "eb87"
+    },
+    {
+        "name": "interface/snooze",
+        "className": "interface/snooze",
+        "unicode": "eb88"
+    },
+    {
+        "name": "interface/speaker-ui",
+        "className": "interface/speaker-ui",
+        "unicode": "eb89"
+    },
+    {
+        "name": "interface/tick-circle",
+        "className": "interface/tick-circle",
+        "unicode": "eb8a"
+    },
+    {
+        "name": "interface/time-sand",
+        "className": "interface/time-sand",
+        "unicode": "eb8b"
+    },
+    {
+        "name": "interface/todo",
+        "className": "interface/todo",
+        "unicode": "eb8c"
+    },
+    {
+        "name": "interface/todo-done",
+        "className": "interface/todo-done",
+        "unicode": "eb8d"
+    },
+    {
+        "name": "interface/todo-failed",
+        "className": "interface/todo-failed",
+        "unicode": "eb8e"
+    },
+    {
+        "name": "interface/upload",
+        "className": "interface/upload",
+        "unicode": "eb8f"
+    },
+    {
+        "name": "interface/upload-bracket",
+        "className": "interface/upload-bracket",
+        "unicode": "eb90"
+    },
+    {
+        "name": "interface/warning-circle",
+        "className": "interface/warning-circle",
+        "unicode": "eb91"
+    },
+    {
+        "name": "interface/wifi",
+        "className": "interface/wifi",
+        "unicode": "eb92"
+    },
+    {
+        "name": "interface/wifi-2",
+        "className": "interface/wifi-2",
+        "unicode": "eb93"
+    },
+    {
+        "name": "interface/writing",
+        "className": "interface/writing",
+        "unicode": "eb94"
+    },
+    {
+        "name": "interface/zoom-in",
+        "className": "interface/zoom-in",
+        "unicode": "eb95"
+    },
+    {
+        "name": "interface/zoom-in-2",
+        "className": "interface/zoom-in-2",
+        "unicode": "eb96"
+    },
+    {
+        "name": "interface/zoom-out",
+        "className": "interface/zoom-out",
+        "unicode": "eb97"
+    },
+    {
+        "name": "interface/zoom-out-2",
+        "className": "interface/zoom-out-2",
+        "unicode": "eb98"
+    },
+    {
+        "name": "kitchen/apron",
+        "className": "kitchen/apron",
+        "unicode": "eb99"
+    },
+    {
+        "name": "kitchen/bbq",
+        "className": "kitchen/bbq",
+        "unicode": "eb9a"
+    },
+    {
+        "name": "kitchen/blender",
+        "className": "kitchen/blender",
+        "unicode": "eb9b"
+    },
+    {
+        "name": "kitchen/bowl",
+        "className": "kitchen/bowl",
+        "unicode": "eb9c"
+    },
+    {
+        "name": "kitchen/bread-toaster",
+        "className": "kitchen/bread-toaster",
+        "unicode": "eb9d"
+    },
+    {
+        "name": "kitchen/bucket",
+        "className": "kitchen/bucket",
+        "unicode": "eb9e"
+    },
+    {
+        "name": "kitchen/cheese-grater",
+        "className": "kitchen/cheese-grater",
+        "unicode": "eb9f"
+    },
+    {
+        "name": "kitchen/chef",
+        "className": "kitchen/chef",
+        "unicode": "eba0"
+    },
+    {
+        "name": "kitchen/dish",
+        "className": "kitchen/dish",
+        "unicode": "eba1"
+    },
+    {
+        "name": "kitchen/food-scale",
+        "className": "kitchen/food-scale",
+        "unicode": "eba2"
+    },
+    {
+        "name": "kitchen/glass-empty",
+        "className": "kitchen/glass-empty",
+        "unicode": "eba3"
+    },
+    {
+        "name": "kitchen/glass-empty-wine",
+        "className": "kitchen/glass-empty-wine",
+        "unicode": "eba4"
+    },
+    {
+        "name": "kitchen/grill",
+        "className": "kitchen/grill",
+        "unicode": "eba5"
+    },
+    {
+        "name": "kitchen/ingredients",
+        "className": "kitchen/ingredients",
+        "unicode": "eba6"
+    },
+    {
+        "name": "kitchen/ketchup",
+        "className": "kitchen/ketchup",
+        "unicode": "eba7"
+    },
+    {
+        "name": "kitchen/kettle",
+        "className": "kitchen/kettle",
+        "unicode": "eba8"
+    },
+    {
+        "name": "kitchen/knife-kitchen",
+        "className": "kitchen/knife-kitchen",
+        "unicode": "eba9"
+    },
+    {
+        "name": "kitchen/ladle",
+        "className": "kitchen/ladle",
+        "unicode": "ebaa"
+    },
+    {
+        "name": "kitchen/microwave",
+        "className": "kitchen/microwave",
+        "unicode": "ebab"
+    },
+    {
+        "name": "kitchen/orange-squeezer",
+        "className": "kitchen/orange-squeezer",
+        "unicode": "ebac"
+    },
+    {
+        "name": "kitchen/pizza-roller",
+        "className": "kitchen/pizza-roller",
+        "unicode": "ebad"
+    },
+    {
+        "name": "kitchen/plate",
+        "className": "kitchen/plate",
+        "unicode": "ebae"
+    },
+    {
+        "name": "kitchen/refrigerator",
+        "className": "kitchen/refrigerator",
+        "unicode": "ebaf"
+    },
+    {
+        "name": "kitchen/rice-cooker",
+        "className": "kitchen/rice-cooker",
+        "unicode": "ebb0"
+    },
+    {
+        "name": "kitchen/spatula",
+        "className": "kitchen/spatula",
+        "unicode": "ebb1"
+    },
+    {
+        "name": "kitchen/spatula-2",
+        "className": "kitchen/spatula-2",
+        "unicode": "ebb2"
+    },
+    {
+        "name": "kitchen/spatula-3",
+        "className": "kitchen/spatula-3",
+        "unicode": "ebb3"
+    },
+    {
+        "name": "kitchen/tissue",
+        "className": "kitchen/tissue",
+        "unicode": "ebb4"
+    },
+    {
+        "name": "kitchen/ulekan",
+        "className": "kitchen/ulekan",
+        "unicode": "ebb5"
+    },
+    {
+        "name": "kitchen/water-measure",
+        "className": "kitchen/water-measure",
+        "unicode": "ebb6"
+    },
+    {
+        "name": "medical/activity-circle",
+        "className": "medical/activity-circle",
+        "unicode": "ebb7"
+    },
+    {
+        "name": "medical/ambulance",
+        "className": "medical/ambulance",
+        "unicode": "ebb8"
+    },
+    {
+        "name": "medical/band-aid",
+        "className": "medical/band-aid",
+        "unicode": "ebb9"
+    },
+    {
+        "name": "medical/blood",
+        "className": "medical/blood",
+        "unicode": "ebba"
+    },
+    {
+        "name": "medical/brain",
+        "className": "medical/brain",
+        "unicode": "ebbb"
+    },
+    {
+        "name": "medical/capsule",
+        "className": "medical/capsule",
+        "unicode": "ebbc"
+    },
+    {
+        "name": "medical/chemical",
+        "className": "medical/chemical",
+        "unicode": "ebbd"
+    },
+    {
+        "name": "medical/dna",
+        "className": "medical/dna",
+        "unicode": "ebbe"
+    },
+    {
+        "name": "medical/doctor",
+        "className": "medical/doctor",
+        "unicode": "ebbf"
+    },
+    {
+        "name": "medical/doctor-bag",
+        "className": "medical/doctor-bag",
+        "unicode": "ebc0"
+    },
+    {
+        "name": "medical/drugs",
+        "className": "medical/drugs",
+        "unicode": "ebc1"
+    },
+    {
+        "name": "medical/health",
+        "className": "medical/health",
+        "unicode": "ebc2"
+    },
+    {
+        "name": "medical/heart-rate",
+        "className": "medical/heart-rate",
+        "unicode": "ebc3"
+    },
+    {
+        "name": "medical/hospital",
+        "className": "medical/hospital",
+        "unicode": "ebc4"
+    },
+    {
+        "name": "medical/hospital-building",
+        "className": "medical/hospital-building",
+        "unicode": "ebc5"
+    },
+    {
+        "name": "medical/intestine",
+        "className": "medical/intestine",
+        "unicode": "ebc6"
+    },
+    {
+        "name": "medical/lungs",
+        "className": "medical/lungs",
+        "unicode": "ebc7"
+    },
+    {
+        "name": "medical/man-symbol",
+        "className": "medical/man-symbol",
+        "unicode": "ebc8"
+    },
+    {
+        "name": "medical/medical",
+        "className": "medical/medical",
+        "unicode": "ebc9"
+    },
+    {
+        "name": "medical/medical-bill",
+        "className": "medical/medical-bill",
+        "unicode": "ebca"
+    },
+    {
+        "name": "medical/medical-circle",
+        "className": "medical/medical-circle",
+        "unicode": "ebcb"
+    },
+    {
+        "name": "medical/medical-kit",
+        "className": "medical/medical-kit",
+        "unicode": "ebcc"
+    },
+    {
+        "name": "medical/medical-scale",
+        "className": "medical/medical-scale",
+        "unicode": "ebcd"
+    },
+    {
+        "name": "medical/medical-scanner",
+        "className": "medical/medical-scanner",
+        "unicode": "ebce"
+    },
+    {
+        "name": "medical/medical-supply",
+        "className": "medical/medical-supply",
+        "unicode": "ebcf"
+    },
+    {
+        "name": "medical/medicine",
+        "className": "medical/medicine",
+        "unicode": "ebd0"
+    },
+    {
+        "name": "medical/molecule",
+        "className": "medical/molecule",
+        "unicode": "ebd1"
+    },
+    {
+        "name": "medical/optometry",
+        "className": "medical/optometry",
+        "unicode": "ebd2"
+    },
+    {
+        "name": "medical/particle",
+        "className": "medical/particle",
+        "unicode": "ebd3"
+    },
+    {
+        "name": "medical/single-band-aid",
+        "className": "medical/single-band-aid",
+        "unicode": "ebd4"
+    },
+    {
+        "name": "medical/stethoscope",
+        "className": "medical/stethoscope",
+        "unicode": "ebd5"
+    },
+    {
+        "name": "medical/syringe",
+        "className": "medical/syringe",
+        "unicode": "ebd6"
+    },
+    {
+        "name": "medical/tooth",
+        "className": "medical/tooth",
+        "unicode": "ebd7"
+    },
+    {
+        "name": "medical/ulcer",
+        "className": "medical/ulcer",
+        "unicode": "ebd8"
+    },
+    {
+        "name": "medical/woman-symbol",
+        "className": "medical/woman-symbol",
+        "unicode": "ebd9"
+    },
+    {
+        "name": "music/album",
+        "className": "music/album",
+        "unicode": "ebda"
+    },
+    {
+        "name": "music/album-2",
+        "className": "music/album-2",
+        "unicode": "ebdb"
+    },
+    {
+        "name": "music/announcer-2",
+        "className": "music/announcer-2",
+        "unicode": "ebdc"
+    },
+    {
+        "name": "music/audio",
+        "className": "music/audio",
+        "unicode": "ebdd"
+    },
+    {
+        "name": "music/audio-wave",
+        "className": "music/audio-wave",
+        "unicode": "ebde"
+    },
+    {
+        "name": "music/cassette",
+        "className": "music/cassette",
+        "unicode": "ebdf"
+    },
+    {
+        "name": "music/cassette-2",
+        "className": "music/cassette-2",
+        "unicode": "ebe0"
+    },
+    {
+        "name": "music/earphone",
+        "className": "music/earphone",
+        "unicode": "ebe1"
+    },
+    {
+        "name": "music/equalizer",
+        "className": "music/equalizer",
+        "unicode": "ebe2"
+    },
+    {
+        "name": "music/instrument-playlist",
+        "className": "music/instrument-playlist",
+        "unicode": "ebe3"
+    },
+    {
+        "name": "music/karaoke",
+        "className": "music/karaoke",
+        "unicode": "ebe4"
+    },
+    {
+        "name": "music/mic",
+        "className": "music/mic",
+        "unicode": "ebe5"
+    },
+    {
+        "name": "music/mic-2",
+        "className": "music/mic-2",
+        "unicode": "ebe6"
+    },
+    {
+        "name": "music/microphone",
+        "className": "music/microphone",
+        "unicode": "ebe7"
+    },
+    {
+        "name": "music/music-beat",
+        "className": "music/music-beat",
+        "unicode": "ebe8"
+    },
+    {
+        "name": "music/music-note",
+        "className": "music/music-note",
+        "unicode": "ebe9"
+    },
+    {
+        "name": "music/music-note-2",
+        "className": "music/music-note-2",
+        "unicode": "ebea"
+    },
+    {
+        "name": "music/next",
+        "className": "music/next",
+        "unicode": "ebeb"
+    },
+    {
+        "name": "music/next-circle",
+        "className": "music/next-circle",
+        "unicode": "ebec"
+    },
+    {
+        "name": "music/open-disc",
+        "className": "music/open-disc",
+        "unicode": "ebed"
+    },
+    {
+        "name": "music/pause",
+        "className": "music/pause",
+        "unicode": "ebee"
+    },
+    {
+        "name": "music/pause-circle",
+        "className": "music/pause-circle",
+        "unicode": "ebef"
+    },
+    {
+        "name": "music/piano",
+        "className": "music/piano",
+        "unicode": "ebf0"
+    },
+    {
+        "name": "music/play",
+        "className": "music/play",
+        "unicode": "ebf1"
+    },
+    {
+        "name": "music/play-circle",
+        "className": "music/play-circle",
+        "unicode": "ebf2"
+    },
+    {
+        "name": "music/playlist",
+        "className": "music/playlist",
+        "unicode": "ebf3"
+    },
+    {
+        "name": "music/podcast",
+        "className": "music/podcast",
+        "unicode": "ebf4"
+    },
+    {
+        "name": "music/podcast-2",
+        "className": "music/podcast-2",
+        "unicode": "ebf5"
+    },
+    {
+        "name": "music/previous",
+        "className": "music/previous",
+        "unicode": "ebf6"
+    },
+    {
+        "name": "music/previous-circle",
+        "className": "music/previous-circle",
+        "unicode": "ebf7"
+    },
+    {
+        "name": "music/queue",
+        "className": "music/queue",
+        "unicode": "ebf8"
+    },
+    {
+        "name": "music/radio",
+        "className": "music/radio",
+        "unicode": "ebf9"
+    },
+    {
+        "name": "music/radio-2",
+        "className": "music/radio-2",
+        "unicode": "ebfa"
+    },
+    {
+        "name": "music/radio-signal",
+        "className": "music/radio-signal",
+        "unicode": "ebfb"
+    },
+    {
+        "name": "music/single-note",
+        "className": "music/single-note",
+        "unicode": "ebfc"
+    },
+    {
+        "name": "music/single-note-2",
+        "className": "music/single-note-2",
+        "unicode": "ebfd"
+    },
+    {
+        "name": "music/sound-wave",
+        "className": "music/sound-wave",
+        "unicode": "ebfe"
+    },
+    {
+        "name": "music/speaker",
+        "className": "music/speaker",
+        "unicode": "ebff"
+    },
+    {
+        "name": "music/speaker-2",
+        "className": "music/speaker-2",
+        "unicode": "ec00"
+    },
+    {
+        "name": "music/stop",
+        "className": "music/stop",
+        "unicode": "ec01"
+    },
+    {
+        "name": "music/stop-circle",
+        "className": "music/stop-circle",
+        "unicode": "ec02"
+    },
+    {
+        "name": "music/volume",
+        "className": "music/volume",
+        "unicode": "ec03"
+    },
+    {
+        "name": "music/volume-max",
+        "className": "music/volume-max",
+        "unicode": "ec04"
+    },
+    {
+        "name": "music/volume-off",
+        "className": "music/volume-off",
+        "unicode": "ec05"
+    },
+    {
+        "name": "music/volume-up",
+        "className": "music/volume-up",
+        "unicode": "ec06"
+    },
+    {
+        "name": "nature/clover",
+        "className": "nature/clover",
+        "unicode": "ec07"
+    },
+    {
+        "name": "nature/feather",
+        "className": "nature/feather",
+        "unicode": "ec08"
+    },
+    {
+        "name": "nature/fire-camp",
+        "className": "nature/fire-camp",
+        "unicode": "ec09"
+    },
+    {
+        "name": "nature/flame",
+        "className": "nature/flame",
+        "unicode": "ec0a"
+    },
+    {
+        "name": "nature/flower",
+        "className": "nature/flower",
+        "unicode": "ec0b"
+    },
+    {
+        "name": "nature/leaf",
+        "className": "nature/leaf",
+        "unicode": "ec0c"
+    },
+    {
+        "name": "nature/leaf-2",
+        "className": "nature/leaf-2",
+        "unicode": "ec0d"
+    },
+    {
+        "name": "nature/leaf-branch",
+        "className": "nature/leaf-branch",
+        "unicode": "ec0e"
+    },
+    {
+        "name": "nature/lotus",
+        "className": "nature/lotus",
+        "unicode": "ec0f"
+    },
+    {
+        "name": "nature/maple-leaf",
+        "className": "nature/maple-leaf",
+        "unicode": "ec10"
+    },
+    {
+        "name": "nature/plant",
+        "className": "nature/plant",
+        "unicode": "ec11"
+    },
+    {
+        "name": "nature/rose",
+        "className": "nature/rose",
+        "unicode": "ec12"
+    },
+    {
+        "name": "nature/rose-bud",
+        "className": "nature/rose-bud",
+        "unicode": "ec13"
+    },
+    {
+        "name": "nature/seed",
+        "className": "nature/seed",
+        "unicode": "ec14"
+    },
+    {
+        "name": "nature/stone",
+        "className": "nature/stone",
+        "unicode": "ec15"
+    },
+    {
+        "name": "nature/tea-leaf",
+        "className": "nature/tea-leaf",
+        "unicode": "ec16"
+    },
+    {
+        "name": "nature/tree",
+        "className": "nature/tree",
+        "unicode": "ec17"
+    },
+    {
+        "name": "nature/tree-2",
+        "className": "nature/tree-2",
+        "unicode": "ec18"
+    },
+    {
+        "name": "nature/tree-branch",
+        "className": "nature/tree-branch",
+        "unicode": "ec19"
+    },
+    {
+        "name": "nature/tree-branch-2",
+        "className": "nature/tree-branch-2",
+        "unicode": "ec1a"
+    },
+    {
+        "name": "nature/tree-branch-3",
+        "className": "nature/tree-branch-3",
+        "unicode": "ec1b"
+    },
+    {
+        "name": "nature/tree-branch-4",
+        "className": "nature/tree-branch-4",
+        "unicode": "ec1c"
+    },
+    {
+        "name": "nature/tree-branch-5",
+        "className": "nature/tree-branch-5",
+        "unicode": "ec1d"
+    },
+    {
+        "name": "nature/wheat",
+        "className": "nature/wheat",
+        "unicode": "ec1e"
+    },
+    {
+        "name": "nature/wood",
+        "className": "nature/wood",
+        "unicode": "ec1f"
+    },
+    {
+        "name": "space/alien",
+        "className": "space/alien",
+        "unicode": "ec20"
+    },
+    {
+        "name": "space/asteroid",
+        "className": "space/asteroid",
+        "unicode": "ec21"
+    },
+    {
+        "name": "space/astronaut",
+        "className": "space/astronaut",
+        "unicode": "ec22"
+    },
+    {
+        "name": "space/blackhole",
+        "className": "space/blackhole",
+        "unicode": "ec23"
+    },
+    {
+        "name": "space/box",
+        "className": "space/box",
+        "unicode": "ec24"
+    },
+    {
+        "name": "space/comet",
+        "className": "space/comet",
+        "unicode": "ec25"
+    },
+    {
+        "name": "space/earth",
+        "className": "space/earth",
+        "unicode": "ec26"
+    },
+    {
+        "name": "space/lab",
+        "className": "space/lab",
+        "unicode": "ec27"
+    },
+    {
+        "name": "space/moon-landing",
+        "className": "space/moon-landing",
+        "unicode": "ec28"
+    },
+    {
+        "name": "space/moon-space",
+        "className": "space/moon-space",
+        "unicode": "ec29"
+    },
+    {
+        "name": "space/nuclear",
+        "className": "space/nuclear",
+        "unicode": "ec2a"
+    },
+    {
+        "name": "space/orbit",
+        "className": "space/orbit",
+        "unicode": "ec2b"
+    },
+    {
+        "name": "space/pluto",
+        "className": "space/pluto",
+        "unicode": "ec2c"
+    },
+    {
+        "name": "space/robot",
+        "className": "space/robot",
+        "unicode": "ec2d"
+    },
+    {
+        "name": "space/rocket",
+        "className": "space/rocket",
+        "unicode": "ec2e"
+    },
+    {
+        "name": "space/rocket-launch",
+        "className": "space/rocket-launch",
+        "unicode": "ec2f"
+    },
+    {
+        "name": "space/satellite",
+        "className": "space/satellite",
+        "unicode": "ec30"
+    },
+    {
+        "name": "space/saturn",
+        "className": "space/saturn",
+        "unicode": "ec31"
+    },
+    {
+        "name": "space/shooter",
+        "className": "space/shooter",
+        "unicode": "ec32"
+    },
+    {
+        "name": "space/spaceship",
+        "className": "space/spaceship",
+        "unicode": "ec33"
+    },
+    {
+        "name": "space/space-signal",
+        "className": "space/space-signal",
+        "unicode": "ec34"
+    },
+    {
+        "name": "space/sun-space",
+        "className": "space/sun-space",
+        "unicode": "ec35"
+    },
+    {
+        "name": "space/telescope",
+        "className": "space/telescope",
+        "unicode": "ec36"
+    },
+    {
+        "name": "space/ufo",
+        "className": "space/ufo",
+        "unicode": "ec37"
+    },
+    {
+        "name": "space/venus",
+        "className": "space/venus",
+        "unicode": "ec38"
+    },
+    {
+        "name": "sports/badge",
+        "className": "sports/badge",
+        "unicode": "ec39"
+    },
+    {
+        "name": "sports/badminton",
+        "className": "sports/badminton",
+        "unicode": "ec3a"
+    },
+    {
+        "name": "sports/badminton-ball",
+        "className": "sports/badminton-ball",
+        "unicode": "ec3b"
+    },
+    {
+        "name": "sports/baseball",
+        "className": "sports/baseball",
+        "unicode": "ec3c"
+    },
+    {
+        "name": "sports/basketball",
+        "className": "sports/basketball",
+        "unicode": "ec3d"
+    },
+    {
+        "name": "sports/basketball-net",
+        "className": "sports/basketball-net",
+        "unicode": "ec3e"
+    },
+    {
+        "name": "sports/billiard",
+        "className": "sports/billiard",
+        "unicode": "ec3f"
+    },
+    {
+        "name": "sports/bowling",
+        "className": "sports/bowling",
+        "unicode": "ec40"
+    },
+    {
+        "name": "sports/bowling-ball",
+        "className": "sports/bowling-ball",
+        "unicode": "ec41"
+    },
+    {
+        "name": "sports/boxing",
+        "className": "sports/boxing",
+        "unicode": "ec42"
+    },
+    {
+        "name": "sports/car-wheel",
+        "className": "sports/car-wheel",
+        "unicode": "ec43"
+    },
+    {
+        "name": "sports/cricket",
+        "className": "sports/cricket",
+        "unicode": "ec44"
+    },
+    {
+        "name": "sports/energy-drink",
+        "className": "sports/energy-drink",
+        "unicode": "ec45"
+    },
+    {
+        "name": "sports/fencing",
+        "className": "sports/fencing",
+        "unicode": "ec46"
+    },
+    {
+        "name": "sports/finish-flag",
+        "className": "sports/finish-flag",
+        "unicode": "ec47"
+    },
+    {
+        "name": "sports/flag-sports",
+        "className": "sports/flag-sports",
+        "unicode": "ec48"
+    },
+    {
+        "name": "sports/golf",
+        "className": "sports/golf",
+        "unicode": "ec49"
+    },
+    {
+        "name": "sports/golf-stick",
+        "className": "sports/golf-stick",
+        "unicode": "ec4a"
+    },
+    {
+        "name": "sports/gym",
+        "className": "sports/gym",
+        "unicode": "ec4b"
+    },
+    {
+        "name": "sports/hockey",
+        "className": "sports/hockey",
+        "unicode": "ec4c"
+    },
+    {
+        "name": "sports/medal",
+        "className": "sports/medal",
+        "unicode": "ec4d"
+    },
+    {
+        "name": "sports/rugby",
+        "className": "sports/rugby",
+        "unicode": "ec4e"
+    },
+    {
+        "name": "sports/rugby-helmet",
+        "className": "sports/rugby-helmet",
+        "unicode": "ec4f"
+    },
+    {
+        "name": "sports/running",
+        "className": "sports/running",
+        "unicode": "ec50"
+    },
+    {
+        "name": "sports/soccer",
+        "className": "sports/soccer",
+        "unicode": "ec51"
+    },
+    {
+        "name": "sports/soccer-arena",
+        "className": "sports/soccer-arena",
+        "unicode": "ec52"
+    },
+    {
+        "name": "sports/sports-energy",
+        "className": "sports/sports-energy",
+        "unicode": "ec53"
+    },
+    {
+        "name": "sports/stadium",
+        "className": "sports/stadium",
+        "unicode": "ec54"
+    },
+    {
+        "name": "sports/swimming-pool",
+        "className": "sports/swimming-pool",
+        "unicode": "ec55"
+    },
+    {
+        "name": "sports/tennis",
+        "className": "sports/tennis",
+        "unicode": "ec56"
+    },
+    {
+        "name": "sports/tournament-bracket",
+        "className": "sports/tournament-bracket",
+        "unicode": "ec57"
+    },
+    {
+        "name": "sports/trophy",
+        "className": "sports/trophy",
+        "unicode": "ec58"
+    },
+    {
+        "name": "sports/vitamin",
+        "className": "sports/vitamin",
+        "unicode": "ec59"
+    },
+    {
+        "name": "sports/weightlifting",
+        "className": "sports/weightlifting",
+        "unicode": "ec5a"
+    },
+    {
+        "name": "sports/winner",
+        "className": "sports/winner",
+        "unicode": "ec5b"
+    },
+    {
+        "name": "technology/android",
+        "className": "technology/android",
+        "unicode": "ec5c"
+    },
+    {
+        "name": "technology/db",
+        "className": "technology/db",
+        "unicode": "ec5d"
+    },
+    {
+        "name": "technology/db-maintenance",
+        "className": "technology/db-maintenance",
+        "unicode": "ec5e"
+    },
+    {
+        "name": "technology/drawing-tablet",
+        "className": "technology/drawing-tablet",
+        "unicode": "ec5f"
+    },
+    {
+        "name": "technology/drone",
+        "className": "technology/drone",
+        "unicode": "ec60"
+    },
+    {
+        "name": "technology/ipad",
+        "className": "technology/ipad",
+        "unicode": "ec61"
+    },
+    {
+        "name": "technology/laptop",
+        "className": "technology/laptop",
+        "unicode": "ec62"
+    },
+    {
+        "name": "technology/laptop-open",
+        "className": "technology/laptop-open",
+        "unicode": "ec63"
+    },
+    {
+        "name": "technology/laptop-setting",
+        "className": "technology/laptop-setting",
+        "unicode": "ec64"
+    },
+    {
+        "name": "technology/laptop-settings-2",
+        "className": "technology/laptop-settings-2",
+        "unicode": "ec65"
+    },
+    {
+        "name": "technology/mobile",
+        "className": "technology/mobile",
+        "unicode": "ec66"
+    },
+    {
+        "name": "technology/mobile-2",
+        "className": "technology/mobile-2",
+        "unicode": "ec67"
+    },
+    {
+        "name": "technology/mobile-landscape",
+        "className": "technology/mobile-landscape",
+        "unicode": "ec68"
+    },
+    {
+        "name": "technology/mobile-landscape-lock",
+        "className": "technology/mobile-landscape-lock",
+        "unicode": "ec69"
+    },
+    {
+        "name": "technology/mobile-settings",
+        "className": "technology/mobile-settings",
+        "unicode": "ec6a"
+    },
+    {
+        "name": "technology/monitor",
+        "className": "technology/monitor",
+        "unicode": "ec6b"
+    },
+    {
+        "name": "technology/monitor-2",
+        "className": "technology/monitor-2",
+        "unicode": "ec6c"
+    },
+    {
+        "name": "technology/monitor-settings",
+        "className": "technology/monitor-settings",
+        "unicode": "ec6d"
+    },
+    {
+        "name": "technology/mouse",
+        "className": "technology/mouse",
+        "unicode": "ec6e"
+    },
+    {
+        "name": "technology/processor",
+        "className": "technology/processor",
+        "unicode": "ec6f"
+    },
+    {
+        "name": "technology/retro-tv",
+        "className": "technology/retro-tv",
+        "unicode": "ec70"
+    },
+    {
+        "name": "technology/smart-lcd",
+        "className": "technology/smart-lcd",
+        "unicode": "ec71"
+    },
+    {
+        "name": "technology/smartphone",
+        "className": "technology/smartphone",
+        "unicode": "ec72"
+    },
+    {
+        "name": "technology/smartphone-2",
+        "className": "technology/smartphone-2",
+        "unicode": "ec73"
+    },
+    {
+        "name": "technology/smartphone-camera",
+        "className": "technology/smartphone-camera",
+        "unicode": "ec74"
+    },
+    {
+        "name": "technology/smartwatch",
+        "className": "technology/smartwatch",
+        "unicode": "ec75"
+    },
+    {
+        "name": "technology/smartwatch-2",
+        "className": "technology/smartwatch-2",
+        "unicode": "ec76"
+    },
+    {
+        "name": "technology/tablet",
+        "className": "technology/tablet",
+        "unicode": "ec77"
+    },
+    {
+        "name": "technology/tablet-settings",
+        "className": "technology/tablet-settings",
+        "unicode": "ec78"
+    },
+    {
+        "name": "technology/usb",
+        "className": "technology/usb",
+        "unicode": "ec79"
+    },
+    {
+        "name": "text/align-center",
+        "className": "text/align-center",
+        "unicode": "ec7a"
+    },
+    {
+        "name": "text/align-left",
+        "className": "text/align-left",
+        "unicode": "ec7b"
+    },
+    {
+        "name": "text/align-right",
+        "className": "text/align-right",
+        "unicode": "ec7c"
+    },
+    {
+        "name": "text/bold",
+        "className": "text/bold",
+        "unicode": "ec7d"
+    },
+    {
+        "name": "text/bulleted-list",
+        "className": "text/bulleted-list",
+        "unicode": "ec7e"
+    },
+    {
+        "name": "text/bulleted-list-2",
+        "className": "text/bulleted-list-2",
+        "unicode": "ec7f"
+    },
+    {
+        "name": "text/code",
+        "className": "text/code",
+        "unicode": "ec80"
+    },
+    {
+        "name": "text/edit-text",
+        "className": "text/edit-text",
+        "unicode": "ec81"
+    },
+    {
+        "name": "text/font",
+        "className": "text/font",
+        "unicode": "ec82"
+    },
+    {
+        "name": "text/font-size",
+        "className": "text/font-size",
+        "unicode": "ec83"
+    },
+    {
+        "name": "text/gallery",
+        "className": "text/gallery",
+        "unicode": "ec84"
+    },
+    {
+        "name": "text/hide-keyboard",
+        "className": "text/hide-keyboard",
+        "unicode": "ec85"
+    },
+    {
+        "name": "text/italic",
+        "className": "text/italic",
+        "unicode": "ec86"
+    },
+    {
+        "name": "text/justify",
+        "className": "text/justify",
+        "unicode": "ec87"
+    },
+    {
+        "name": "text/keyboard",
+        "className": "text/keyboard",
+        "unicode": "ec88"
+    },
+    {
+        "name": "text/list",
+        "className": "text/list",
+        "unicode": "ec89"
+    },
+    {
+        "name": "text/numbered-list",
+        "className": "text/numbered-list",
+        "unicode": "ec8a"
+    },
+    {
+        "name": "text/paragraph",
+        "className": "text/paragraph",
+        "unicode": "ec8b"
+    },
+    {
+        "name": "text/paragraph-capital",
+        "className": "text/paragraph-capital",
+        "unicode": "ec8c"
+    },
+    {
+        "name": "text/paragraph-inline-left",
+        "className": "text/paragraph-inline-left",
+        "unicode": "ec8d"
+    },
+    {
+        "name": "text/paragraph-inline-right",
+        "className": "text/paragraph-inline-right",
+        "unicode": "ec8e"
+    },
+    {
+        "name": "text/quote",
+        "className": "text/quote",
+        "unicode": "ec8f"
+    },
+    {
+        "name": "text/show-keyboard",
+        "className": "text/show-keyboard",
+        "unicode": "ec90"
+    },
+    {
+        "name": "text/spellcheck",
+        "className": "text/spellcheck",
+        "unicode": "ec91"
+    },
+    {
+        "name": "text/strikethrough",
+        "className": "text/strikethrough",
+        "unicode": "ec92"
+    },
+    {
+        "name": "text/subscript",
+        "className": "text/subscript",
+        "unicode": "ec93"
+    },
+    {
+        "name": "text/superscript",
+        "className": "text/superscript",
+        "unicode": "ec94"
+    },
+    {
+        "name": "text/svg-font",
+        "className": "text/svg-font",
+        "unicode": "ec95"
+    },
+    {
+        "name": "text/text",
+        "className": "text/text",
+        "unicode": "ec96"
+    },
+    {
+        "name": "text/text-fill",
+        "className": "text/text-fill",
+        "unicode": "ec97"
+    },
+    {
+        "name": "text/text-size",
+        "className": "text/text-size",
+        "unicode": "ec98"
+    },
+    {
+        "name": "text/text-spacing-h",
+        "className": "text/text-spacing-h",
+        "unicode": "ec99"
+    },
+    {
+        "name": "text/text-spacing-v",
+        "className": "text/text-spacing-v",
+        "unicode": "ec9a"
+    },
+    {
+        "name": "text/underline",
+        "className": "text/underline",
+        "unicode": "ec9b"
+    },
+    {
+        "name": "text/username",
+        "className": "text/username",
+        "unicode": "ec9c"
+    },
+    {
+        "name": "transportation/air-balloon",
+        "className": "transportation/air-balloon",
+        "unicode": "ec9d"
+    },
+    {
+        "name": "transportation/airport",
+        "className": "transportation/airport",
+        "unicode": "ec9e"
+    },
+    {
+        "name": "transportation/bicycle",
+        "className": "transportation/bicycle",
+        "unicode": "ec9f"
+    },
+    {
+        "name": "transportation/bike",
+        "className": "transportation/bike",
+        "unicode": "eca0"
+    },
+    {
+        "name": "transportation/bike-2",
+        "className": "transportation/bike-2",
+        "unicode": "eca1"
+    },
+    {
+        "name": "transportation/boat",
+        "className": "transportation/boat",
+        "unicode": "eca2"
+    },
+    {
+        "name": "transportation/bus",
+        "className": "transportation/bus",
+        "unicode": "eca3"
+    },
+    {
+        "name": "transportation/bus-front",
+        "className": "transportation/bus-front",
+        "unicode": "eca4"
+    },
+    {
+        "name": "transportation/car",
+        "className": "transportation/car",
+        "unicode": "eca5"
+    },
+    {
+        "name": "transportation/car-front",
+        "className": "transportation/car-front",
+        "unicode": "eca6"
+    },
+    {
+        "name": "transportation/car-wheel-2",
+        "className": "transportation/car-wheel-2",
+        "unicode": "eca7"
+    },
+    {
+        "name": "transportation/flying-saucer",
+        "className": "transportation/flying-saucer",
+        "unicode": "eca8"
+    },
+    {
+        "name": "transportation/gas-station",
+        "className": "transportation/gas-station",
+        "unicode": "eca9"
+    },
+    {
+        "name": "transportation/helicopter",
+        "className": "transportation/helicopter",
+        "unicode": "ecaa"
+    },
+    {
+        "name": "transportation/helmet",
+        "className": "transportation/helmet",
+        "unicode": "ecab"
+    },
+    {
+        "name": "transportation/helmet-race",
+        "className": "transportation/helmet-race",
+        "unicode": "ecac"
+    },
+    {
+        "name": "transportation/millitary-plane",
+        "className": "transportation/millitary-plane",
+        "unicode": "ecad"
+    },
+    {
+        "name": "transportation/motorcycle",
+        "className": "transportation/motorcycle",
+        "unicode": "ecae"
+    },
+    {
+        "name": "transportation/parking",
+        "className": "transportation/parking",
+        "unicode": "ecaf"
+    },
+    {
+        "name": "transportation/ship",
+        "className": "transportation/ship",
+        "unicode": "ecb0"
+    },
+    {
+        "name": "transportation/skateboard",
+        "className": "transportation/skateboard",
+        "unicode": "ecb1"
+    },
+    {
+        "name": "transportation/street",
+        "className": "transportation/street",
+        "unicode": "ecb2"
+    },
+    {
+        "name": "transportation/street-warning",
+        "className": "transportation/street-warning",
+        "unicode": "ecb3"
+    },
+    {
+        "name": "transportation/taxi",
+        "className": "transportation/taxi",
+        "unicode": "ecb4"
+    },
+    {
+        "name": "transportation/train",
+        "className": "transportation/train",
+        "unicode": "ecb5"
+    },
+    {
+        "name": "users/add-group",
+        "className": "users/add-group",
+        "unicode": "ecb6"
+    },
+    {
+        "name": "users/add-profile",
+        "className": "users/add-profile",
+        "unicode": "ecb7"
+    },
+    {
+        "name": "users/baby",
+        "className": "users/baby",
+        "unicode": "ecb8"
+    },
+    {
+        "name": "users/boy",
+        "className": "users/boy",
+        "unicode": "ecb9"
+    },
+    {
+        "name": "users/couple-love",
+        "className": "users/couple-love",
+        "unicode": "ecba"
+    },
+    {
+        "name": "users/customer-service",
+        "className": "users/customer-service",
+        "unicode": "ecbb"
+    },
+    {
+        "name": "users/delete-profile",
+        "className": "users/delete-profile",
+        "unicode": "ecbc"
+    },
+    {
+        "name": "users/edit-profile",
+        "className": "users/edit-profile",
+        "unicode": "ecbd"
+    },
+    {
+        "name": "users/expand-user",
+        "className": "users/expand-user",
+        "unicode": "ecbe"
+    },
+    {
+        "name": "users/favorite-profile",
+        "className": "users/favorite-profile",
+        "unicode": "ecbf"
+    },
+    {
+        "name": "users/female-profile",
+        "className": "users/female-profile",
+        "unicode": "ecc0"
+    },
+    {
+        "name": "users/female-user",
+        "className": "users/female-user",
+        "unicode": "ecc1"
+    },
+    {
+        "name": "users/female-user-2",
+        "className": "users/female-user-2",
+        "unicode": "ecc2"
+    },
+    {
+        "name": "users/female-user-circle",
+        "className": "users/female-user-circle",
+        "unicode": "ecc3"
+    },
+    {
+        "name": "users/group-chat",
+        "className": "users/group-chat",
+        "unicode": "ecc4"
+    },
+    {
+        "name": "users/groups",
+        "className": "users/groups",
+        "unicode": "ecc5"
+    },
+    {
+        "name": "users/idea",
+        "className": "users/idea",
+        "unicode": "ecc6"
+    },
+    {
+        "name": "users/profile",
+        "className": "users/profile",
+        "unicode": "ecc7"
+    },
+    {
+        "name": "users/profile-2",
+        "className": "users/profile-2",
+        "unicode": "ecc8"
+    },
+    {
+        "name": "users/remove-group",
+        "className": "users/remove-group",
+        "unicode": "ecc9"
+    },
+    {
+        "name": "users/remove-profile",
+        "className": "users/remove-profile",
+        "unicode": "ecca"
+    },
+    {
+        "name": "users/speak",
+        "className": "users/speak",
+        "unicode": "eccb"
+    },
+    {
+        "name": "users/stars-profile",
+        "className": "users/stars-profile",
+        "unicode": "eccc"
+    },
+    {
+        "name": "users/user",
+        "className": "users/user",
+        "unicode": "eccd"
+    },
+    {
+        "name": "users/user-2",
+        "className": "users/user-2",
+        "unicode": "ecce"
+    },
+    {
+        "name": "users/user-card",
+        "className": "users/user-card",
+        "unicode": "eccf"
+    },
+    {
+        "name": "users/user-circle",
+        "className": "users/user-circle",
+        "unicode": "ecd0"
+    },
+    {
+        "name": "users/user-information",
+        "className": "users/user-information",
+        "unicode": "ecd1"
+    },
+    {
+        "name": "users/user-location",
+        "className": "users/user-location",
+        "unicode": "ecd2"
+    },
+    {
+        "name": "users/user-low",
+        "className": "users/user-low",
+        "unicode": "ecd3"
+    },
+    {
+        "name": "users/user-setting",
+        "className": "users/user-setting",
+        "unicode": "ecd4"
+    },
+    {
+        "name": "users/user-up",
+        "className": "users/user-up",
+        "unicode": "ecd5"
+    },
+    {
+        "name": "users/verified-user",
+        "className": "users/verified-user",
+        "unicode": "ecd6"
+    },
+    {
+        "name": "users/woman",
+        "className": "users/woman",
+        "unicode": "ecd7"
+    },
+    {
+        "name": "users/woman-profile",
+        "className": "users/woman-profile",
+        "unicode": "ecd8"
+    },
+    {
+        "name": "weather/anemometer",
+        "className": "weather/anemometer",
+        "unicode": "ecd9"
+    },
+    {
+        "name": "weather/celsius",
+        "className": "weather/celsius",
+        "unicode": "ecda"
+    },
+    {
+        "name": "weather/cloud-humid",
+        "className": "weather/cloud-humid",
+        "unicode": "ecdb"
+    },
+    {
+        "name": "weather/cloud-rain",
+        "className": "weather/cloud-rain",
+        "unicode": "ecdc"
+    },
+    {
+        "name": "weather/cloud-rain-2",
+        "className": "weather/cloud-rain-2",
+        "unicode": "ecdd"
+    },
+    {
+        "name": "weather/cloud-rainbow-2",
+        "className": "weather/cloud-rainbow-2",
+        "unicode": "ecde"
+    },
+    {
+        "name": "weather/cloud-snow",
+        "className": "weather/cloud-snow",
+        "unicode": "ecdf"
+    },
+    {
+        "name": "weather/cloud-storm",
+        "className": "weather/cloud-storm",
+        "unicode": "ece0"
+    },
+    {
+        "name": "weather/cloud-weather",
+        "className": "weather/cloud-weather",
+        "unicode": "ece1"
+    },
+    {
+        "name": "weather/cloudy",
+        "className": "weather/cloudy",
+        "unicode": "ece2"
+    },
+    {
+        "name": "weather/day-cloud",
+        "className": "weather/day-cloud",
+        "unicode": "ece3"
+    },
+    {
+        "name": "weather/day-rain",
+        "className": "weather/day-rain",
+        "unicode": "ece4"
+    },
+    {
+        "name": "weather/day-storm",
+        "className": "weather/day-storm",
+        "unicode": "ece5"
+    },
+    {
+        "name": "weather/eclipse",
+        "className": "weather/eclipse",
+        "unicode": "ece6"
+    },
+    {
+        "name": "weather/fahrenheit",
+        "className": "weather/fahrenheit",
+        "unicode": "ece7"
+    },
+    {
+        "name": "weather/heavy-rain",
+        "className": "weather/heavy-rain",
+        "unicode": "ece8"
+    },
+    {
+        "name": "weather/humidity",
+        "className": "weather/humidity",
+        "unicode": "ece9"
+    },
+    {
+        "name": "weather/moon",
+        "className": "weather/moon",
+        "unicode": "ecea"
+    },
+    {
+        "name": "weather/moon-half",
+        "className": "weather/moon-half",
+        "unicode": "eceb"
+    },
+    {
+        "name": "weather/moon-stars",
+        "className": "weather/moon-stars",
+        "unicode": "ecec"
+    },
+    {
+        "name": "weather/night",
+        "className": "weather/night",
+        "unicode": "eced"
+    },
+    {
+        "name": "weather/night-cloud",
+        "className": "weather/night-cloud",
+        "unicode": "ecee"
+    },
+    {
+        "name": "weather/night-cloud-2",
+        "className": "weather/night-cloud-2",
+        "unicode": "ecef"
+    },
+    {
+        "name": "weather/night-rain",
+        "className": "weather/night-rain",
+        "unicode": "ecf0"
+    },
+    {
+        "name": "weather/night-rain-2",
+        "className": "weather/night-rain-2",
+        "unicode": "ecf1"
+    },
+    {
+        "name": "weather/night-storm",
+        "className": "weather/night-storm",
+        "unicode": "ecf2"
+    },
+    {
+        "name": "weather/night-storm-2",
+        "className": "weather/night-storm-2",
+        "unicode": "ecf3"
+    },
+    {
+        "name": "weather/rain",
+        "className": "weather/rain",
+        "unicode": "ecf4"
+    },
+    {
+        "name": "weather/rainbow",
+        "className": "weather/rainbow",
+        "unicode": "ecf5"
+    },
+    {
+        "name": "weather/rainbow-cloud",
+        "className": "weather/rainbow-cloud",
+        "unicode": "ecf6"
+    },
+    {
+        "name": "weather/rain-water",
+        "className": "weather/rain-water",
+        "unicode": "ecf7"
+    },
+    {
+        "name": "weather/rainy",
+        "className": "weather/rainy",
+        "unicode": "ecf8"
+    },
+    {
+        "name": "weather/scenery",
+        "className": "weather/scenery",
+        "unicode": "ecf9"
+    },
+    {
+        "name": "weather/snow",
+        "className": "weather/snow",
+        "unicode": "ecfa"
+    },
+    {
+        "name": "weather/sun",
+        "className": "weather/sun",
+        "unicode": "ecfb"
+    },
+    {
+        "name": "weather/sunrise",
+        "className": "weather/sunrise",
+        "unicode": "ecfc"
+    },
+    {
+        "name": "weather/sunrise-2",
+        "className": "weather/sunrise-2",
+        "unicode": "ecfd"
+    },
+    {
+        "name": "weather/sunrise-up",
+        "className": "weather/sunrise-up",
+        "unicode": "ecfe"
+    },
+    {
+        "name": "weather/sunset",
+        "className": "weather/sunset",
+        "unicode": "ecff"
+    },
+    {
+        "name": "weather/sunset-2",
+        "className": "weather/sunset-2",
+        "unicode": "ed00"
+    },
+    {
+        "name": "weather/sunset-down",
+        "className": "weather/sunset-down",
+        "unicode": "ed01"
+    },
+    {
+        "name": "weather/thermometer",
+        "className": "weather/thermometer",
+        "unicode": "ed02"
+    },
+    {
+        "name": "weather/thermometer-hot",
+        "className": "weather/thermometer-hot",
+        "unicode": "ed03"
+    },
+    {
+        "name": "weather/thermometer-low",
+        "className": "weather/thermometer-low",
+        "unicode": "ed04"
+    },
+    {
+        "name": "weather/thermometer-low-2",
+        "className": "weather/thermometer-low-2",
+        "unicode": "ed05"
+    },
+    {
+        "name": "weather/thermometer-max",
+        "className": "weather/thermometer-max",
+        "unicode": "ed06"
+    },
+    {
+        "name": "weather/tornado",
+        "className": "weather/tornado",
+        "unicode": "ed07"
+    },
+    {
+        "name": "weather/umbrella",
+        "className": "weather/umbrella",
+        "unicode": "ed08"
+    },
+    {
+        "name": "weather/wind",
+        "className": "weather/wind",
+        "unicode": "ed09"
+    },
+    {
+        "name": "weather/wind-turbin",
+        "className": "weather/wind-turbin",
+        "unicode": "ed0a"
+    }
+]
