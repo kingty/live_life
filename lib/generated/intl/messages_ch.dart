@@ -33,9 +33,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "KEEP_ACCOUNTS_OVERVIEW":
             MessageLookupByLibrary.simpleMessage("Overview"),
         "KEEP_ACCOUNTS_RMB": MessageLookupByLibrary.simpleMessage("RMB"),
-        "KEEP_ACCOUNTS_THIS_MORE": MessageLookupByLibrary.simpleMessage("Edit"),
+        "KEEP_ACCOUNTS_THIS_MORE": MessageLookupByLibrary.simpleMessage("More"),
         "KEEP_ACCOUNTS_THIS_WEEK":
             MessageLookupByLibrary.simpleMessage("This week"),
-        "KEEP_ACCOUNTS_TODAY": MessageLookupByLibrary.simpleMessage("Today")
+        "KEEP_ACCOUNTS_TODAY": MessageLookupByLibrary.simpleMessage("Today"),
+        "KEEP_ACCOUNTS_TRANSACTION":
+            MessageLookupByLibrary.simpleMessage("Latest Transaction ")
       };
 }

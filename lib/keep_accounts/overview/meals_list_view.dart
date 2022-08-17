@@ -147,7 +147,7 @@ class MealsView extends StatelessWidget {
                               style: const TextStyle(
                                 fontFamily: KeepAccountsTheme.fontName,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                                fontSize: 12,
                                 letterSpacing: 0.2,
                                 color: KeepAccountsTheme.white,
                               ),
@@ -235,7 +235,7 @@ class MealsView extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: -16,
+                    top: -24,
                     left: 0,
                     child: Container(
                       width: 84,
@@ -247,11 +247,11 @@ class MealsView extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 24,
-                    left: 30,
+                    top: 0,
+                    left: 20,
                     child: SizedBox(
-                      width: 30,
-                      height: 30,
+                      width: 50,
+                      height: 50,
                       child: Image.asset(mealsListData!.imagePath),
                     ),
                   )

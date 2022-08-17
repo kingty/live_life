@@ -141,9 +141,29 @@ class S {
   }
 
   /// `管理`
-  String get KEEP_ACCOUNTS_THIS_MORE {
+  String get KEEP_ACCOUNTS_THIS_EDIT {
     return Intl.message(
       '管理',
+      name: 'KEEP_ACCOUNTS_THIS_EDIT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `近期账单`
+  String get KEEP_ACCOUNTS_TRANSACTION {
+    return Intl.message(
+      '近期账单',
+      name: 'KEEP_ACCOUNTS_TRANSACTION',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `更多`
+  String get KEEP_ACCOUNTS_THIS_MORE {
+    return Intl.message(
+      '更多',
       name: 'KEEP_ACCOUNTS_THIS_MORE',
       desc: '',
       args: [],

@@ -29,8 +29,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "KEEP_ACCOUNTS_INCOME": MessageLookupByLibrary.simpleMessage("收入"),
         "KEEP_ACCOUNTS_OVERVIEW": MessageLookupByLibrary.simpleMessage("总览"),
         "KEEP_ACCOUNTS_RMB": MessageLookupByLibrary.simpleMessage("元"),
-        "KEEP_ACCOUNTS_THIS_MORE": MessageLookupByLibrary.simpleMessage("管理"),
+        "KEEP_ACCOUNTS_THIS_EDIT": MessageLookupByLibrary.simpleMessage("管理"),
+        "KEEP_ACCOUNTS_THIS_MORE": MessageLookupByLibrary.simpleMessage("更多"),
         "KEEP_ACCOUNTS_THIS_WEEK": MessageLookupByLibrary.simpleMessage("本周"),
-        "KEEP_ACCOUNTS_TODAY": MessageLookupByLibrary.simpleMessage("今天")
+        "KEEP_ACCOUNTS_TODAY": MessageLookupByLibrary.simpleMessage("今天"),
+        "KEEP_ACCOUNTS_TRANSACTION":
+            MessageLookupByLibrary.simpleMessage("近期账单")
       };
 }

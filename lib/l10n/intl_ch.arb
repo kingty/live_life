@@ -8,5 +8,7 @@
   "KEEP_ACCOUNTS_ACCOUNT": "Accounts",
   "KEEP_ACCOUNTS_TODAY": "Today",
   "KEEP_ACCOUNTS_THIS_WEEK": "This week",
-  "KEEP_ACCOUNTS_THIS_MORE": "Edit"
+  "KEEP_ACCOUNTS_THIS_Edit": "Edit",
+  "KEEP_ACCOUNTS_TRANSACTION": "Latest Transaction ",
+  "KEEP_ACCOUNTS_THIS_MORE": "More"
 }
