@@ -97,45 +97,65 @@ def collect(path, name, banklist):
 
 
 
+
+def forIcons():
+    bankkv = []
+    for file in files:
+            if not os.path.isdir(file):
+                banklist = []
+                banks = os.listdir(path+"/"+file)
+                for bank in banks:
+                    if ".DS_Store" in bank:
+                            continue
+                    else:
+                        name = rename(replaceLogoStr(bank))
+                        src_dir = path+"/"+file+ "/" + bank
+                        key = collect(src_dir, name, banklist)
+                        dst_dir = "../assets/keep_accounts/bank/"+ file+ "/"+ key + ".png"
+    #                     shutil.copy(src_dir,dst_dir)
+                bankkv.append((file,banklist))
+                print ("deal dir " + file)
+    return bankkv
+
+
+def generateBank(bankkv):
+    srccode = ''' ///GenerateCodeStart
+    static List<Map<String, BankData>> banks = <Map<String, BankData>>[
+     gydxsyyh, // 国有大型商业银行
+     gfzsyyh, // 股份制商业银行
+     cssyyh, // 城市商业银行
+     wzfryh // 外资法人银行
+    ];\n'''
+    for k, v in bankkv:
+        print(k)
+        listBankData = []
+        head = '''  static Map<String, BankData> %s = <String, BankData>{''' % (k)
+        for a, b , c, d in v:
+            str = '''  "%s": BankData(
+                             key: '%s',
+                             name: '%s',
+                             logo: '%s',
+                             mainColor: const Color.fromRGBO(%s, %s, %s, 1.0)
+                            )''' % (b, b, a, "assets/keep_accounts/bank/"+ k+ "/"+ b + ".png", d[0], d[1], d[2])
+            listBankData.append(str)
+
+        content = ', \n'.join(listBankData)
+        tail = '\n};'
+        srccode = srccode + head + content + tail
+    return srccode + '\n  ///GenerateCodeEnd'
+
 path = "bank"
 files = os.listdir(path)
 
+bankkv = forIcons()
+print(len(bankkv))
+content = generateBank(bankkv)
 
-bankkv = []
+file = open('../lib/keep_accounts/models/bank_data.dart',mode='r')
 
-
-
-for file in files:
-        if not os.path.isdir(file):
-            banklist = []
-            banks = os.listdir(path+"/"+file)
-            for bank in banks:
-                if ".DS_Store" in bank:
-                        continue
-                else:
-                    name = rename(replaceLogoStr(bank))
-                    src_dir = path+"/"+file+ "/" + bank
-                    key = collect(src_dir, name, banklist)
-                    dst_dir = "../assets/keep_accounts/bank/"+ file+ "/"+ key + ".png"
-#                     shutil.copy(src_dir,dst_dir)
-            bankkv.append((file,banklist))
-
-
-
-for k, v in bankkv:
-    listBankData = []
-    head = '''static Map<String, BankData> %s = <String, BankData>{''' % (k)
-    for a, b , c, d in v:
-        str = '''"%s": BankData(
-                     key: '%s',
-                     name: '%s',
-                     logo: '%s',
-                     mainColor: const Color.fromRGBO(%s, %s, %s, 1.0)
-                   )''' % (b, b, a, "assets/keep_accounts/bank/"+ k+ "/"+ b + ".png", d[0], d[1], d[2])
-        listBankData.append(str)
-
-    content = ', \n'.join(listBankData)
-
-    tail = '\n};'
-
-    print(head + content + tail)
+all_of_it = file.read()
+all_of_it = re.sub(r'///GenerateCodeStart[\s\S]*///GenerateCodeEnd', content, all_of_it)
+file.close()
+print(all_of_it)
+with open('../lib/keep_accounts/models/bank_data.dart', 'w') as f:
+    f.write(all_of_it + "")

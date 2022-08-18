@@ -14,9 +14,9 @@
     - 其他(fashion/socks)
 - 房屋(interface/home)
     - 房租房贷(finance/coin)
-    - 水(weather/humidity)
-    - 电(interface/power)
-    - 气(kitchen/ulekan)
+    - 水费(weather/humidity)
+    - 电费(interface/power)
+    - 气费(kitchen/ulekan)
     - 物业(building/apartment)
     - 家具电器(kitchen/refrigerator)
     - 其他(furniture/drawer-3)
@@ -47,6 +47,7 @@
 - 其他支出(finance/money)
 - 管理 (interface/settings-ui)
 
+----
 ## income
 
 - 工资(finance/envelope)
