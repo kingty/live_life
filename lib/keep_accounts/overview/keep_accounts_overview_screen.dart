@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/generated/l10n.dart';
+import 'package:live_life/keep_accounts/ui_view/transaction_item_view.dart';
 import '../keep_accounts_them.dart';
 import 'month_overview_view.dart';
 import 'title_view.dart';
@@ -104,6 +105,11 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
         animationController: widget.animationController!,
       ),
     );
+
+    for (int i = 0; i< 9; i++ ) {
+      listViews.add(const TransactionItemView());
+    }
+
   }
 
   Future<bool> getData() async {

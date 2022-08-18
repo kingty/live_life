@@ -17,6 +17,8 @@ class KeepAccountsTheme {
   static const Color darkerText = Color(0xFF17262A);
   static const Color lightText = Color(0xFF4A6572);
   static const Color deactivatedText = Color(0xFF767676);
+  static const Color pink = Color(0xFFF56E98);
+  static const Color purple = Color(0xFF87A0E5);
   static const Color dismissibleBackground = Color(0xFF364A54);
   static const Color spacer = Color(0xFFF2F2F2);
   static const String fontName = 'Roboto';
