@@ -1,13 +1,9 @@
 import 'package:live_life/keep_accounts/models/bank_data.dart';
-import 'package:live_life/main.dart';
 import 'package:flutter/material.dart';
-
-import '../../main.dart';
 import '../keep_accounts_them.dart';
-import '../models/meals_list_data.dart';
 
-class MealsListView extends StatefulWidget {
-  const MealsListView(
+class AccountsListView extends StatefulWidget {
+  const AccountsListView(
       {Key? key, this.mainScreenAnimationController, this.mainScreenAnimation})
       : super(key: key);
 
@@ -15,10 +11,10 @@ class MealsListView extends StatefulWidget {
   final Animation<double>? mainScreenAnimation;
 
   @override
-  _MealsListViewState createState() => _MealsListViewState();
+  _AccountsListViewState createState() => _AccountsListViewState();
 }
 
-class _MealsListViewState extends State<MealsListView>
+class _AccountsListViewState extends State<AccountsListView>
     with TickerProviderStateMixin {
   AnimationController? animationController;
   List<BankData> banks = BankData.gydxsyyh.values.toList();
@@ -56,7 +52,7 @@ class _MealsListViewState extends State<MealsListView>
               width: double.infinity,
               child: ListView.builder(
                 padding: const EdgeInsets.only(
-                    top: 0, bottom: 0, right: 16, left: 16),
+                    top: 10, bottom: 0, right: 16, left: 16),
                 itemCount: banks.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
@@ -70,7 +66,7 @@ class _MealsListViewState extends State<MealsListView>
                                   curve: Curves.fastOutSlowIn)));
                   animationController?.forward();
 
-                  return BankView(
+                  return AccountView(
                     bankData: banks[index],
                     animation: animation,
                     animationController: animationController!,
@@ -85,8 +81,8 @@ class _MealsListViewState extends State<MealsListView>
   }
 }
 
-class BankView extends StatelessWidget {
-  const BankView(
+class AccountView extends StatelessWidget {
+  const AccountView(
       {Key? key,
       required this.bankData,
       this.animationController,

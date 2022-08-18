@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/generated/l10n.dart';
-import 'package:live_life/keep_accounts/overview/water_view.dart';
 import '../keep_accounts_them.dart';
-import '../ui_view/body_measurement.dart';
-import '../ui_view/glass_view.dart';
-import '../ui_view/mediterranean_diet_view.dart';
-import '../ui_view/month_overview_view.dart';
-import '../ui_view/title_view.dart';
-import 'meals_list_view.dart';
+import 'month_overview_view.dart';
+import 'title_view.dart';
+import 'accounts_list_view.dart';
 
 class KeepAccountsOverviewScreen extends StatefulWidget {
   const KeepAccountsOverviewScreen({Key? key, this.animationController})
@@ -87,7 +83,7 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
     );
 
     listViews.add(
-      MealsListView(
+      AccountsListView(
         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
                 parent: widget.animationController!,
@@ -108,8 +104,6 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
         animationController: widget.animationController!,
       ),
     );
-
-
   }
 
   Future<bool> getData() async {

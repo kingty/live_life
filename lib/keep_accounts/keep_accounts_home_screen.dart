@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'bottom_navigation_view/bottom_bar_view.dart';
+import 'bottom_bar_view.dart';
 import 'keep_accounts_them.dart';
 import 'models/tabIcon_data.dart';
 import 'overview/keep_accounts_overview_screen.dart';
