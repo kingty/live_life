@@ -5,6 +5,45 @@ import os
 import re
 import pinyin
 import shutil
+import colorsys
+from PIL import Image, ImageDraw, ImageFont
+
+def get_dominant_colors(infile):
+    image = Image.open(infile)
+
+    max_score = 0
+    dominant_color = 0
+
+    for count, (r, g, b, a) in image.getcolors(image.size[0] * image.size[1]):
+       # 跳过纯黑色
+       if a == 0:
+           continue
+
+       saturation = colorsys.rgb_to_hsv(r / 255.0, g / 255.0, b / 255.0)[1]
+
+       y = min(abs(r * 2104 + g * 4130 + b * 802 + 4096 + 131072) >> 13, 235)
+
+       y = (y - 16.0) / (235 - 16)
+
+       # 忽略高亮色
+       if y > 0.9:
+           continue
+
+       # Calculate the score, preferring highly saturated colors.
+       # Add 0.1 to the saturation so we don't completely ignore grayscale
+       # colors by multiplying the count by zero, but still give them a low
+       # weight.
+       score = (saturation + 0.1) * count
+
+       if score > max_score:
+           max_score = score
+           dominant_color = (r, g, b)
+
+    return dominant_color
+
+
+
+
 
 def getStrAllAplha(str):
     return pinyin.get_initial(str, delimiter="").upper()
@@ -48,10 +87,12 @@ def rename(bank):
 
 
 
-def collect(bank, list):
-    strs = bank.split("_")
+def collect(path, name, banklist):
+    color = get_dominant_colors(path)
+#     print(color)
+    strs = name.split("_")
     key = strs[1].replace(".png", "")
-    list.append((strs[0], key , bank))
+    banklist.append((strs[0], key , name, color))
     return key
 
 
@@ -66,31 +107,31 @@ bankkv = []
 
 for file in files:
         if not os.path.isdir(file):
-            list = []
+            banklist = []
             banks = os.listdir(path+"/"+file)
             for bank in banks:
                 if ".DS_Store" in bank:
                         continue
                 else:
                     name = rename(replaceLogoStr(bank))
-                    key = collect(name, list)
                     src_dir = path+"/"+file+ "/" + bank
+                    key = collect(src_dir, name, banklist)
                     dst_dir = "../assets/keep_accounts/bank/"+ file+ "/"+ key + ".png"
-#                     print(dst_dir)
 #                     shutil.copy(src_dir,dst_dir)
-            bankkv.append((file,list))
+            bankkv.append((file,banklist))
 
 
 
 for k, v in bankkv:
     listBankData = []
     head = '''static Map<String, BankData> %s = <String, BankData>{''' % (k)
-    for a, b , c in v:
+    for a, b , c, d in v:
         str = '''"%s": BankData(
                      key: '%s',
                      name: '%s',
-                     logo: '%s'
-                   )''' % (b, b, a, "assets/keep_accounts/bank/"+ k+ "/"+ b + ".png")
+                     logo: '%s',
+                     mainColor: const Color.fromRGBO(%s, %s, %s, 1.0)
+                   )''' % (b, b, a, "assets/keep_accounts/bank/"+ k+ "/"+ b + ".png", d[0], d[1], d[2])
         listBankData.append(str)
 
     content = ', \n'.join(listBankData)

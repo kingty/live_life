@@ -1,3 +1,4 @@
+import 'package:live_life/keep_accounts/models/bank_data.dart';
 import 'package:live_life/main.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class MealsListView extends StatefulWidget {
 class _MealsListViewState extends State<MealsListView>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  List<MealsListData> mealsListData = MealsListData.tabIconsList;
+  List<BankData> banks = BankData.gydxsyyh.values.toList();
 
   @override
   void initState() {
@@ -56,21 +57,21 @@ class _MealsListViewState extends State<MealsListView>
               child: ListView.builder(
                 padding: const EdgeInsets.only(
                     top: 0, bottom: 0, right: 16, left: 16),
-                itemCount: mealsListData.length,
+                itemCount: banks.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
-                  final int count =
-                      mealsListData.length > 10 ? 10 : mealsListData.length;
+                  final int count = banks.length > 4 ? 4 : banks.length;
                   final Animation<double> animation =
                       Tween<double>(begin: 0.0, end: 1.0).animate(
                           CurvedAnimation(
                               parent: animationController!,
-                              curve: Interval((1 / count) * index, 1.0,
+                              curve: Interval(
+                                  (1 / count) * (index > 4 ? 4 : index), 1.0,
                                   curve: Curves.fastOutSlowIn)));
                   animationController?.forward();
 
-                  return MealsView(
-                    mealsListData: mealsListData[index],
+                  return BankView(
+                    bankData: banks[index],
                     animation: animation,
                     animationController: animationController!,
                   );
@@ -84,12 +85,15 @@ class _MealsListViewState extends State<MealsListView>
   }
 }
 
-class MealsView extends StatelessWidget {
-  const MealsView(
-      {Key? key, this.mealsListData, this.animationController, this.animation})
+class BankView extends StatelessWidget {
+  const BankView(
+      {Key? key,
+      required this.bankData,
+      this.animationController,
+      this.animation})
       : super(key: key);
 
-  final MealsListData? mealsListData;
+  final BankData bankData;
   final AnimationController? animationController;
   final Animation<double>? animation;
 
@@ -114,15 +118,14 @@ class MealsView extends StatelessWidget {
                       decoration: BoxDecoration(
                         boxShadow: <BoxShadow>[
                           BoxShadow(
-                              color: HexColor(mealsListData!.endColor)
-                                  .withOpacity(0.6),
+                              color: bankData.mainColor.withOpacity(0.5),
                               offset: const Offset(1.1, 4.0),
                               blurRadius: 8.0),
                         ],
                         gradient: LinearGradient(
-                          colors: <HexColor>[
-                            HexColor(mealsListData!.startColor),
-                            HexColor(mealsListData!.endColor),
+                          colors: <Color>[
+                            bankData.mainColor.withOpacity(0.2),
+                            bankData.mainColor.withOpacity(0.5),
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
@@ -136,14 +139,15 @@ class MealsView extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(
-                            top: 54, left: 16, right: 16, bottom: 8),
+                            top: 50, left: 16, right: 16, bottom: 8),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              mealsListData!.titleTxt,
+                              bankData.simpleName(),
                               textAlign: TextAlign.center,
+                              maxLines: 1,
                               style: const TextStyle(
                                 fontFamily: KeepAccountsTheme.fontName,
                                 fontWeight: FontWeight.bold,
@@ -161,7 +165,9 @@ class MealsView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(
-                                      mealsListData!.meals!.join('\n'),
+                                      //Todo change it
+                                      ['滕金廷', '储蓄卡', '我的备注'].join("\n"),
+                                      maxLines: 3,
                                       style: const TextStyle(
                                         fontFamily: KeepAccountsTheme.fontName,
                                         fontWeight: FontWeight.w500,
@@ -174,35 +180,36 @@ class MealsView extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            mealsListData?.kacl != 0
+                            bankData.temp != 0
                                 ? Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: <Widget>[
-                                      Text(
-                                        mealsListData!.kacl.toString(),
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                          fontFamily: KeepAccountsTheme.fontName,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 24,
-                                          letterSpacing: 0.2,
-                                          color: KeepAccountsTheme.white,
-                                        ),
-                                      ),
                                       const Padding(
                                         padding: EdgeInsets.only(
-                                            left: 4, bottom: 3),
+                                            right: 4, bottom: 0),
                                         child: Text(
-                                          'kcal',
+                                          '¥',
                                           style: TextStyle(
                                             fontFamily:
                                                 KeepAccountsTheme.fontName,
                                             fontWeight: FontWeight.w500,
-                                            fontSize: 10,
+                                            fontSize: 20,
                                             letterSpacing: 0.2,
                                             color: KeepAccountsTheme.white,
                                           ),
+                                        ),
+                                      ),
+                                      Text(
+                                        bankData.temp.toString(),
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          fontFamily:
+                                              KeepAccountsTheme.fontName,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20,
+                                          letterSpacing: 0.2,
+                                          color: KeepAccountsTheme.white,
                                         ),
                                       ),
                                     ],
@@ -223,8 +230,7 @@ class MealsView extends StatelessWidget {
                                       padding: const EdgeInsets.all(6.0),
                                       child: Icon(
                                         Icons.add,
-                                        color:
-                                            HexColor(mealsListData!.endColor),
+                                        color: bankData.mainColor,
                                         size: 24,
                                       ),
                                     ),
@@ -252,7 +258,7 @@ class MealsView extends StatelessWidget {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: Image.asset(mealsListData!.imagePath),
+                      child: Image.asset(bankData.logo),
                     ),
                   )
                 ],
