@@ -1,37 +1,37 @@
 {
     "income": [
         {
-            "child": [], 
+            "children": [], 
             "icon": "finance/envelope", 
             "id": 2001, 
             "name": "工资"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "finance/gold", 
             "id": 2002, 
             "name": "奖金"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "finance/success-plan", 
             "id": 2003, 
             "name": "理财收益"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "finance/invest", 
             "id": 2004, 
             "name": "红包"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "finance/statistic-up", 
             "id": 2005, 
             "name": "借入"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "finance/money", 
             "id": 2006, 
             "name": "其他"
@@ -39,7 +39,7 @@
     ], 
     "outcome": [
         {
-            "child": [
+            "children": [
                 {
                     "icon": "kitchen/grill", 
                     "id": 1001001, 
@@ -76,7 +76,7 @@
             "name": "餐饮"
         }, 
         {
-            "child": [
+            "children": [
                 {
                     "icon": "fashion/tuxedo-vallet", 
                     "id": 1002001, 
@@ -108,7 +108,7 @@
             "name": "穿戴"
         }, 
         {
-            "child": [
+            "children": [
                 {
                     "icon": "finance/coin", 
                     "id": 1003001, 
@@ -150,7 +150,7 @@
             "name": "房屋"
         }, 
         {
-            "child": [
+            "children": [
                 {
                     "icon": "transportation/bus", 
                     "id": 1004001, 
@@ -182,7 +182,7 @@
             "name": "交通"
         }, 
         {
-            "child": [
+            "children": [
                 {
                     "icon": "interface/gift", 
                     "id": 1005001, 
@@ -209,7 +209,7 @@
             "name": "社交"
         }, 
         {
-            "child": [
+            "children": [
                 {
                     "icon": "fashion/lipstick", 
                     "id": 1006001, 
@@ -241,43 +241,43 @@
             "name": "购物"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "furniture/library", 
             "id": 1007, 
             "name": "学习"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "game/game-console", 
             "id": 1008, 
             "name": "娱乐"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "finance/success-plan", 
             "id": 1009, 
             "name": "理财"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "medical/medical-supply", 
             "id": 1010, 
             "name": "医疗"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "interface/calling", 
             "id": 1011, 
             "name": "通讯"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "finance/money", 
             "id": 1012, 
             "name": "其他支出"
         }, 
         {
-            "child": [], 
+            "children": [], 
             "icon": "interface/settings-ui", 
             "id": 1013, 
             "name": "管理 "

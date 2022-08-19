@@ -17,8 +17,12 @@ class CategoryData {
   CategoryData.fromJson(Map<String, dynamic> json)
       : name = json['name'],
         icon = json['icon'],
-        priority = json['priority'],
-        children = json['children'],
+        priority = (json['priority'] == null) ? 0 : json['priority'],
+        children = (json['children'] == null)
+            ? <CategoryData>[]
+            : List<dynamic>.from(json['children'])
+                .map((i) => CategoryData.fromJson(i))
+                .toList(),
         id = json['id'];
 
   Map<String, dynamic> toJson() => {
@@ -29,20 +33,7 @@ class CategoryData {
         'priority': priority,
       };
 
-  // static CategoryData bank = CategoryData(0, '饮食', "test");
-
   ///GenerateCodeStart
-  static List<CategoryData> banks = <CategoryData>[
-    CategoryData(id: 0, name: '饮食', icon: "test"),
-    CategoryData(id: 1, name: 'asd', icon: "test"),
-  ];
-
-  static List<CategoryData> banks2 = <CategoryData>[
-    CategoryData(id: 2, name: 'sdcsc', icon: "test"),
-    CategoryData(id: 3, name: 'cdsgvbdf', icon: "test"),
-  ];
-
-  void encode() {}
 
   ///GenerateCodeEnd
 

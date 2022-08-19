@@ -12,14 +12,30 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:live_life/keep_accounts/models/category_data.dart';
 
 import 'package:live_life/main.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    CategoryData.banks[0].children.addAll(CategoryData.banks2);
-    String s = json.encode(CategoryData.banks);
-    print(s);
+    String jsonStr =
+        await rootBundle.loadString('assets/keep_accounts/category.json');
+    Map<String, dynamic> userMap = json.decode(jsonStr);
+    var incomeJson = userMap['income'];
+    var outcomeJson = userMap['outcome'];
 
+    List<CategoryData> income = List<CategoryData>.from(
+        incomeJson.map((model) => CategoryData.fromJson(model)));
+    List<CategoryData> outcome = List<CategoryData>.from(
+        outcomeJson.map((model) => CategoryData.fromJson(model)));
+
+    outcome.forEach((element) {
+      print(element.name);
+      print(element.children.length);
+      if (element.children.isNotEmpty) {
+        element.children.forEach((child) {
+          print(child.name);
+        });
+      }
+    });
   });
-
 }
