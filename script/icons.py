@@ -59,7 +59,7 @@ def dealCategory():
                 elif line.startswith('-'):
                     in_cas = []
                     obj = (getDetails(line.strip()))
-                    obj['child'] = in_cas
+                    obj['children'] = in_cas
                     cas.append(obj)
                 else:
                     in_cas.append(getDetails(line.strip()))
