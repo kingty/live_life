@@ -1,0 +1,286 @@
+{
+    "income": [
+        {
+            "child": [], 
+            "icon": "finance/envelope", 
+            "id": 2001, 
+            "name": "工资"
+        }, 
+        {
+            "child": [], 
+            "icon": "finance/gold", 
+            "id": 2002, 
+            "name": "奖金"
+        }, 
+        {
+            "child": [], 
+            "icon": "finance/success-plan", 
+            "id": 2003, 
+            "name": "理财收益"
+        }, 
+        {
+            "child": [], 
+            "icon": "finance/invest", 
+            "id": 2004, 
+            "name": "红包"
+        }, 
+        {
+            "child": [], 
+            "icon": "finance/statistic-up", 
+            "id": 2005, 
+            "name": "借入"
+        }, 
+        {
+            "child": [], 
+            "icon": "finance/money", 
+            "id": 2006, 
+            "name": "其他"
+        }
+    ], 
+    "outcome": [
+        {
+            "child": [
+                {
+                    "icon": "kitchen/grill", 
+                    "id": 1001001, 
+                    "name": "家庭用餐"
+                }, 
+                {
+                    "icon": "food/burger", 
+                    "id": 1001002, 
+                    "name": "外出用餐"
+                }, 
+                {
+                    "icon": "food/donut", 
+                    "id": 1001003, 
+                    "name": "零食"
+                }, 
+                {
+                    "icon": "food/cherry", 
+                    "id": 1001004, 
+                    "name": "水果"
+                }, 
+                {
+                    "icon": "food/wine", 
+                    "id": 1001005, 
+                    "name": "烟酒"
+                }, 
+                {
+                    "icon": "food/coffee", 
+                    "id": 1001006, 
+                    "name": "其他"
+                }
+            ], 
+            "icon": "food/knife-fork", 
+            "id": 1001, 
+            "name": "餐饮"
+        }, 
+        {
+            "child": [
+                {
+                    "icon": "fashion/tuxedo-vallet", 
+                    "id": 1002001, 
+                    "name": "衣服"
+                }, 
+                {
+                    "icon": "fashion/short-pants", 
+                    "id": 1002002, 
+                    "name": "裤子"
+                }, 
+                {
+                    "icon": "fashion/sneakers", 
+                    "id": 1002003, 
+                    "name": "鞋子"
+                }, 
+                {
+                    "icon": "fashion/woman-bag-2", 
+                    "id": 1002004, 
+                    "name": "包包"
+                }, 
+                {
+                    "icon": "fashion/socks", 
+                    "id": 1002005, 
+                    "name": "其他"
+                }
+            ], 
+            "icon": "fashion/tshirt", 
+            "id": 1002, 
+            "name": "穿戴"
+        }, 
+        {
+            "child": [
+                {
+                    "icon": "finance/coin", 
+                    "id": 1003001, 
+                    "name": "房租房贷"
+                }, 
+                {
+                    "icon": "weather/humidity", 
+                    "id": 1003002, 
+                    "name": "水费"
+                }, 
+                {
+                    "icon": "interface/power", 
+                    "id": 1003003, 
+                    "name": "电费"
+                }, 
+                {
+                    "icon": "kitchen/ulekan", 
+                    "id": 1003004, 
+                    "name": "气费"
+                }, 
+                {
+                    "icon": "building/apartment", 
+                    "id": 1003005, 
+                    "name": "物业"
+                }, 
+                {
+                    "icon": "kitchen/refrigerator", 
+                    "id": 1003006, 
+                    "name": "家具电器"
+                }, 
+                {
+                    "icon": "furniture/drawer-3", 
+                    "id": 1003007, 
+                    "name": "其他"
+                }
+            ], 
+            "icon": "interface/home", 
+            "id": 1003, 
+            "name": "房屋"
+        }, 
+        {
+            "child": [
+                {
+                    "icon": "transportation/bus", 
+                    "id": 1004001, 
+                    "name": "公共交通"
+                }, 
+                {
+                    "icon": "transportation/gas-station", 
+                    "id": 1004002, 
+                    "name": "加油"
+                }, 
+                {
+                    "icon": "transportation/parking", 
+                    "id": 1004003, 
+                    "name": "停车费"
+                }, 
+                {
+                    "icon": "transportation/car-wheel-2", 
+                    "id": 1004004, 
+                    "name": "保养"
+                }, 
+                {
+                    "icon": "transportation/street", 
+                    "id": 1004005, 
+                    "name": "其他"
+                }
+            ], 
+            "icon": "transportation/train", 
+            "id": 1004, 
+            "name": "交通"
+        }, 
+        {
+            "child": [
+                {
+                    "icon": "interface/gift", 
+                    "id": 1005001, 
+                    "name": "礼物"
+                }, 
+                {
+                    "icon": "users/favorite-profile", 
+                    "id": 1005002, 
+                    "name": "人情"
+                }, 
+                {
+                    "icon": "finance/statistic-down", 
+                    "id": 1005003, 
+                    "name": "外借"
+                }, 
+                {
+                    "icon": "users/group-chat", 
+                    "id": 1005004, 
+                    "name": "其他"
+                }
+            ], 
+            "icon": "users/groups", 
+            "id": 1005, 
+            "name": "社交"
+        }, 
+        {
+            "child": [
+                {
+                    "icon": "fashion/lipstick", 
+                    "id": 1006001, 
+                    "name": "美妆"
+                }, 
+                {
+                    "icon": "fashion/necklace", 
+                    "id": 1006002, 
+                    "name": "饰品"
+                }, 
+                {
+                    "icon": "technology/processor", 
+                    "id": 1006003, 
+                    "name": "数码"
+                }, 
+                {
+                    "icon": "sports/weightlifting", 
+                    "id": 1006004, 
+                    "name": "运动"
+                }, 
+                {
+                    "icon": "ecommerce/price-tag", 
+                    "id": 1006005, 
+                    "name": "其他"
+                }
+            ], 
+            "icon": "ecommerce/shopping", 
+            "id": 1006, 
+            "name": "购物"
+        }, 
+        {
+            "child": [], 
+            "icon": "furniture/library", 
+            "id": 1007, 
+            "name": "学习"
+        }, 
+        {
+            "child": [], 
+            "icon": "game/game-console", 
+            "id": 1008, 
+            "name": "娱乐"
+        }, 
+        {
+            "child": [], 
+            "icon": "finance/success-plan", 
+            "id": 1009, 
+            "name": "理财"
+        }, 
+        {
+            "child": [], 
+            "icon": "medical/medical-supply", 
+            "id": 1010, 
+            "name": "医疗"
+        }, 
+        {
+            "child": [], 
+            "icon": "interface/calling", 
+            "id": 1011, 
+            "name": "通讯"
+        }, 
+        {
+            "child": [], 
+            "icon": "finance/money", 
+            "id": 1012, 
+            "name": "其他支出"
+        }, 
+        {
+            "child": [], 
+            "icon": "interface/settings-ui", 
+            "id": 1013, 
+            "name": "管理 "
+        }
+    ]
+}

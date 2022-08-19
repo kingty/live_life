@@ -1,58 +1,60 @@
  ## outcome
-- 食 (food/knife-fork)
-    - 家庭用餐(kitchen/grill)
-    - 外出用餐(food/burger)
-    - 零食(food/donut)
-    - 水果(food/cherry)
-    - 烟酒(food/wine)
-    - 其他(food/coffee)
-- 穿戴(fashion/tshirt)
-    - 衣服(fashion/tuxedo-vallet)
-    - 裤子(fashion/short-pants)
-    - 鞋子(fashion/sneakers)
-    - 包包(fashion/woman-bag-2)
-    - 其他(fashion/socks)
-- 房屋(interface/home)
-    - 房租房贷(finance/coin)
-    - 水费(weather/humidity)
-    - 电费(interface/power)
-    - 气费(kitchen/ulekan)
-    - 物业(building/apartment)
-    - 家具电器(kitchen/refrigerator)
-    - 其他(furniture/drawer-3)
-- 交通(transportation/train)
-    - 公共交通(transportation/bus)
-    - 加油(transportation/gas-station)
-    - 停车费(transportation/parking)
-    - 保养(transportation/car-wheel-2)
-    - 其他(transportation/street)
+- 餐饮%food/knife-fork%1001
+    - 家庭用餐%kitchen/grill%1001001
+    - 外出用餐%food/burger%1001002
+    - 零食%food/donut%1001003
+    - 水果%food/cherry%1001004
+    - 烟酒%food/wine%1001005
+    - 其他%food/coffee%1001006
+- 穿戴%fashion/tshirt%1002
+    - 衣服%fashion/tuxedo-vallet%1002001
+    - 裤子%fashion/short-pants%1002002
+    - 鞋子%fashion/sneakers%1002003
+    - 包包%fashion/woman-bag-2%1002004
+    - 其他%fashion/socks%1002005
+- 房屋%interface/home%1003
+    - 房租房贷%finance/coin%1003001
+    - 水费%weather/humidity%1003002
+    - 电费%interface/power%1003003
+    - 气费%kitchen/ulekan%1003004
+    - 物业%building/apartment%1003005
+    - 家具电器%kitchen/refrigerator%1003006
+    - 其他%furniture/drawer-3%1003007
+- 交通%transportation/train%1004
+    - 公共交通%transportation/bus%1004001
+    - 加油%transportation/gas-station%1004002
+    - 停车费%transportation/parking%1004003
+    - 保养%transportation/car-wheel-2%1004004
+    - 其他%transportation/street%1004005
 
-- 社交(users/groups)
-    - 礼物(interface/gift)
-    - 人情(users/favorite-profile)
-    - 外借(finance/statistic-down)
-    - 其他(users/group-chat)
+- 社交%users/groups%1005
+    - 礼物%interface/gift%1005001
+    - 人情%users/favorite-profile%1005002
+    - 外借%finance/statistic-down%1005003
+    - 其他%users/group-chat%1005004
 
-- 购物(ecommerce/shopping)
-    - 美妆(fashion/lipstick)
-    - 饰品(fashion/necklace)
-    - 数码(technology/processor)
-    - 运动(sports/weightlifting)
-    - 其他(ecommerce/price-tag)
-- 学习(furniture/library)
-- 娱乐(game/game-console)
-- 理财(finance/success-plan)
-- 医疗(medical/medical-supply)
-- 通讯(interface/calling)
-- 其他支出(finance/money)
-- 管理 (interface/settings-ui)
+- 购物%ecommerce/shopping%1006
+    - 美妆%fashion/lipstick%1006001
+    - 饰品%fashion/necklace%1006002
+    - 数码%technology/processor%1006003
+    - 运动%sports/weightlifting%1006004
+    - 其他%ecommerce/price-tag%1006005
+- 学习%furniture/library%1007
+- 娱乐%game/game-console%1008
+- 理财%finance/success-plan%1009
+- 医疗%medical/medical-supply%1010
+- 通讯%interface/calling%1011
+- 其他支出%finance/money%1012
+- 管理 %interface/settings-ui%1013
 
 ----
 ## income
 
-- 工资(finance/envelope)
-- 奖金(finance/gold)
-- 理财收益(finance/success-plan)
-- 红包(finance/invest)
-- 借入(finance/statistic-up)
-- 其他(finance/money)
+- 工资%finance/envelope%2001
+- 奖金%finance/gold%2002
+- 理财收益%finance/success-plan%2003
+- 红包%finance/invest%2004
+- 借入%finance/statistic-up%2005
+- 其他%finance/money%2006
+
+## 自定义的类型以3001，4001开头

@@ -1,14 +1,46 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
-
+# encoding:utf-8
 import json
+import re
 
-
-def parseFontJson():
+def generateCustomIconsCode():
     f = open('IconFont.json')
     icons = json.load(f)
+    lines = []
+    lines2 = []
+    srccode = '''///GenerateCodeStart\n'''
     for icon in icons:
-        print(icon['unicode'])
+        name = icon['name'].replace('/', '_').replace('-', '_')
+        line = '''  static const IconData %s = IconData(0x%s, fontFamily: 'IconFont'); '''% (name, icon['unicode'])
+        line2 = '''      "%s" : %s,'''% (name, name)
+        lines.append(line)
+        lines2.append(line2)
+    srccode = srccode + ' \n'.join(lines)
+
+    srccode = srccode + ' \n'
+
+    srccode = srccode + '''  static Map<String, IconData> customIcons = <String, IconData>{\n'''
+    srccode = srccode + ' \n'.join(lines2)
+    srccode = srccode + '''\n   };'''
+    srccode = srccode + '''\n  ///GenerateCodeEnd'''
+
+    file = open('../lib/icons/custom_icons.dart',mode='r')
+    all_of_it = file.read()
+    all_of_it = re.sub(r'///GenerateCodeStart[\s\S]*///GenerateCodeEnd', srccode, all_of_it)
+    file.close()
+    with open('../lib/icons/custom_icons.dart', 'w') as f:
+        f.write(all_of_it + "")
+
+
+def getDetails(ca):
+
+    pair = ca.replace("- ", "").split("%")
+    obj = {
+      "name": pair[0],
+      "icon": pair[1],
+      "id": int(pair[2])
+    }
+    return obj
 
 def dealCategory():
     outcome = []
@@ -16,7 +48,7 @@ def dealCategory():
     in_cas = []
     cas = outcome
 
-    with open('category.md') as md:
+    with open('category.md', encoding="utf-8") as md:
         lines = md.readlines()
         for line in lines:
             if line.strip().startswith('#') or line.strip() == "":
@@ -26,16 +58,20 @@ def dealCategory():
                     cas = income
                 elif line.startswith('-'):
                     in_cas = []
-                    cas.append((line.strip(), in_cas))
+                    obj = (getDetails(line.strip()))
+                    obj['child'] = in_cas
+                    cas.append(obj)
                 else:
-                    in_cas.append(line.strip())
+                    in_cas.append(getDetails(line.strip()))
 
-    return (outcome, income)
-cas = dealCategory()
+    return {'income': income, 'outcome': outcome}
 
-for ca in cas[0]:
-    print(ca)
+def generateCategoryJson():
+    cas = dealCategory()
+    all_of_it=json.dumps(cas, ensure_ascii=False, sort_keys=True, indent=4, separators=(', ', ': '))
 
-print('-----------')
-for ca in cas[1]:
-    print(ca)
+    with open('../assets/keep_accounts/category.json', 'w') as f:
+            f.write(all_of_it + "")
+
+generateCustomIconsCode()
+generateCategoryJson()

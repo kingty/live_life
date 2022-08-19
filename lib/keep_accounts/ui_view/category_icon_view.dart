@@ -7,7 +7,7 @@ import '../keep_accounts_them.dart';
 class CategoryIconView extends StatefulWidget {
   const CategoryIconView({
     Key? key,
-    this.iconData = CustomIcons.food,
+    this.iconData = CustomIcons.food_knife_fork,
     this.color = Colors.pink,
     this.size = 24,
   }) : super(key: key);
