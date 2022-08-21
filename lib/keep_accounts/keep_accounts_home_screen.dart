@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:live_life/keep_accounts/record_transaction/record_transaction_view.dart';
 import 'bottom_bar_view.dart';
 import 'keep_accounts_them.dart';
 import 'models/tabIcon_data.dart';
@@ -77,7 +78,14 @@ class _KeepAccountsHomeScreenState extends State<KeepAccountsHomeScreen>
         ),
         BottomBarView(
           tabIconsList: tabIconsList,
-          addClick: () {},
+          addClick: () {
+            Navigator.push<dynamic>(
+              context,
+              MaterialPageRoute<dynamic>(
+                builder: (BuildContext context) => RecordTransactionView(),
+              ),
+            );
+          },
           changeIndex: (int index) {
             if (index == 0 || index == 2) {
               animationController?.reverse().then<dynamic>((data) {

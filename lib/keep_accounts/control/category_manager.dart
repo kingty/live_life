@@ -5,6 +5,14 @@ import 'package:flutter/services.dart' show rootBundle;
 import '../models/category_data.dart';
 
 class CategoryManager {
+  CategoryManager._();
+
+  factory CategoryManager() {
+    return instance;
+  }
+
+  static CategoryManager instance = CategoryManager._();
+
   static List<CategoryData> incomeCategories = List.empty();
   static List<CategoryData> outcomeCategories = List.empty();
 
