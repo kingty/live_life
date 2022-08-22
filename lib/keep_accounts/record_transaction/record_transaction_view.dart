@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:live_life/common_view/custom_tabs.dart';
 import 'package:live_life/keep_accounts/keep_accounts_them.dart';
 
 class RecordTransactionView extends StatefulWidget {
@@ -48,15 +49,15 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
   }
 
   Widget getTabBar() {
-    return TabBar(
+    return CustomTabBar(
         indicatorColor: KeepAccountsTheme.pink,
         labelColor: KeepAccountsTheme.pink,
         unselectedLabelColor: Colors.grey,
         controller: tabController,
         tabs: [
-          Tab(text: "支出"),
-          Tab(text: "收入"),
-          Tab(text: "转账"),
+          CustomTab(text: "支出"),
+          CustomTab(text: "收入"),
+          CustomTab(text: "转账"),
         ]);
   }
 

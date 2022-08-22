@@ -13,25 +13,25 @@ import 'package:flutter/rendering.dart';
 const double _kTabHeight = 46.0;
 const double _kTextAndIconTabHeight = 72.0;
 
-/// A material design [TabBar] tab.
+/// A material design [CustomTabBar] tab.
 ///
 /// If both [icon] and [text] are provided, the text is displayed below
 /// the icon.
 ///
 /// See also:
 ///
-///  * [TabBar], which displays a row of tabs.
-///  * [TabBarView], which displays a widget for the currently selected tab.
-///  * [TabController], which coordinates tab selection between a [TabBar] and a [TabBarView].
+///  * [CustomTabBar], which displays a row of tabs.
+///  * [CustomTabBarView], which displays a widget for the currently selected tab.
+///  * [TabController], which coordinates tab selection between a [CustomTabBar] and a [CustomTabBarView].
 ///  * <https://material.io/design/components/tabs.html>
-class Tab extends StatelessWidget implements PreferredSizeWidget {
-  /// Creates a material design [TabBar] tab.
+class CustomTab extends StatelessWidget implements PreferredSizeWidget {
+  /// Creates a material design [CustomTabBar] tab.
   ///
   /// At least one of [text], [icon], and [child] must be non-null. The [text]
   /// and [child] arguments must not be used at the same time. The
   /// [iconMargin] is only useful when [icon] and either one of [text] or
   /// [child] is non-null.
-  const Tab({
+  const CustomTab({
     Key? key,
     this.text,
     this.icon,
@@ -128,8 +128,8 @@ class Tab extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
-class _TabStyle extends AnimatedWidget {
-  const _TabStyle({
+class _CustomTabStyle extends AnimatedWidget {
+  const _CustomTabStyle({
     Key? key,
     required Animation<double> animation,
     required this.selected,
@@ -195,8 +195,8 @@ class _TabStyle extends AnimatedWidget {
 typedef _LayoutCallback = void Function(
     List<double> xOffsets, TextDirection textDirection, double width);
 
-class _TabLabelBarRenderer extends RenderFlex {
-  _TabLabelBarRenderer({
+class _CustomTabLabelBarRenderer extends RenderFlex {
+  _CustomTabLabelBarRenderer({
     List<RenderBox>? children,
     required Axis direction,
     required MainAxisSize mainAxisSize,
@@ -251,8 +251,8 @@ class _TabLabelBarRenderer extends RenderFlex {
 // This class and its renderer class only exist to report the widths of the tabs
 // upon layout. The tab widths are only used at paint time (see _IndicatorPainter)
 // or in response to input.
-class _TabLabelBar extends Flex {
-  _TabLabelBar({
+class _CustomTabLabelBar extends Flex {
+  _CustomTabLabelBar({
     Key? key,
     List<Widget> children = const <Widget>[],
     required this.onPerformLayout,
@@ -270,7 +270,7 @@ class _TabLabelBar extends Flex {
 
   @override
   RenderFlex createRenderObject(BuildContext context) {
-    return _TabLabelBarRenderer(
+    return _CustomTabLabelBarRenderer(
       direction: direction,
       mainAxisAlignment: mainAxisAlignment,
       mainAxisSize: mainAxisSize,
@@ -283,7 +283,7 @@ class _TabLabelBar extends Flex {
 
   @override
   void updateRenderObject(
-      BuildContext context, _TabLabelBarRenderer renderObject) {
+      BuildContext context, _CustomTabLabelBarRenderer renderObject) {
     super.updateRenderObject(context, renderObject);
     renderObject.onPerformLayout = onPerformLayout;
   }
@@ -502,7 +502,7 @@ class _TabBarScrollPosition extends ScrollPositionWithSingleContext {
           oldPosition: oldPosition,
         );
 
-  final _TabBarState tabBar;
+  final _CustomTabBarState tabBar;
 
   bool? _initialViewportDimensionWasZero;
 
@@ -533,7 +533,7 @@ class _TabBarScrollPosition extends ScrollPositionWithSingleContext {
 class _TabBarScrollController extends ScrollController {
   _TabBarScrollController(this.tabBar);
 
-  final _TabBarState tabBar;
+  final _CustomTabBarState tabBar;
 
   @override
   ScrollPosition createScrollPosition(ScrollPhysics physics,
@@ -550,29 +550,29 @@ class _TabBarScrollController extends ScrollController {
 /// A material design widget that displays a horizontal row of tabs.
 ///
 /// Typically created as the [AppBar.bottom] part of an [AppBar] and in
-/// conjunction with a [TabBarView].
+/// conjunction with a [CustomTabBarView].
 ///
 /// {@youtube 560 315 https://www.youtube.com/watch?v=POtoEH-5l40}
 ///
 /// If a [TabController] is not provided, then a [DefaultTabController] ancestor
 /// must be provided instead. The tab controller's [TabController.length] must
 /// equal the length of the [tabs] list and the length of the
-/// [TabBarView.children] list.
+/// [CustomTabBarView.children] list.
 ///
 /// Requires one of its ancestors to be a [Material] widget.
 ///
 /// Uses values from [TabBarTheme] if it is set in the current context.
 ///
 /// {@tool dartpad}
-/// This sample shows the implementation of [TabBar] and [TabBarView] using a [DefaultTabController].
-/// Each [Tab] corresponds to a child of the [TabBarView] in the order they are written.
+/// This sample shows the implementation of [CustomTabBar] and [CustomTabBarView] using a [DefaultTabController].
+/// Each [Tab] corresponds to a child of the [CustomTabBarView] in the order they are written.
 ///
 /// ** See code in examples/api/lib/material/tabs/tab_bar.0.dart **
 /// {@end-tool}
 ///
 /// {@tool dartpad}
-/// [TabBar] can also be implemented by using a [TabController] which provides more options
-/// to control the behavior of the [TabBar] and [TabBarView]. This can be used instead of
+/// [CustomTabBar] can also be implemented by using a [TabController] which provides more options
+/// to control the behavior of the [CustomTabBar] and [CustomTabBarView]. This can be used instead of
 /// a [DefaultTabController], demonstrated below.
 ///
 /// ** See code in examples/api/lib/material/tabs/tab_bar.1.dart **
@@ -580,9 +580,9 @@ class _TabBarScrollController extends ScrollController {
 ///
 /// See also:
 ///
-///  * [TabBarView], which displays page views that correspond to each tab.
-///  * [TabBar], which is used to display the [Tab] that corresponds to each page of the [TabBarView].
-class TabBar extends StatefulWidget implements PreferredSizeWidget {
+///  * [CustomTabBarView], which displays page views that correspond to each tab.
+///  * [CustomTabBar], which is used to display the [Tab] that corresponds to each page of the [CustomTabBarView].
+class CustomTabBar extends StatefulWidget implements PreferredSizeWidget {
   /// Creates a material design tab bar.
   ///
   /// The [tabs] argument must not be null and its length must match the [controller]'s
@@ -597,7 +597,7 @@ class TabBar extends StatefulWidget implements PreferredSizeWidget {
   ///
   /// If [indicator] is not null or provided from [TabBarTheme],
   /// then [indicatorWeight], [indicatorPadding], and [indicatorColor] are ignored.
-  const TabBar({
+  const CustomTabBar({
     Key? key,
     required this.tabs,
     this.controller,
@@ -633,7 +633,7 @@ class TabBar extends StatefulWidget implements PreferredSizeWidget {
   /// Typically a list of two or more [Tab] widgets.
   ///
   /// The length of this list must match the [controller]'s [TabController.length]
-  /// and the length of the [TabBarView.children] list.
+  /// and the length of the [CustomTabBarView.children] list.
   final List<Widget> tabs;
 
   /// This widget's selection and animation state.
@@ -645,14 +645,14 @@ class TabBar extends StatefulWidget implements PreferredSizeWidget {
   /// Whether this tab bar can be scrolled horizontally.
   ///
   /// If [isScrollable] is true, then each tab is as wide as needed for its label
-  /// and the entire [TabBar] is scrollable. Otherwise each tab gets an equal
+  /// and the entire [CustomTabBar] is scrollable. Otherwise each tab gets an equal
   /// share of the available space.
   final bool isScrollable;
 
   /// The amount of space by which to inset the tab bar.
   ///
   /// When [isScrollable] is false, this will yield the same result as if you had wrapped your
-  /// [TabBar] in a [Padding] widget. When [isScrollable] is true, the scrollable itself is inset,
+  /// [CustomTabBar] in a [Padding] widget. When [isScrollable] is true, the scrollable itself is inset,
   /// allowing the padding to scroll with the tab bar, rather than enclosing it.
   final EdgeInsetsGeometry? padding;
 
@@ -807,7 +807,7 @@ class TabBar extends StatefulWidget implements PreferredSizeWidget {
   /// Defaults to true.
   final bool? enableFeedback;
 
-  /// An optional callback that's called when the [TabBar] is tapped.
+  /// An optional callback that's called when the [CustomTabBar] is tapped.
   ///
   /// The callback is applied to the index of the tab where the tap occurred.
   ///
@@ -818,7 +818,7 @@ class TabBar extends StatefulWidget implements PreferredSizeWidget {
   /// interfere with the default tap handler.
   final ValueChanged<int>? onTap;
 
-  /// How the [TabBar]'s scroll view should respond to user input.
+  /// How the [CustomTabBar]'s scroll view should respond to user input.
   ///
   /// For example, determines how the scroll view continues to animate after the
   /// user stops dragging the scroll view.
@@ -876,9 +876,9 @@ class TabBar extends StatefulWidget implements PreferredSizeWidget {
     return Size.fromHeight(maxHeight + indicatorWeight);
   }
 
-  /// Returns whether the [TabBar] contains a tab with both text and icon.
+  /// Returns whether the [CustomTabBar] contains a tab with both text and icon.
   ///
-  /// [TabBar] uses this to give uniform padding to all tabs in cases where
+  /// [CustomTabBar] uses this to give uniform padding to all tabs in cases where
   /// there are some tabs with both text and icon and some which contain only
   /// text or icon.
   bool get tabHasTextAndIcon {
@@ -891,10 +891,10 @@ class TabBar extends StatefulWidget implements PreferredSizeWidget {
   }
 
   @override
-  State<TabBar> createState() => _TabBarState();
+  State<CustomTabBar> createState() => _CustomTabBarState();
 }
 
-class _TabBarState extends State<TabBar> {
+class _CustomTabBarState extends State<CustomTabBar> {
   ScrollController? _scrollController;
   TabController? _controller;
   _IndicatorPainter? _indicatorPainter;
@@ -999,7 +999,7 @@ class _TabBarState extends State<TabBar> {
   }
 
   @override
-  void didUpdateWidget(TabBar oldWidget) {
+  void didUpdateWidget(CustomTabBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.controller != oldWidget.controller) {
       _updateTabController();
@@ -1130,7 +1130,7 @@ class _TabBarState extends State<TabBar> {
 
   Widget _buildStyledTab(
       Widget child, bool selected, Animation<double> animation) {
-    return _TabStyle(
+    return _CustomTabStyle(
       animation: animation,
       selected: selected,
       labelColor: widget.labelColor,
@@ -1281,14 +1281,14 @@ class _TabBarState extends State<TabBar> {
 
     Widget tabBar = CustomPaint(
       painter: _indicatorPainter,
-      child: _TabStyle(
+      child: _CustomTabStyle(
         animation: kAlwaysDismissedAnimation,
         selected: false,
         labelColor: widget.labelColor,
         unselectedLabelColor: widget.unselectedLabelColor,
         labelStyle: widget.labelStyle,
         unselectedLabelStyle: widget.unselectedLabelStyle,
-        child: _TabLabelBar(
+        child: _CustomTabLabelBar(
           onPerformLayout: _saveTabOffsets,
           children: wrappedTabs,
         ),
@@ -1319,7 +1319,7 @@ class _TabBarState extends State<TabBar> {
 /// A page view that displays the widget which corresponds to the currently
 /// selected tab.
 ///
-/// This widget is typically used in conjunction with a [TabBar].
+/// This widget is typically used in conjunction with a [CustomTabBar].
 ///
 /// {@youtube 560 315 https://www.youtube.com/watch?v=POtoEH-5l40}
 ///
@@ -1327,14 +1327,14 @@ class _TabBarState extends State<TabBar> {
 /// ancestor.
 ///
 /// The tab controller's [TabController.length] must equal the length of the
-/// [children] list and the length of the [TabBar.tabs] list.
+/// [children] list and the length of the [CustomTabBar.tabs] list.
 ///
 /// To see a sample implementation, visit the [TabController] documentation.
-class TabBarView extends StatefulWidget {
+class CustomTabBarView extends StatefulWidget {
   /// Creates a page view with one child per tab.
   ///
   /// The length of [children] must be the same as the [controller]'s length.
-  const TabBarView({
+  const CustomTabBarView({
     Key? key,
     required this.children,
     this.controller,
@@ -1353,7 +1353,7 @@ class TabBarView extends StatefulWidget {
 
   /// One widget per tab.
   ///
-  /// Its length must match the length of the [TabBar.tabs]
+  /// Its length must match the length of the [CustomTabBar.tabs]
   /// list, as well as the [controller]'s [TabController.length].
   final List<Widget> children;
 
@@ -1375,10 +1375,10 @@ class TabBarView extends StatefulWidget {
   final double viewportFraction;
 
   @override
-  State<TabBarView> createState() => _TabBarViewState();
+  State<CustomTabBarView> createState() => _CustomTabBarViewState();
 }
 
-class _TabBarViewState extends State<TabBarView> {
+class _CustomTabBarViewState extends State<CustomTabBarView> {
   TabController? _controller;
   late PageController _pageController;
   late List<Widget> _children;
@@ -1434,7 +1434,7 @@ class _TabBarViewState extends State<TabBarView> {
   }
 
   @override
-  void didUpdateWidget(TabBarView oldWidget) {
+  void didUpdateWidget(CustomTabBarView oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.controller != oldWidget.controller) {
       _updateTabController();
@@ -1577,12 +1577,12 @@ class _TabBarViewState extends State<TabBarView> {
 /// Displays a single circle with the specified size, border style, border color
 /// and background colors.
 ///
-/// Used by [TabPageSelector] to indicate the selected page.
-class TabPageSelectorIndicator extends StatelessWidget {
-  /// Creates an indicator used by [TabPageSelector].
+/// Used by [CustomTabPageSelector] to indicate the selected page.
+class CustomTabPageSelectorIndicator extends StatelessWidget {
+  /// Creates an indicator used by [CustomTabPageSelector].
   ///
   /// The [backgroundColor], [borderColor], and [size] parameters must not be null.
-  const TabPageSelectorIndicator({
+  const CustomTabPageSelectorIndicator({
     Key? key,
     required this.backgroundColor,
     required this.borderColor,
@@ -1622,19 +1622,19 @@ class TabPageSelectorIndicator extends StatelessWidget {
   }
 }
 
-/// Uses [TabPageSelectorIndicator] to display a row of small circular
+/// Uses [CustomTabPageSelectorIndicator] to display a row of small circular
 /// indicators, one per tab.
 ///
 /// {@youtube 560 315 https://www.youtube.com/watch?v=Q628ue9Cq7U}
 ///
 /// The selected tab's indicator is highlighted. Often used in conjunction with
-/// a [TabBarView].
+/// a [CustomTabBarView].
 ///
 /// If a [TabController] is not provided, then there must be a
 /// [DefaultTabController] ancestor.
-class TabPageSelector extends StatelessWidget {
+class CustomTabPageSelector extends StatelessWidget {
   /// Creates a compact widget that indicates which tab has been selected.
-  const TabPageSelector({
+  const CustomTabPageSelector({
     Key? key,
     this.controller,
     this.indicatorSize = 12.0,
@@ -1700,7 +1700,7 @@ class TabPageSelector extends StatelessWidget {
         background = selectedColorTween.begin!;
       }
     }
-    return TabPageSelectorIndicator(
+    return CustomTabPageSelectorIndicator(
       backgroundColor: background,
       borderColor: selectedColorTween.end!,
       size: indicatorSize,
