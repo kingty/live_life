@@ -13,7 +13,7 @@
     - 包包%fashion/woman-bag-2%1002004
     - 其他%fashion/socks%1002005
 - 房屋%interface/home%1003
-    - 房租房贷%finance/coin%1003001
+    - 房租房贷%business_and_finance/coin%1003001
     - 水费%weather/humidity%1003002
     - 电费%interface/power%1003003
     - 气费%kitchen/ulekan%1003004
@@ -30,7 +30,7 @@
 - 社交%users/groups%1005
     - 礼物%interface/gift%1005001
     - 人情%users/favorite-profile%1005002
-    - 外借%finance/statistic-down%1005003
+    - 外借%business_and_finance/statistic-down%1005003
     - 其他%users/group-chat%1005004
 
 - 购物%ecommerce/shopping%1006
@@ -41,20 +41,20 @@
     - 其他%ecommerce/price-tag%1006005
 - 学习%furniture/library%1007
 - 娱乐%game/game-console%1008
-- 理财%finance/success-plan%1009
+- 理财%business_and_finance/success-plan%1009
 - 医疗%medical/medical-supply%1010
 - 通讯%interface/calling%1011
-- 其他支出%finance/money%1012
+- 其他支出%business_and_finance/money%1012
 - 管理 %interface/settings-ui%1013
 
 ----
 ## income
 
-- 工资%finance/envelope%2001
-- 奖金%finance/gold%2002
-- 理财收益%finance/success-plan%2003
-- 红包%finance/invest%2004
-- 借入%finance/statistic-up%2005
-- 其他%finance/money%2006
+- 工资%business_and_finance/envelope%2001
+- 奖金%business_and_finance/gold%2002
+- 理财收益%business_and_finance/success-plan%2003
+- 红包%business_and_finance/invest%2004
+- 借入%business_and_finance/statistic-up%2005
+- 其他%business_and_finance/money%2006
 
 ## 自定义的类型以3001，4001开头

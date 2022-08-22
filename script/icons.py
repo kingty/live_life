@@ -37,7 +37,7 @@ def getDetails(ca):
     pair = ca.replace("- ", "").split("%")
     obj = {
       "name": pair[0],
-      "icon": pair[1],
+      "icon": pair[1].replace('/', '_').replace('-', '_'),
       "id": int(pair[2])
     }
     return obj
@@ -73,5 +73,5 @@ def generateCategoryJson():
     with open('../assets/keep_accounts/category.json', 'w') as f:
             f.write(all_of_it + "")
 
-generateCustomIconsCode()
+# generateCustomIconsCode()
 generateCategoryJson()
