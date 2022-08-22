@@ -17,8 +17,10 @@ class KeepAccountsTheme {
   static const Color darkerText = Color(0xFF17262A);
   static const Color lightText = Color(0xFF4A6572);
   static const Color deactivatedText = Color(0xFF767676);
-  static const Color pink = Color(0xFFF56E98);
+  // static const Color pink = Color(0xFFF56E98);
+  static const Color pink = Color.fromRGBO(215, 110, 108, 1);
   static const Color purple = Color(0xFF87A0E5);
+  static const Color green = Colors.green;
   static const Color dismissibleBackground = Color(0xFF364A54);
   static const Color spacer = Color(0xFFF2F2F2);
   static const String fontName = 'Roboto';
@@ -88,5 +90,18 @@ class KeepAccountsTheme {
     fontSize: 12,
     letterSpacing: 0.2,
     color: lightText, // was lightText
+  );
+  static const TextStyle money_outcome = TextStyle(
+    color: pink,
+    letterSpacing: 0,
+    fontSize: 30,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle money_income = TextStyle(
+    color: Colors.green,
+    letterSpacing: 0,
+    fontSize: 30,
+    fontWeight: FontWeight.w400,
   );
 }

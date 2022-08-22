@@ -11,21 +11,23 @@ class CategoryManager {
     return instance;
   }
 
-  static CategoryManager instance = CategoryManager._();
+  static  CategoryManager instance = CategoryManager._();
 
   static List<CategoryData> incomeCategories = List.empty();
   static List<CategoryData> outcomeCategories = List.empty();
 
-  Future<void> fetchCategories() async {
+  Future<bool> fetchCategories() async {
     String jsonStr =
         await rootBundle.loadString('assets/keep_accounts/category.json');
     Map<String, dynamic> userMap = json.decode(jsonStr);
     var incomeJson = userMap['income'];
     var outcomeJson = userMap['outcome'];
 
-    List<CategoryData> income = List<CategoryData>.from(
+    incomeCategories = List<CategoryData>.from(
         incomeJson.map((model) => CategoryData.fromJson(model)));
-    List<CategoryData> outcome = List<CategoryData>.from(
+    outcomeCategories = List<CategoryData>.from(
         outcomeJson.map((model) => CategoryData.fromJson(model)));
+
+    return true;
   }
 }

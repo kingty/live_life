@@ -2,15 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/models/bank_data.dart';
 
+import '../../icons/custom_icons.dart';
+import '../control/category_manager.dart';
 import '../keep_accounts_them.dart';
+import '../ui_view/category_icon_view.dart';
 
-class OutcomeInputView extends StatefulWidget {
+class IncomeInputView extends StatefulWidget {
   @override
-  _OutcomeInputViewState createState() => _OutcomeInputViewState();
+  _IncomeInputViewState createState() => _IncomeInputViewState();
 }
 
-class _OutcomeInputViewState extends State<OutcomeInputView>
+class _IncomeInputViewState extends State<IncomeInputView>
     with TickerProviderStateMixin {
+  Future<bool> getData() async {
+    return CategoryManager.instance.fetchCategories();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -65,14 +72,14 @@ class _OutcomeInputViewState extends State<OutcomeInputView>
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   suffixText: " ¥",
-                                  suffixStyle: KeepAccountsTheme.money,
-                                  hintStyle: KeepAccountsTheme.money,
+                                  suffixStyle: KeepAccountsTheme.money_income,
+                                  hintStyle: KeepAccountsTheme.money_income,
                                   hintText: "0.00"),
                               autofocus: true,
                               textAlign: TextAlign.right,
-                              cursorColor: KeepAccountsTheme.nearlyDarkBlue,
+                              cursorColor: KeepAccountsTheme.green,
                               cursorWidth: 3,
-                              style: KeepAccountsTheme.money,
+                              style: KeepAccountsTheme.money_income,
                             ),
                           ),
                         )
@@ -82,23 +89,65 @@ class _OutcomeInputViewState extends State<OutcomeInputView>
                 ),
               ),
             ),
-            Padding(
-                padding: const EdgeInsets.only(
-                    left: 24, right: 24, top: 16, bottom: 18),
-                child: GridView(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, //横轴三个子widget
-                      childAspectRatio: 1.0 //宽高比为1时，子widget
-                      ),
-                  children: <Widget>[
-                    Icon(Icons.ac_unit),
-                    Icon(Icons.airport_shuttle),
-                    Icon(Icons.all_inclusive),
-                    Icon(Icons.beach_access),
-                    Icon(Icons.cake),
-                    Icon(Icons.free_breakfast)
-                  ],
-                ))
+            Expanded(
+                child: Padding(
+              padding: EdgeInsets.all(10),
+              child: FutureBuilder(
+                future: getData(),
+                builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                  if (!snapshot.hasData) {
+                    return const SizedBox();
+                  } else {
+                    List<Widget> icons = <Widget>[];
+                    int i = 0;
+                    for (var element in CategoryManager.incomeCategories) {
+                      i++;
+                      if (i == 1) {
+                        var c = Column(
+                          children: [
+                            CategoryIconView(
+                                color: KeepAccountsTheme.green,
+                                iconData:
+                                    CustomIcons.customIcons[element.icon]!),
+                            Padding(
+                                padding: EdgeInsets.all(4),
+                                child: Text(
+                                  element.name,
+                                  style: KeepAccountsTheme.caption,
+                                ))
+                          ],
+                        );
+                        icons.add(c);
+                      } else {
+                        var c = Column(
+                          children: [
+                            CategoryIconView(
+                                iconData:
+                                    CustomIcons.customIcons[element.icon]!),
+                            Padding(
+                                padding: EdgeInsets.all(4),
+                                child: Text(
+                                  element.name,
+                                  style: KeepAccountsTheme.caption,
+                                ))
+                          ],
+                        );
+                        icons.add(c);
+                      }
+                    }
+                    return GridView.count(
+                      // childAspectRatio: 2,
+                      // padding: const EdgeInsets.all(40.0),
+                      // crossAxisSpacing: 20.0,
+                      // mainAxisSpacing: 10.0,
+                      crossAxisCount: 5,
+
+                      children: icons,
+                    );
+                  }
+                },
+              ),
+            ))
           ],
         ));
   }

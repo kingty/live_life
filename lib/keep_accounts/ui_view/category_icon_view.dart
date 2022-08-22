@@ -8,7 +8,7 @@ class CategoryIconView extends StatefulWidget {
   const CategoryIconView({
     Key? key,
     this.iconData = CustomIcons.food_knife_fork,
-    this.color = Colors.pink,
+    this.color = KeepAccountsTheme.purple,
     this.size = 20,
   }) : super(key: key);
 
@@ -26,7 +26,7 @@ class _CategoryIconViewState extends State<CategoryIconView>
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: KeepAccountsTheme.pink.withOpacity(0.2),
+        color: widget.color.withOpacity(0.1),
         borderRadius: const BorderRadius.all(
           Radius.circular(8.0),
         ),
