@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:live_life/common_view/custom_tabs.dart';
 import 'package:live_life/keep_accounts/keep_accounts_them.dart';
 
+import '../../common_view/custom_tab_indicator.dart';
+
 class RecordTransactionView extends StatefulWidget {
   @override
   _RecordTransactionViewState createState() => _RecordTransactionViewState();
@@ -49,9 +51,10 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
   }
 
   Widget getTabBar() {
+    var colors = [KeepAccountsTheme.pink, Colors.green, KeepAccountsTheme.purple];
     return CustomTabBar(
-        indicatorColor: KeepAccountsTheme.pink,
-        labelColor: KeepAccountsTheme.pink,
+        indicator: MagicTabIndicator(labelColors: colors, pageController: tabController),
+        labelColors: colors,
         unselectedLabelColor: Colors.grey,
         controller: tabController,
         tabs: [

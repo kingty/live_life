@@ -9,7 +9,7 @@ class CategoryIconView extends StatefulWidget {
     Key? key,
     this.iconData = CustomIcons.food_knife_fork,
     this.color = Colors.pink,
-    this.size = 24,
+    this.size = 20,
   }) : super(key: key);
 
   final IconData iconData;
@@ -32,7 +32,7 @@ class _CategoryIconViewState extends State<CategoryIconView>
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(12),
         child: Icon(
           widget.iconData,
           color: widget.color,

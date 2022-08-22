@@ -134,6 +134,7 @@ class _CustomTabStyle extends AnimatedWidget {
     required Animation<double> animation,
     required this.selected,
     required this.labelColor,
+    required this.labelColors,
     required this.unselectedLabelColor,
     required this.labelStyle,
     required this.unselectedLabelStyle,
@@ -144,6 +145,9 @@ class _CustomTabStyle extends AnimatedWidget {
   final TextStyle? unselectedLabelStyle;
   final bool selected;
   final Color? labelColor;
+
+  final List<Color> labelColors;
+
   final Color? unselectedLabelColor;
   final Widget child;
 
@@ -600,6 +604,7 @@ class CustomTabBar extends StatefulWidget implements PreferredSizeWidget {
   const CustomTabBar({
     Key? key,
     required this.tabs,
+    required this.labelColors,
     this.controller,
     this.isScrollable = false,
     this.padding,
@@ -732,6 +737,10 @@ class CustomTabBar extends StatefulWidget implements PreferredSizeWidget {
   /// If this parameter is null, then the color of the [ThemeData.primaryTextTheme]'s
   /// bodyText1 text color is used.
   final Color? labelColor;
+
+
+  /// kingty modify
+  final List<Color> labelColors;
 
   /// The color of unselected tab labels.
   ///
@@ -1128,12 +1137,18 @@ class _CustomTabBarState extends State<CustomTabBar> {
     widget.onTap?.call(index);
   }
 
-  Widget _buildStyledTab(
-      Widget child, bool selected, Animation<double> animation) {
+  /// kingty modify
+  /// 增加position 和 当前的position
+  /// 获取tabController的长度
+  Widget _buildStyledTab(Widget child,int position,int currentPosition, bool selected, Animation<double> animation,TabController controller) {
+
+    Color labelColor;
+    labelColor = widget.labelColors[position];
     return _CustomTabStyle(
       animation: animation,
       selected: selected,
-      labelColor: widget.labelColor,
+      labelColors: widget.labelColors,
+      labelColor: labelColor,
       unselectedLabelColor: widget.unselectedLabelColor,
       labelStyle: widget.labelStyle,
       unselectedLabelStyle: widget.unselectedLabelStyle,
@@ -1210,29 +1225,29 @@ class _CustomTabBarState extends State<CustomTabBar> {
         assert(_currentIndex != previousIndex);
         final Animation<double> animation = _ChangeAnimation(_controller!);
         wrappedTabs[_currentIndex!] =
-            _buildStyledTab(wrappedTabs[_currentIndex!], true, animation);
+            _buildStyledTab(wrappedTabs[_currentIndex!],_currentIndex!, _currentIndex!, true, animation,_controller!);
         wrappedTabs[previousIndex] =
-            _buildStyledTab(wrappedTabs[previousIndex], false, animation);
+            _buildStyledTab(wrappedTabs[previousIndex], previousIndex, _currentIndex!,false, animation,_controller!);
       } else {
         // The user is dragging the TabBarView's PageView left or right.
         final int tabIndex = _currentIndex!;
         final Animation<double> centerAnimation =
             _DragAnimation(_controller!, tabIndex);
         wrappedTabs[tabIndex] =
-            _buildStyledTab(wrappedTabs[tabIndex], true, centerAnimation);
+            _buildStyledTab(wrappedTabs[tabIndex],tabIndex, _currentIndex!, true, centerAnimation,_controller!);
         if (_currentIndex! > 0) {
           final int tabIndex = _currentIndex! - 1;
           final Animation<double> previousAnimation =
               ReverseAnimation(_DragAnimation(_controller!, tabIndex));
           wrappedTabs[tabIndex] =
-              _buildStyledTab(wrappedTabs[tabIndex], false, previousAnimation);
+              _buildStyledTab(wrappedTabs[tabIndex], tabIndex, _currentIndex!, false, previousAnimation, _controller!);
         }
         if (_currentIndex! < widget.tabs.length - 1) {
           final int tabIndex = _currentIndex! + 1;
           final Animation<double> nextAnimation =
               ReverseAnimation(_DragAnimation(_controller!, tabIndex));
           wrappedTabs[tabIndex] =
-              _buildStyledTab(wrappedTabs[tabIndex], false, nextAnimation);
+              _buildStyledTab(wrappedTabs[tabIndex], tabIndex, _currentIndex!,false, nextAnimation,_controller!);
         }
       }
     }
@@ -1285,6 +1300,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
         animation: kAlwaysDismissedAnimation,
         selected: false,
         labelColor: widget.labelColor,
+        labelColors: widget.labelColors,
         unselectedLabelColor: widget.unselectedLabelColor,
         labelStyle: widget.labelStyle,
         unselectedLabelStyle: widget.unselectedLabelStyle,
