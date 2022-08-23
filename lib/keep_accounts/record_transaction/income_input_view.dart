@@ -70,6 +70,7 @@ class _IncomeInputViewState extends State<IncomeInputView>
                             padding: EdgeInsets.only(
                                 left: 20, right: 20, top: 10, bottom: 10),
                             child: TextField(
+                              keyboardType: TextInputType.none,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   suffixText: " ¥",
@@ -154,7 +155,7 @@ class _IncomeInputViewState extends State<IncomeInputView>
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
-                  // constraints: BoxConstraints(maxHeight: 40),
+                    // constraints: BoxConstraints(maxHeight: 40),
                     padding: const EdgeInsets.only(top: 4, bottom: 4),
                     color: KeepAccountsTheme.grey.withOpacity(0.1),
                     child: const SingleChildScrollView(
@@ -182,49 +183,48 @@ class _IncomeInputViewState extends State<IncomeInputView>
                     children: [
                       RichText(
                           text: const TextSpan(children: [
-                            WidgetSpan(
-                              child: Icon(
-                                Icons.account_balance_wallet_sharp,
-                                size: 14,
-                                color: KeepAccountsTheme.grey,
-                              ),
-                            ),
-                            TextSpan(
-                                text: " 默认账本",
-                                style: TextStyle(color: KeepAccountsTheme.grey)),
-                          ])),
+                        WidgetSpan(
+                          child: Icon(
+                            Icons.account_balance_wallet_sharp,
+                            size: 14,
+                            color: KeepAccountsTheme.grey,
+                          ),
+                        ),
+                        TextSpan(
+                            text: " 默认账本",
+                            style: TextStyle(color: KeepAccountsTheme.grey)),
+                      ])),
                       SizedBox(width: 15), // 50宽度
                       RichText(
                           text: const TextSpan(children: [
-                            WidgetSpan(
-                              child: Icon(
-                                Icons.calendar_today,
-                                size: 14,
-                                color: KeepAccountsTheme.grey,
-                              ),
-                            ),
-                            TextSpan(
-                                text: " 今天",
-                                style: TextStyle(color: KeepAccountsTheme.grey)),
-                          ])),
+                        WidgetSpan(
+                          child: Icon(
+                            Icons.calendar_today,
+                            size: 14,
+                            color: KeepAccountsTheme.grey,
+                          ),
+                        ),
+                        TextSpan(
+                            text: " 今天",
+                            style: TextStyle(color: KeepAccountsTheme.grey)),
+                      ])),
                       SizedBox(width: 15), // 50宽度
                       RichText(
                           text: const TextSpan(children: [
-                            WidgetSpan(
-                              child: Icon(
-                                Icons.tag,
-                                size: 14,
-                                color: KeepAccountsTheme.grey,
-                              ),
-                            ),
-                            TextSpan(
-                                text: " 标签",
-                                style: TextStyle(color: KeepAccountsTheme.grey)),
-                          ]))
+                        WidgetSpan(
+                          child: Icon(
+                            Icons.tag,
+                            size: 14,
+                            color: KeepAccountsTheme.grey,
+                          ),
+                        ),
+                        TextSpan(
+                            text: " 标签",
+                            style: TextStyle(color: KeepAccountsTheme.grey)),
+                      ]))
                     ],
                   ),
                 ),
-
                 const NumberKeyboardView(mainColor: KeepAccountsTheme.green)
               ],
             )

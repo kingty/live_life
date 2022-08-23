@@ -33,6 +33,7 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           elevation: 0,
           leading: IconButton(
@@ -54,9 +55,14 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
   }
 
   Widget getTabBar() {
-    var colors = [KeepAccountsTheme.pink.withOpacity(0.7), Colors.green.withOpacity(0.7), KeepAccountsTheme.nearlyDarkBlue.withOpacity(0.7)];
+    var colors = [
+      KeepAccountsTheme.pink.withOpacity(0.7),
+      Colors.green.withOpacity(0.7),
+      KeepAccountsTheme.nearlyDarkBlue.withOpacity(0.7)
+    ];
     return CustomTabBar(
-        indicator: MagicTabIndicator(labelColors: colors, pageController: tabController),
+        indicator: MagicTabIndicator(
+            labelColors: colors, pageController: tabController),
         labelColors: colors,
         unselectedLabelColor: Colors.grey,
         controller: tabController,

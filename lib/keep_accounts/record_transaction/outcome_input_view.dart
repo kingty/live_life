@@ -70,6 +70,7 @@ class _OutcomeInputViewState extends State<OutcomeInputView>
                             padding: EdgeInsets.only(
                                 left: 20, right: 20, top: 10, bottom: 10),
                             child: TextField(
+                              keyboardType: TextInputType.none,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   suffixText: " ¥",
