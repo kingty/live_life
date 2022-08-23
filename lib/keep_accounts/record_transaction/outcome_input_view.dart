@@ -6,6 +6,7 @@ import 'package:live_life/keep_accounts/ui_view/category_icon_view.dart';
 
 import '../control/category_manager.dart';
 import '../keep_accounts_them.dart';
+import 'number_keyboard_view.dart';
 
 class OutcomeInputView extends StatefulWidget {
   @override
@@ -91,63 +92,142 @@ class _OutcomeInputViewState extends State<OutcomeInputView>
             ),
             Expanded(
                 child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: FutureBuilder(
-                    future: getData(),
-                    builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-                      if (!snapshot.hasData) {
-                        return const SizedBox();
-                      } else {
-                        List<Widget> icons = <Widget>[];
-                        int i =0;
-                        for (var element in CategoryManager.outcomeCategories) {
-                          i++;
-                          if (i==1) {
-                            var c = Column(
-                              children: [
-                                CategoryIconView(
-                                    color: KeepAccountsTheme.pink,
-                                    iconData: CustomIcons.customIcons[element.icon]!),
-                                Padding(
-                                    padding: EdgeInsets.all(4),
-                                    child: Text(
-                                      element.name,
-                                      style: KeepAccountsTheme.caption,
-                                    ))
-                              ],
-                            );
-                            icons.add(c);
-                          } else {
-                            var c = Column(
-                              children: [
-                                CategoryIconView(
-                                    iconData: CustomIcons.customIcons[element.icon]!),
-                                Padding(
-                                    padding: EdgeInsets.all(4),
-                                    child: Text(
-                                      element.name,
-                                      style: KeepAccountsTheme.caption,
-                                    ))
-                              ],
-                            );
-                            icons.add(c);
-                          }
-
-
-                        }
-                        return GridView.count(
-                          // childAspectRatio: 2,
-                          // padding: const EdgeInsets.all(40.0),
-                          // crossAxisSpacing: 20.0,
-                          // mainAxisSpacing: 10.0,
-                          crossAxisCount: 5,
-
-                          children: icons,
+              padding: EdgeInsets.all(10),
+              child: FutureBuilder(
+                future: getData(),
+                builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                  if (!snapshot.hasData) {
+                    return const SizedBox();
+                  } else {
+                    List<Widget> icons = <Widget>[];
+                    int i = 0;
+                    for (var element in CategoryManager.outcomeCategories) {
+                      i++;
+                      if (i == 1) {
+                        var c = Column(
+                          children: [
+                            CategoryIconView(
+                                color: KeepAccountsTheme.pink,
+                                iconData:
+                                    CustomIcons.customIcons[element.icon]!),
+                            Padding(
+                                padding: EdgeInsets.all(4),
+                                child: Text(
+                                  element.name,
+                                  style: KeepAccountsTheme.caption,
+                                ))
+                          ],
                         );
+                        icons.add(c);
+                      } else {
+                        var c = Column(
+                          children: [
+                            CategoryIconView(
+                                iconData:
+                                    CustomIcons.customIcons[element.icon]!),
+                            Padding(
+                                padding: EdgeInsets.all(4),
+                                child: Text(
+                                  element.name,
+                                  style: KeepAccountsTheme.caption,
+                                ))
+                          ],
+                        );
+                        icons.add(c);
                       }
-                    },
+                    }
+                    return GridView.count(
+                      // childAspectRatio: 2,
+                      // padding: const EdgeInsets.all(40.0),
+                      // crossAxisSpacing: 20.0,
+                      // mainAxisSpacing: 10.0,
+                      crossAxisCount: 5,
+
+                      children: icons,
+                    );
+                  }
+                },
+              ),
+            )),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                    // constraints: BoxConstraints(maxHeight: 40),
+                    padding: const EdgeInsets.only(top: 4, bottom: 4),
+                    color: KeepAccountsTheme.grey.withOpacity(0.1),
+                    child: const SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      reverse: true,
+                      child: TextField(
+                        keyboardType: TextInputType.multiline,
+                        maxLines: 2,
+                        minLines: 1,
+                        decoration: InputDecoration(
+                            filled: true,
+                            fillColor: KeepAccountsTheme.background,
+                            suffixIconColor: KeepAccountsTheme.pink,
+                            // contentPadding: EdgeInsets.only(left: 24, top: 4, bottom: 4, right: 24),
+                            border: InputBorder.none,
+                            suffixIcon: Icon(Icons.image),
+                            hintText: "请输入备注信息"),
+                        cursorColor: KeepAccountsTheme.pink,
+                      ),
+                    )),
+                Container(
+                  color: KeepAccountsTheme.background,
+                  padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                  child: Row(
+                    children: [
+                      RichText(
+                          text: const TextSpan(children: [
+                        WidgetSpan(
+                          child: Icon(
+                            Icons.account_balance_wallet_sharp,
+                            size: 14,
+                            color: KeepAccountsTheme.grey,
+                          ),
+                        ),
+                        TextSpan(
+                            text: " 默认账本",
+                            style: TextStyle(color: KeepAccountsTheme.grey)),
+                      ])),
+                      SizedBox(width: 15), // 50宽度
+                      RichText(
+                          text: const TextSpan(children: [
+                        WidgetSpan(
+                          child: Icon(
+                            Icons.calendar_today,
+                            size: 14,
+                            color: KeepAccountsTheme.grey,
+                          ),
+                        ),
+                        TextSpan(
+                            text: " 今天",
+                            style: TextStyle(color: KeepAccountsTheme.grey)),
+                      ])),
+                      SizedBox(width: 15), // 50宽度
+                      RichText(
+                          text: const TextSpan(children: [
+                        WidgetSpan(
+                          child: Icon(
+                            Icons.tag,
+                            size: 14,
+                            color: KeepAccountsTheme.grey,
+                          ),
+                        ),
+                        TextSpan(
+                            text: " 标签",
+                            style: TextStyle(color: KeepAccountsTheme.grey)),
+                      ]))
+                    ],
                   ),
-                ))
+                ),
+
+                const NumberKeyboardView()
+              ],
+            )
           ],
         ));
   }

@@ -104,4 +104,12 @@ class KeepAccountsTheme {
     fontSize: 30,
     fontWeight: FontWeight.w400,
   );
+
+  static const TextStyle number = TextStyle(
+    fontFamily: fontName,
+    // fontWeight: FontWeight.bold,
+    fontSize: 20,
+    height: 0.9,
+    color: grey,
+  );
 }
