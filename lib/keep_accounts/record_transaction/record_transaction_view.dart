@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:live_life/common_view/custom_tabs.dart';
 import 'package:live_life/keep_accounts/keep_accounts_them.dart';
 import 'package:live_life/keep_accounts/record_transaction/outcome_input_view.dart';
+import 'package:live_life/keep_accounts/record_transaction/transfer_input_view.dart';
 
 import '../../common_view/custom_tab_indicator.dart';
 import 'income_input_view.dart';
@@ -70,7 +71,7 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
     return TabBarView(controller: tabController, children: <Widget>[
       OutcomeInputView(),
       IncomeInputView(),
-      Container(color: KeepAccountsTheme.background)
+      TransferInputView()
     ]);
   }
 }

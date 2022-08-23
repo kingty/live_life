@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../keep_accounts_them.dart';
 
 class NumberKeyboardView extends StatelessWidget {
-  const NumberKeyboardView({Key? key}) : super(key: key);
+  const NumberKeyboardView({Key? key, required this.mainColor})
+      : super(key: key);
+  final Color mainColor;
 
   @override
   Widget build(BuildContext context) {
@@ -15,22 +17,24 @@ class NumberKeyboardView extends StatelessWidget {
             const SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const <Widget>[
-                SizedBox(width: 2),
-                NumberView(
+              children: <Widget>[
+                const SizedBox(width: 2),
+                const NumberView(
                   sign: "1",
                 ),
-                SizedBox(width: 4),
-                NumberView(
+                const SizedBox(width: 4),
+                const NumberView(
                   sign: "2",
                 ),
-                SizedBox(width: 4),
-                NumberView(
+                const SizedBox(width: 4),
+                const NumberView(
                   sign: "3",
                 ),
-                SizedBox(width: 4),
-                DeleteView(),
-                SizedBox(width: 2),
+                const SizedBox(width: 4),
+                DeleteView(
+                  color: mainColor,
+                ),
+                const SizedBox(width: 2),
               ],
             ),
             const SizedBox(height: 4),
@@ -57,7 +61,6 @@ class NumberKeyboardView extends StatelessWidget {
                 ]),
             const SizedBox(height: 4),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-
               Expanded(
                 flex: 3,
                 child: Column(children: [
@@ -99,13 +102,14 @@ class NumberKeyboardView extends StatelessWidget {
               const SizedBox(width: 3),
               Expanded(
                   child: Row(
-                children: const [
-                  SizedBox(width: 1),
+                children: [
+                  const SizedBox(width: 1),
                   NumberView(
                     height: 108,
                     sign: "保存",
+                    color: mainColor,
                   ),
-                  SizedBox(width: 2),
+                  const SizedBox(width: 2),
                 ],
               )),
             ])
@@ -157,7 +161,9 @@ class NumberView extends StatelessWidget {
 }
 
 class DeleteView extends StatelessWidget {
-  const DeleteView({super.key});
+  const DeleteView({super.key, this.color = KeepAccountsTheme.grey});
+
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -179,9 +185,9 @@ class DeleteView extends StatelessWidget {
                             const EdgeInsets.only(left: 2, right: 2, top: 4),
                         height: 50,
                         alignment: Alignment.center,
-                        child: const Icon(
+                        child: Icon(
                           Icons.backspace_sharp,
-                          color: KeepAccountsTheme.grey,
+                          color: color,
                         ))))));
   }
 }

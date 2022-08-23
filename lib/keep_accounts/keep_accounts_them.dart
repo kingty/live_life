@@ -104,6 +104,12 @@ class KeepAccountsTheme {
     fontSize: 30,
     fontWeight: FontWeight.w400,
   );
+  static const TextStyle money_exchange = TextStyle(
+    color: nearlyDarkBlue,
+    letterSpacing: 0,
+    fontSize: 30,
+    fontWeight: FontWeight.w400,
+  );
 
   static const TextStyle number = TextStyle(
     fontFamily: fontName,

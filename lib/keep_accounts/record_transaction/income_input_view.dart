@@ -6,6 +6,7 @@ import '../../icons/custom_icons.dart';
 import '../control/category_manager.dart';
 import '../keep_accounts_them.dart';
 import '../ui_view/category_icon_view.dart';
+import 'number_keyboard_view.dart';
 
 class IncomeInputView extends StatefulWidget {
   @override
@@ -147,7 +148,86 @@ class _IncomeInputViewState extends State<IncomeInputView>
                   }
                 },
               ),
-            ))
+            )),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  // constraints: BoxConstraints(maxHeight: 40),
+                    padding: const EdgeInsets.only(top: 4, bottom: 4),
+                    color: KeepAccountsTheme.grey.withOpacity(0.1),
+                    child: const SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      reverse: true,
+                      child: TextField(
+                        keyboardType: TextInputType.multiline,
+                        maxLines: 2,
+                        minLines: 1,
+                        decoration: InputDecoration(
+                            filled: true,
+                            fillColor: KeepAccountsTheme.background,
+                            suffixIconColor: KeepAccountsTheme.green,
+                            // contentPadding: EdgeInsets.only(left: 24, top: 4, bottom: 4, right: 24),
+                            border: InputBorder.none,
+                            suffixIcon: Icon(Icons.image),
+                            hintText: "请输入备注信息"),
+                        cursorColor: KeepAccountsTheme.green,
+                      ),
+                    )),
+                Container(
+                  color: KeepAccountsTheme.background,
+                  padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                  child: Row(
+                    children: [
+                      RichText(
+                          text: const TextSpan(children: [
+                            WidgetSpan(
+                              child: Icon(
+                                Icons.account_balance_wallet_sharp,
+                                size: 14,
+                                color: KeepAccountsTheme.grey,
+                              ),
+                            ),
+                            TextSpan(
+                                text: " 默认账本",
+                                style: TextStyle(color: KeepAccountsTheme.grey)),
+                          ])),
+                      SizedBox(width: 15), // 50宽度
+                      RichText(
+                          text: const TextSpan(children: [
+                            WidgetSpan(
+                              child: Icon(
+                                Icons.calendar_today,
+                                size: 14,
+                                color: KeepAccountsTheme.grey,
+                              ),
+                            ),
+                            TextSpan(
+                                text: " 今天",
+                                style: TextStyle(color: KeepAccountsTheme.grey)),
+                          ])),
+                      SizedBox(width: 15), // 50宽度
+                      RichText(
+                          text: const TextSpan(children: [
+                            WidgetSpan(
+                              child: Icon(
+                                Icons.tag,
+                                size: 14,
+                                color: KeepAccountsTheme.grey,
+                              ),
+                            ),
+                            TextSpan(
+                                text: " 标签",
+                                style: TextStyle(color: KeepAccountsTheme.grey)),
+                          ]))
+                    ],
+                  ),
+                ),
+
+                const NumberKeyboardView(mainColor: KeepAccountsTheme.green)
+              ],
+            )
           ],
         ));
   }
