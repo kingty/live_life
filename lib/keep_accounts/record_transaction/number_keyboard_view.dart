@@ -96,10 +96,11 @@ class NumberKeyboardView extends StatelessWidget {
                       ]),
                 ]),
               ),
-              const SizedBox(width: 4),
+              const SizedBox(width: 3),
               Expanded(
                   child: Row(
                 children: const [
+                  SizedBox(width: 1),
                   NumberView(
                     height: 108,
                     sign: "保存",
@@ -116,8 +117,13 @@ class NumberKeyboardView extends StatelessWidget {
 class NumberView extends StatelessWidget {
   final String sign;
   final double height;
+  final Color color;
 
-  const NumberView({super.key, required this.sign, this.height = 50});
+  const NumberView(
+      {super.key,
+      required this.sign,
+      this.height = 50,
+      this.color = KeepAccountsTheme.grey});
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +147,11 @@ class NumberView extends StatelessWidget {
                         alignment: Alignment.center,
                         child: Text(
                           sign,
-                          style: KeepAccountsTheme.number,
+                          style: TextStyle(
+                            fontSize: 20,
+                            height: 0.9,
+                            color: color,
+                          ),
                         ))))));
   }
 }
