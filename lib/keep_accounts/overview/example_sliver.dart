@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:live_life/keep_accounts/keep_accounts_them.dart';
 
 import '../../common_view/list/src/sliver_expandable_list.dart';
+import '../ui_view/transaction_item_view.dart';
 import 'mock_data.dart';
 
 class ExampleSliver extends StatefulWidget {
@@ -15,19 +17,21 @@ class _ExampleSliverState extends State<ExampleSliver> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: KeepAccountsTheme.background,
         body: CustomScrollView(
           slivers: <Widget>[
             const SliverAppBar(
+              backgroundColor: KeepAccountsTheme.background,
               pinned: true,
               floating: true,
               expandedHeight: 200,
               flexibleSpace: FlexibleSpaceBar(
                 title: Text(
                   "Sliver Example",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.blue),
                 ),
               ),
-              iconTheme: IconThemeData(color: Colors.white),
+              iconTheme: IconThemeData(color: Colors.blue),
             ),
             SliverExpandableList(
               builder: SliverExpandableChildDelegate<String, ExampleSection>(
@@ -35,12 +39,7 @@ class _ExampleSliverState extends State<ExampleSliver> {
                 headerBuilder: _buildHeader,
                 itemBuilder: (context, sectionIndex, itemIndex, index) {
                   String item = sectionList[sectionIndex].items[itemIndex];
-                  return ListTile(
-                    leading: CircleAvatar(
-                      child: Text("a-$index"),
-                    ),
-                    title: Text("hehe-$item"),
-                  );
+                  return TransactionItemView();
                 },
               ),
             ),
@@ -54,13 +53,13 @@ class _ExampleSliverState extends State<ExampleSliver> {
     ExampleSection section = sectionList[sectionIndex];
     return InkWell(
         child: Container(
-            color: Colors.lightBlue,
+            color: KeepAccountsTheme.background,
             height: 48,
-            padding: EdgeInsets.only(left: 20),
+            padding: EdgeInsets.only(left: 24),
             alignment: Alignment.centerLeft,
             child: Text(
               section.header,
-              style: TextStyle(color: section.expanded ? Colors.white:  Colors.pink),
+              style: KeepAccountsTheme.caption,
             )),
         onTap: () {
           //toggle section expand state
