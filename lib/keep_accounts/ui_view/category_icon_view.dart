@@ -8,7 +8,7 @@ class CategoryIconView extends StatefulWidget {
   const CategoryIconView({
     Key? key,
     this.iconData = CustomIcons.food_knife_fork,
-    this.color = KeepAccountsTheme.purple,
+    this.color = Colors.grey,
     this.size = 20,
   }) : super(key: key);
 

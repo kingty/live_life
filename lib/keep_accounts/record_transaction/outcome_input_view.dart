@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:live_life/icons/custom_icons.dart';
 import 'package:live_life/keep_accounts/models/bank_data.dart';
+import 'package:live_life/keep_accounts/record_transaction/tag_icon_view.dart';
 import 'package:live_life/keep_accounts/ui_view/category_icon_view.dart';
 
 import '../control/category_manager.dart';
@@ -167,64 +168,38 @@ class _OutcomeInputViewState extends State<OutcomeInputView>
                         decoration: InputDecoration(
                             filled: true,
                             fillColor: KeepAccountsTheme.background,
-                            suffixIconColor: KeepAccountsTheme.pink,
+                            prefixIconColor: KeepAccountsTheme.pink,
                             // contentPadding: EdgeInsets.only(left: 24, top: 4, bottom: 4, right: 24),
                             border: InputBorder.none,
-                            suffixIcon: Icon(Icons.image),
+                            prefixIcon: Icon(Icons.note_add),
                             hintText: "请输入备注信息"),
                         cursorColor: KeepAccountsTheme.pink,
                       ),
                     )),
                 Container(
                   color: KeepAccountsTheme.background,
-                  padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                  padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10),
                   child: Row(
-                    children: [
-                      RichText(
-                          text: const TextSpan(children: [
-                        WidgetSpan(
-                          child: Icon(
-                            Icons.account_balance_wallet_sharp,
-                            size: 14,
-                            color: KeepAccountsTheme.grey,
-                          ),
-                        ),
-                        TextSpan(
-                            text: " 默认账本",
-                            style: TextStyle(color: KeepAccountsTheme.grey)),
-                      ])),
-                      SizedBox(width: 15), // 50宽度
-                      RichText(
-                          text: const TextSpan(children: [
-                        WidgetSpan(
-                          child: Icon(
-                            Icons.calendar_today,
-                            size: 14,
-                            color: KeepAccountsTheme.grey,
-                          ),
-                        ),
-                        TextSpan(
-                            text: " 今天",
-                            style: TextStyle(color: KeepAccountsTheme.grey)),
-                      ])),
-                      SizedBox(width: 15), // 50宽度
-                      RichText(
-                          text: const TextSpan(children: [
-                        WidgetSpan(
-                          child: Icon(
-                            Icons.tag,
-                            size: 14,
-                            color: KeepAccountsTheme.grey,
-                          ),
-                        ),
-                        TextSpan(
-                            text: " 标签",
-                            style: TextStyle(color: KeepAccountsTheme.grey)),
-                      ]))
+                    children: const [
+                      TagIconView(
+                        iconData: Icons.account_balance_wallet_sharp,
+                        text: '默认账本',
+                      ),
+
+                      SizedBox(width: 10), // 50宽度
+                      TagIconView(
+                        iconData: Icons.calendar_today,
+                        text: '今天',
+                      ),
+
+                      SizedBox(width: 10), // 50宽度
+                      TagIconView(
+                        iconData: Icons.tag,
+                        text: '标签',
+                      ),
                     ],
                   ),
                 ),
-
                 const NumberKeyboardView(mainColor: KeepAccountsTheme.pink)
               ],
             )
