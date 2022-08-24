@@ -18,6 +18,9 @@ def get_dominant_colors(infile):
        # 跳过纯黑色
        if a == 0:
            continue
+       if r == 180 and g == 195 and b == 240:
+           continue
+
 
        saturation = colorsys.rgb_to_hsv(r / 255.0, g / 255.0, b / 255.0)[1]
 
@@ -89,6 +92,7 @@ def rename(bank):
 
 def collect(path, name, banklist):
     color = get_dominant_colors(path)
+#     print(path)
 #     print(color)
     strs = name.split("_")
     key = strs[1].replace(".png", "")

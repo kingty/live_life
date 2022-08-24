@@ -30,8 +30,7 @@
 - 社交%users/groups%1005
     - 礼物%interface/gift%1005001
     - 人情%users/favorite-profile%1005002
-    - 外借%business_and_finance/statistic-down%1005003
-    - 其他%users/group-chat%1005004
+    - 其他%users/group-chat%1005003
 
 - 购物%ecommerce/shopping%1006
     - 美妆%fashion/lipstick%1006001
@@ -41,11 +40,12 @@
     - 其他%ecommerce/price-tag%1006005
 - 学习%furniture/library%1007
 - 娱乐%game/game-console%1008
-- 理财%business_and_finance/success-plan%1009
 - 医疗%medical/medical-supply%1010
 - 通讯%interface/calling%1011
 - 其他支出%business_and_finance/money%1012
-- 管理 %interface/settings-ui%1013
+- 理财%business_and_finance/success-plan%1013
+- 外借%business_and_finance/statistic-down%10014
+- 管理 %interface/settings-ui%10
 
 ----
 ## income
@@ -56,5 +56,6 @@
 - 红包%business_and_finance/invest%2004
 - 借入%business_and_finance/statistic-up%2005
 - 其他%business_and_finance/money%2006
+- 管理 %interface/settings-ui%10
 
 ## 自定义的类型以3001，4001开头

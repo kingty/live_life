@@ -35,6 +35,12 @@
             "icon": "business_and_finance_money", 
             "id": 2006, 
             "name": "其他"
+        }, 
+        {
+            "children": [], 
+            "icon": "interface_settings_ui", 
+            "id": 10, 
+            "name": "管理 "
         }
     ], 
     "outcome": [
@@ -194,13 +200,8 @@
                     "name": "人情"
                 }, 
                 {
-                    "icon": "business_and_finance_statistic_down", 
-                    "id": 1005003, 
-                    "name": "外借"
-                }, 
-                {
                     "icon": "users_group_chat", 
-                    "id": 1005004, 
+                    "id": 1005003, 
                     "name": "其他"
                 }
             ], 
@@ -254,12 +255,6 @@
         }, 
         {
             "children": [], 
-            "icon": "business_and_finance_success_plan", 
-            "id": 1009, 
-            "name": "理财"
-        }, 
-        {
-            "children": [], 
             "icon": "medical_medical_supply", 
             "id": 1010, 
             "name": "医疗"
@@ -278,8 +273,20 @@
         }, 
         {
             "children": [], 
-            "icon": "interface_settings_ui", 
+            "icon": "business_and_finance_success_plan", 
             "id": 1013, 
+            "name": "理财"
+        }, 
+        {
+            "children": [], 
+            "icon": "business_and_finance_statistic_down", 
+            "id": 10014, 
+            "name": "外借"
+        }, 
+        {
+            "children": [], 
+            "icon": "interface_settings_ui", 
+            "id": 10, 
             "name": "管理 "
         }
     ]

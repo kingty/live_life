@@ -110,10 +110,10 @@ class S {
     );
   }
 
-  /// `账户`
+  /// `资产`
   String get KEEP_ACCOUNTS_ACCOUNT {
     return Intl.message(
-      '账户',
+      '资产',
       name: 'KEEP_ACCOUNTS_ACCOUNT',
       desc: '',
       args: [],

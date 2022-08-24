@@ -46,8 +46,7 @@ class _TransferInputViewState extends State<TransferInputView>
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 8, top: 14, bottom: 8),
+                          padding: const EdgeInsets.all(10),
                           child: SizedBox(
                             width: 50,
                             height: 50,
@@ -116,8 +115,7 @@ class _TransferInputViewState extends State<TransferInputView>
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 8, top: 14, bottom: 8),
+                          padding: const EdgeInsets.all(10),
                           child: SizedBox(
                             width: 50,
                             height: 50,

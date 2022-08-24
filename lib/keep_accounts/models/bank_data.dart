@@ -18,7 +18,7 @@ class BankData {
     return name.replaceAll('中国', '');
   }
 
-   ///GenerateCodeStart
+     ///GenerateCodeStart
     static List<Map<String, BankData>> banks = <Map<String, BankData>>[
      gydxsyyh, // 国有大型商业银行
      gfzsyyh, // 股份制商业银行
@@ -29,7 +29,7 @@ class BankData {
                              key: 'MTBANK',
                              name: '浙江民泰商业银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/MTBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(237, 28, 36, 1.0)
                             ), 
   "RBOZ": BankData(
                              key: 'RBOZ',
@@ -47,7 +47,7 @@ class BankData {
                              key: 'QLBANK',
                              name: '齐鲁银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/QLBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(255, 173, 25, 1.0)
                             ), 
   "GZCB": BankData(
                              key: 'GZCB',
@@ -59,7 +59,7 @@ class BankData {
                              key: 'SXCB',
                              name: '绍兴银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/SXCB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(10, 90, 179, 1.0)
                             ), 
   "BOCY": BankData(
                              key: 'BOCY',
@@ -107,13 +107,13 @@ class BankData {
                              key: 'BHB',
                              name: '河北银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/BHB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(21, 69, 128, 1.0)
                             ), 
   "JSB": BankData(
                              key: 'JSB',
                              name: '晋商银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/JSB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(231, 62, 35, 1.0)
                             ), 
   "LJBANK": BankData(
                              key: 'LJBANK',
@@ -125,7 +125,7 @@ class BankData {
                              key: 'JXBANK',
                              name: '嘉兴银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/JXBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 149, 218, 1.0)
                             ), 
   "XJBANK": BankData(
                              key: 'XJBANK',
@@ -167,7 +167,7 @@ class BankData {
                              key: 'ZGBANK',
                              name: '自贡银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/ZGBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(237, 109, 0, 1.0)
                             ), 
   "CZBANK": BankData(
                              key: 'CZBANK',
@@ -179,19 +179,19 @@ class BankData {
                              key: 'YQCCB',
                              name: '阳泉市商业银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/YQCCB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(30, 66, 119, 1.0)
                             ), 
   "YASSYBANK": BankData(
                              key: 'YASSYBANK',
                              name: '雅安市商业银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/YASSYBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 144, 53, 1.0)
                             ), 
   "SRBANK": BankData(
                              key: 'SRBANK',
                              name: '上饶银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/SRBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(246, 171, 0, 1.0)
                             ), 
   "XJHHBANK": BankData(
                              key: 'XJHHBANK',
@@ -203,7 +203,7 @@ class BankData {
                              key: 'MSBANK',
                              name: '蒙商银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/MSBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(181, 194, 242, 1.0)
                             ), 
   "HRXJBANK": BankData(
                              key: 'HRXJBANK',
@@ -215,25 +215,25 @@ class BankData {
                              key: 'LSBANK',
                              name: '莱商银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/LSBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(235, 97, 0, 1.0)
                             ), 
   "NYBANK": BankData(
                              key: 'NYBANK',
                              name: '广东南粤银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/NYBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(216, 13, 25, 1.0)
                             ), 
   "JHCCB": BankData(
                              key: 'JHCCB',
                              name: '金华银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/JHCCB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(240, 131, 0, 1.0)
                             ), 
   "JZZLBANK": BankData(
                              key: 'JZZLBANK',
                              name: '焦作中旅银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/JZZLBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(211, 10, 2, 1.0)
                             ), 
   "YBCCB": BankData(
                              key: 'YBCCB',
@@ -257,7 +257,7 @@ class BankData {
                              key: 'JSBANK',
                              name: '江苏银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/JSBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(2, 104, 184, 1.0)
                             ), 
   "LSBC": BankData(
                              key: 'LSBC',
@@ -269,13 +269,13 @@ class BankData {
                              key: 'XCBANK',
                              name: '西藏银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/XCBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(180, 194, 238, 1.0)
                             ), 
   "CCQTGB": BankData(
                              key: 'CCQTGB',
                              name: '重庆三峡银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/CCQTGB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 99, 158, 1.0)
                             ), 
   "HRBCB": BankData(
                              key: 'HRBCB',
@@ -287,7 +287,7 @@ class BankData {
                              key: 'BOYK',
                              name: '营口银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/BOYK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 72, 152, 1.0)
                             ), 
   "MYSYBANK": BankData(
                              key: 'MYSYBANK',
@@ -305,13 +305,13 @@ class BankData {
                              key: 'GSBANK',
                              name: '甘肃银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/GSBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(202, 112, 56, 1.0)
                             ), 
   "JNBANK": BankData(
                              key: 'JNBANK',
                              name: '济宁银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/JNBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(248, 167, 0, 1.0)
                             ), 
   "QDCCB": BankData(
                              key: 'QDCCB',
@@ -347,7 +347,7 @@ class BankData {
                              key: 'JXBANK',
                              name: '江西银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/JXBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 151, 148, 1.0)
                             ), 
   "WZBANK": BankData(
                              key: 'WZBANK',
@@ -383,7 +383,7 @@ class BankData {
                              key: 'SNBANK',
                              name: '遂宁银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/SNBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(10, 111, 172, 1.0)
                             ), 
   "BOSC": BankData(
                              key: 'BOSC',
@@ -395,13 +395,13 @@ class BankData {
                              key: 'TLCB',
                              name: '浙江泰隆商业银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/TLCB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(244, 93, 61, 1.0)
                             ), 
   "HSBANK": BankData(
                              key: 'HSBANK',
                              name: '衡水银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/HSBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(8, 71, 147, 1.0)
                             ), 
   "XMBANK": BankData(
                              key: 'XMBANK',
@@ -449,7 +449,7 @@ class BankData {
                              key: 'XTB',
                              name: '邢台银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/XTB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 57, 143, 1.0)
                             ), 
   "WFCCB": BankData(
                              key: 'WFCCB',
@@ -461,7 +461,7 @@ class BankData {
                              key: 'RZB',
                              name: '日照银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/RZB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(233, 29, 16, 1.0)
                             ), 
   "WHBANK": BankData(
                              key: 'WHBANK',
@@ -473,7 +473,7 @@ class BankData {
                              key: 'ZZBANK',
                              name: '郑州银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/ZZBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(206, 0, 0, 1.0)
                             ), 
   "JJCCB": BankData(
                              key: 'JJCCB',
@@ -497,7 +497,7 @@ class BankData {
                              key: 'BOTS',
                              name: '唐山银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/BOTS.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(241, 101, 10, 1.0)
                             ), 
   "GZBANK": BankData(
                              key: 'GZBANK',
@@ -509,7 +509,7 @@ class BankData {
                              key: 'GHB',
                              name: '广东华兴银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/GHB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(178, 30, 39, 1.0)
                             ), 
   "QJSSYBANK": BankData(
                              key: 'QJSSYBANK',
@@ -527,13 +527,13 @@ class BankData {
                              key: 'SICHUAN',
                              name: '四川天府银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/SICHUAN.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 0, 0, 1.0)
                             ), 
   "SZSBK": BankData(
                              key: 'SZSBK',
                              name: '石嘴山银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/SZSBK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(215, 170, 37, 1.0)
                             ), 
   "HKB": BankData(
                              key: 'HKB',
@@ -545,7 +545,7 @@ class BankData {
                              key: 'LZCCB',
                              name: '柳州银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/LZCCB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(227, 0, 22, 1.0)
                             ), 
   "NJCB": BankData(
                              key: 'NJCB',
@@ -563,19 +563,19 @@ class BankData {
                              key: 'BSCB',
                              name: '长沙银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/BSCB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(216, 12, 24, 1.0)
                             ), 
   "SMGJBANK": BankData(
                              key: 'SMGJBANK',
                              name: '厦门国际银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/SMGJBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 98, 171, 1.0)
                             ), 
   "SCB": BankData(
                              key: 'SCB',
                              name: '四川银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/SCB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(47, 188, 230, 1.0)
                             ), 
   "WHCCB": BankData(
                              key: 'WHCCB',
@@ -605,7 +605,7 @@ class BankData {
                              key: 'HBC',
                              name: '湖北银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/HBC.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(231, 37, 57, 1.0)
                             ), 
   "TJBANK": BankData(
                              key: 'TJBANK',
@@ -617,13 +617,13 @@ class BankData {
                              key: 'DTBANK',
                              name: '大同银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/DTBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(219, 43, 45, 1.0)
                             ), 
   "CDCB": BankData(
                              key: 'CDCB',
                              name: '成都银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/CDCB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(229, 0, 18, 1.0)
                             ), 
   "UCCB": BankData(
                              key: 'UCCB',
@@ -641,7 +641,7 @@ class BankData {
                              key: 'DZBANK',
                              name: '德州银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/DZBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(229, 1, 19, 1.0)
                             ), 
   "BODD": BankData(
                              key: 'BODD',
@@ -659,13 +659,13 @@ class BankData {
                              key: 'TZBANK',
                              name: '台州银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/TZBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(74, 189, 210, 1.0)
                             ), 
   "QHBANK": BankData(
                              key: 'QHBANK',
                              name: '青海银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/QHBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(114, 32, 88, 1.0)
                             ), 
   "BGB": BankData(
                              key: 'BGB',
@@ -695,19 +695,19 @@ class BankData {
                              key: 'ZYBANK',
                              name: '中原银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/ZYBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 64, 152, 1.0)
                             ), 
   "NBTSBANK": BankData(
                              key: 'NBTSBANK',
                              name: '宁波通商银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/NBTSBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(14, 112, 187, 1.0)
                             ), 
   "HDBANK": BankData(
                              key: 'HDBANK',
                              name: '邯郸银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/HDBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(2, 118, 195, 1.0)
                             ), 
   "DCCB": BankData(
                              key: 'DCCB',
@@ -725,7 +725,7 @@ class BankData {
                              key: 'GLBANK',
                              name: '桂林银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/GLBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(25, 132, 191, 1.0)
                             ), 
   "BOB": BankData(
                              key: 'BOB',
@@ -749,7 +749,7 @@ class BankData {
                              key: 'NBCB',
                              name: '宁波银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/NBCB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(227, 119, 25, 1.0)
                             ), 
   "DYCCB": BankData(
                              key: 'DYCCB',
@@ -761,7 +761,7 @@ class BankData {
                              key: 'CQBANK',
                              name: '重庆银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/CQBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 159, 64, 1.0)
                             ), 
   "BOQZ": BankData(
                              key: 'BOQZ',
@@ -779,7 +779,7 @@ class BankData {
                              key: 'HSBANK',
                              name: '徽商银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/HSBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(200, 23, 30, 1.0)
                             ), 
   "ORDOSB": BankData(
                              key: 'ORDOSB',
@@ -791,13 +791,13 @@ class BankData {
                              key: 'HMSSYBANK',
                              name: '哈密市商业银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/HMSSYBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(174, 31, 51, 1.0)
                             ), 
   "HZCB": BankData(
                              key: 'HZCB',
                              name: '杭州银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/HZCB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 151, 223, 1.0)
                             ), 
   "LYBANK": BankData(
                              key: 'LYBANK',
@@ -809,7 +809,7 @@ class BankData {
                              key: 'HZBANK',
                              name: '湖州银行',
                              logo: 'assets/keep_accounts/bank/cssyyh/HZBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(254, 3, 22, 1.0)
                             ), 
   "FSCB": BankData(
                              key: 'FSCB',
@@ -821,13 +821,13 @@ class BankData {
                              key: 'CMBC',
                              name: '中国民生银行',
                              logo: 'assets/keep_accounts/bank/gfzsyyh/CMBC.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 150, 90, 1.0)
                             ), 
   "SPABANK": BankData(
                              key: 'SPABANK',
                              name: '平安银行',
                              logo: 'assets/keep_accounts/bank/gfzsyyh/SPABANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(236, 104, 27, 1.0)
                             ), 
   "CMB": BankData(
                              key: 'CMB',
@@ -839,19 +839,19 @@ class BankData {
                              key: 'CIB',
                              name: '兴业银行',
                              logo: 'assets/keep_accounts/bank/gfzsyyh/CIB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 71, 133, 1.0)
                             ), 
   "GDB": BankData(
                              key: 'GDB',
                              name: '广发银行',
                              logo: 'assets/keep_accounts/bank/gfzsyyh/GDB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(189, 0, 22, 1.0)
                             ), 
   "EGBANK": BankData(
                              key: 'EGBANK',
                              name: '恒丰银行',
                              logo: 'assets/keep_accounts/bank/gfzsyyh/EGBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 61, 117, 1.0)
                             ), 
   "ZSBANK": BankData(
                              key: 'ZSBANK',
@@ -863,7 +863,7 @@ class BankData {
                              key: 'BOHAIB',
                              name: '渤海银行',
                              logo: 'assets/keep_accounts/bank/gfzsyyh/BOHAIB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 66, 141, 1.0)
                             ), 
   "SPDB": BankData(
                              key: 'SPDB',
@@ -881,7 +881,7 @@ class BankData {
                              key: 'CEB',
                              name: '中国光大银行',
                              logo: 'assets/keep_accounts/bank/gfzsyyh/CEB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(107, 22, 133, 1.0)
                             ), 
   "CITIC": BankData(
                              key: 'CITIC',
@@ -947,7 +947,7 @@ class BankData {
                              key: 'SMBC',
                              name: '三井住友银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/SMBC.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(179, 208, 86, 1.0)
                             ), 
   "DYZBANK": BankData(
                              key: 'DYZBANK',
@@ -959,25 +959,25 @@ class BankData {
                              key: 'HGGMBANK',
                              name: '韩国国民银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/HGGMBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(255, 191, 76, 1.0)
                             ), 
   "RSBANK": BankData(
                              key: 'RSBANK',
                              name: '瑞士银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/RSBANK.png',
-                             mainColor: const Color.fromRGBO(171, 184, 226, 1.0)
+                             mainColor: const Color.fromRGBO(180, 194, 238, 1.0)
                             ), 
   "PGBANK": BankData(
                              key: 'PGBANK',
                              name: '盘谷银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/PGBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(3, 0, 152, 1.0)
                             ), 
   "KBANK": BankData(
                              key: 'KBANK',
                              name: '开泰银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/KBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(170, 212, 255, 1.0)
                             ), 
   "HSBANK": BankData(
                              key: 'HSBANK',
@@ -995,25 +995,25 @@ class BankData {
                              key: 'FGBLBANK',
                              name: '法国巴黎银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/FGBLBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 155, 145, 1.0)
                             ), 
   "HKBEA": BankData(
                              key: 'HKBEA',
                              name: '东亚银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/HKBEA.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(236, 27, 46, 1.0)
                             ), 
   "ANZ": BankData(
                              key: 'ANZ',
                              name: '澳大利亚和新西兰银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/ANZ.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(170, 212, 255, 1.0)
                             ), 
   "SCB": BankData(
                              key: 'SCB',
                              name: '渣打银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/SCB.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(4, 115, 234, 1.0)
                             ), 
   "TWYSBANK": BankData(
                              key: 'TWYSBANK',
@@ -1025,7 +1025,7 @@ class BankData {
                              key: 'ZXBANK',
                              name: '正信银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/ZXBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(161, 16, 23, 1.0)
                             ), 
   "ZXYXGJBANK": BankData(
                              key: 'ZXYXGJBANK',
@@ -1037,25 +1037,25 @@ class BankData {
                              key: 'FGDFHLBANK',
                              name: '法国东方汇理银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/FGDFHLBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(67, 73, 77, 1.0)
                             ), 
   "PFGGBANK": BankData(
                              key: 'PFGGBANK',
                              name: '浦发硅谷银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/PFGGBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(228, 32, 85, 1.0)
                             ), 
   "HANABANK": BankData(
                              key: 'HANABANK',
                              name: '韩亚银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/HANABANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(0, 131, 117, 1.0)
                             ), 
   "MGSDLGJBANK": BankData(
                              key: 'MGSDLGJBANK',
                              name: '摩根士丹利国际银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/MGSDLGJBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(35, 25, 22, 1.0)
                             ), 
   "HGYLBANK": BankData(
                              key: 'HGYLBANK',
@@ -1091,7 +1091,7 @@ class BankData {
                              key: 'XLSYBANK',
                              name: '新联商业银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/XLSYBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(170, 212, 255, 1.0)
                             ), 
   "YFBANK": BankData(
                              key: 'YFBANK',
@@ -1103,13 +1103,13 @@ class BankData {
                              key: 'GTSHBANK',
                              name: '国泰世华银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/GTSHBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(5, 143, 68, 1.0)
                             ), 
   "HQBANK": BankData(
                              key: 'HQBANK',
                              name: '花旗银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/HQBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(2, 46, 114, 1.0)
                             ), 
   "HMBANK": BankData(
                              key: 'HMBANK',
@@ -1145,7 +1145,7 @@ class BankData {
                              key: 'RSSYBANK',
                              name: '瑞穗实业银行',
                              logo: 'assets/keep_accounts/bank/wzfryh/RSSYBANK.png',
-                             mainColor: const Color.fromRGBO(161, 174, 215, 1.0)
+                             mainColor: const Color.fromRGBO(39, 25, 117, 1.0)
                             ), 
   "DBSCN": BankData(
                              key: 'DBSCN',
