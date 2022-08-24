@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:live_life/generated/l10n.dart';
 import 'package:live_life/keep_accounts/ui_view/transaction_item_view.dart';
 import '../keep_accounts_them.dart';
+import 'example_sliver.dart';
 import 'month_overview_view.dart';
 import 'title_view.dart';
 import 'accounts_list_view.dart';
@@ -103,6 +104,14 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
             curve: const Interval((1 / count) * 4, 1.0,
                 curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
+        onTap: () {
+          Navigator.push<dynamic>(
+            context,
+            MaterialPageRoute<dynamic>(
+              builder: (BuildContext context) => ExampleSliver(),
+            ),
+          );
+        },
       ),
     );
 
