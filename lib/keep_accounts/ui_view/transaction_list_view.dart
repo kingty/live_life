@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/icons/custom_icons.dart';
 import 'package:live_life/keep_accounts/ui_view/transaction_item_view.dart';
+import 'package:live_life/keep_accounts/ui_view/transaction_time_view.dart';
 
 import '../../common_view/list/src/sliver_expandable_list.dart';
 import '../keep_accounts_them.dart';
@@ -26,9 +27,16 @@ class _TransactionListViewState extends State<TransactionListView>
         headerBuilder: _buildHeader,
         itemBuilder: (context, sectionIndex, itemIndex, index) {
           var item = widget.sectionList[sectionIndex].items[itemIndex];
-
-          return TransactionItemView(
-              data: item.transactionData, hasTopTime: item.hasTimeHeader);
+          if (item.hasTimeHeader) {
+            return Column(children: [
+              TransactionItemView(
+                  data: item.transactionData, hasTopTime: item.hasTimeHeader),
+              TransactionTimeView(dayOverViewData: item.dayOverViewData!)
+            ]);
+          } else {
+            return TransactionItemView(
+                data: item.transactionData, hasTopTime: item.hasTimeHeader);
+          }
         },
       ),
     );
@@ -110,11 +118,11 @@ class MonthSection implements ExpandableListSection<ListItem> {
       //每天第一个账单上添加时间
       var item = ListItem()..transactionData = transaction;
       if (transaction.getDay() != preDay) {
+        preDay = transaction.getDay();
         item.hasTimeHeader = true;
         preDayOverViewData = DayOverViewData(transaction.recordTime);
         item.dayOverViewData = preDayOverViewData;
       }
-      section!.items.add(item);
       if (preDayOverViewData != null) {
         if (transaction.categoryId.toString().startsWith("1")) {
           // 消费
@@ -125,6 +133,7 @@ class MonthSection implements ExpandableListSection<ListItem> {
               preDayOverViewData.countIncome + transaction.amount;
         }
       }
+      section!.items.add(item);
     }
 
     return sections;
