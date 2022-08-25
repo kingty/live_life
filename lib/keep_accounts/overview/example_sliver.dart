@@ -3,7 +3,7 @@ import 'package:live_life/keep_accounts/keep_accounts_them.dart';
 
 import '../../common_view/list/src/sliver_expandable_list.dart';
 import '../ui_view/transaction_item_view.dart';
-import 'mock_data.dart';
+import '../models/mock_data.dart';
 
 class ExampleSliver extends StatefulWidget {
   @override
@@ -39,7 +39,12 @@ class _ExampleSliverState extends State<ExampleSliver> {
                 headerBuilder: _buildHeader,
                 itemBuilder: (context, sectionIndex, itemIndex, index) {
                   String item = sectionList[sectionIndex].items[itemIndex];
-                  return TransactionItemView();
+                  return ListTile(
+                    leading: CircleAvatar(
+                      child: Text("a-$index"),
+                    ),
+                    title: Text("hehe-$item"),
+                  );
                 },
               ),
             ),

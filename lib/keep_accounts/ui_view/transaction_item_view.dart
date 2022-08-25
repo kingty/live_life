@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/icons/custom_icons.dart';
 
+import '../control/category_manager.dart';
 import '../keep_accounts_them.dart';
+import '../models/transaction_data.dart';
 import 'category_icon_view.dart';
 
 class TransactionItemView extends StatefulWidget {
-  const TransactionItemView({Key? key}) : super(key: key);
+  TransactionItemView({Key? key, required this.data, this.hasTopTime = false})
+      : super(key: key);
+  final TransactionData data;
+  bool hasTopTime = false;
 
   @override
   _TransactionItemViewState createState() => _TransactionItemViewState();
@@ -15,13 +20,16 @@ class _TransactionItemViewState extends State<TransactionItemView>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    var category = CategoryManager.instance.getById(widget.data.categoryId);
     return Container(
       // color: KeepAccountsTheme.deactivatedText,
       child: Padding(
         padding: const EdgeInsets.only(left: 24, right: 24),
         child: Row(
           children: <Widget>[
-            const CategoryIconView(),
+            CategoryIconView(
+                iconData:
+                    CustomIcons.customIcons[category?.icon] ?? Icons.image),
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -32,7 +40,7 @@ class _TransactionItemViewState extends State<TransactionItemView>
                   Padding(
                     padding: const EdgeInsets.only(left: 4, bottom: 4),
                     child: Text(
-                      '餐饮',
+                      category?.name ?? "",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontFamily: KeepAccountsTheme.fontName,
@@ -79,12 +87,12 @@ class _TransactionItemViewState extends State<TransactionItemView>
                 ],
               ),
             )),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 4, bottom: 3),
               child: Text(
-                '¥ 123.00',
+                "¥ ${widget.data.amount.toString()}",
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: KeepAccountsTheme.fontName,
                   fontWeight: FontWeight.w500,
                   fontSize: 16,

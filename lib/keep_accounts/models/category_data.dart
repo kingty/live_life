@@ -1,8 +1,3 @@
-import 'dart:convert';
-import 'dart:ffi';
-
-import 'package:flutter/cupertino.dart';
-import 'package:live_life/icons/custom_icons.dart';
 
 class CategoryData {
   CategoryData(

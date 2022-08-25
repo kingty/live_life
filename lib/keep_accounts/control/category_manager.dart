@@ -11,10 +11,19 @@ class CategoryManager {
     return instance;
   }
 
-  static  CategoryManager instance = CategoryManager._();
+  static CategoryManager instance = CategoryManager._();
 
   static List<CategoryData> incomeCategories = List.empty();
   static List<CategoryData> outcomeCategories = List.empty();
+  Map<int, CategoryData> categoriesMap = <int, CategoryData>{};
+
+  void init() {
+    fetchCategories().ignore();
+  }
+
+  CategoryData? getById(int id) {
+    return categoriesMap[id];
+  }
 
   Future<bool> fetchCategories() async {
     String jsonStr =
@@ -28,6 +37,26 @@ class CategoryManager {
     outcomeCategories = List<CategoryData>.from(
         outcomeJson.map((model) => CategoryData.fromJson(model)));
 
+    CategoryManager.incomeCategories
+        .where((element) => element.id != 10)
+        .forEach((element) {
+      categoriesMap[element.id] = element;
+      if (element.children.isNotEmpty) {
+        for (var child in element.children) {
+          categoriesMap[child.id] = child;
+        }
+      }
+    });
+    CategoryManager.outcomeCategories
+        .where((element) => element.id != 10)
+        .forEach((element) {
+      categoriesMap[element.id] = element;
+      if (element.children.isNotEmpty) {
+        for (var child in element.children) {
+          categoriesMap[child.id] = child;
+        }
+      }
+    });
     return true;
   }
 }

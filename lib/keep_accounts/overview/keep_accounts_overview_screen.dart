@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/generated/l10n.dart';
-import 'package:live_life/keep_accounts/ui_view/transaction_item_view.dart';
+import 'package:live_life/keep_accounts/models/mock_data.dart';
+import 'package:live_life/keep_accounts/models/transaction_data.dart';
 import '../keep_accounts_them.dart';
+import '../ui_view/transaction_list_view.dart';
 import 'example_sliver.dart';
 import 'month_overview_view.dart';
 import 'title_view.dart';
@@ -115,15 +117,14 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
       ),
     );
 
-    for (int i = 0; i< 9; i++ ) {
-      listViews.add(const TransactionItemView());
-    }
-
+    // for (int i = 0; i< 9; i++ ) {
+    //   listViews.add(const TransactionItemView());
+    // }
   }
 
-  Future<bool> getData() async {
-    await Future<dynamic>.delayed(const Duration(milliseconds: 50));
-    return true;
+  Future<List<TransactionData>> getData() async {
+    var section = await MockData.getTransactions();
+    return section;
   }
 
   @override
@@ -146,26 +147,34 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
   }
 
   Widget getMainListViewUI() {
-    return FutureBuilder<bool>(
+    return FutureBuilder<List<TransactionData>>(
       future: getData(),
-      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+      builder: (BuildContext context,
+          AsyncSnapshot<List<TransactionData>> snapshot) {
         if (!snapshot.hasData) {
           return const SizedBox();
         } else {
-          return ListView.builder(
+          return CustomScrollView(
             controller: scrollController,
-            padding: EdgeInsets.only(
-              top: AppBar().preferredSize.height +
-                  MediaQuery.of(context).padding.top +
-                  24,
-              bottom: 62 + MediaQuery.of(context).padding.bottom,
-            ),
-            itemCount: listViews.length,
-            scrollDirection: Axis.vertical,
-            itemBuilder: (BuildContext context, int index) {
-              widget.animationController?.forward();
-              return listViews[index];
-            },
+            slivers: <Widget>[
+              SliverPadding(
+                  padding: EdgeInsets.only(
+                      top: AppBar().preferredSize.height +
+                          MediaQuery.of(context).padding.top +
+                          24),
+                  sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                    widget.animationController?.forward();
+                    return listViews[index];
+                  }, childCount: listViews.length))),
+              SliverPadding(
+                  padding: EdgeInsets.only(
+                    bottom: 62 + MediaQuery.of(context).padding.bottom,
+                  ),
+                  sliver: TransactionListView(
+                      sectionList:
+                          MonthSection.getMonthSections(snapshot.requireData)))
+            ],
           );
         }
       },
