@@ -27,7 +27,7 @@ class TransactionData {
     return recordTime.day;
   }
 
-  bool isOutcome() {
+  bool isExpense() {
     return categoryId.toString().startsWith("1");
   }
 }
@@ -35,7 +35,7 @@ class TransactionData {
 class DayOverViewData {
   final DateTime firstTransactionDate;
   double countIncome = 0;
-  double countOutcome = 0;
+  double countExpense = 0;
 
   DayOverViewData(this.firstTransactionDate);
 

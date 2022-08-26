@@ -9,12 +9,12 @@ import '../control/category_manager.dart';
 import '../keep_accounts_them.dart';
 import 'number_keyboard_view.dart';
 
-class OutcomeInputView extends StatefulWidget {
+class ExpenseInputView extends StatefulWidget {
   @override
-  _OutcomeInputViewState createState() => _OutcomeInputViewState();
+  _ExpenseInputViewState createState() => _ExpenseInputViewState();
 }
 
-class _OutcomeInputViewState extends State<OutcomeInputView>
+class _ExpenseInputViewState extends State<ExpenseInputView>
     with TickerProviderStateMixin {
   Future<bool> getData() async {
     return CategoryManager.instance.fetchCategories();
@@ -74,14 +74,14 @@ class _OutcomeInputViewState extends State<OutcomeInputView>
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   suffixText: " ¥",
-                                  suffixStyle: KeepAccountsTheme.money_outcome,
-                                  hintStyle: KeepAccountsTheme.money_outcome,
+                                  suffixStyle: KeepAccountsTheme.money_expense,
+                                  hintStyle: KeepAccountsTheme.money_expense,
                                   hintText: "0.00"),
                               autofocus: true,
                               textAlign: TextAlign.right,
                               cursorColor: KeepAccountsTheme.purple,
                               cursorWidth: 3,
-                              style: KeepAccountsTheme.money_outcome,
+                              style: KeepAccountsTheme.money_expense,
                             ),
                           ),
                         )
@@ -102,7 +102,7 @@ class _OutcomeInputViewState extends State<OutcomeInputView>
                   } else {
                     List<Widget> icons = <Widget>[];
                     int i = 0;
-                    for (var element in CategoryManager.outcomeCategories) {
+                    for (var element in CategoryManager.expenseCategories) {
                       i++;
                       if (i == 1) {
                         var c = Column(

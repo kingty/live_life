@@ -21,7 +21,7 @@ class _TransactionItemViewState extends State<TransactionItemView>
   @override
   Widget build(BuildContext context) {
     var category = CategoryManager.instance.getById(widget.data.categoryId);
-    var color = widget.data.isOutcome()
+    var color = widget.data.isExpense()
         ? KeepAccountsTheme.pink
         : KeepAccountsTheme.green;
     return Container(
@@ -94,7 +94,7 @@ class _TransactionItemViewState extends State<TransactionItemView>
             Padding(
               padding: EdgeInsets.only(left: 4, bottom: 3),
               child: Text(
-                "¥ ${widget.data.isOutcome() ? "-" : "+"}${widget.data.amount.toString()}",
+                "¥ ${widget.data.isExpense() ? "-" : "+"}${widget.data.amount.toString()}",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: KeepAccountsTheme.fontName,

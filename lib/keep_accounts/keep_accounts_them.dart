@@ -91,7 +91,7 @@ class KeepAccountsTheme {
     letterSpacing: 0.2,
     color: lightText, // was lightText
   );
-  static const TextStyle money_outcome = TextStyle(
+  static const TextStyle money_expense = TextStyle(
     color: pink,
     letterSpacing: 0,
     fontSize: 30,

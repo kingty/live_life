@@ -31,7 +31,7 @@ class _TransactionTimeViewState extends State<TransactionTimeView>
             Text("收 ¥ ${widget.dayOverViewData.countIncome}",
                 style: KeepAccountsTheme.caption),
             const SizedBox(width: 10),
-            Text("支 ¥ ${widget.dayOverViewData.countOutcome}",
+            Text("支 ¥ ${widget.dayOverViewData.countExpense}",
                 style: KeepAccountsTheme.caption),
           ],
         ));

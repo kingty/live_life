@@ -45,7 +45,7 @@ class MockData {
         });
       }
     });
-    CategoryManager.outcomeCategories
+    CategoryManager.expenseCategories
         .where((element) => element.id != 10)
         .forEach((element) {
       all.add(element);

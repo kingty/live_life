@@ -7,7 +7,6 @@ import '../../common_view/list/src/sliver_expandable_list.dart';
 import '../keep_accounts_them.dart';
 import '../models/transaction_data.dart';
 import 'category_icon_view.dart';
-import 'package:decimal/decimal.dart';
 
 class TransactionListView extends StatefulWidget {
   const TransactionListView({Key? key, required this.sectionList})
@@ -137,10 +136,10 @@ class MonthSection implements ExpandableListSection<ListItem> {
         item.dayOverViewData = preDayOverViewData;
       }
       if (preDayOverViewData != null) {
-        if (transaction.isOutcome()) {
+        if (transaction.isExpense()) {
           // 消费
-          preDayOverViewData.countOutcome = double.parse(
-              (preDayOverViewData.countOutcome + transaction.amount)
+          preDayOverViewData.countExpense = double.parse(
+              (preDayOverViewData.countExpense + transaction.amount)
                   .toStringAsFixed(2));
         } else {
           preDayOverViewData.countIncome = double.parse(

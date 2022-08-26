@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/keep_accounts_them.dart';
-import 'package:live_life/keep_accounts/record_transaction/outcome_input_view.dart';
+import 'package:live_life/keep_accounts/record_transaction/expense_input_view.dart';
 import 'package:live_life/keep_accounts/record_transaction/transfer_input_view.dart';
 
 import '../../common_view/tabbar/custom_tab_indicator.dart';
@@ -75,7 +75,7 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
 
   Widget getTabBarPages() {
     return TabBarView(controller: tabController, children: <Widget>[
-      OutcomeInputView(),
+      ExpenseInputView(),
       IncomeInputView(),
       TransferInputView()
     ]);

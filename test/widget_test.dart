@@ -23,14 +23,14 @@ void main() {
         await rootBundle.loadString('assets/keep_accounts/category.json');
     Map<String, dynamic> userMap = json.decode(jsonStr);
     var incomeJson = userMap['income'];
-    var outcomeJson = userMap['outcome'];
+    var expenseJson = userMap['expense'];
 
     List<CategoryData> income = List<CategoryData>.from(
         incomeJson.map((model) => CategoryData.fromJson(model)));
-    List<CategoryData> outcome = List<CategoryData>.from(
-        outcomeJson.map((model) => CategoryData.fromJson(model)));
+    List<CategoryData> expense = List<CategoryData>.from(
+        expenseJson.map((model) => CategoryData.fromJson(model)));
 
-    outcome.forEach((element) {
+    expense.forEach((element) {
       print(element.name);
       print(element.children.length);
       if (element.children.isNotEmpty) {

@@ -1,4 +1,4 @@
- ## outcome
+ ## expense
 - 餐饮%food/knife-fork%1001
     - 家庭用餐%kitchen/grill%1001001
     - 外出用餐%food/burger%1001002

@@ -14,7 +14,7 @@ class CategoryManager {
   static CategoryManager instance = CategoryManager._();
 
   static List<CategoryData> incomeCategories = List.empty();
-  static List<CategoryData> outcomeCategories = List.empty();
+  static List<CategoryData> expenseCategories = List.empty();
   Map<int, CategoryData> categoriesMap = <int, CategoryData>{};
 
   void init() {
@@ -30,12 +30,12 @@ class CategoryManager {
         await rootBundle.loadString('assets/keep_accounts/category.json');
     Map<String, dynamic> userMap = json.decode(jsonStr);
     var incomeJson = userMap['income'];
-    var outcomeJson = userMap['outcome'];
+    var expenseJson = userMap['expense'];
 
     incomeCategories = List<CategoryData>.from(
         incomeJson.map((model) => CategoryData.fromJson(model)));
-    outcomeCategories = List<CategoryData>.from(
-        outcomeJson.map((model) => CategoryData.fromJson(model)));
+    expenseCategories = List<CategoryData>.from(
+        expenseJson.map((model) => CategoryData.fromJson(model)));
 
     CategoryManager.incomeCategories
         .where((element) => element.id != 10)
@@ -47,7 +47,7 @@ class CategoryManager {
         }
       }
     });
-    CategoryManager.outcomeCategories
+    CategoryManager.expenseCategories
         .where((element) => element.id != 10)
         .forEach((element) {
       categoriesMap[element.id] = element;

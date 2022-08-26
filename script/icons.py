@@ -43,10 +43,10 @@ def getDetails(ca):
     return obj
 
 def dealCategory():
-    outcome = []
+    expense = []
     income = []
     in_cas = []
-    cas = outcome
+    cas = expense
 
     with open('category.md', encoding="utf-8") as md:
         lines = md.readlines()
@@ -64,7 +64,7 @@ def dealCategory():
                 else:
                     in_cas.append(getDetails(line.strip()))
 
-    return {'income': income, 'outcome': outcome}
+    return {'income': income, 'expense': expense}
 
 def generateCategoryJson():
     cas = dealCategory()
