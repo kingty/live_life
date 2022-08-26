@@ -7,6 +7,7 @@ import '../../common_view/list/src/sliver_expandable_list.dart';
 import '../keep_accounts_them.dart';
 import '../models/transaction_data.dart';
 import 'category_icon_view.dart';
+import 'package:decimal/decimal.dart';
 
 class TransactionListView extends StatefulWidget {
   const TransactionListView({Key? key, required this.sectionList})
@@ -29,9 +30,9 @@ class _TransactionListViewState extends State<TransactionListView>
           var item = widget.sectionList[sectionIndex].items[itemIndex];
           if (item.hasTimeHeader) {
             return Column(children: [
+              TransactionTimeView(dayOverViewData: item.dayOverViewData!),
               TransactionItemView(
-                  data: item.transactionData, hasTopTime: item.hasTimeHeader),
-              TransactionTimeView(dayOverViewData: item.dayOverViewData!)
+                  data: item.transactionData, hasTopTime: item.hasTimeHeader)
             ]);
           } else {
             return TransactionItemView(
@@ -50,10 +51,22 @@ class _TransactionListViewState extends State<TransactionListView>
             height: 48,
             padding: EdgeInsets.only(left: 24),
             alignment: Alignment.centerLeft,
-            child: Text(
-              section.month.toString(),
-              style: KeepAccountsTheme.caption,
-            )),
+            child: RichText(
+                text: TextSpan(children: [
+              TextSpan(
+                  text: "${section.month}月",
+                  style: const TextStyle(
+                      color: KeepAccountsTheme.dark_grey, fontSize: 16)),
+              WidgetSpan(
+                child: Icon(
+                  section.expanded
+                      ? Icons.arrow_drop_down_outlined
+                      : Icons.arrow_right_outlined,
+                  size: 16,
+                  color: KeepAccountsTheme.dark_grey,
+                ),
+              ),
+            ]))),
         onTap: () {
           //toggle section expand state
           setState(() {
@@ -124,13 +137,16 @@ class MonthSection implements ExpandableListSection<ListItem> {
         item.dayOverViewData = preDayOverViewData;
       }
       if (preDayOverViewData != null) {
-        if (transaction.categoryId.toString().startsWith("1")) {
+        if (transaction.isOutcome()) {
           // 消费
-          preDayOverViewData.countOutcome =
-              preDayOverViewData.countOutcome + transaction.amount;
+          preDayOverViewData.countOutcome = double.parse(
+              (preDayOverViewData.countOutcome + transaction.amount)
+                  .toStringAsFixed(2));
         } else {
-          preDayOverViewData.countIncome =
-              preDayOverViewData.countIncome + transaction.amount;
+          preDayOverViewData.countIncome = double.parse(
+              (preDayOverViewData.countIncome + transaction.amount)
+                  .toStringAsFixed(2));
+          ;
         }
       }
       section!.items.add(item);

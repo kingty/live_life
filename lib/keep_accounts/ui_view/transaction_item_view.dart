@@ -21,6 +21,9 @@ class _TransactionItemViewState extends State<TransactionItemView>
   @override
   Widget build(BuildContext context) {
     var category = CategoryManager.instance.getById(widget.data.categoryId);
+    var color = widget.data.isOutcome()
+        ? KeepAccountsTheme.pink
+        : KeepAccountsTheme.green;
     return Container(
       // color: KeepAccountsTheme.deactivatedText,
       child: Padding(
@@ -28,8 +31,9 @@ class _TransactionItemViewState extends State<TransactionItemView>
         child: Row(
           children: <Widget>[
             CategoryIconView(
-                iconData:
-                    CustomIcons.customIcons[category?.icon] ?? Icons.image),
+              iconData: CustomIcons.customIcons[category?.icon] ?? Icons.image,
+              color: color,
+            ),
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -90,14 +94,14 @@ class _TransactionItemViewState extends State<TransactionItemView>
             Padding(
               padding: EdgeInsets.only(left: 4, bottom: 3),
               child: Text(
-                "¥ ${widget.data.amount.toString()}",
+                "¥ ${widget.data.isOutcome() ? "-" : "+"}${widget.data.amount.toString()}",
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   fontFamily: KeepAccountsTheme.fontName,
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
                   letterSpacing: -0.1,
-                  color: KeepAccountsTheme.pink,
+                  color: color,
                 ),
               ),
             ),

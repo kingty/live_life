@@ -26,6 +26,10 @@ class TransactionData {
   int getDay() {
     return recordTime.day;
   }
+
+  bool isOutcome() {
+    return categoryId.toString().startsWith("1");
+  }
 }
 
 class DayOverViewData {
