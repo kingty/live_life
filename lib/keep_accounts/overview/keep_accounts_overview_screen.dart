@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/generated/l10n.dart';
+import 'package:live_life/keep_accounts/accounts/accounts_manage_view.dart';
 import 'package:live_life/keep_accounts/models/mock_data.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
+import '../../common_view/common_app_bar.dart';
 import '../keep_accounts_them.dart';
 import '../ui_view/transaction_list_view.dart';
-import 'example_sliver.dart';
 import 'month_overview_view.dart';
 import 'title_view.dart';
 import 'accounts_list_view.dart';
@@ -110,7 +111,7 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
           Navigator.push<dynamic>(
             context,
             MaterialPageRoute<dynamic>(
-              builder: (BuildContext context) => ExampleSliver(),
+              builder: (BuildContext context) => AccountsManageView(),
             ),
           );
         },
@@ -173,7 +174,7 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
                   ),
                   sliver: TransactionListView(
                       sectionList:
-                          MonthSection.getMonthSections(snapshot.requireData)))
+                          MonthSection.getMonthSections(snapshot.requireData).sublist(0, 1)))
             ],
           );
         }

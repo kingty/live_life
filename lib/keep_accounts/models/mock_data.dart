@@ -40,9 +40,9 @@ class MockData {
         .forEach((element) {
       all.add(element);
       if (element.children.isNotEmpty) {
-        element.children.forEach((child) {
+        for (var child in element.children) {
           all.add(child);
-        });
+        }
       }
     });
     CategoryManager.expenseCategories
@@ -50,9 +50,9 @@ class MockData {
         .forEach((element) {
       all.add(element);
       if (element.children.isNotEmpty) {
-        element.children.forEach((child) {
+        for (var child in element.children) {
           all.add(child);
-        });
+        }
       }
     });
     var size = all.length;

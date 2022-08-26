@@ -37,7 +37,7 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
         appBar: AppBar(
           elevation: 0,
           leading: IconButton(
-            color: KeepAccountsTheme.nearlyDarkBlue.withOpacity(0.7),
+            color: KeepAccountsTheme.nearlyDarkBlue,
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
@@ -58,7 +58,7 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
     var colors = [
       KeepAccountsTheme.pink.withOpacity(0.7),
       Colors.green.withOpacity(0.7),
-      KeepAccountsTheme.nearlyDarkBlue.withOpacity(0.7)
+      KeepAccountsTheme.nearlyDarkBlue
     ];
     return CustomTabBar(
         indicator: MagicTabIndicator(
