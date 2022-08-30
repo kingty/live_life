@@ -55,8 +55,14 @@ LocallatestId，是本地同步的最新批次数据的id，如果是新客户�
 
 ## 各客户端写数据流程如下
 
-  1. A:在本地执行了操作（"insert into t1 values (a,b,c)"，"insert into t2 values (d,e,f)"） 这时候它需要把本地操作对应的文件同步到文件存储。
+  A:在本地执行了操作（"insert into t1 values (a,b,c)"，"insert into t2 values (d,e,f)"） 这时候它需要把本地操作对应的文件同步到文件存储。
 
-  - 第一
+  1. 需要拉取id.json，读取`latestId`，将本地操作生成一个 transaction_(latestId +1).json的文件，如下：
+    ```json
+    "latestId +1":[
+    "insert into t1 values (a,b,c)",
+    "insert into t2 values (d,e,f)"
+    ]
+    ```
+  2. 更改id.json文件里的latestId,为latestId+1，并先上传文件， 接着上传transaction_(latestId +1).json这个文件。
 
-  A: transaction(id=1000)("insert xx into yy values (a,b,c)"，"insert xx into yy values (d,e,f)")
