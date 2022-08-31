@@ -52,19 +52,15 @@ class _TransactionCalenderViewState extends State<TransactionCalenderView>
                         MonthSection.getMonthSections(snapshot.requireData))
               ],
               actions: [
+
                 IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.add),
-                  color: KeepAccountsTheme.pink,
+                  icon: const Icon(Icons.filter_list_outlined),
+                  color: KeepAccountsTheme.nearlyDarkBlue,
                 ),
                 const SizedBox(
                   width: 10,
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.more_horiz),
-                  color: KeepAccountsTheme.nearlyDarkBlue,
-                )
               ]);
         }
       },

@@ -6,8 +6,11 @@ import 'package:live_life/keep_accounts/keep_accounts_them.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class CustomDatePickerView extends StatefulWidget {
+  CustomDatePickerView({super.key, this.mode = 0});
+
   @override
   _CustomDatePickerViewState createState() => _CustomDatePickerViewState();
+  int mode = 0;
 }
 
 class _CustomDatePickerViewState extends State<CustomDatePickerView>
@@ -31,8 +34,16 @@ class _CustomDatePickerViewState extends State<CustomDatePickerView>
     return dates;
   }
 
+  final _states = [
+    DateRangePickerView.month,
+    DateRangePickerView.year,
+    DateRangePickerView.decade
+  ];
+  DateRangePickerView _view = DateRangePickerView.month;
+
   @override
   void initState() {
+    _view = _states[widget.mode];
     _specialDates = _getSpecialDates();
     super.initState();
   }
@@ -79,12 +90,14 @@ class _CustomDatePickerViewState extends State<CustomDatePickerView>
         isDark ? const Color(0xFFDFD4FF) : const Color(0xFF130438);
 
     return SfDateRangePicker(
+      view: _view,
+      allowViewNavigation: _view == DateRangePickerView.month,
       selectionShape: DateRangePickerSelectionShape.rectangle,
       selectionColor: highlightColor,
       selectionTextStyle:
           TextStyle(color: isDark ? Colors.black : Colors.white, fontSize: 14),
-      minDate: DateTime.now().add(const Duration(days: -200)),
-      maxDate: DateTime.now().add(const Duration(days: 500)),
+      // minDate: DateTime.now().add(const Duration(days: -200)),
+      // maxDate: DateTime.now().add(const Duration(days: 500)),
       headerStyle: DateRangePickerHeaderStyle(
           textAlign: TextAlign.center,
           textStyle: TextStyle(
