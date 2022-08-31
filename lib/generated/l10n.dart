@@ -169,6 +169,26 @@ class S {
       args: [],
     );
   }
+
+  /// `资产管理`
+  String get KEEP_ACCOUNTS_ASSET_MANAGEMENT {
+    return Intl.message(
+      '资产管理',
+      name: 'KEEP_ACCOUNTS_ASSET_MANAGEMENT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `收支日历`
+  String get KEEP_ACCOUNTS_TRANSACTION_CALENDER {
+    return Intl.message(
+      '收支日历',
+      name: 'KEEP_ACCOUNTS_TRANSACTION_CALENDER',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

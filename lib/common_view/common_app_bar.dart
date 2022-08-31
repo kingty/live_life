@@ -35,7 +35,7 @@ class _CommonAppBarState extends State<CommonAppBar>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+          padding: const EdgeInsets.fromLTRB(24, 0, 0, 0),
           child: Text(widget.title,
               style: TextStyle(
                   color: color,
@@ -47,7 +47,7 @@ class _CommonAppBarState extends State<CommonAppBar>
         Container(
             height: 4,
             width: 30,
-            margin: const EdgeInsets.only(bottom: 5, left: 20),
+            margin: const EdgeInsets.only(bottom: 5, left: 24),
             decoration: const BoxDecoration(
                 color: KeepAccountsTheme.pink,
                 borderRadius: BorderRadius.all(Radius.circular(2.0)),

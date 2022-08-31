@@ -18,7 +18,7 @@ class KeepAccountsTheme {
   static const Color lightText = Color(0xFF4A6572);
   static const Color deactivatedText = Color(0xFF767676);
   static const Color pink = Color(0xFFf56e98);
-  // static const Color pink = Color.fromRGBO(215, 110, 108, 1);
+  static const Color darkRed = Color.fromRGBO(215, 110, 108, 1);
   static const Color purple = Color(0xFF87A0E5);
   static const Color green = Colors.green;
   static const Color dismissibleBackground = Color(0xFF364A54);

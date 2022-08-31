@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "HOME": MessageLookupByLibrary.simpleMessage("主页"),
         "KEEP_ACCOUNTS_ACCOUNT": MessageLookupByLibrary.simpleMessage("资产"),
+        "KEEP_ACCOUNTS_ASSET_MANAGEMENT":
+            MessageLookupByLibrary.simpleMessage("资产管理"),
         "KEEP_ACCOUNTS_BALANCE": MessageLookupByLibrary.simpleMessage("结余"),
         "KEEP_ACCOUNTS_EXPENSES": MessageLookupByLibrary.simpleMessage("支出"),
         "KEEP_ACCOUNTS_INCOME": MessageLookupByLibrary.simpleMessage("收入"),
@@ -34,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "KEEP_ACCOUNTS_THIS_WEEK": MessageLookupByLibrary.simpleMessage("本周"),
         "KEEP_ACCOUNTS_TODAY": MessageLookupByLibrary.simpleMessage("今天"),
         "KEEP_ACCOUNTS_TRANSACTION":
-            MessageLookupByLibrary.simpleMessage("近期账单")
+            MessageLookupByLibrary.simpleMessage("近期账单"),
+        "KEEP_ACCOUNTS_TRANSACTION_CALENDER":
+            MessageLookupByLibrary.simpleMessage("收支日历")
       };
 }

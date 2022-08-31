@@ -3,8 +3,8 @@ import 'package:live_life/generated/l10n.dart';
 import 'package:live_life/keep_accounts/accounts/accounts_manage_view.dart';
 import 'package:live_life/keep_accounts/models/mock_data.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
-import '../../common_view/common_app_bar.dart';
 import '../keep_accounts_them.dart';
+import '../transaction_calender/transaction_calender_view.dart';
 import '../ui_view/transaction_list_view.dart';
 import 'month_overview_view.dart';
 import 'title_view.dart';
@@ -84,6 +84,14 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
             curve: const Interval((1 / count) * 2, 1.0,
                 curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
+        onTap: () {
+          Navigator.push<dynamic>(
+            context,
+            MaterialPageRoute<dynamic>(
+              builder: (BuildContext context) => AccountsManageView(),
+            ),
+          );
+        },
       ),
     );
 
@@ -111,7 +119,7 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
           Navigator.push<dynamic>(
             context,
             MaterialPageRoute<dynamic>(
-              builder: (BuildContext context) => AccountsManageView(),
+              builder: (BuildContext context) => TransactionCalenderView(),
             ),
           );
         },
@@ -174,7 +182,8 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
                   ),
                   sliver: TransactionListView(
                       sectionList:
-                          MonthSection.getMonthSections(snapshot.requireData).sublist(0, 1)))
+                          MonthSection.getMonthSections(snapshot.requireData)
+                              .sublist(0, 1)))
             ],
           );
         }

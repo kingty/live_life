@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:live_life/keep_accounts/models/account_data.dart';
+import 'package:live_life/keep_accounts/models/bank_data.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
 
 import '../../common_view/list/src/sliver_expandable_list.dart';
@@ -24,6 +26,18 @@ class MockData {
       sections.add(section);
     }
     return sections;
+  }
+
+  static List<AccountData> getAccounts() {
+    return BankData.gydxsyyh.values
+        .map((value) => AccountData()
+          ..id = 1
+          ..des = "des"
+          ..cashFlow = 23.3
+          ..financialFlow = 34.2
+          ..name = value.name
+          ..bankDataKey = value.key)
+        .toList();
   }
 
   static Future<List<TransactionData>> getTransactions() async {
