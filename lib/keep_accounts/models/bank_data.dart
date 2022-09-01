@@ -27,10 +27,11 @@ class BankData {
 
        ///GenerateCodeStart
     static List<Map<String, BankData>> banks = <Map<String, BankData>>[
+      network, // 互联网账户
      gydxsyyh, // 国有大型商业银行
      gfzsyyh, // 股份制商业银行
      cssyyh, // 城市商业银行
-     wzfryh // 外资法人银行
+     wzfryh, // 外资法人银行
     ];
   static Map<String, BankData> network = <String, BankData>{  "OTHERW": BankData(
                              key: 'OTHERW',

@@ -189,6 +189,16 @@ class S {
       args: [],
     );
   }
+
+  /// `添加账户`
+  String get KEEP_ACCOUNTS_ADD_ACCOUNT {
+    return Intl.message(
+      '添加账户',
+      name: 'KEEP_ACCOUNTS_ADD_ACCOUNT',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

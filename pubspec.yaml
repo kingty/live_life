@@ -76,6 +76,7 @@ flutter:
     - assets/keep_accounts/bank/gfzsyyh/
     - assets/keep_accounts/bank/gydxsyyh/
     - assets/keep_accounts/bank/wzfryh/
+    - assets/keep_accounts/bank/network/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

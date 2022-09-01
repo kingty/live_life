@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/common_view/common_app_bar.dart';
 import 'package:live_life/generated/l10n.dart';
+import 'package:live_life/keep_accounts/accounts/select_account_list_view.dart';
 import 'package:live_life/keep_accounts/keep_accounts_them.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
 import '../models/mock_data.dart';
@@ -36,17 +37,19 @@ class _AccountsManageViewState extends State<AccountsManageView>
         ],
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push<dynamic>(
+                context,
+                MaterialPageRoute<dynamic>(
+                  builder: (BuildContext context) => SelectAccountListView(),
+                ),
+              );
+            },
             icon: const Icon(Icons.add),
-            color: KeepAccountsTheme.pink,
+            color: KeepAccountsTheme.nearlyDarkBlue,
           ),
           const SizedBox(
             width: 10,
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.more_horiz),
-            color: KeepAccountsTheme.nearlyDarkBlue,
           )
         ]);
   }

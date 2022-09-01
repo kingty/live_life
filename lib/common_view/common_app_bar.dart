@@ -72,13 +72,6 @@ class _CommonAppBarState extends State<CommonAppBar>
                         fontWeight: FontWeight.normal))))
       ],
     )));
-
-    // allSlivers.add(
-    //     SliverPersistentHeader(
-    //       pinned: true,
-    //       delegate: _PersistentHeaderDelegate(),
-    //     ));
-
     for (var w in widget.slivers) {
       allSlivers.add(w);
     }
@@ -123,42 +116,7 @@ class _CommonAppBarState extends State<CommonAppBar>
   }
 }
 
-/// Search bar, rounded corner
-class _PersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
-  _PersistentHeaderDelegate() {}
 
-  // SampleModel? _sampleListModel;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox(
-      height: 70,
-      child: Container(
-          color: KeepAccountsTheme.background,
-          child: Column(
-            children: <Widget>[
-              Container(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                height: 70,
-                child: Text("I am search bar"),
-              )
-            ],
-          )),
-    );
-  }
-
-  @override
-  double get maxExtent => 70;
-
-  @override
-  double get minExtent => 70;
-
-  @override
-  bool shouldRebuild(_PersistentHeaderDelegate oldDelegate) {
-    return true;
-  }
-}
 
 /// Creates a widget that makes its child partially transparent.
 class AnimateOpacityWidget extends StatefulWidget {

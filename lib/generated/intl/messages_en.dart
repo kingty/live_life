@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "HOME": MessageLookupByLibrary.simpleMessage("主页"),
         "KEEP_ACCOUNTS_ACCOUNT": MessageLookupByLibrary.simpleMessage("资产"),
+        "KEEP_ACCOUNTS_ADD_ACCOUNT":
+            MessageLookupByLibrary.simpleMessage("添加账户"),
         "KEEP_ACCOUNTS_ASSET_MANAGEMENT":
             MessageLookupByLibrary.simpleMessage("资产管理"),
         "KEEP_ACCOUNTS_BALANCE": MessageLookupByLibrary.simpleMessage("结余"),

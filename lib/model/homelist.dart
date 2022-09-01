@@ -13,7 +13,7 @@ class HomeList {
   static List<HomeList> homeList = [
 
     HomeList(
-      imagePath: 'assets/fitness_app/fitness_app.png',
+      imagePath: 'assets/keep_accounts/fitness_app.png',
       navigateScreen: KeepAccountsHomeScreen(),
     ),
     // HomeList(
