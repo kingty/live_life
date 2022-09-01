@@ -1,7 +1,4 @@
 import 'package:live_life/keep_accounts/keep_accounts_home_screen.dart';
-import 'package:live_life/design_course/home_design_course.dart';
-import 'package:live_life/hotel_booking/hotel_home_screen.dart';
-import 'package:live_life/introduction_animation/introduction_animation_screen.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeList {
@@ -14,21 +11,22 @@ class HomeList {
   String imagePath;
 
   static List<HomeList> homeList = [
-    HomeList(
-      imagePath: 'assets/introduction_animation/introduction_animation.png',
-      navigateScreen: IntroductionAnimationScreen(),
-    ),
-    HomeList(
-      imagePath: 'assets/hotel/hotel_booking.png',
-      navigateScreen: HotelHomeScreen(),
-    ),
+
     HomeList(
       imagePath: 'assets/fitness_app/fitness_app.png',
       navigateScreen: KeepAccountsHomeScreen(),
     ),
-    HomeList(
-      imagePath: 'assets/design_course/design_course.png',
-      navigateScreen: DesignCourseHomeScreen(),
-    ),
+    // HomeList(
+    //   imagePath: 'assets/introduction_animation/introduction_animation.png',
+    //   navigateScreen: IntroductionAnimationScreen(),
+    // ),
+    // HomeList(
+    //   imagePath: 'assets/hotel/hotel_booking.png',
+    //   navigateScreen: HotelHomeScreen(),
+    // ),
+    // HomeList(
+    //   imagePath: 'assets/design_course/design_course.png',
+    //   navigateScreen: DesignCourseHomeScreen(),
+    // ),
   ];
 }

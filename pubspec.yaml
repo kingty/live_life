@@ -70,10 +70,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/design_course/
-    - assets/fitness_app/
-    - assets/hotel/
-    - assets/introduction_animation/
     # keepaccounts
     - assets/keep_accounts/
     - assets/keep_accounts/bank/cssyyh/
