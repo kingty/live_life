@@ -199,6 +199,16 @@ class S {
       args: [],
     );
   }
+
+  /// `编辑账户`
+  String get KEEP_ACCOUNTS_EDIT_ACCOUNT {
+    return Intl.message(
+      '编辑账户',
+      name: 'KEEP_ACCOUNTS_EDIT_ACCOUNT',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -7,6 +7,7 @@ import '../../common_view/list/src/sliver_expandable_list.dart';
 import '../../common_view/search_input_view.dart';
 import '../../generated/l10n.dart';
 import '../keep_accounts_them.dart';
+import 'edit_account__view.dart';
 
 class SelectAccountListView extends StatefulWidget {
   @override
@@ -31,7 +32,16 @@ class _SelectAccountListViewState extends State<SelectAccountListView>
           itemBuilder: (context, sectionIndex, itemIndex, index) {
             var item = sectionList[sectionIndex].items[itemIndex];
 
-            return SelectAccountItemView(data: item);
+            return GestureDetector(
+                onTap: () {
+                  Navigator.push<dynamic>(
+                    context,
+                    MaterialPageRoute<dynamic>(
+                        builder: (BuildContext context) =>
+                            EditAccountView(bankData: item)),
+                  );
+                },
+                child: (SelectAccountItemView(data: item)));
           },
         ),
       )

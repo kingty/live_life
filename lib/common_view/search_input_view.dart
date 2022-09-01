@@ -46,7 +46,6 @@ class _SearchInputViewState extends State<SearchInputView>
                     fontWeight: FontWeight.w400,
                   ),
                   hintText: "搜索..."),
-              autofocus: true,
               textAlign: TextAlign.left,
               cursorColor: KeepAccountsTheme.nearlyDarkBlue,
               cursorWidth: 2,
