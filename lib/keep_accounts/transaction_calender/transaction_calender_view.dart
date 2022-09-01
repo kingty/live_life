@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../common_view/common_app_bar.dart';
 import '../../generated/l10n.dart';
+import '../../helper.dart';
 import '../accounts/asset_management_overview_view.dart';
 import '../keep_accounts_them.dart';
 import '../models/mock_data.dart';
@@ -52,9 +53,10 @@ class _TransactionCalenderViewState extends State<TransactionCalenderView>
                         MonthSection.getMonthSections(snapshot.requireData))
               ],
               actions: [
-
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showBottomSheetSettingsPanel(context, SizedBox(height:400, child: listViews[0],));
+                  },
                   icon: const Icon(Icons.filter_list_outlined),
                   color: KeepAccountsTheme.nearlyDarkBlue,
                 ),
