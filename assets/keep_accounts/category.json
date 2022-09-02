@@ -1,48 +1,4 @@
 {
-    "income": [
-        {
-            "children": [], 
-            "icon": "business_and_finance_envelope", 
-            "id": 2001, 
-            "name": "工资"
-        }, 
-        {
-            "children": [], 
-            "icon": "business_and_finance_gold", 
-            "id": 2002, 
-            "name": "奖金"
-        }, 
-        {
-            "children": [], 
-            "icon": "business_and_finance_success_plan", 
-            "id": 2003, 
-            "name": "理财收益"
-        }, 
-        {
-            "children": [], 
-            "icon": "business_and_finance_invest", 
-            "id": 2004, 
-            "name": "红包"
-        }, 
-        {
-            "children": [], 
-            "icon": "business_and_finance_statistic_up", 
-            "id": 2005, 
-            "name": "借入"
-        }, 
-        {
-            "children": [], 
-            "icon": "business_and_finance_money", 
-            "id": 2006, 
-            "name": "其他"
-        }, 
-        {
-            "children": [], 
-            "icon": "interface_settings_ui", 
-            "id": 10, 
-            "name": "管理 "
-        }
-    ], 
     "expense": [
         {
             "children": [
@@ -268,26 +224,60 @@
         {
             "children": [], 
             "icon": "business_and_finance_money", 
-            "id": 1012, 
+            "id": 1100, 
             "name": "其他支出"
-        }, 
+        }
+    ], 
+    "finance": [
         {
             "children": [], 
-            "icon": "business_and_finance_success_plan", 
-            "id": 1013, 
-            "name": "理财"
+            "icon": "business_and_finance_statistic_up", 
+            "id": 3001, 
+            "name": "借入"
         }, 
         {
             "children": [], 
             "icon": "business_and_finance_statistic_down", 
-            "id": 10014, 
+            "id": 3002, 
             "name": "外借"
         }, 
         {
             "children": [], 
-            "icon": "interface_settings_ui", 
-            "id": 10, 
-            "name": "管理 "
+            "icon": "business_and_finance_success_plan", 
+            "id": 3003, 
+            "name": "理财"
+        }, 
+        {
+            "children": [], 
+            "icon": "business_and_finance_success_plan", 
+            "id": 3004, 
+            "name": "转账"
+        }
+    ], 
+    "income": [
+        {
+            "children": [], 
+            "icon": "business_and_finance_envelope", 
+            "id": 2001, 
+            "name": "工资"
+        }, 
+        {
+            "children": [], 
+            "icon": "business_and_finance_gold", 
+            "id": 2002, 
+            "name": "奖金"
+        }, 
+        {
+            "children": [], 
+            "icon": "business_and_finance_invest", 
+            "id": 2003, 
+            "name": "红包"
+        }, 
+        {
+            "children": [], 
+            "icon": "business_and_finance_money", 
+            "id": 2100, 
+            "name": "其他"
         }
     ]
 }

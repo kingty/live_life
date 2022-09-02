@@ -45,6 +45,7 @@ def getDetails(ca):
 def dealCategory():
     expense = []
     income = []
+    finance = []
     in_cas = []
     cas = expense
 
@@ -54,8 +55,10 @@ def dealCategory():
             if line.strip().startswith('#') or line.strip() == "":
                 continue
             else:
-                if line.startswith('----'):
+                if line.startswith('----income'):
                     cas = income
+                elif line.startswith('----finance'):
+                    cas = finance
                 elif line.startswith('-'):
                     in_cas = []
                     obj = (getDetails(line.strip()))
@@ -64,7 +67,7 @@ def dealCategory():
                 else:
                     in_cas.append(getDetails(line.strip()))
 
-    return {'income': income, 'expense': expense}
+    return {'income': income, 'expense': expense, 'finance': finance}
 
 def generateCategoryJson():
     cas = dealCategory()

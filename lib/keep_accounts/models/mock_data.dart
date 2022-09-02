@@ -33,8 +33,8 @@ class MockData {
         .map((value) => AccountData()
           ..id = 1
           ..des = "des"
-          ..cashFlow = 23.3
-          ..financialFlow = 34.2
+          ..cash = 23.3
+          ..financial = 34.2
           ..name = value.name
           ..bankDataKey = value.key)
         .toList();

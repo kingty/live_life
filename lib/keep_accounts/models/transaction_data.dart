@@ -7,7 +7,12 @@ class TransactionData {
   late double amount; // 金额
   late String note; // 备注
   late int tagId; // 标签
+  late DateTime tranTime; // 账单产生时间
   late DateTime recordTime; // 记录时间
+
+  late double interest; // 理财收益
+  late DateTime startTime; // 理财 开始时间
+  late DateTime endTime; // 理财 结束时间
 
   TransactionData.fromJson(Map<String, dynamic> json)
       : id = json['id'],

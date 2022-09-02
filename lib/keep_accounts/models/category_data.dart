@@ -1,4 +1,3 @@
-
 class CategoryData {
   CategoryData(
       {this.id = 0, this.name = '', this.icon = '', this.priority = 0});
@@ -27,9 +26,4 @@ class CategoryData {
         'children': children,
         'priority': priority,
       };
-
-  ///GenerateCodeStart
-
-  ///GenerateCodeEnd
-
 }

@@ -42,20 +42,24 @@
 - 娱乐%game/game-console%1008
 - 医疗%medical/medical-supply%1010
 - 通讯%interface/calling%1011
-- 其他支出%business_and_finance/money%1012
-- 理财%business_and_finance/success-plan%1013
-- 外借%business_and_finance/statistic-down%10014
-- 管理 %interface/settings-ui%10
+- 其他支出%business_and_finance/money%1100
+## - 管理 %interface/settings-ui%10
 
-----
+----income
 ## income
 
 - 工资%business_and_finance/envelope%2001
 - 奖金%business_and_finance/gold%2002
-- 理财收益%business_and_finance/success-plan%2003
-- 红包%business_and_finance/invest%2004
-- 借入%business_and_finance/statistic-up%2005
-- 其他%business_and_finance/money%2006
-- 管理 %interface/settings-ui%10
+- 红包%business_and_finance/invest%2003
+- 其他%business_and_finance/money%2100
+## - 管理 %interface/settings-ui%10
 
-## 自定义的类型以3001，4001开头
+
+## 自定义的类型以1100+，2100+开头
+
+----finance
+## finance特殊类型
+- 借入%business_and_finance/statistic-up% 3001
+- 外借%business_and_finance/statistic-down%3002
+- 理财%business_and_finance/success-plan%3003
+- 转账%business_and_finance/success-plan%3004

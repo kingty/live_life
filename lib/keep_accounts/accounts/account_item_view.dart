@@ -96,7 +96,7 @@ class _AccountItemViewState extends State<AccountItemView>
           Padding(
             padding: const EdgeInsets.only(left: 4, bottom: 3),
             child: Text(
-              "¥ ${double.parse((widget.data.cashFlow + widget.data.financialFlow).toStringAsFixed(2))}",
+              "¥ ${double.parse((widget.data.cash + widget.data.financial).toStringAsFixed(2))}",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: KeepAccountsTheme.fontName,

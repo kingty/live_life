@@ -16,6 +16,7 @@ class CategoryManager {
   static List<CategoryData> incomeCategories = List.empty();
   static List<CategoryData> expenseCategories = List.empty();
   Map<int, CategoryData> categoriesMap = <int, CategoryData>{};
+  static bool _isInit = false;
 
   void init() {
     fetchCategories().ignore();
@@ -26,6 +27,7 @@ class CategoryManager {
   }
 
   Future<bool> fetchCategories() async {
+    if (_isInit) return true;
     String jsonStr =
         await rootBundle.loadString('assets/keep_accounts/category.json');
     Map<String, dynamic> userMap = json.decode(jsonStr);
@@ -57,6 +59,7 @@ class CategoryManager {
         }
       }
     });
+    _isInit = true;
     return true;
   }
 }
