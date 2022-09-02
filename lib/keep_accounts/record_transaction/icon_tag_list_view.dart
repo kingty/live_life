@@ -9,8 +9,9 @@ class IconTagListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 40,
       color: KeepAccountsTheme.background,
-      padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10),
+      padding: const EdgeInsets.only(left: 10),
       child: Row(
         children: const [
           TagIconView(
