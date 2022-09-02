@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../keep_accounts/keep_accounts_them.dart';
 
 class SearchInputView extends StatefulWidget {
-  const SearchInputView({Key? key}) : super(key: key);
+  const SearchInputView({Key? key, this.onSearchTextChanged}) : super(key: key);
+
+  final ValueChanged<String>? onSearchTextChanged;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -12,6 +14,10 @@ class SearchInputView extends StatefulWidget {
 
 class _SearchInputViewState extends State<SearchInputView>
     with TickerProviderStateMixin {
+  bool showClearIcon = false;
+  var mainColor = KeepAccountsTheme.nearlyDarkBlue;
+  final TextEditingController pass = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,51 +36,66 @@ class _SearchInputViewState extends State<SearchInputView>
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(
+            SizedBox(
                 width: 40,
                 height: 40,
-                child: Icon(Icons.search,
-                    color: KeepAccountsTheme.nearlyDarkBlue)),
-            const Expanded(
+                child: Icon(Icons.search, color: mainColor)),
+            Expanded(
                 child: TextField(
+              controller: pass,
+              onChanged: (text) {
+                setState(() {
+                  showClearIcon = text.isNotEmpty;
+                  widget.onSearchTextChanged?.call(text);
+                });
+              },
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: TextStyle(
-                    color: KeepAccountsTheme.nearlyDarkBlue,
+                    color: mainColor,
                     letterSpacing: 0,
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
                   hintText: "搜索..."),
               textAlign: TextAlign.left,
-              cursorColor: KeepAccountsTheme.nearlyDarkBlue,
+              cursorColor: mainColor,
               cursorWidth: 2,
               style: TextStyle(
-                color: KeepAccountsTheme.nearlyDarkBlue,
+                color: mainColor,
                 letterSpacing: 0,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),
             )),
-            SizedBox(
-                width: 40,
-                height: 40,
-                child: Material(
-                    color: Colors.transparent,
-                    child: Ink(
-                        decoration: const BoxDecoration(
-                          color: KeepAccountsTheme.background,
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                        ),
-                        child: InkWell(
-                            // highlightColor: Colors.transparent,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20.0)),
-                            onTap: () {},
-                            child: const Icon(
-                              Icons.highlight_remove_outlined,
-                              color: KeepAccountsTheme.nearlyDarkBlue,
-                            ))))),
+            Visibility(
+                visible: showClearIcon,
+                child: SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: Material(
+                        color: Colors.transparent,
+                        child: Ink(
+                            decoration: const BoxDecoration(
+                              color: KeepAccountsTheme.background,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20.0)),
+                            ),
+                            child: InkWell(
+                                // highlightColor: Colors.transparent,
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(20.0)),
+                                onTap: () {
+                                  setState(() {
+                                    pass.clear();
+                                    showClearIcon = false;
+                                    widget.onSearchTextChanged?.call("");
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.highlight_remove_outlined,
+                                  color: mainColor,
+                                )))))),
             const SizedBox(width: 5)
           ],
         ));

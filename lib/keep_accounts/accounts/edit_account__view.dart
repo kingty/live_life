@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
 import 'package:live_life/keep_accounts/models/bank_data.dart';
@@ -36,7 +38,7 @@ class _EditAccountViewState extends State<EditAccountView>
     return CommonAppBar(title: S.current.KEEP_ACCOUNTS_EDIT_ACCOUNT, slivers: [
       SliverToBoxAdapter(
           child: Container(
-        margin: EdgeInsets.all(24),
+        margin: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: KeepAccountsTheme.nearlyWhite,
           borderRadius: const BorderRadius.all(Radius.circular(12.0)),
@@ -222,7 +224,18 @@ class _EditAccountViewState extends State<EditAccountView>
             ),
           ],
         ),
-      ))
+      )),
+      SliverToBoxAdapter(
+        child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: ElevatedButton(
+              child: const Padding(
+                padding: EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 12.0),
+                child: Text("保存"),
+              ),
+              onPressed: () {},
+            )),
+      )
     ]);
   }
 }
