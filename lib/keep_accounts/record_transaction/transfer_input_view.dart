@@ -7,6 +7,8 @@ import '../../icons/custom_icons.dart';
 import '../control/category_manager.dart';
 import '../keep_accounts_them.dart';
 import '../ui_view/category_icon_view.dart';
+import 'icon_tag_list_view.dart';
+import 'note_input_view.dart';
 import 'number_keyboard_view.dart';
 
 class TransferInputView extends StatefulWidget {
@@ -163,54 +165,13 @@ class _TransferInputViewState extends State<TransferInputView>
             Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                    // constraints: BoxConstraints(maxHeight: 40),
-                    padding: const EdgeInsets.only(top: 4, bottom: 4),
-                    color: KeepAccountsTheme.grey.withOpacity(0.1),
-                    child: const SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      reverse: true,
-                      child: TextField(
-                        keyboardType: TextInputType.multiline,
-                        maxLines: 2,
-                        minLines: 1,
-                        decoration: InputDecoration(
-                            filled: true,
-                            fillColor: KeepAccountsTheme.background,
-                            suffixIconColor: KeepAccountsTheme.nearlyDarkBlue,
-                            // contentPadding: EdgeInsets.only(left: 24, top: 4, bottom: 4, right: 24),
-                            border: InputBorder.none,
-                            suffixIcon: Icon(Icons.image),
-                            hintText: "请输入备注信息"),
-                        cursorColor: KeepAccountsTheme.nearlyDarkBlue,
-                      ),
-                    )),
-                Container(
-                  color: KeepAccountsTheme.background,
-                  padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10),
-                  child: Row(
-                    children: const [
-                      TagIconView(
-                        iconData: Icons.account_balance_wallet_sharp,
-                        text: '默认账本',
-                      ),
-
-                      SizedBox(width: 10), // 50宽度
-                      TagIconView(
-                        iconData: Icons.calendar_today,
-                        text: '今天',
-                      ),
-
-                      SizedBox(width: 10), // 50宽度
-                      TagIconView(
-                        iconData: Icons.tag,
-                        text: '标签',
-                      ),
-                    ],
-                  ),
+              children: const [
+                NoteInputView(
+                  color: KeepAccountsTheme.nearlyDarkBlue,
                 ),
-                const NumberKeyboardView(mainColor: KeepAccountsTheme.nearlyDarkBlue)
+                IconTagListView(),
+                NumberKeyboardView(
+                    mainColor: KeepAccountsTheme.nearlyDarkBlue)
               ],
             )
           ],

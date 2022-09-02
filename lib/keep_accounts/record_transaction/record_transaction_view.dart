@@ -66,7 +66,7 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
         labelColors: colors,
         unselectedLabelColor: Colors.grey,
         controller: tabController,
-        tabs: [
+        tabs: const [
           CustomTab(text: "支出"),
           CustomTab(text: "收入"),
           CustomTab(text: "转账"),
