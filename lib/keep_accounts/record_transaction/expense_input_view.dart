@@ -7,6 +7,7 @@ import 'package:live_life/keep_accounts/ui_view/category_icon_view.dart';
 
 import '../control/category_manager.dart';
 import '../keep_accounts_them.dart';
+import 'category_select_view.dart';
 import 'number_keyboard_view.dart';
 
 class ExpenseInputView extends StatefulWidget {
@@ -19,6 +20,8 @@ class _ExpenseInputViewState extends State<ExpenseInputView>
   Future<bool> getData() async {
     return CategoryManager.instance.fetchCategories();
   }
+
+  int selectIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -100,51 +103,12 @@ class _ExpenseInputViewState extends State<ExpenseInputView>
                   if (!snapshot.hasData) {
                     return const SizedBox();
                   } else {
-                    List<Widget> icons = <Widget>[];
-                    int i = 0;
-                    for (var element in CategoryManager.expenseCategories) {
-                      i++;
-                      if (i == 1) {
-                        var c = Column(
-                          children: [
-                            CategoryIconView(
-                                color: KeepAccountsTheme.pink,
-                                iconData:
-                                    CustomIcons.customIcons[element.icon]!),
-                            Padding(
-                                padding: EdgeInsets.all(4),
-                                child: Text(
-                                  element.name,
-                                  style: KeepAccountsTheme.caption,
-                                ))
-                          ],
-                        );
-                        icons.add(c);
-                      } else {
-                        var c = Column(
-                          children: [
-                            CategoryIconView(
-                                iconData:
-                                    CustomIcons.customIcons[element.icon]!),
-                            Padding(
-                                padding: EdgeInsets.all(4),
-                                child: Text(
-                                  element.name,
-                                  style: KeepAccountsTheme.caption,
-                                ))
-                          ],
-                        );
-                        icons.add(c);
-                      }
-                    }
-                    return GridView.count(
-                      // childAspectRatio: 2,
-                      // padding: const EdgeInsets.all(40.0),
-                      // crossAxisSpacing: 20.0,
-                      // mainAxisSpacing: 10.0,
-                      crossAxisCount: 5,
-
-                      children: icons,
+                    return CategorySelectView(
+                      color: KeepAccountsTheme.pink,
+                      categories: CategoryManager.expenseCategories,
+                      onSelectCategory: (cid) {
+                        //
+                      },
                     );
                   }
                 },

@@ -5,16 +5,20 @@ import '../../icons/custom_icons.dart';
 import '../keep_accounts_them.dart';
 
 class CategoryIconView extends StatefulWidget {
-  const CategoryIconView({
-    Key? key,
-    this.iconData = CustomIcons.food_knife_fork,
-    this.color = Colors.grey,
-    this.size = 20,
-  }) : super(key: key);
+  CategoryIconView(
+      {Key? key,
+      this.iconData = CustomIcons.food_knife_fork,
+      this.color = Colors.grey,
+      this.size = 20,
+      this.index = 0,
+      this.selectIndex = 0})
+      : super(key: key);
 
   final IconData iconData;
   final Color color;
   final double size;
+  int index;
+  int selectIndex;
 
   @override
   _CategoryIconViewState createState() => _CategoryIconViewState();
@@ -26,7 +30,8 @@ class _CategoryIconViewState extends State<CategoryIconView>
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: widget.color.withOpacity(0.1),
+        color: (widget.index == widget.selectIndex ? widget.color : Colors.grey)
+            .withOpacity(0.1),
         borderRadius: const BorderRadius.all(
           Radius.circular(8.0),
         ),
@@ -35,7 +40,8 @@ class _CategoryIconViewState extends State<CategoryIconView>
         padding: const EdgeInsets.all(12),
         child: Icon(
           widget.iconData,
-          color: widget.color,
+          color:
+              widget.index == widget.selectIndex ? widget.color : Colors.grey,
           size: widget.size,
         ),
       ),
