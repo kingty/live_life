@@ -19,6 +19,11 @@ class CategoryManager {
   Map<int, CategoryData> categoriesMap = <int, CategoryData>{};
   static bool _isInit = false;
 
+  static const int SPECIAL_RENT_IN = 3001;
+  static const int SPECIAL_RENT_OUT = 3002;
+  static const int SPECIAL_FINANCE = 3003;
+  static const int SPECIAL_TRANSFER = 3004;
+
   void init() {
     fetchCategories().ignore();
   }

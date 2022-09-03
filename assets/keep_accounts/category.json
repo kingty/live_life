@@ -239,7 +239,7 @@
             "children": [], 
             "icon": "business_and_finance_statistic_down", 
             "id": 3002, 
-            "name": "外借"
+            "name": "借出"
         }, 
         {
             "children": [], 
@@ -272,6 +272,12 @@
             "icon": "business_and_finance_invest", 
             "id": 2003, 
             "name": "红包"
+        }, 
+        {
+            "children": [], 
+            "icon": "users_favorite_profile", 
+            "id": 2004, 
+            "name": "人情"
         }, 
         {
             "children": [], 

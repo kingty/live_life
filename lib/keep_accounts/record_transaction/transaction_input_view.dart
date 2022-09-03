@@ -24,13 +24,11 @@ class TransactionInputView extends StatefulWidget {
 
 class _TransactionInputViewState extends State<TransactionInputView>
     with TickerProviderStateMixin, WidgetsBindingObserver {
-  Future<bool> getData() async {
-    return CategoryManager.instance.fetchCategories();
-  }
-
   late final List<CategoryData> categories;
   double position = 0;
   bool special = false;
+  int selectCId = 0;
+  late TabController tabController;
 
   @override
   void initState() {
@@ -44,6 +42,7 @@ class _TransactionInputViewState extends State<TransactionInputView>
       special = true;
       categories = CategoryManager.specialCategories;
     }
+    tabController = TabController(length: 5, vsync: this);
     WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
@@ -72,7 +71,79 @@ class _TransactionInputViewState extends State<TransactionInputView>
   }
 
   Widget _getSpecialInputView() {
-    return Text("data");
+    List<Widget> specialWidgets = List.empty(growable: true);
+    specialWidgets.add(const SizedBox());
+    specialWidgets.add(_getRentView(CategoryManager.SPECIAL_RENT_IN));
+    specialWidgets.add(_getRentView(CategoryManager.SPECIAL_RENT_OUT));
+    specialWidgets.add(_getRentView(CategoryManager.SPECIAL_FINANCE));
+    specialWidgets.add(_getRentView(CategoryManager.SPECIAL_TRANSFER));
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        SizedBox(
+          height: 100,
+          child: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: CategorySelectView(
+                color: widget.mainColor,
+                categories: categories,
+                onSelectCategory: (cid) {
+                  setState(() {
+                    selectCId = cid;
+                    int pageIndex = 0;
+                    switch (cid) {
+                      case CategoryManager.SPECIAL_RENT_IN:
+                        pageIndex = 1;
+                        break;
+                      case CategoryManager.SPECIAL_RENT_OUT:
+                        pageIndex = 2;
+                        break;
+                      case CategoryManager.SPECIAL_FINANCE:
+                        pageIndex = 3;
+                        break;
+                      case CategoryManager.SPECIAL_TRANSFER:
+                        pageIndex = 4;
+                        break;
+                    }
+                    tabController.index = pageIndex;
+                  });
+                  //
+                },
+              )),
+        ),
+        Expanded(
+            child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: tabController,
+                children: specialWidgets)),
+        const SizedBox(height: 340)
+      ],
+    );
+  }
+
+  Widget _getRentView(int cid) {
+    if (cid != CategoryManager.SPECIAL_TRANSFER) {
+      var withSelectTime = cid == CategoryManager.SPECIAL_FINANCE;
+      return Column(children: [
+        Padding(
+          padding:
+              const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
+          child: SelectAccountAndInputView(
+              color: widget.mainColor, withSelectTime: withSelectTime),
+        )
+      ]);
+    } else {
+      return Column(children: [
+        Padding(
+          padding:
+              const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
+          child: SelectAccountAndInputView(
+              color: widget.mainColor, withTransfer: true),
+        )
+      ]);
+    }
   }
 
   Widget _getNormalInputView() {
@@ -87,24 +158,14 @@ class _TransactionInputViewState extends State<TransactionInputView>
         ),
         Expanded(
             child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: FutureBuilder(
-            future: getData(),
-            builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-              if (!snapshot.hasData) {
-                return const SizedBox();
-              } else {
-                return CategorySelectView(
+                padding: const EdgeInsets.all(10),
+                child: CategorySelectView(
                   color: widget.mainColor,
                   categories: categories,
                   onSelectCategory: (cid) {
-                    //
+                    selectCId = cid;
                   },
-                );
-              }
-            },
-          ),
-        )),
+                ))),
         const SizedBox(height: 340)
       ],
     );

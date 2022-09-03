@@ -51,6 +51,7 @@
 - 工资%business_and_finance/envelope%2001
 - 奖金%business_and_finance/gold%2002
 - 红包%business_and_finance/invest%2003
+- 人情%users/favorite-profile%2004
 - 其他%business_and_finance/money%2100
 ## - 管理 %interface/settings-ui%10
 
@@ -60,6 +61,6 @@
 ----finance
 ## finance特殊类型
 - 借入%business_and_finance/statistic-up% 3001
-- 外借%business_and_finance/statistic-down%3002
+- 借出%business_and_finance/statistic-down%3002
 - 理财%business_and_finance/success-plan%3003
 - 转账%business_and_finance/success-plan%3004

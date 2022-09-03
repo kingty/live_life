@@ -70,7 +70,7 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
         tabs: const [
           CustomTab(text: "支出"),
           CustomTab(text: "收入"),
-          CustomTab(text: "转账"),
+          CustomTab(text: "其他"),
         ]);
   }
 

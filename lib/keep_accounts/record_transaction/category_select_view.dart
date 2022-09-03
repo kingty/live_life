@@ -22,13 +22,21 @@ class CategorySelectView extends StatefulWidget {
 class _CategorySelectViewState extends State<CategorySelectView>
     with TickerProviderStateMixin {
   int selectIndex = -1;
+  int crossAxisCount = 5;
+
+  @override
+  void initState() {
+    crossAxisCount =
+        widget.categories.length > 5 ? 5 : widget.categories.length;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
         itemCount: widget.categories.length,
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount),
         itemBuilder: (context, index) {
           var element = widget.categories[index];
           return GestureDetector(
