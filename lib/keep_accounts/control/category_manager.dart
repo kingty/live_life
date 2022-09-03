@@ -15,6 +15,7 @@ class CategoryManager {
 
   static List<CategoryData> incomeCategories = List.empty();
   static List<CategoryData> expenseCategories = List.empty();
+  static List<CategoryData> specialCategories = List.empty();
   Map<int, CategoryData> categoriesMap = <int, CategoryData>{};
   static bool _isInit = false;
 
@@ -33,11 +34,14 @@ class CategoryManager {
     Map<String, dynamic> userMap = json.decode(jsonStr);
     var incomeJson = userMap['income'];
     var expenseJson = userMap['expense'];
+    var financeJson = userMap['finance'];
 
     incomeCategories = List<CategoryData>.from(
         incomeJson.map((model) => CategoryData.fromJson(model)));
     expenseCategories = List<CategoryData>.from(
         expenseJson.map((model) => CategoryData.fromJson(model)));
+    specialCategories = List<CategoryData>.from(
+        financeJson.map((model) => CategoryData.fromJson(model)));
 
     CategoryManager.incomeCategories
         .where((element) => element.id != 10)
@@ -50,6 +54,16 @@ class CategoryManager {
       }
     });
     CategoryManager.expenseCategories
+        .where((element) => element.id != 10)
+        .forEach((element) {
+      categoriesMap[element.id] = element;
+      if (element.children.isNotEmpty) {
+        for (var child in element.children) {
+          categoriesMap[child.id] = child;
+        }
+      }
+    });
+    CategoryManager.specialCategories
         .where((element) => element.id != 10)
         .forEach((element) {
       categoriesMap[element.id] = element;

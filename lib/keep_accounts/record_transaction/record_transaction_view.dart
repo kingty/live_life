@@ -1,12 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:live_life/keep_accounts/control/category_manager.dart';
 import 'package:live_life/keep_accounts/keep_accounts_them.dart';
-import 'package:live_life/keep_accounts/record_transaction/expense_input_view.dart';
-import 'package:live_life/keep_accounts/record_transaction/transfer_input_view.dart';
-
+import 'package:live_life/keep_accounts/record_transaction/transaction_input_view.dart';
 import '../../common_view/tabbar/custom_tab_indicator.dart';
 import '../../common_view/tabbar/custom_tabs.dart';
-import 'income_input_view.dart';
 
 class RecordTransactionView extends StatefulWidget {
   @override
@@ -56,8 +53,8 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
 
   Widget getTabBar() {
     var colors = [
-      KeepAccountsTheme.pink.withOpacity(0.7),
-      Colors.green.withOpacity(0.7),
+      KeepAccountsTheme.darkRed,
+      Colors.green,
       KeepAccountsTheme.nearlyDarkBlue
     ];
     return CustomTabBar(
@@ -74,10 +71,19 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
   }
 
   Widget getTabBarPages() {
-    return TabBarView(controller: tabController, children: <Widget>[
-      ExpenseInputView(),
-      IncomeInputView(),
-      TransferInputView()
+    return TabBarView(controller: tabController, children: const <Widget>[
+      TransactionInputView(
+        mainColor: KeepAccountsTheme.darkRed,
+        type: 0,
+      ),
+      TransactionInputView(
+        mainColor: KeepAccountsTheme.green,
+        type: 1,
+      ),
+      TransactionInputView(
+        mainColor: KeepAccountsTheme.nearlyDarkBlue,
+        type: 2,
+      )
     ]);
   }
 }
