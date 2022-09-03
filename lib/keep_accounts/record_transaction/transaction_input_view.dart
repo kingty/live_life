@@ -10,12 +10,16 @@ import 'number_keyboard_view.dart';
 
 class TransactionInputView extends StatefulWidget {
   const TransactionInputView(
-      {super.key, required this.mainColor, required this.type});
+      {super.key,
+      required this.mainColor,
+      required this.type,
+      required this.focusNode});
 
   @override
   _TransactionInputViewState createState() => _TransactionInputViewState();
   final Color mainColor;
   final int type;
+  final FocusNode focusNode;
 }
 
 class _TransactionInputViewState extends State<TransactionInputView>
@@ -108,7 +112,12 @@ class _TransactionInputViewState extends State<TransactionInputView>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTapDown: (_) {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        widget.focusNode.unfocus();
+      },
+      child: Container(
         color: KeepAccountsTheme.background,
         child: Stack(
           children: [
@@ -125,6 +134,7 @@ class _TransactionInputViewState extends State<TransactionInputView>
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       NoteInputView(
+                        focusNode: widget.focusNode,
                         color: widget.mainColor,
                       ),
                       IconTagListView(),
@@ -133,6 +143,8 @@ class _TransactionInputViewState extends State<TransactionInputView>
                   ),
                 ))
           ],
-        ));
+        ),
+      ),
+    );
   }
 }

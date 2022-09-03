@@ -13,12 +13,16 @@ class RecordTransactionView extends StatefulWidget {
 class _RecordTransactionViewState extends State<RecordTransactionView>
     with TickerProviderStateMixin {
   late TabController tabController;
+  final FocusNode focusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
 
     tabController = TabController(length: 3, vsync: this);
+    tabController.addListener(() {
+      focusNode.unfocus();
+    });
   }
 
   @override
@@ -71,16 +75,19 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
   }
 
   Widget getTabBarPages() {
-    return TabBarView(controller: tabController, children: const <Widget>[
+    return TabBarView(controller: tabController, children: <Widget>[
       TransactionInputView(
+        focusNode: focusNode,
         mainColor: KeepAccountsTheme.darkRed,
         type: 0,
       ),
       TransactionInputView(
+        focusNode: focusNode,
         mainColor: KeepAccountsTheme.green,
         type: 1,
       ),
       TransactionInputView(
+        focusNode: focusNode,
         mainColor: KeepAccountsTheme.nearlyDarkBlue,
         type: 2,
       )
