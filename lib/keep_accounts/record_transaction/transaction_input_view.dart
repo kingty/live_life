@@ -29,6 +29,7 @@ class _TransactionInputViewState extends State<TransactionInputView>
   bool special = false;
   int selectCId = 0;
   late TabController tabController;
+  late Calculator calculator;
 
   @override
   void initState() {
@@ -43,6 +44,7 @@ class _TransactionInputViewState extends State<TransactionInputView>
       categories = CategoryManager.specialCategories;
     }
     tabController = TabController(length: 5, vsync: this);
+    calculator = Calculator();
     WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
@@ -108,6 +110,7 @@ class _TransactionInputViewState extends State<TransactionInputView>
                         break;
                     }
                     tabController.index = pageIndex;
+                    calculator.clear();
                   });
                   //
                 },
@@ -131,7 +134,9 @@ class _TransactionInputViewState extends State<TransactionInputView>
           padding:
               const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
           child: SelectAccountAndInputView(
-              color: widget.mainColor, withSelectTime: withSelectTime),
+              calculator: calculator,
+              color: widget.mainColor,
+              withSelectTime: withSelectTime),
         )
       ]);
     } else {
@@ -140,7 +145,9 @@ class _TransactionInputViewState extends State<TransactionInputView>
           padding:
               const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
           child: SelectAccountAndInputView(
-              color: widget.mainColor, withTransfer: true),
+              calculator: calculator,
+              color: widget.mainColor,
+              withTransfer: true),
         )
       ]);
     }
@@ -154,7 +161,8 @@ class _TransactionInputViewState extends State<TransactionInputView>
         Padding(
           padding:
               const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
-          child: SelectAccountAndInputView(color: widget.mainColor),
+          child: SelectAccountAndInputView(
+              calculator: calculator, color: widget.mainColor),
         ),
         Expanded(
             child: Padding(
@@ -199,7 +207,10 @@ class _TransactionInputViewState extends State<TransactionInputView>
                         color: widget.mainColor,
                       ),
                       IconTagListView(),
-                      NumberKeyboardView(mainColor: widget.mainColor)
+                      NumberKeyboardView(
+                        mainColor: widget.mainColor,
+                        calculator: calculator,
+                      )
                     ],
                   ),
                 ))

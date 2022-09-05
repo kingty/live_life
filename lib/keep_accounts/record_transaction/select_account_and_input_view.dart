@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:live_life/keep_accounts/record_transaction/number_keyboard_view.dart';
 
 import '../../common_view/dot_line_border.dart';
 import '../keep_accounts_them.dart';
@@ -9,7 +10,8 @@ class SelectAccountAndInputView extends StatefulWidget {
       {super.key,
       required this.color,
       this.withSelectTime = false,
-      this.withTransfer = false});
+      this.withTransfer = false,
+      required this.calculator});
 
   @override
   _SelectAccountAndInputViewState createState() =>
@@ -17,6 +19,7 @@ class SelectAccountAndInputView extends StatefulWidget {
   final Color color;
   final bool withSelectTime;
   final bool withTransfer;
+  final Calculator calculator;
 }
 
 class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
@@ -24,6 +27,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
   late TextStyle _textStyle;
 
   List<Widget> widgets = List.empty(growable: true);
+  TextEditingController controller = TextEditingController();
 
   @override
   void initState() {
@@ -57,6 +61,14 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
       ));
     }
     widgets.add(getSelectAccountAndInputView());
+
+    widget.calculator.stream().listen((event) {
+      if (mounted) {
+        setState(() {
+          controller.text = event;
+        });
+      }
+    });
 
     super.initState();
   }
@@ -113,6 +125,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
   }
 
   Widget getSelectAccountAndInputView() {
+
     return Row(
       children: [
         Padding(
@@ -138,6 +151,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
             padding:
                 const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
             child: TextField(
+              controller: controller,
               keyboardType: TextInputType.none,
               decoration: InputDecoration(
                   border: InputBorder.none,
