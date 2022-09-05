@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../helper.dart';
 import '../../icons/custom_icons.dart';
 import '../keep_accounts_them.dart';
 import '../models/category_data.dart';
@@ -22,6 +23,7 @@ class CategorySelectView extends StatefulWidget {
 class _CategorySelectViewState extends State<CategorySelectView>
     with TickerProviderStateMixin {
   int selectIndex = -1;
+  int selectSecondIndex = -1;
   int crossAxisCount = 5;
 
   @override
@@ -31,6 +33,63 @@ class _CategorySelectViewState extends State<CategorySelectView>
     super.initState();
   }
 
+  Widget getChildrenCategories(
+      List<CategoryData> categories, ValueChanged<int>? onSelectCategory) {
+    return ListView.separated(
+      itemCount: categories.length,
+      itemBuilder: (BuildContext context, int index) {
+        var categoryItem = categories[index];
+        return InkWell(
+            onTap: () {
+              Navigator.pop(context);
+              onSelectCategory?.call(categoryItem.id);
+              setState(() {
+                selectSecondIndex = index;
+              });
+            },
+            child: Container(
+              height: 70,
+              width: double.infinity,
+              margin: const EdgeInsets.only(left: 24, right: 24),
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              child: Row(
+                children: [
+                  CategoryIconView(
+                    iconData: CustomIcons.customIcons[categoryItem.icon] ??
+                        Icons.image,
+                    color: widget.color,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 10,
+                    ),
+                    child: Text(
+                      categoryItem.name,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: KeepAccountsTheme.fontName,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15,
+                        letterSpacing: -0.1,
+                        color: KeepAccountsTheme.nearlyBlack.withOpacity(0.8),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ));
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return Divider(
+          height: 1.0,
+          color: Colors.black12.withOpacity(0.05),
+          indent: 12,
+          endIndent: 12,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -38,13 +97,33 @@ class _CategorySelectViewState extends State<CategorySelectView>
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount),
         itemBuilder: (context, index) {
-          var element = widget.categories[index];
+          CategoryData parent = widget.categories[index];
+          CategoryData categoryShow;
+          if (selectSecondIndex >= 0 && selectIndex == index) {
+            categoryShow = widget.categories[index].children[selectSecondIndex];
+          } else {
+            categoryShow = widget.categories[index];
+          }
+
           return GestureDetector(
               onTap: () {
                 setState(() {
+                  if (index != selectIndex) {
+                    selectSecondIndex = -1;
+                  }
                   selectIndex = index;
-                  widget.onSelectCategory?.call(element.id);
+
                 });
+                if (parent.children.isNotEmpty) {
+                  showBottomSheetPanel(
+                      context,
+                      SizedBox(
+                          height: 400,
+                          child: getChildrenCategories(
+                              parent.children, widget.onSelectCategory)));
+                } else {
+                  widget.onSelectCategory?.call(categoryShow.id);
+                }
               },
               child: Column(
                 children: [
@@ -57,9 +136,9 @@ class _CategorySelectViewState extends State<CategorySelectView>
                               selectIndex: selectIndex,
                               color: widget.color,
                               iconData:
-                                  CustomIcons.customIcons[element.icon]!)),
+                                  CustomIcons.customIcons[categoryShow.icon]!)),
                       Visibility(
-                          visible: element.children.isNotEmpty,
+                          visible: parent.children.isNotEmpty,
                           child: Positioned(
                             left: 40,
                             top: 40,
@@ -78,7 +157,7 @@ class _CategorySelectViewState extends State<CategorySelectView>
                     ],
                   ),
                   Text(
-                    element.name,
+                    parent.name + ((parent == categoryShow) ? "" : "-${categoryShow.name.substring(0,2)}"),
                     style: KeepAccountsTheme.caption,
                   )
                 ],
