@@ -28,7 +28,14 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
 
   List<Widget> widgets = List.empty(growable: true);
   TextEditingController controller = TextEditingController();
+  FocusNode focusNode = FocusNode();
 
+  @override
+  void dispose() {
+    controller.dispose();
+    focusNode.dispose();
+    super.dispose();
+  }
   @override
   void initState() {
     _textStyle = TextStyle(
@@ -64,6 +71,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
 
     widget.calculator.stream().listen((event) {
       if (mounted) {
+        focusNode.requestFocus();
         setState(() {
           controller.text = event;
         });
@@ -151,6 +159,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
             padding:
                 const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
             child: TextField(
+              focusNode: focusNode,
               controller: controller,
               keyboardType: TextInputType.none,
               decoration: InputDecoration(
