@@ -50,8 +50,16 @@ class _CategorySelectViewState extends State<CategorySelectView>
             child: Container(
               height: 70,
               width: double.infinity,
-              margin: const EdgeInsets.only(left: 24, right: 24),
-              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              decoration: (selectSecondIndex == index)
+                  ? BoxDecoration(
+                      color: widget.color.withOpacity(0.1),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12.0)),
+                    )
+                  : null,
+              margin: const EdgeInsets.only(left: 14, right: 14),
+              padding: const EdgeInsets.only(
+                  top: 10, bottom: 10, left: 10, right: 10),
               child: Row(
                 children: [
                   CategoryIconView(
@@ -112,7 +120,6 @@ class _CategorySelectViewState extends State<CategorySelectView>
                     selectSecondIndex = -1;
                   }
                   selectIndex = index;
-
                 });
                 if (parent.children.isNotEmpty) {
                   showBottomSheetPanel(
@@ -157,7 +164,10 @@ class _CategorySelectViewState extends State<CategorySelectView>
                     ],
                   ),
                   Text(
-                    parent.name + ((parent == categoryShow) ? "" : "-${categoryShow.name.substring(0,2)}"),
+                    parent.name +
+                        ((parent == categoryShow)
+                            ? ""
+                            : "-${categoryShow.name.substring(0, 2)}"),
                     style: KeepAccountsTheme.caption,
                   )
                 ],

@@ -31,7 +31,15 @@ class _AccountsManageViewState extends State<AccountsManageView>
           }, childCount: listViews.length)),
           SliverList(
             delegate: SliverChildBuilderDelegate((context, index) {
-              return AccountItemView(data: accounts[index]);
+              return Container(
+                decoration: BoxDecoration(
+                    border: Border(
+                        bottom: BorderSide(color: Colors.black12.withOpacity(0.05)))),
+                margin: const EdgeInsets.only(left: 24, right: 24),
+                padding: const EdgeInsets.only(
+                    top: 5, bottom: 5),
+                child: AccountItemView(data: accounts[index]),
+              );
             }, childCount: accounts.length),
           )
         ],

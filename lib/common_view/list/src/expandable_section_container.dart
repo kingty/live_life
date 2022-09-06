@@ -80,12 +80,12 @@ class ExpandableSectionContainer extends MultiChildRenderObjectWidget {
     return RenderExpandableSectionContainer(
       renderSliver: renderSliver,
       scrollable: Scrollable.of(context)!,
-      controller: this.info.controller,
-      sticky: this.info.sticky,
-      overlapsContent: this.info.overlapsContent,
-      listIndex: this.info.listIndex,
-      sectionRealIndexes: this.info.sectionRealIndexes,
-      separated: this.info.separated,
+      controller: info.controller,
+      sticky: info.sticky,
+      overlapsContent: info.overlapsContent,
+      listIndex: info.listIndex,
+      sectionRealIndexes: info.sectionRealIndexes,
+      separated: info.separated,
     );
   }
 
@@ -94,12 +94,12 @@ class ExpandableSectionContainer extends MultiChildRenderObjectWidget {
       BuildContext context, RenderExpandableSectionContainer renderObject) {
     renderObject
       ..scrollable = Scrollable.of(context)!
-      ..controller = this.info.controller
-      ..sticky = this.info.sticky
-      ..overlapsContent = this.info.overlapsContent
-      ..listIndex = this.info.listIndex
-      ..sectionRealIndexes = this.info.sectionRealIndexes
-      ..separated = this.info.separated;
+      ..controller = info.controller
+      ..sticky = info.sticky
+      ..overlapsContent = info.overlapsContent
+      ..listIndex = info.listIndex
+      ..sectionRealIndexes = info.sectionRealIndexes
+      ..separated = info.separated;
   }
 }
 

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:live_life/keep_accounts/accounts/account_item_view.dart';
+import 'package:live_life/keep_accounts/models/account_data.dart';
+import 'package:live_life/keep_accounts/models/mock_data.dart';
 import 'package:live_life/keep_accounts/record_transaction/number_keyboard_view.dart';
 
 import '../../common_view/dot_line_border.dart';
+import '../../helper.dart';
 import '../keep_accounts_them.dart';
 import '../models/bank_data.dart';
 
@@ -30,44 +34,27 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
   TextEditingController controller = TextEditingController();
   FocusNode focusNode = FocusNode();
 
+  List<AccountData> accounts = MockData.getAccounts();
+  late AccountData selectAccount;
+  late AccountData selectAccountBelow;
+
   @override
   void dispose() {
     controller.dispose();
     focusNode.dispose();
     super.dispose();
   }
+
   @override
   void initState() {
+    selectAccount = accounts.first;
+    selectAccountBelow = accounts.first;
     _textStyle = TextStyle(
       color: widget.color,
       letterSpacing: 0,
       fontSize: 30,
       fontWeight: FontWeight.w400,
     );
-    if (widget.withSelectTime) {
-      widgets.add(getSelectTimeView());
-    }
-    if (widget.withTransfer) {
-      widgets.add(getSelectAccountAndInputView());
-      widgets.add(Container(
-        padding: const EdgeInsets.only(top: 20, bottom: 20),
-        margin: const EdgeInsets.only(left: 10, right: 10),
-        decoration: BoxDecoration(
-          border: DottedLineBorder(
-              dottedLength: 5,
-              dottedSpace: 8,
-              top: BorderSide(color: widget.color.withOpacity(0.1), width: 2),
-              bottom:
-                  BorderSide(color: widget.color.withOpacity(0.1), width: 2)),
-        ),
-        alignment: Alignment.center,
-        child: Icon(
-          Icons.currency_exchange,
-          color: widget.color,
-        ),
-      ));
-    }
-    widgets.add(getSelectAccountAndInputView());
 
     widget.calculator.stream().listen((event) {
       if (mounted) {
@@ -79,6 +66,50 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
     });
 
     super.initState();
+  }
+
+  Widget getAccountsList(List<AccountData> accounts, bool below) {
+    return ListView.separated(
+      itemCount: accounts.length,
+      itemBuilder: (BuildContext context, int index) {
+        var account = accounts[index];
+        return InkWell(
+            onTap: () {
+              setState(() {
+                if (below) {
+                  selectAccountBelow = account;
+                } else {
+                  selectAccount = account;
+                }
+              });
+
+              Navigator.pop(context);
+            },
+            child: Container(
+                width: double.infinity,
+                decoration: (below
+                        ? selectAccountBelow == account
+                        : selectAccount == account)
+                    ? BoxDecoration(
+                        color: widget.color.withOpacity(0.1),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(12.0)),
+                      )
+                    : null,
+                margin: const EdgeInsets.only(left: 14, right: 14),
+                padding: const EdgeInsets.only(
+                    top: 10, bottom: 10, left: 10, right: 10),
+                child: AccountItemView(data: account)));
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return Divider(
+          height: 1.0,
+          color: Colors.black12.withOpacity(0.05),
+          indent: 12,
+          endIndent: 12,
+        );
+      },
+    );
   }
 
   Widget getSelectTimeView() {
@@ -132,8 +163,12 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
         ));
   }
 
-  Widget getSelectAccountAndInputView() {
-
+  Widget getSelectAccountAndInputView(bool below) {
+    var theAccount = below ? selectAccountBelow : selectAccount;
+    var accountBankName =
+        BankData.getByKey(theAccount.bankDataKey)!.simpleName();
+    var accountName = theAccount.name;
+    var logoPath = BankData.getByKey(theAccount.bankDataKey)!.logo;
     return Row(
       children: [
         Padding(
@@ -141,19 +176,26 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
           child: SizedBox(
             width: 50,
             height: 50,
-            child: Image.asset(BankData.gydxsyyh["ABC"]?.logo ?? ""),
+            child: Image.asset(logoPath),
           ),
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text("中国银行", style: KeepAccountsTheme.subtitle),
-            Text(
-              "储蓄卡",
-              style: KeepAccountsTheme.caption,
-            )
-          ],
-        ),
+        InkWell(
+            onTap: () {
+              showBottomSheetPanel(
+                  context,
+                  SizedBox(
+                      height: 400, child: getAccountsList(accounts, below)));
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(accountBankName, style: KeepAccountsTheme.title),
+                Text(
+                  accountName,
+                  style: KeepAccountsTheme.caption,
+                )
+              ],
+            )),
         Expanded(
           child: Padding(
             padding:
@@ -194,7 +236,38 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
           ],
         ),
         child: Column(
-          children: widgets,
+          children: [
+            Visibility(
+                maintainSize: false,
+                visible: widget.withSelectTime,
+                child: getSelectTimeView()),
+            Visibility(
+                maintainSize: false,
+                visible: widget.withTransfer,
+                child: getSelectAccountAndInputView(false)),
+            Visibility(
+                maintainSize: false,
+                visible: widget.withTransfer,
+                child: Container(
+                  padding: const EdgeInsets.only(top: 20, bottom: 20),
+                  margin: const EdgeInsets.only(left: 10, right: 10),
+                  decoration: BoxDecoration(
+                    border: DottedLineBorder(
+                        dottedLength: 5,
+                        dottedSpace: 8,
+                        top: BorderSide(
+                            color: widget.color.withOpacity(0.1), width: 2),
+                        bottom: BorderSide(
+                            color: widget.color.withOpacity(0.1), width: 2)),
+                  ),
+                  alignment: Alignment.center,
+                  child: Icon(
+                    Icons.currency_exchange,
+                    color: widget.color,
+                  ),
+                )),
+            getSelectAccountAndInputView(true)
+          ],
         ));
   }
 }
