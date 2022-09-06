@@ -91,24 +91,11 @@ class KeepAccountsTheme {
     letterSpacing: 0.2,
     color: lightText, // was lightText
   );
-  static const TextStyle money_expense = TextStyle(
-    color: pink,
-    letterSpacing: 0,
-    fontSize: 30,
+  static const TextStyle smallDetail = TextStyle(
+    fontFamily: fontName,
     fontWeight: FontWeight.w400,
-  );
-
-  static const TextStyle money_income = TextStyle(
-    color: Colors.green,
-    letterSpacing: 0,
-    fontSize: 30,
-    fontWeight: FontWeight.w400,
-  );
-  static const TextStyle money_exchange = TextStyle(
-    color: nearlyDarkBlue,
-    letterSpacing: 0,
-    fontSize: 30,
-    fontWeight: FontWeight.w400,
+    fontSize: 10,
+    color: lightText, // was lightText
   );
 
   static const TextStyle number = TextStyle(

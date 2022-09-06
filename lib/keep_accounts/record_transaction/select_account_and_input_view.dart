@@ -4,6 +4,7 @@ import 'package:live_life/keep_accounts/models/account_data.dart';
 import 'package:live_life/keep_accounts/models/mock_data.dart';
 import 'package:live_life/keep_accounts/record_transaction/number_keyboard_view.dart';
 
+import '../../common_view/date_picker_dialog.dart';
 import '../../common_view/dot_line_border.dart';
 import '../../helper.dart';
 import '../keep_accounts_them.dart';
@@ -38,6 +39,9 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
   late AccountData selectAccount;
   late AccountData selectAccountBelow;
 
+  late DateTime startTime;
+  late DateTime endTime;
+
   @override
   void dispose() {
     controller.dispose();
@@ -49,6 +53,8 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
   void initState() {
     selectAccount = accounts.first;
     selectAccountBelow = accounts.first;
+    startTime = DateTime.now();
+    endTime = DateTime.now();
     _textStyle = TextStyle(
       color: widget.color,
       letterSpacing: 0,
@@ -129,36 +135,70 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
                 width: 5, height: 50, color: widget.color.withOpacity(0.4)),
             const SizedBox(width: 10),
             Expanded(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                  Text(
-                    "开始时间",
-                    style: KeepAccountsTheme.caption,
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    "2022-9-3",
-                    style: KeepAccountsTheme.title,
-                  )
-                ])),
+                child: InkWell(
+                    onTap: () async {
+                      final DateTime? date = await showDialog<DateTime?>(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return DateRangePickerDlg(
+                              startTime,
+                              null,
+                              displayDate: startTime,
+                            );
+                          });
+                      if (date != null) {
+                        setState(() {
+                          startTime = date;
+                        });
+                      }
+                    },
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "开始时间",
+                            style: KeepAccountsTheme.caption,
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            formatTime(startTime),
+                            style: KeepAccountsTheme.title,
+                          )
+                        ]))),
             Container(
                 width: 5, height: 50, color: widget.color.withOpacity(0.4)),
             const SizedBox(width: 10),
             Expanded(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                  Text(
-                    "结束时间",
-                    style: KeepAccountsTheme.caption,
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    "2022-9-3",
-                    style: KeepAccountsTheme.title,
-                  )
-                ]))
+                child: InkWell(
+                    onTap: () async {
+                      final DateTime? date = await showDialog<DateTime?>(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return DateRangePickerDlg(
+                              endTime,
+                              null,
+                              displayDate: endTime,
+                            );
+                          });
+                      if (date != null) {
+                        setState(() {
+                          endTime = date;
+                        });
+                      }
+                    },
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "结束时间",
+                            style: KeepAccountsTheme.caption,
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            formatTime(endTime),
+                            style: KeepAccountsTheme.title,
+                          )
+                        ])))
           ],
         ));
   }
@@ -189,10 +229,21 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(accountBankName, style: KeepAccountsTheme.title),
+                RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                      text: accountBankName, style: KeepAccountsTheme.subtitle),
+                  const WidgetSpan(
+                    child: Icon(
+                      Icons.arrow_drop_down_outlined,
+                      size: 14,
+                      color: KeepAccountsTheme.dark_grey,
+                    ),
+                  ),
+                ])),
                 Text(
                   accountName,
-                  style: KeepAccountsTheme.caption,
+                  style: KeepAccountsTheme.smallDetail,
                 )
               ],
             )),
