@@ -8,10 +8,11 @@ import '../keep_accounts_them.dart';
 
 class NumberKeyboardView extends StatelessWidget {
   const NumberKeyboardView(
-      {Key? key, required this.mainColor, required this.calculator})
+      {Key? key, required this.mainColor, required this.calculator, this.onSubmit})
       : super(key: key);
   final Color mainColor;
   final Calculator calculator;
+  final ValueChanged<double>? onSubmit;
 
   @override
   Widget build(BuildContext context) {
@@ -124,11 +125,10 @@ class NumberKeyboardView extends StatelessWidget {
                   child: Row(
                 children: [
                   const SizedBox(width: 1),
-                  NumberView(
+                  DoneView(
                     calculator: calculator,
-                    height: 108,
-                    button: Button.Done,
                     color: mainColor,
+                    onSubmit: onSubmit,
                   ),
                   const SizedBox(width: 2),
                 ],
@@ -141,14 +141,12 @@ class NumberKeyboardView extends StatelessWidget {
 
 class NumberView extends StatelessWidget {
   final Button button;
-  final double height;
   final Color color;
   final Calculator calculator;
 
   const NumberView(
       {super.key,
       required this.button,
-      this.height = 50,
       this.color = KeepAccountsTheme.grey,
       required this.calculator});
 
@@ -172,7 +170,7 @@ class NumberView extends StatelessWidget {
                     child: Container(
                         margin:
                             const EdgeInsets.only(left: 2, right: 2, top: 4),
-                        height: height,
+                        height: 50,
                         alignment: Alignment.center,
                         child: Text(
                           button.label,
@@ -180,6 +178,67 @@ class NumberView extends StatelessWidget {
                             fontSize: 20,
                             height: 0.9,
                             color: color,
+                          ),
+                        ))))));
+  }
+}
+
+class DoneView extends StatefulWidget {
+  final Color color;
+  final Calculator calculator;
+  final ValueChanged<double>? onSubmit;
+  const DoneView(
+      {super.key,
+      this.color = KeepAccountsTheme.grey,
+      required this.calculator, this.onSubmit});
+
+  @override
+  _DoneViewState createState() => _DoneViewState();
+}
+
+class _DoneViewState extends State<DoneView> {
+  bool hasCalculateOperator = false;
+  @override
+  void initState() {
+    widget.calculator.stream().listen((event) {
+      setState(() {
+        hasCalculateOperator = widget.calculator.hasCalculateOperator();
+      });
+    });
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        flex: 1,
+        child: Material(
+            color: Colors.transparent,
+            child: Ink(
+                decoration: const BoxDecoration(
+                  color: KeepAccountsTheme.background,
+                  borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                ),
+                child: InkWell(
+                    // highlightColor: Colors.transparent,
+                    borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+                    onTap: () {
+                      if(hasCalculateOperator) {
+                        widget.calculator.whenClick(Button.Done);
+                      } else {
+                        widget.onSubmit?.call(widget.calculator.getLastResult());
+                      }
+                    },
+                    child: Container(
+                        margin:
+                            const EdgeInsets.only(left: 2, right: 2, top: 4),
+                        height: 108,
+                        alignment: Alignment.center,
+                        child: Text(
+                          hasCalculateOperator ? Button.Done.label : "完成",
+                          style: TextStyle(
+                            fontSize: 20,
+                            height: 0.9,
+                            color: widget.color,
                           ),
                         ))))));
   }
@@ -349,6 +408,14 @@ class Calculator {
     return false;
   }
 
+  bool hasCalculateOperator() {
+    for (var element in _inputBtns.reversed) {
+      if (element ==  Button.Plus ||
+          element == Button.Minus) return true;
+    }
+    return false;
+  }
+
   void whenClick(Button event) {
     if (event.isOperator) {
       switch (event) {
@@ -405,6 +472,10 @@ class Calculator {
   }
 
   double getLastResult() {
-    return _lastResult;
+    if (_inputBtns.last == Button.Dot) {
+      _inputBtns.removeLast();
+    }
+    var d = double.parse(_inputBtns.map((e) => e.label).toList().join());
+    return double.parse(d.toStringAsFixed(2));
   }
 }

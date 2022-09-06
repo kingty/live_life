@@ -3,7 +3,7 @@ import 'package:live_life/app_theme.dart';
 
 import 'common_view/bottom_sheet.dart';
 
-///To show the settings panel content in the bottom sheet
+///To show the  panel content in the bottom sheet
 void showBottomSheetPanel(BuildContext context, Widget propertyWidget) {
   showRoundedModalBottomSheet<dynamic>(
       context: context,
@@ -18,4 +18,10 @@ void showBottomSheetPanel(BuildContext context, Widget propertyWidget) {
 
 String formatTime(DateTime time) {
   return ("${time.year}-${time.month}-${time.day}");
+}
+
+/// Returns the difference (in full days) between the provided date and today.
+int calculateDifference(DateTime date) {
+  DateTime now = DateTime.now();
+  return DateTime(date.year, date.month, date.day).difference(DateTime(now.year, now.month, now.day)).inDays;
 }

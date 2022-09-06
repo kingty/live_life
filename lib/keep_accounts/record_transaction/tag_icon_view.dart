@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import '../keep_accounts_them.dart';
 
 class TagIconView extends StatelessWidget {
-  const TagIconView({super.key, required this.iconData, required this.text});
+  const TagIconView({super.key, required this.iconData, required this.text, this.onTap});
 
   final IconData iconData;
   final String text;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,9 @@ class TagIconView extends StatelessWidget {
             child: InkWell(
                 // highlightColor: Colors.transparent,
                 borderRadius: const BorderRadius.all(Radius.circular(6.0)),
-                onTap: () {},
+                onTap: () {
+                  onTap?.call();
+                },
                 child: Padding(
                   padding: EdgeInsets.all(5),
                   child: RichText(

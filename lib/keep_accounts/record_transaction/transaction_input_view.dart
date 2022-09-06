@@ -182,8 +182,7 @@ class _TransactionInputViewState extends State<TransactionInputView>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (_) {
-        FocusScopeNode currentFocus = FocusScope.of(context);
+      onTap: () {
         widget.focusNode.unfocus();
       },
       child: Container(
@@ -210,6 +209,9 @@ class _TransactionInputViewState extends State<TransactionInputView>
                       NumberKeyboardView(
                         mainColor: widget.mainColor,
                         calculator: calculator,
+                        onSubmit: (d) {
+                          print(d);
+                        },
                       )
                     ],
                   ),
