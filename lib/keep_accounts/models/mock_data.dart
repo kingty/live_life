@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
 import 'package:live_life/keep_accounts/models/bank_data.dart';
+import 'package:live_life/keep_accounts/models/tag_data.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
 
 import '../../common_view/list/src/sliver_expandable_list.dart';
@@ -37,6 +38,15 @@ class MockData {
           ..financial = 34.2
           ..name = value.name
           ..bankDataKey = value.key)
+        .toList();
+  }
+
+  static List<TagData> getTags() {
+    return BankData.gydxsyyh.values
+        .map((value) => TagData()
+          ..id = 1
+          ..des = "des"
+          ..name = value.name)
         .toList();
   }
 

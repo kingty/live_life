@@ -205,7 +205,7 @@ class _TransactionInputViewState extends State<TransactionInputView>
                         focusNode: widget.focusNode,
                         color: widget.mainColor,
                       ),
-                      IconTagListView(),
+                      IconTagListView(mainColor: widget.mainColor,),
                       NumberKeyboardView(
                         mainColor: widget.mainColor,
                         calculator: calculator,
