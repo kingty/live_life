@@ -33,7 +33,7 @@ class MockData {
     int i = 1000;
     return BankData.gydxsyyh.values
         .map((value) => AccountData()
-          ..id = i++
+          ..id = (i++).toString()
           ..des = "des"
           ..cash = 23.3
           ..financial = 34.2
@@ -46,7 +46,7 @@ class MockData {
     int i = 0;
     return BankData.gydxsyyh.values
         .map((value) => TagData()
-          ..id = i++
+          ..id = (i++).toString()
           ..des = "des"
           ..name = value.name)
         .toList();

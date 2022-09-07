@@ -4,14 +4,14 @@ import 'package:live_life/keep_accounts/control/category_manager.dart';
 class TransactionData {
   TransactionData();
 
-  int id = 0;
+  String id = '';
   int categoryId = 0; // 账单类型
   // 这里如果转账，记录到同一个账单
-  int outAccountId = 0; // 账单产生支出账户
-  int inAccountId = 0; // 账单产生收入账户
+  String outAccountId = ''; // 账单产生支出账户
+  String inAccountId = ''; // 账单产生收入账户
   double amount = 0.0; // 金额
   String note = ''; // 备注
-  int tagId = 0; // 标签
+  String tagId = ''; // 标签
   late DateTime tranTime; // 账单产生时间
   late DateTime recordTime; // 记录时间
 
@@ -20,13 +20,13 @@ class TransactionData {
   DateTime? endTime; // 理财 结束时间, 可能为空
 
   TransactionData.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
+      : id = json['id'].toString(),
         categoryId = json['categoryId'],
-        outAccountId = json['outAccountId'],
-        inAccountId = json['inAccountId'],
+        outAccountId = json['outAccountId'].toString(),
+        inAccountId = json['inAccountId'].toString(),
         amount = json['amount'],
         note = json['note'],
-        tagId = json['tagId'],
+        tagId = json['tagId'].toString(),
         recordTime = DateTime.parse(json['recordTime']);
 
   Map<String, dynamic> toJson() => {
@@ -46,27 +46,27 @@ class TransactionData {
 
   String? check() {
     if (categoryId == 0) return "请选择类型";
-    if (outAccountId == 0 && inAccountId == 0) return "未知错误，账户错误";
+    if (outAccountId.isEmpty && inAccountId.isEmpty) return "未知错误，账户错误";
     if (amount == 0) return "请输入金额";
     if (isSpecial()) {
       if (categoryId == CategoryManager.SPECIAL_RENT_IN &&
-          (inAccountId == 0 || outAccountId != 0)) return "未知错误，账户错误";
+          (inAccountId.isEmpty || outAccountId.isNotEmpty)) return "未知错误，账户错误";
       if (categoryId == CategoryManager.SPECIAL_RENT_OUT &&
-          (inAccountId != 0 || outAccountId == 0)) return "未知错误，账户错误";
+          (inAccountId.isNotEmpty || outAccountId.isEmpty)) return "未知错误，账户错误";
       if (categoryId == CategoryManager.SPECIAL_FINANCE) {
-        if (inAccountId != 0 || outAccountId == 0) return "未知错误，账户错误";
+        if (inAccountId.isNotEmpty || outAccountId.isEmpty) return "未知错误，账户错误";
         if (startTime == null) return "请选择开始时间";
       }
       if (categoryId == CategoryManager.SPECIAL_TRANSFER &&
-          (inAccountId == 0 ||
-              outAccountId == 0 ||
+          (inAccountId.isEmpty ||
+              outAccountId.isEmpty ||
               inAccountId == outAccountId)) {
         return "未知错误，账户错误";
       }
     } else if (isIncome()) {
-      if (inAccountId == 0 || outAccountId != 0) return "未知错误，账户错误";
+      if (inAccountId.isEmpty || outAccountId.isNotEmpty) return "未知错误，账户错误";
     } else if (isExpense()) {
-      if (inAccountId != 0 || outAccountId == 0) return "未知错误，账户错误";
+      if (inAccountId.isNotEmpty || outAccountId.isEmpty) return "未知错误，账户错误";
     }
     return null;
   }

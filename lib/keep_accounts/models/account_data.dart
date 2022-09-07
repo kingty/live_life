@@ -1,6 +1,6 @@
 /// 账户
 class AccountData {
-  late int id;
+  late String id;
   late String bankDataKey; //关联BankData
   late String name; //名字
   late String des; // 描述

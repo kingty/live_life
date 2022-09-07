@@ -92,7 +92,7 @@ class _TransactionItemViewState extends State<TransactionItemView>
               ),
             )),
             Padding(
-              padding: EdgeInsets.only(left: 4, bottom: 3),
+              padding: const EdgeInsets.only(left: 4, bottom: 3),
               child: Text(
                 "¥ ${widget.data.isExpense() ? "-" : "+"}${widget.data.amount.toString()}",
                 textAlign: TextAlign.center,

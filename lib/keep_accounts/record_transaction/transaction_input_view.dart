@@ -132,7 +132,7 @@ class _TransactionInputViewState extends State<TransactionInputView>
     );
   }
 
-  Widget _getRentView(int cid) {
+  Widget _getRentView(int categoryId) {
     return Column(children: [
       Padding(
         padding:
@@ -140,27 +140,27 @@ class _TransactionInputViewState extends State<TransactionInputView>
         child: SelectAccountAndInputView(
           calculator: _calculator,
           color: widget.mainColor,
-          withSelectTime: cid == CategoryManager.SPECIAL_FINANCE,
-          withTransfer: cid == CategoryManager.SPECIAL_TRANSFER,
+          withSelectTime: categoryId == CategoryManager.SPECIAL_FINANCE,
+          withTransfer: categoryId == CategoryManager.SPECIAL_TRANSFER,
           onSelectChanged: (data) {
             //reset
-            _transactionData.inAccountId = 0;
-            _transactionData.outAccountId = 0;
+            _transactionData.inAccountId = '';
+            _transactionData.outAccountId = '';
             _transactionData.startTime = null;
             _transactionData.endTime = null;
             // use new value
-            if (cid == CategoryManager.SPECIAL_RENT_IN) {
+            if (categoryId == CategoryManager.SPECIAL_RENT_IN) {
               _transactionData.inAccountId = data.selectAccountBelow.id;
             }
-            if (cid == CategoryManager.SPECIAL_RENT_OUT) {
+            if (categoryId == CategoryManager.SPECIAL_RENT_OUT) {
               _transactionData.outAccountId = data.selectAccountBelow.id;
             }
-            if (cid == CategoryManager.SPECIAL_FINANCE) {
+            if (categoryId == CategoryManager.SPECIAL_FINANCE) {
               _transactionData.outAccountId = data.selectAccountBelow.id;
               _transactionData.startTime = data.startTime ?? DateTime.now();
               _transactionData.endTime = data.endTime;
             }
-            if (cid == CategoryManager.SPECIAL_TRANSFER) {
+            if (categoryId == CategoryManager.SPECIAL_TRANSFER) {
               _transactionData.inAccountId = data.selectAccountBelow.id;
               _transactionData.outAccountId = data.selectAccount.id;
             }
