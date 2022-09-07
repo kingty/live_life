@@ -472,9 +472,10 @@ class Calculator {
   }
 
   double getLastResult() {
-    if (_inputBtns.last == Button.Dot) {
+    if (_inputBtns.isNotEmpty && _inputBtns.last == Button.Dot) {
       _inputBtns.removeLast();
     }
+    if (_inputBtns.isEmpty)  return 0;
     var d = double.parse(_inputBtns.map((e) => e.label).toList().join());
     return double.parse(d.toStringAsFixed(2));
   }

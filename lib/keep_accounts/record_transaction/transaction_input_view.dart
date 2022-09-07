@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:live_life/keep_accounts/models/transaction_data.dart';
 import 'package:live_life/keep_accounts/record_transaction/select_account_and_input_view.dart';
 import '../control/category_manager.dart';
 import '../keep_accounts_them.dart';
@@ -13,23 +14,26 @@ class TransactionInputView extends StatefulWidget {
       {super.key,
       required this.mainColor,
       required this.type,
-      required this.focusNode});
+      required this.focusNode,
+      this.transactionData});
 
   @override
   _TransactionInputViewState createState() => _TransactionInputViewState();
   final Color mainColor;
   final int type;
   final FocusNode focusNode;
+  final TransactionData? transactionData;
 }
 
 class _TransactionInputViewState extends State<TransactionInputView>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   late final List<CategoryData> categories;
-  double position = 0;
-  bool special = false;
-  int selectCId = 0;
-  late TabController tabController;
-  late Calculator calculator;
+  double _position = 0;
+  bool _special = false;
+  late TabController _tabController;
+  late Calculator _calculator;
+  late TransactionData _transactionData;
+  final TextEditingController _noteController = TextEditingController();
 
   @override
   void initState() {
@@ -40,12 +44,14 @@ class _TransactionInputViewState extends State<TransactionInputView>
       categories = CategoryManager.incomeCategories;
     }
     if (widget.type == 2) {
-      special = true;
+      _special = true;
       categories = CategoryManager.specialCategories;
     }
-    tabController = TabController(length: 5, vsync: this);
-    calculator = Calculator();
+    _tabController = TabController(length: 5, vsync: this);
+    _calculator = Calculator();
     WidgetsBinding.instance.addObserver(this);
+
+    _transactionData = widget.transactionData ?? TransactionData();
     super.initState();
   }
 
@@ -55,9 +61,9 @@ class _TransactionInputViewState extends State<TransactionInputView>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         if (MediaQuery.of(context).viewInsets.bottom == 0) {
-          position = 0.0;
+          _position = 0.0;
         } else {
-          position = MediaQuery.of(context).viewInsets.bottom > 290.0
+          _position = MediaQuery.of(context).viewInsets.bottom > 290.0
               ? MediaQuery.of(context).viewInsets.bottom - 290.0
               : 0.0;
         }
@@ -93,7 +99,7 @@ class _TransactionInputViewState extends State<TransactionInputView>
                 categories: categories,
                 onSelectCategory: (cid) {
                   setState(() {
-                    selectCId = cid;
+                    _transactionData.categoryId = cid;
                     int pageIndex = 0;
                     switch (cid) {
                       case CategoryManager.SPECIAL_RENT_IN:
@@ -109,8 +115,8 @@ class _TransactionInputViewState extends State<TransactionInputView>
                         pageIndex = 4;
                         break;
                     }
-                    tabController.index = pageIndex;
-                    calculator.clear();
+                    _tabController.index = pageIndex;
+                    _calculator.clear();
                   });
                   //
                 },
@@ -119,7 +125,7 @@ class _TransactionInputViewState extends State<TransactionInputView>
         Expanded(
             child: TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
-                controller: tabController,
+                controller: _tabController,
                 children: specialWidgets)),
         const SizedBox(height: 340)
       ],
@@ -127,30 +133,41 @@ class _TransactionInputViewState extends State<TransactionInputView>
   }
 
   Widget _getRentView(int cid) {
-    if (cid != CategoryManager.SPECIAL_TRANSFER) {
-      var withSelectTime = cid == CategoryManager.SPECIAL_FINANCE;
-      return Column(children: [
-        Padding(
-          padding:
-              const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
-          child: SelectAccountAndInputView(
-              calculator: calculator,
-              color: widget.mainColor,
-              withSelectTime: withSelectTime),
-        )
-      ]);
-    } else {
-      return Column(children: [
-        Padding(
-          padding:
-              const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
-          child: SelectAccountAndInputView(
-              calculator: calculator,
-              color: widget.mainColor,
-              withTransfer: true),
-        )
-      ]);
-    }
+    return Column(children: [
+      Padding(
+        padding:
+            const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
+        child: SelectAccountAndInputView(
+          calculator: _calculator,
+          color: widget.mainColor,
+          withSelectTime: cid == CategoryManager.SPECIAL_FINANCE,
+          withTransfer: cid == CategoryManager.SPECIAL_TRANSFER,
+          onSelectChanged: (data) {
+            //reset
+            _transactionData.inAccountId = 0;
+            _transactionData.outAccountId = 0;
+            _transactionData.startTime = null;
+            _transactionData.endTime = null;
+            // use new value
+            if (cid == CategoryManager.SPECIAL_RENT_IN) {
+              _transactionData.inAccountId = data.selectAccountBelow.id;
+            }
+            if (cid == CategoryManager.SPECIAL_RENT_OUT) {
+              _transactionData.outAccountId = data.selectAccountBelow.id;
+            }
+            if (cid == CategoryManager.SPECIAL_FINANCE) {
+              _transactionData.outAccountId = data.selectAccountBelow.id;
+              _transactionData.startTime = data.startTime ?? DateTime.now();
+              _transactionData.endTime = data.endTime;
+            }
+            if (cid == CategoryManager.SPECIAL_TRANSFER) {
+              _transactionData.inAccountId = data.selectAccountBelow.id;
+              _transactionData.outAccountId = data.selectAccount.id;
+            }
+          },
+        ),
+      )
+    ]);
   }
 
   Widget _getNormalInputView() {
@@ -162,7 +179,18 @@ class _TransactionInputViewState extends State<TransactionInputView>
           padding:
               const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
           child: SelectAccountAndInputView(
-              calculator: calculator, color: widget.mainColor),
+            calculator: _calculator,
+            color: widget.mainColor,
+            onSelectChanged: (data) {
+              if (widget.type == 0) {
+                _transactionData.outAccountId = data.selectAccountBelow.id;
+              } else if (widget.type == 1) {
+                _transactionData.inAccountId = data.selectAccountBelow.id;
+              } else {
+                throw Exception("should not come here!");
+              }
+            },
+          ),
         ),
         Expanded(
             child: Padding(
@@ -171,7 +199,7 @@ class _TransactionInputViewState extends State<TransactionInputView>
                   color: widget.mainColor,
                   categories: categories,
                   onSelectCategory: (cid) {
-                    selectCId = cid;
+                    _transactionData.categoryId = cid;
                   },
                 ))),
         const SizedBox(height: 340)
@@ -189,9 +217,9 @@ class _TransactionInputViewState extends State<TransactionInputView>
         color: KeepAccountsTheme.background,
         child: Stack(
           children: [
-            special ? _getSpecialInputView() : _getNormalInputView(),
+            _special ? _getSpecialInputView() : _getNormalInputView(),
             Positioned(
-                bottom: position,
+                bottom: _position,
                 left: 0,
                 right: 0,
                 child: SizedBox(
@@ -204,13 +232,22 @@ class _TransactionInputViewState extends State<TransactionInputView>
                       NoteInputView(
                         focusNode: widget.focusNode,
                         color: widget.mainColor,
+                        controller: _noteController,
                       ),
-                      IconTagListView(mainColor: widget.mainColor,),
+                      IconTagListView(
+                        mainColor: widget.mainColor,
+                        transactionData: _transactionData,
+                      ),
                       NumberKeyboardView(
                         mainColor: widget.mainColor,
-                        calculator: calculator,
+                        calculator: _calculator,
                         onSubmit: (d) {
-                          print(d);
+                          _transactionData.amount = d;
+                          _transactionData.note = _noteController.value.text;
+                          _transactionData.recordTime = DateTime.now();
+
+                          print(_transactionData.toJson());
+                          _transactionData.check();
                         },
                       )
                     ],

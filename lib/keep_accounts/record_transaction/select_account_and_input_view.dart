@@ -9,6 +9,14 @@ import '../../common_view/dot_line_border.dart';
 import '../../helper.dart';
 import '../keep_accounts_them.dart';
 import '../models/bank_data.dart';
+import '../models/transaction_data.dart';
+
+class SelectAccountAndTimeData {
+  late AccountData selectAccount;
+  late AccountData selectAccountBelow;
+  DateTime? startTime;
+  DateTime? endTime;
+}
 
 class SelectAccountAndInputView extends StatefulWidget {
   const SelectAccountAndInputView(
@@ -16,7 +24,8 @@ class SelectAccountAndInputView extends StatefulWidget {
       required this.color,
       this.withSelectTime = false,
       this.withTransfer = false,
-      required this.calculator});
+      required this.calculator,
+      this.onSelectChanged});
 
   @override
   _SelectAccountAndInputViewState createState() =>
@@ -25,36 +34,35 @@ class SelectAccountAndInputView extends StatefulWidget {
   final bool withSelectTime;
   final bool withTransfer;
   final Calculator calculator;
+  final ValueChanged<SelectAccountAndTimeData>? onSelectChanged;
 }
 
 class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
     with TickerProviderStateMixin {
   late TextStyle _textStyle;
+  final TextEditingController _controller = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
 
-  List<Widget> widgets = List.empty(growable: true);
-  TextEditingController controller = TextEditingController();
-  FocusNode focusNode = FocusNode();
+  final List<AccountData> _accounts = MockData.getAccounts();
+  late AccountData _selectAccount;
+  late AccountData _selectAccountBelow;
 
-  List<AccountData> accounts = MockData.getAccounts();
-  late AccountData selectAccount;
-  late AccountData selectAccountBelow;
-
-  late DateTime startTime;
-  late DateTime endTime;
+  late DateTime _startTime;
+  DateTime? _endTime;
 
   @override
   void dispose() {
-    controller.dispose();
-    focusNode.dispose();
+    _controller.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
   @override
   void initState() {
-    selectAccount = accounts.first;
-    selectAccountBelow = accounts.first;
-    startTime = DateTime.now();
-    endTime = DateTime.now();
+    _selectAccount = _accounts.first;
+    _selectAccountBelow = _accounts.first;
+    _startTime = DateTime.now();
+    _onChange();
     _textStyle = TextStyle(
       color: widget.color,
       letterSpacing: 0,
@@ -64,14 +72,22 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
 
     widget.calculator.stream().listen((event) {
       if (mounted) {
-        focusNode.requestFocus();
+        _focusNode.requestFocus();
         setState(() {
-          controller.text = event;
+          _controller.text = event;
         });
       }
     });
 
     super.initState();
+  }
+
+  _onChange() {
+    widget.onSelectChanged?.call(SelectAccountAndTimeData()
+      ..selectAccount = _selectAccount
+      ..selectAccountBelow = _selectAccountBelow
+      ..startTime = _startTime
+      ..endTime = _endTime);
   }
 
   Widget getAccountsList(List<AccountData> accounts, bool below) {
@@ -83,10 +99,11 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
             onTap: () {
               setState(() {
                 if (below) {
-                  selectAccountBelow = account;
+                  _selectAccountBelow = account;
                 } else {
-                  selectAccount = account;
+                  _selectAccount = account;
                 }
+                _onChange();
               });
 
               Navigator.pop(context);
@@ -94,8 +111,8 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
             child: Container(
                 width: double.infinity,
                 decoration: (below
-                        ? selectAccountBelow == account
-                        : selectAccount == account)
+                        ? _selectAccountBelow == account
+                        : _selectAccount == account)
                     ? BoxDecoration(
                         color: widget.color.withOpacity(0.1),
                         borderRadius:
@@ -141,15 +158,16 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
                           context: context,
                           builder: (BuildContext context) {
                             return DateRangePickerDlg(
-                              startTime,
+                              _startTime,
                               null,
-                              displayDate: startTime,
+                              displayDate: _startTime,
                             );
                           });
                       if (date != null) {
                         setState(() {
-                          startTime = date;
+                          _startTime = date;
                         });
+                        _onChange();
                       }
                     },
                     child: Column(
@@ -161,7 +179,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            formatTime(startTime),
+                            formatTime(_startTime),
                             style: KeepAccountsTheme.title,
                           )
                         ]))),
@@ -175,16 +193,16 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
                           context: context,
                           builder: (BuildContext context) {
                             return DateRangePickerDlg(
-                              endTime,
+                              _endTime ?? DateTime.now(),
                               null,
-                              displayDate: endTime,
+                              displayDate: _endTime ?? DateTime.now(),
                             );
                           });
-                      if (date != null) {
-                        setState(() {
-                          endTime = date;
-                        });
-                      }
+
+                      setState(() {
+                        _endTime = date;
+                      });
+                      _onChange();
                     },
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,7 +213,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            formatTime(endTime),
+                            _endTime == null ? "---" : formatTime(_endTime!),
                             style: KeepAccountsTheme.title,
                           )
                         ])))
@@ -204,7 +222,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
   }
 
   Widget getSelectAccountAndInputView(bool below) {
-    var theAccount = below ? selectAccountBelow : selectAccount;
+    var theAccount = below ? _selectAccountBelow : _selectAccount;
     var accountBankName =
         BankData.getByKey(theAccount.bankDataKey)!.simpleName();
     var accountName = theAccount.name;
@@ -224,7 +242,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
               showBottomSheetPanel(
                   context,
                   SizedBox(
-                      height: 400, child: getAccountsList(accounts, below)));
+                      height: 400, child: getAccountsList(_accounts, below)));
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -252,8 +270,8 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
             padding:
                 const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
             child: TextField(
-              focusNode: focusNode,
-              controller: controller,
+              focusNode: _focusNode,
+              controller: _controller,
               keyboardType: TextInputType.none,
               decoration: InputDecoration(
                   border: InputBorder.none,

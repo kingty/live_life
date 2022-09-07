@@ -1,18 +1,23 @@
+import 'package:live_life/helper.dart';
+import 'package:live_life/keep_accounts/control/category_manager.dart';
+
 class TransactionData {
-  late int id;
-  late int categoryId; // 账单类型
+  TransactionData();
+
+  int id = 0;
+  int categoryId = 0; // 账单类型
   // 这里如果转账，记录到同一个账单
-  late int outAccountId; // 账单产生支出账户
-  late int inAccountId; // 账单产生收入账户
-  late double amount; // 金额
-  late String note; // 备注
-  late int tagId; // 标签
+  int outAccountId = 0; // 账单产生支出账户
+  int inAccountId = 0; // 账单产生收入账户
+  double amount = 0.0; // 金额
+  String note = ''; // 备注
+  int tagId = 0; // 标签
   late DateTime tranTime; // 账单产生时间
   late DateTime recordTime; // 记录时间
 
-  late double interest; // 理财收益
-  late DateTime startTime; // 理财 开始时间
-  late DateTime endTime; // 理财 结束时间
+  double interest = 0.0; // 理财收益
+  DateTime? startTime; // 理财 开始时间
+  DateTime? endTime; // 理财 结束时间, 可能为空
 
   TransactionData.fromJson(Map<String, dynamic> json)
       : id = json['id'],
@@ -24,6 +29,48 @@ class TransactionData {
         tagId = json['tagId'],
         recordTime = DateTime.parse(json['recordTime']);
 
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'categoryId': categoryId,
+        'outAccountId': outAccountId,
+        'inAccountId': inAccountId,
+        'amount': amount,
+        'note': note,
+        'tagId': tagId,
+        'tranTime': formatTime(tranTime),
+        'recordTime': formatTime(recordTime),
+        'interest': interest,
+        'startTime': startTime == null ? "" : formatTime(startTime!),
+        'endTime': endTime == null ? "" : formatTime(endTime!),
+      };
+
+  String? check() {
+    if (categoryId == 0) return "请选择类型";
+    if (outAccountId == 0 && inAccountId == 0) return "未知错误，账户错误";
+    if (amount == 0) return "请输入金额";
+    if (isSpecial()) {
+      if (categoryId == CategoryManager.SPECIAL_RENT_IN &&
+          (inAccountId == 0 || outAccountId != 0)) return "未知错误，账户错误";
+      if (categoryId == CategoryManager.SPECIAL_RENT_OUT &&
+          (inAccountId != 0 || outAccountId == 0)) return "未知错误，账户错误";
+      if (categoryId == CategoryManager.SPECIAL_FINANCE) {
+        if (inAccountId != 0 || outAccountId == 0) return "未知错误，账户错误";
+        if (startTime == null) return "请选择开始时间";
+      }
+      if (categoryId == CategoryManager.SPECIAL_TRANSFER &&
+          (inAccountId == 0 ||
+              outAccountId == 0 ||
+              inAccountId == outAccountId)) {
+        return "未知错误，账户错误";
+      }
+    } else if (isIncome()) {
+      if (inAccountId == 0 || outAccountId != 0) return "未知错误，账户错误";
+    } else if (isExpense()) {
+      if (inAccountId != 0 || outAccountId == 0) return "未知错误，账户错误";
+    }
+    return null;
+  }
+
   int getMonth() {
     return recordTime.month;
   }
@@ -34,6 +81,14 @@ class TransactionData {
 
   bool isExpense() {
     return categoryId.toString().startsWith("1");
+  }
+
+  bool isIncome() {
+    return categoryId.toString().startsWith("2");
+  }
+
+  bool isSpecial() {
+    return categoryId > 3000;
   }
 }
 

@@ -5,20 +5,28 @@ import 'package:live_life/keep_accounts/record_transaction/tag_icon_view.dart';
 import '../../common_view/date_picker_dialog.dart';
 import '../../helper.dart';
 import '../keep_accounts_them.dart';
+import '../models/transaction_data.dart';
 
 class IconTagListView extends StatefulWidget {
-  const IconTagListView({super.key, required this.mainColor});
+  const IconTagListView(
+      {super.key, required this.mainColor, required this.transactionData});
 
   final Color mainColor;
+  final TransactionData transactionData;
 
   @override
   _IconTagListViewState createState() => _IconTagListViewState();
 }
 
 class _IconTagListViewState extends State<IconTagListView> {
-  var _recordTime = DateTime.now();
-  int selectTagIndex = -1;
-  var tags = MockData.getTags();
+  var _tranTime = DateTime.now();
+  int _selectTagIndex = -1;
+  final _tags = MockData.getTags();
+  @override
+  void initState() {
+    widget.transactionData.tranTime = _tranTime;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,22 +38,23 @@ class _IconTagListViewState extends State<IconTagListView> {
         children: [
           TagIconView(
             iconData: Icons.calendar_today,
-            text: calculateDifference(_recordTime) == 0
+            text: calculateDifference(_tranTime) == 0
                 ? '今天'
-                : formatTime(_recordTime),
+                : formatTime(_tranTime),
             onTap: () async {
               final DateTime? date = await showDialog<DateTime?>(
                   context: context,
                   builder: (BuildContext context) {
                     return DateRangePickerDlg(
-                      _recordTime,
+                      _tranTime,
                       null,
-                      displayDate: _recordTime,
+                      displayDate: _tranTime,
                     );
                   });
               if (date != null) {
                 setState(() {
-                  _recordTime = date;
+                  _tranTime = date;
+                  widget.transactionData.tranTime = _tranTime;
                 });
               }
             },
@@ -53,7 +62,9 @@ class _IconTagListViewState extends State<IconTagListView> {
           const SizedBox(width: 15),
           TagIconView(
             iconData: Icons.tag_rounded,
-            text: '标签',
+            text: _selectTagIndex >= 0
+                ? '标签-${_tags[_selectTagIndex].name}'
+                : '标签',
             onTap: () {
               showBottomSheetPanel(
                   context, SizedBox(height: 400, child: _getTagsList()));
@@ -66,18 +77,21 @@ class _IconTagListViewState extends State<IconTagListView> {
 
   Widget _getTagsList() {
     return ListView.separated(
-      itemCount: tags.length,
+      itemCount: _tags.length,
       itemBuilder: (BuildContext context, int index) {
-        var tag = tags[index];
+        var tag = _tags[index];
         return InkWell(
           onTap: () {
             Navigator.pop(context);
-            selectTagIndex = index;
+            setState(() {
+              _selectTagIndex = index;
+              widget.transactionData.tagId = tag.id;
+            });
           },
           child: Container(
               height: 60,
               width: double.infinity,
-              decoration: (selectTagIndex == index)
+              decoration: (_selectTagIndex == index)
                   ? BoxDecoration(
                       color: widget.mainColor.withOpacity(0.1),
                       borderRadius:
