@@ -3,14 +3,14 @@ import 'package:live_life/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:live_life/generated/l10n.dart';
-import 'package:live_life/keep_accounts/control/category_manager.dart';
+import 'keep_accounts/keep_accounts.dart';
 import 'navigation_home_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  CategoryManager.instance.init();
+  await KeepAccounts.instance.init();
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown

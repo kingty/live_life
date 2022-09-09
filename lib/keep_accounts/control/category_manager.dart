@@ -24,8 +24,8 @@ class CategoryManager {
   static const int SPECIAL_FINANCE = 3003;
   static const int SPECIAL_TRANSFER = 3004;
 
-  void init() {
-    fetchCategories().ignore();
+  Future<void> init() async {
+    await fetchCategories();
   }
 
   CategoryData? getById(int id) {

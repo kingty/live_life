@@ -66,3 +66,6 @@ LocallatestId，是本地同步的最新批次数据的id，如果是新客户�
     ```
   2. 更改id.json文件里的latestId,为latestId+1，并先上传文件， 接着上传transaction_(latestId +1).json这个文件。
 
+
+两份文件。
+两个人都只往里面写，不删除。相互读对方的数据，然后增量更新到本地

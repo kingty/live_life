@@ -37,6 +37,8 @@ class MockData {
           ..des = "des"
           ..cash = 23.3
           ..financial = 34.2
+          ..debt = 11
+          ..lend = 99
           ..name = value.name
           ..bankDataKey = value.key)
         .toList();
