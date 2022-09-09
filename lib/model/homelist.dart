@@ -1,4 +1,4 @@
-import 'package:live_life/keep_accounts/keep_accounts_home_screen.dart';
+import 'package:live_life/keep_accounts/ui/keep_accounts_home_screen.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeList {

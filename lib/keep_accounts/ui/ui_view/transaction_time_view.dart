@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../icons/custom_icons.dart';
+import '../../models/transaction_data.dart';
 import '../keep_accounts_them.dart';
-import '../models/transaction_data.dart';
 
 class TransactionTimeView extends StatefulWidget {
   const TransactionTimeView({

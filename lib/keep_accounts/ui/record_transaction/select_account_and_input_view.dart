@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:live_life/keep_accounts/accounts/account_item_view.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
 import 'package:live_life/keep_accounts/models/mock_data.dart';
-import 'package:live_life/keep_accounts/record_transaction/number_keyboard_view.dart';
-
-import '../../common_view/date_picker_dialog.dart';
-import '../../common_view/dot_line_border.dart';
-import '../../helper.dart';
+import '../../../common_view/date_picker_dialog.dart';
+import '../../../common_view/dot_line_border.dart';
+import '../../../helper.dart';
+import '../accounts/account_item_view.dart';
 import '../keep_accounts_them.dart';
-import '../models/bank_data.dart';
-import '../models/transaction_data.dart';
+import '../../models/bank_data.dart';
+import 'number_keyboard_view.dart';
 
 class SelectAccountAndTimeData {
   late AccountData selectAccount;

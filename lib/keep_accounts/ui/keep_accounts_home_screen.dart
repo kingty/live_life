@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:live_life/keep_accounts/record_transaction/record_transaction_view.dart';
+import 'package:live_life/keep_accounts/ui/record_transaction/record_transaction_view.dart';
 import 'bottom_bar_view.dart';
+import '../models/tabIcon_data.dart';
 import 'keep_accounts_them.dart';
-import 'models/tabIcon_data.dart';
 import 'overview/keep_accounts_overview_screen.dart';
 
 class KeepAccountsHomeScreen extends StatefulWidget {

@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:live_life/keep_accounts/models/category_data.dart';
 import 'package:live_life/keep_accounts/models/mock_data.dart';
-import 'package:live_life/keep_accounts/ui_view/transaction_list_view.dart';
+import 'package:live_life/keep_accounts/ui/ui_view/transaction_list_view.dart';
 
 import 'package:live_life/main.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -51,8 +51,9 @@ void main() {
 
     var sections = MonthSection.getMonthSections(trans);
 
-    for(var s in sections) {
-      print("${s.month}-${s.items.map((e) => e.transactionData.recordTime).toList().join("_")}");
+    for (var s in sections) {
+      print(
+          "${s.month}-${s.items.map((e) => e.transactionData.recordTime).toList().join("_")}");
     }
   });
 }

@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../icons/custom_icons.dart';
-import '../keep_accounts_them.dart';
+import '../../../icons/custom_icons.dart';
 
 class CategoryIconView extends StatefulWidget {
   CategoryIconView(

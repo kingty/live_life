@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:live_life/keep_accounts/keep_accounts_them.dart';
-
+import 'package:live_life/app_theme.dart';
 
 class CommonAppBar extends StatefulWidget {
   CommonAppBar(
@@ -26,7 +23,7 @@ class _CommonAppBarState extends State<CommonAppBar>
     with TickerProviderStateMixin {
   final ScrollController controller = ScrollController();
 
-  var color = KeepAccountsTheme.darkerText;
+  var color = AppTheme.darkerText;
 
   List<Widget> _getAllSlivers() {
     final List<Widget> allSlivers = List.empty(growable: true);
@@ -49,15 +46,15 @@ class _CommonAppBarState extends State<CommonAppBar>
             width: 30,
             margin: const EdgeInsets.only(bottom: 5, left: 24),
             decoration: const BoxDecoration(
-                color: KeepAccountsTheme.pink,
-                borderRadius: BorderRadius.all(Radius.circular(2.0)),
-                // boxShadow: <BoxShadow>[
-                //   BoxShadow(
-                //     color: _sampleListModel!.webBackgroundColor,
-                //     offset: const Offset(0, 2.0),
-                //     blurRadius: 0.25,
-                //   )
-                // ]
+              color: AppTheme.pink,
+              borderRadius: BorderRadius.all(Radius.circular(2.0)),
+              // boxShadow: <BoxShadow>[
+              //   BoxShadow(
+              //     color: _sampleListModel!.webBackgroundColor,
+              //     offset: const Offset(0, 2.0),
+              //     blurRadius: 0.25,
+              //   )
+              // ]
             )),
         Visibility(
             visible: widget.subTitle != null,
@@ -83,17 +80,17 @@ class _CommonAppBarState extends State<CommonAppBar>
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: KeepAccountsTheme.background,
+        backgroundColor: AppTheme.background,
         appBar: AppBar(
           leading: IconButton(
-            color: KeepAccountsTheme.nearlyDarkBlue,
+            color: AppTheme.nearlyDarkBlue,
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
           elevation: 0.0,
-          backgroundColor: KeepAccountsTheme.background,
+          backgroundColor: AppTheme.background,
           title: AnimateOpacityWidget(
               controller: controller,
               opacity: 0,
@@ -103,10 +100,10 @@ class _CommonAppBarState extends State<CommonAppBar>
           actions: widget.actions,
         ),
         body: Container(
-            color: KeepAccountsTheme.background,
+            color: AppTheme.background,
             transform: Matrix4.translationValues(0, -1, 0),
             child: GlowingOverscrollIndicator(
-                color: KeepAccountsTheme.background,
+                color: AppTheme.background,
                 axisDirection: AxisDirection.down,
                 child: CustomScrollView(
                   controller: controller,
@@ -115,8 +112,6 @@ class _CommonAppBarState extends State<CommonAppBar>
                 ))));
   }
 }
-
-
 
 /// Creates a widget that makes its child partially transparent.
 class AnimateOpacityWidget extends StatefulWidget {

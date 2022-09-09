@@ -1,10 +1,9 @@
 import 'dart:math' as math;
 import 'package:live_life/main.dart';
 import 'package:flutter/material.dart';
-
-import '../main.dart';
+import '../../main.dart';
+import '../models/tabIcon_data.dart';
 import 'keep_accounts_them.dart';
-import 'models/tabIcon_data.dart';
 
 class BottomBarView extends StatefulWidget {
   const BottomBarView(
@@ -14,6 +13,7 @@ class BottomBarView extends StatefulWidget {
   final Function(int index)? changeIndex;
   final Function()? addClick;
   final List<TabIconData>? tabIconsList;
+
   @override
   _BottomBarViewState createState() => _BottomBarViewState();
 }
@@ -165,7 +165,7 @@ class _BottomBarViewState extends State<BottomBarView>
                           highlightColor: Colors.transparent,
                           focusColor: Colors.transparent,
                           onTap: widget.addClick,
-                          child: Icon(
+                          child: const Icon(
                             Icons.add,
                             color: KeepAccountsTheme.white,
                             size: 32,
@@ -202,6 +202,7 @@ class TabIcons extends StatefulWidget {
 
   final TabIconData? tabIconData;
   final Function()? removeAllSelect;
+
   @override
   _TabIconsState createState() => _TabIconsState();
 }

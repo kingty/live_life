@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../keep_accounts_them.dart';
 
 class TagIconView extends StatelessWidget {
-  const TagIconView({super.key, required this.iconData, required this.text, this.onTap});
+  const TagIconView(
+      {super.key, required this.iconData, required this.text, this.onTap});
 
   final IconData iconData;
   final String text;
@@ -37,7 +38,7 @@ class TagIconView extends StatelessWidget {
                     ),
                     TextSpan(
                         text: " $text",
-                        style: TextStyle(color: KeepAccountsTheme.grey)),
+                        style: const TextStyle(color: KeepAccountsTheme.grey)),
                   ])),
                 ))));
   }

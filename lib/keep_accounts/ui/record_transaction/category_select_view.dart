@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../helper.dart';
-import '../../icons/custom_icons.dart';
+import '../../../helper.dart';
+import '../../../icons/custom_icons.dart';
 import '../keep_accounts_them.dart';
-import '../models/category_data.dart';
+import '../../models/category_data.dart';
 import '../ui_view/category_icon_view.dart';
 
 class CategorySelectView extends StatefulWidget {

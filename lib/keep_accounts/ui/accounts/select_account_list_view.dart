@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:live_life/keep_accounts/accounts/select_account_item_view.dart';
 import 'package:live_life/keep_accounts/models/bank_data.dart';
+import 'package:live_life/keep_accounts/ui/accounts/select_account_item_view.dart';
 
-import '../../common_view/common_app_bar.dart';
-import '../../common_view/list/src/sliver_expandable_list.dart';
-import '../../common_view/search_input_view.dart';
-import '../../generated/l10n.dart';
+import '../../../common_view/common_app_bar.dart';
+import '../../../common_view/list/src/sliver_expandable_list.dart';
+import '../../../common_view/search_input_view.dart';
+import '../../../generated/l10n.dart';
 import '../keep_accounts_them.dart';
-import 'edit_account__view.dart';
+import 'edit_account_view.dart';
 
 class SelectAccountListView extends StatefulWidget {
+  const SelectAccountListView({Key? key}) : super(key: key);
+
   @override
   _SelectAccountListViewState createState() => _SelectAccountListViewState();
 }

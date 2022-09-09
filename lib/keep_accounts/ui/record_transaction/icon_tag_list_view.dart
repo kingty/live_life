@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/models/mock_data.dart';
-import 'package:live_life/keep_accounts/record_transaction/tag_icon_view.dart';
+import 'package:live_life/keep_accounts/ui/record_transaction/tag_icon_view.dart';
 
-import '../../common_view/date_picker_dialog.dart';
-import '../../helper.dart';
+import '../../../common_view/date_picker_dialog.dart';
+import '../../../helper.dart';
 import '../keep_accounts_them.dart';
-import '../models/transaction_data.dart';
+import '../../models/transaction_data.dart';
 
 class IconTagListView extends StatefulWidget {
   const IconTagListView(
@@ -22,6 +22,7 @@ class _IconTagListViewState extends State<IconTagListView> {
   var _tranTime = DateTime.now();
   int _selectTagIndex = -1;
   final _tags = MockData.getTags();
+
   @override
   void initState() {
     widget.transactionData.tranTime = _tranTime;

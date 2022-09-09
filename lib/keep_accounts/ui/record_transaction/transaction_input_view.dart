@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
-import 'package:live_life/keep_accounts/record_transaction/select_account_and_input_view.dart';
-import '../control/category_manager.dart';
+import 'package:live_life/keep_accounts/ui/record_transaction/select_account_and_input_view.dart';
+import '../../control/category_manager.dart';
 import '../keep_accounts_them.dart';
-import '../models/category_data.dart';
+import '../../models/category_data.dart';
 import 'category_select_view.dart';
 import 'icon_tag_list_view.dart';
 import 'note_input_view.dart';

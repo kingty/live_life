@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../keep_accounts/keep_accounts_them.dart';
+import '../app_theme.dart';
 
 class SearchInputView extends StatefulWidget {
   const SearchInputView({Key? key, this.onSearchTextChanged}) : super(key: key);
@@ -15,18 +15,18 @@ class SearchInputView extends StatefulWidget {
 class _SearchInputViewState extends State<SearchInputView>
     with TickerProviderStateMixin {
   bool showClearIcon = false;
-  var mainColor = KeepAccountsTheme.nearlyDarkBlue;
+  var mainColor = AppTheme.nearlyDarkBlue;
   final TextEditingController pass = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          color: KeepAccountsTheme.nearlyWhite,
+          color: AppTheme.nearlyWhite,
           borderRadius: const BorderRadius.all(Radius.circular(8.0)),
           boxShadow: <BoxShadow>[
             BoxShadow(
-                color: KeepAccountsTheme.grey.withOpacity(0.01),
+                color: AppTheme.grey.withOpacity(0.01),
                 offset: const Offset(0.0, 5.0),
                 blurRadius: 5.0),
           ],
@@ -77,7 +77,7 @@ class _SearchInputViewState extends State<SearchInputView>
                         color: Colors.transparent,
                         child: Ink(
                             decoration: const BoxDecoration(
-                              color: KeepAccountsTheme.background,
+                              color: AppTheme.background,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20.0)),
                             ),

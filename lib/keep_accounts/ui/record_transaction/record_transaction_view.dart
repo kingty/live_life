@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/control/category_manager.dart';
-import 'package:live_life/keep_accounts/keep_accounts_them.dart';
-import 'package:live_life/keep_accounts/record_transaction/transaction_input_view.dart';
-import '../../common_view/tabbar/custom_tab_indicator.dart';
-import '../../common_view/tabbar/custom_tabs.dart';
+import 'package:live_life/keep_accounts/ui/record_transaction/transaction_input_view.dart';
+import '../../../common_view/tabbar/custom_tab_indicator.dart';
+import '../../../common_view/tabbar/custom_tabs.dart';
+import '../keep_accounts_them.dart';
 
 class RecordTransactionView extends StatefulWidget {
+  const RecordTransactionView({Key? key}) : super(key: key);
+
   @override
   _RecordTransactionViewState createState() => _RecordTransactionViewState();
 }

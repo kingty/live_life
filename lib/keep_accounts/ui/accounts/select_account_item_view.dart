@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:live_life/icons/custom_icons.dart';
-import 'package:live_life/keep_accounts/models/account_data.dart';
 import 'package:live_life/keep_accounts/models/bank_data.dart';
 
-import '../control/category_manager.dart';
 import '../keep_accounts_them.dart';
-import '../models/transaction_data.dart';
-import '../ui_view/category_icon_view.dart';
 
 class SelectAccountItemView extends StatefulWidget {
   const SelectAccountItemView({Key? key, required this.data}) : super(key: key);

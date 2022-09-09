@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/generated/l10n.dart';
-import 'package:live_life/keep_accounts/accounts/accounts_manage_view.dart';
 import 'package:live_life/keep_accounts/models/mock_data.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
+import '../accounts/accounts_manage_view.dart';
 import '../keep_accounts_them.dart';
 import '../transaction_calender/transaction_calender_view.dart';
 import '../ui_view/transaction_list_view.dart';
@@ -88,7 +88,7 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
           Navigator.push<dynamic>(
             context,
             MaterialPageRoute<dynamic>(
-              builder: (BuildContext context) => AccountsManageView(),
+              builder: (BuildContext context) => const AccountsManageView(),
             ),
           );
         },

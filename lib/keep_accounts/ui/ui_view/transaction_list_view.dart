@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:live_life/icons/custom_icons.dart';
-import 'package:live_life/keep_accounts/ui_view/transaction_item_view.dart';
-import 'package:live_life/keep_accounts/ui_view/transaction_time_view.dart';
-
-import '../../common_view/list/src/sliver_expandable_list.dart';
+import 'package:live_life/keep_accounts/ui/ui_view/transaction_item_view.dart';
+import 'package:live_life/keep_accounts/ui/ui_view/transaction_time_view.dart';
+import '../../../common_view/list/src/sliver_expandable_list.dart';
+import '../../models/transaction_data.dart';
 import '../keep_accounts_them.dart';
-import '../models/transaction_data.dart';
-import 'category_icon_view.dart';
 
 class TransactionListView extends StatefulWidget {
   const TransactionListView({Key? key, required this.sectionList})

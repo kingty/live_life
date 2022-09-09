@@ -1,13 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../common_view/common_app_bar.dart';
-import '../../generated/l10n.dart';
-import '../../helper.dart';
-import '../accounts/asset_management_overview_view.dart';
+import '../../../common_view/common_app_bar.dart';
+import '../../../generated/l10n.dart';
 import '../keep_accounts_them.dart';
-import '../models/mock_data.dart';
-import '../models/transaction_data.dart';
+import '../../models/mock_data.dart';
+import '../../models/transaction_data.dart';
 import '../ui_view/transaction_list_view.dart';
 import 'custom_date_picker_view.dart';
 

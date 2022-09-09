@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/icons/custom_icons.dart';
-
-import '../control/category_manager.dart';
+import '../../control/category_manager.dart';
+import '../../models/transaction_data.dart';
 import '../keep_accounts_them.dart';
-import '../models/transaction_data.dart';
 import 'category_icon_view.dart';
 
 class TransactionItemView extends StatefulWidget {

@@ -3,9 +3,8 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
 import 'package:live_life/keep_accounts/models/bank_data.dart';
-
-import '../../common_view/common_app_bar.dart';
-import '../../generated/l10n.dart';
+import '../../../common_view/common_app_bar.dart';
+import '../../../generated/l10n.dart';
 import '../keep_accounts_them.dart';
 
 class EditAccountView extends StatefulWidget {
