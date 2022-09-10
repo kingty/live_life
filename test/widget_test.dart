@@ -9,10 +9,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:live_life/keep_accounts/control/db.dart';
-import 'package:live_life/keep_accounts/control/sql_builder.dart';
+import 'package:live_life/keep_accounts/db/db.dart';
+import 'package:live_life/keep_accounts/db/sql_builder.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
 import 'package:live_life/keep_accounts/models/category_data.dart';
+import 'package:live_life/keep_accounts/models/table_data.dart';
 import 'package:live_life/keep_accounts/models/mock_data.dart';
 import 'package:live_life/keep_accounts/ui/ui_view/transaction_list_view.dart';
 
@@ -64,29 +65,30 @@ void main() {
 
   testWidgets('test builder ', (WidgetTester tester) async {
     var accounts = MockData.getAccounts();
-    var builder = SqlBuilder.query(
-      tableAccountData,
-      columns: null, // null=all
-      where: '$cId=?',
-      whereArgs: [accounts.first.id],
-    );
-
-    var builder2 = SqlBuilder.update(tableAccountData, accounts.first.toMap(),
-        where: '$cId=?', whereArgs: [accounts.first.id]);
-
-    var builder3 = SqlBuilder.insert(tableAccountData, accounts.first.toMap());
-
-    print(builder.sql);
-    print(builder.arguments);
-    print(builder2.sql);
-    print(builder2.arguments);
-    print(builder3.sql);
-    print(builder3.arguments);
+    // var builder = SqlBuilder.query(
+    //   tableAccountData,
+    //   columns: null, // null=all
+    //   where: '$cId=?',
+    //   whereArgs: [accounts.first.id],
+    // );
+    //
+    // var builder2 = SqlBuilder.update(tableAccountData, accounts.first.toMap(),
+    //     where: '$cId=?', whereArgs: [accounts.first.id]);
+    //
+    // var builder3 = SqlBuilder.insert(tableAccountData, accounts.first.toMap());
+    //
+    // print(builder.sql);
+    // print(builder.arguments);
+    // print(builder2.sql);
+    // print(builder2.arguments);
+    // print(builder3.sql);
+    // print(builder3.arguments);
     //
     // var serializeArgs = DB.instance.serializeArgs(builder3.arguments);
     // print(serializeArgs);
     //
     // var list = json.decode(serializeArgs) as List;
     // print (json.encode(list));
+
   });
 }

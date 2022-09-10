@@ -1,10 +1,29 @@
 import 'package:live_life/helper.dart';
 import 'package:live_life/keep_accounts/control/category_manager.dart';
+import 'package:live_life/keep_accounts/models/table_data.dart';
 
-class TransactionData {
+const tableTransactionData = 'transaction_data';
+
+const String cTransactionCategoryId = 'category_id';
+const String cTransactionOutAccountId = 'out_account_id';
+const String cTransactionInAccountId = 'in_account_id';
+const String cTransactionAmount = 'amount';
+const String cTransactionNote = 'note';
+const String cTransactionTagId = 'tag_id';
+const String cTransactionTranTime = 'tran_time';
+const String cTransactionRecordTime = 'record_time';
+const String cTransactionInterest = 'interest';
+const String cTransactionStartTime = 'start_time';
+const String cTransactionEndTime = 'end_time';
+
+class TransactionData extends TableData {
+  @override
+  String getTableName() {
+    return tableTransactionData;
+  }
+
   TransactionData();
 
-  String id = '';
   int categoryId = 0; // 账单类型
   // 这里如果转账，记录到同一个账单
   String outAccountId = ''; // 账单产生支出账户
@@ -20,14 +39,14 @@ class TransactionData {
   DateTime? endTime; // 理财 结束时间, 可能为空
 
   TransactionData.fromJson(Map<String, dynamic> json)
-      : id = json['id'].toString(),
-        categoryId = json['categoryId'],
+      : categoryId = json['categoryId'],
         outAccountId = json['outAccountId'].toString(),
         inAccountId = json['inAccountId'].toString(),
         amount = json['amount'],
         note = json['note'],
         tagId = json['tagId'].toString(),
-        recordTime = DateTime.parse(json['recordTime']);
+        recordTime = DateTime.parse(json['recordTime']),
+        super.fromJson(json);
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -89,6 +108,42 @@ class TransactionData {
 
   bool isSpecial() {
     return categoryId > 3000;
+  }
+
+  @override
+  TransactionData fromMap(Map<String, dynamic> map) {
+    return TransactionData()
+      ..id = map[cId]
+      ..categoryId = map[cTransactionCategoryId]
+      ..outAccountId = map[cTransactionOutAccountId]
+      ..inAccountId = map[cTransactionInAccountId]
+      ..amount = map[cTransactionAmount]
+      ..note = map[cTransactionNote]
+      ..tagId = map[cTransactionTagId]
+      ..tranTime = map[cTransactionTranTime]
+      ..recordTime = map[cTransactionRecordTime]
+      ..interest = map[cTransactionInterest]
+      ..startTime = map[cTransactionStartTime]
+      ..endTime = map[cTransactionEndTime];
+  }
+
+  @override
+  Map<String, dynamic> toMap() {
+    var map = <String, dynamic>{
+      cId: id,
+      cTransactionCategoryId: categoryId,
+      cTransactionOutAccountId: outAccountId,
+      cTransactionInAccountId: inAccountId,
+      cTransactionAmount: amount,
+      cTransactionNote: note,
+      cTransactionTagId: tagId,
+      cTransactionTranTime: tranTime,
+      cTransactionRecordTime: recordTime,
+      cTransactionInterest: interest,
+      cTransactionStartTime: startTime,
+      cTransactionEndTime: endTime,
+    };
+    return map;
   }
 }
 

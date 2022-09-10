@@ -105,4 +105,11 @@ class KeepAccountsTheme {
     height: 0.9,
     color: grey,
   );
+
+  static const TextStyle error = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.w400,
+    fontSize: 10,
+    color: darkRed, // was lightText
+  );
 }

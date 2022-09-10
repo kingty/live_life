@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/app_theme.dart';
+import 'package:uuid/uuid.dart';
 
 import 'common_view/bottom_sheet.dart';
 
@@ -23,5 +24,14 @@ String formatTime(DateTime time) {
 /// Returns the difference (in full days) between the provided date and today.
 int calculateDifference(DateTime date) {
   DateTime now = DateTime.now();
-  return DateTime(date.year, date.month, date.day).difference(DateTime(now.year, now.month, now.day)).inDays;
+  return DateTime(date.year, date.month, date.day)
+      .difference(DateTime(now.year, now.month, now.day))
+      .inDays;
+}
+
+var uuid = Uuid();
+
+bool isNumeric(String s) {
+  final numericRegex = RegExp(r'^-?(([0-9]*)|(([0-9]*)\.([0-9]*)))$');
+  return numericRegex.hasMatch(s);
 }

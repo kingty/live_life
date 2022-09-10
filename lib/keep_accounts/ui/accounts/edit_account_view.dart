@@ -1,10 +1,12 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:live_life/keep_accounts/control/middle_ware.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
 import 'package:live_life/keep_accounts/models/bank_data.dart';
 import '../../../common_view/common_app_bar.dart';
 import '../../../generated/l10n.dart';
+import '../../../helper.dart';
 import '../keep_accounts_them.dart';
 
 class EditAccountView extends StatefulWidget {
@@ -21,6 +23,12 @@ class _EditAccountViewState extends State<EditAccountView>
     with TickerProviderStateMixin {
   late BankData bank;
   bool _checkboxListChecked = false;
+  final TextEditingController _inputAccountController = TextEditingController();
+  final TextEditingController _inputDesController = TextEditingController();
+  final TextEditingController _inputAmountController = TextEditingController();
+  late AccountData _accountData;
+
+  String? _error;
 
   @override
   void initState() {
@@ -28,6 +36,11 @@ class _EditAccountViewState extends State<EditAccountView>
       bank = widget.bankData!;
     } else {
       bank = BankData.getByKey(widget.accountData!.bankDataKey)!;
+    }
+    if (widget.accountData != null) {
+      _accountData = widget.accountData!;
+    } else {
+      _accountData = AccountData();
     }
     super.initState();
   }
@@ -98,8 +111,9 @@ class _EditAccountViewState extends State<EditAccountView>
                 ),
                 margin: const EdgeInsets.fromLTRB(15, 0, 15, 10),
                 // padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-                child: const TextField(
-                  decoration: InputDecoration(
+                child: TextField(
+                  controller: _inputAccountController,
+                  decoration: const InputDecoration(
                       contentPadding: EdgeInsets.only(left: 10, right: 10),
                       border: InputBorder.none,
                       hintStyle: TextStyle(
@@ -112,7 +126,7 @@ class _EditAccountViewState extends State<EditAccountView>
                   textAlign: TextAlign.left,
                   cursorColor: KeepAccountsTheme.nearlyDarkBlue,
                   cursorWidth: 2,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: KeepAccountsTheme.nearlyDarkBlue,
                     letterSpacing: 0,
                     fontSize: 14,
@@ -139,8 +153,9 @@ class _EditAccountViewState extends State<EditAccountView>
                 ),
                 margin: const EdgeInsets.fromLTRB(15, 0, 15, 10),
                 // padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-                child: const TextField(
-                  decoration: InputDecoration(
+                child: TextField(
+                  controller: _inputDesController,
+                  decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
                       hintStyle: TextStyle(
@@ -156,7 +171,7 @@ class _EditAccountViewState extends State<EditAccountView>
                   textAlign: TextAlign.left,
                   cursorColor: KeepAccountsTheme.nearlyDarkBlue,
                   cursorWidth: 2,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: KeepAccountsTheme.nearlyDarkBlue,
                     letterSpacing: 0,
                     fontSize: 14,
@@ -183,8 +198,11 @@ class _EditAccountViewState extends State<EditAccountView>
                 ),
                 margin: const EdgeInsets.fromLTRB(15, 0, 15, 10),
                 // padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-                child: const TextField(
-                  decoration: InputDecoration(
+                child: TextField(
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
+                  controller: _inputAmountController,
+                  decoration: const InputDecoration(
                       contentPadding: EdgeInsets.only(left: 10, right: 10),
                       border: InputBorder.none,
                       hintStyle: TextStyle(
@@ -197,7 +215,7 @@ class _EditAccountViewState extends State<EditAccountView>
                   textAlign: TextAlign.left,
                   cursorColor: KeepAccountsTheme.nearlyDarkBlue,
                   cursorWidth: 2,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: KeepAccountsTheme.nearlyDarkBlue,
                     letterSpacing: 0,
                     fontSize: 14,
@@ -221,6 +239,13 @@ class _EditAccountViewState extends State<EditAccountView>
               selected: false,
               controlAffinity: ListTileControlAffinity.leading,
             ),
+            Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, top: 5, bottom: 5, right: 10),
+                child: Text(
+                  _error ?? "",
+                  style: KeepAccountsTheme.error,
+                ))
           ],
         ),
       )),
@@ -232,9 +257,41 @@ class _EditAccountViewState extends State<EditAccountView>
                 padding: EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 12.0),
                 child: Text("保存"),
               ),
-              onPressed: () {},
+              onPressed: () {
+                _checkInputAndDeal();
+              },
             )),
       )
     ]);
+  }
+
+  void _checkInputAndDeal() {
+    if (_inputAccountController.value.text.isEmpty) {
+      setState(() {
+        _error = "* 名字不能为空！";
+      });
+
+      return;
+    }
+    if (!isNumeric(_inputAmountController.value.text)) {
+      setState(() {
+        _error = "* 请输入正确的数字";
+      });
+      return;
+    }
+    setState(() {
+      _error = "";
+    });
+
+    _accountData
+      ..bankDataKey = bank.key
+      ..name = _inputAccountController.value.text
+      ..des = _inputDesController.value.text
+      ..cash = double.parse(_inputAmountController.value.text);
+    if (_accountData.id.isEmpty) {
+      _accountData.id = uuid.v1();
+    }
+    print(_accountData.toMap());
+    MiddleWare.instance.account.saveAccount(_accountData);
   }
 }

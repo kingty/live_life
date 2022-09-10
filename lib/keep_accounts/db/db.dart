@@ -1,9 +1,9 @@
 import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
-import 'package:live_life/keep_accounts/control/sql_builder.dart';
+import 'package:live_life/keep_accounts/db/sql_builder.dart';
+import 'package:live_life/keep_accounts/models/account_data.dart';
+import 'package:live_life/keep_accounts/models/table_data.dart';
 import 'package:sqflite/sqflite.dart';
-
+import 'package:path/path.dart';
 import '../models/log_data.dart';
 
 class DB {
@@ -20,24 +20,52 @@ class DB {
     _database?.close();
   }
 
-  Future<int> insert(String table, Map<String, Object?> values) async {
-    final builder = SqlBuilder.insert(table, values);
+  Future<bool> isExistPrimaryKey(TableData data) async {
+    List<Map> maps = await _database!.query(
+      data.getTableName(),
+      columns: null, // null=all
+      where: '${data.getPrimaryKey()} = ?',
+      whereArgs: [data.id],
+    );
+    if (maps.isNotEmpty) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<int> delete(TableData data) async {
     int count = 0;
     await _database?.transaction((txn) async {
-      count = await _database!.insert(table, values);
+      String sql =
+          'UPDATE ${data.getTableName()} SET ${data.getIsDeleteKey()} = 1 WHERE ${data.getPrimaryKey()} = ?';
+      count = await _database!.rawUpdate(sql, [data.id]);
+
+      var log = LogData()
+        ..sql = sql
+        ..args = _serializeArgs([data.id]);
+      _database?.insert(tableLogData, log.toMap());
+    });
+    return count;
+  }
+
+  Future<int> insert(TableData data) async {
+    final builder = SqlBuilder.insert(data.getTableName(), data.toMap());
+    int count = 0;
+    await _database?.transaction((txn) async {
+      count = await _database!.insert(data.getTableName(), data.toMap());
       processWriteSql(builder);
     });
     return count;
   }
 
-  Future<int> update(String table, Map<String, Object?> values,
-      {String? where, List<Object?>? whereArgs}) async {
-    final builder =
-        SqlBuilder.update(table, values, where: where, whereArgs: whereArgs);
+  Future<int> update(TableData data) async {
+    final builder = SqlBuilder.update(data.getTableName(), data.toMap(),
+        where: data.getPrimaryKey(), whereArgs: [data.id]);
     int count = 0;
     await _database?.transaction((txn) async {
-      count = await _database!
-          .update(table, values, where: where, whereArgs: whereArgs);
+      count = await _database!.update(data.getTableName(), data.toMap(),
+          where: data.getPrimaryKey(), whereArgs: [data.id]);
       processWriteSql(builder);
     });
     return count;
@@ -85,14 +113,25 @@ class DB {
   Future<void> createDB() async {
     // Get a location using getDatabasesPath
     var databasesPath = await getDatabasesPath();
-    String path = '${databasesPath}keep_account.db';
+    String path = join(databasesPath, 'keep_account.db');
 
     // open the database
     Database database = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
       // When creating the db, create the table
       await db.execute(
-          'CREATE TABLE $tableLogData (id INTEGER PRIMARY KEY, $cSql TEXT, $cArgs TEXT)');
+          'CREATE TABLE IF NOT EXISTS $tableLogData (id INTEGER PRIMARY KEY, $cSql TEXT, $cArgs TEXT);');
+      var sqlAccount = '''CREATE TABLE IF NOT EXISTS $tableAccountData (
+          $cId TEXT PRIMARY KEY, 
+          $cAccountBankDataKey TEXT, 
+          $cAccountName TEXT, 
+          $cAccountDes TEXT, 
+          $cAccountCash REAL,
+          $cAccountFinancial REAL,
+          $cAccountDebt REAL,
+          $cAccountLend REAL);''';
+      print(sqlAccount);
+      db.execute(sqlAccount);
     }, onUpgrade: (Database db, int oldVersion, int newVersion) {});
     _database = database;
   }
