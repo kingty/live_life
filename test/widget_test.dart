@@ -64,7 +64,7 @@ void main() {
   });
 
   testWidgets('test builder ', (WidgetTester tester) async {
-    var accounts = MockData.getAccounts();
+    // var accounts = MockData.getAccounts();
     // var builder = SqlBuilder.query(
     //   tableAccountData,
     //   columns: null, // null=all

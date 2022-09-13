@@ -1,5 +1,5 @@
 
-const tableLogData = 'account_data';
+const tableLogData = 'log_data';
 const String cSql='sql';
 const String cArgs='args';
 

@@ -120,11 +120,17 @@ class TransactionData extends TableData {
       ..amount = map[cTransactionAmount]
       ..note = map[cTransactionNote]
       ..tagId = map[cTransactionTagId]
-      ..tranTime = map[cTransactionTranTime]
-      ..recordTime = map[cTransactionRecordTime]
+      ..tranTime =
+          DateTime.fromMicrosecondsSinceEpoch(map[cTransactionTranTime])
+      ..recordTime =
+          DateTime.fromMicrosecondsSinceEpoch(map[cTransactionRecordTime])
       ..interest = map[cTransactionInterest]
-      ..startTime = map[cTransactionStartTime]
-      ..endTime = map[cTransactionEndTime];
+      ..startTime = map[cTransactionStartTime] == 0
+          ? null
+          : DateTime.fromMicrosecondsSinceEpoch(map[cTransactionStartTime])
+      ..endTime = map[cTransactionEndTime] == 0
+          ? null
+          : DateTime.fromMicrosecondsSinceEpoch(map[cTransactionEndTime]);
   }
 
   @override
@@ -137,11 +143,13 @@ class TransactionData extends TableData {
       cTransactionAmount: amount,
       cTransactionNote: note,
       cTransactionTagId: tagId,
-      cTransactionTranTime: tranTime,
-      cTransactionRecordTime: recordTime,
+      cTransactionTranTime: tranTime.millisecondsSinceEpoch,
+      cTransactionRecordTime: recordTime.millisecondsSinceEpoch,
       cTransactionInterest: interest,
-      cTransactionStartTime: startTime,
-      cTransactionEndTime: endTime,
+      cTransactionStartTime:
+          startTime != null ? startTime?.millisecondsSinceEpoch : 0,
+      cTransactionEndTime:
+          endTime != null ? endTime?.millisecondsSinceEpoch : 0,
     };
     return map;
   }

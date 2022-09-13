@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/control/middle_ware.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
@@ -22,7 +23,7 @@ class EditAccountView extends StatefulWidget {
 class _EditAccountViewState extends State<EditAccountView>
     with TickerProviderStateMixin {
   late BankData bank;
-  bool _checkboxListChecked = false;
+  bool _checkboxListChecked = true;
   final TextEditingController _inputAccountController = TextEditingController();
   final TextEditingController _inputDesController = TextEditingController();
   final TextEditingController _inputAmountController = TextEditingController();
@@ -291,7 +292,14 @@ class _EditAccountViewState extends State<EditAccountView>
     if (_accountData.id.isEmpty) {
       _accountData.id = uuid.v1();
     }
-    print(_accountData.toMap());
-    MiddleWare.instance.account.saveAccount(_accountData);
+    if (kDebugMode) {
+      print(_accountData.toMap());
+    }
+    if(_checkboxListChecked) {
+      /// Todo
+    }
+    MiddleWare.instance.account
+        .saveAccount(_accountData)
+        .then((value) => Navigator.pop(context));
   }
 }
