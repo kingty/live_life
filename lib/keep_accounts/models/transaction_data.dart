@@ -121,16 +121,16 @@ class TransactionData extends TableData {
       ..note = map[cTransactionNote]
       ..tagId = map[cTransactionTagId]
       ..tranTime =
-          DateTime.fromMicrosecondsSinceEpoch(map[cTransactionTranTime])
+          DateTime.fromMillisecondsSinceEpoch(map[cTransactionTranTime])
       ..recordTime =
-          DateTime.fromMicrosecondsSinceEpoch(map[cTransactionRecordTime])
+          DateTime.fromMillisecondsSinceEpoch(map[cTransactionRecordTime])
       ..interest = map[cTransactionInterest]
       ..startTime = map[cTransactionStartTime] == 0
           ? null
-          : DateTime.fromMicrosecondsSinceEpoch(map[cTransactionStartTime])
+          : DateTime.fromMillisecondsSinceEpoch(map[cTransactionStartTime])
       ..endTime = map[cTransactionEndTime] == 0
           ? null
-          : DateTime.fromMicrosecondsSinceEpoch(map[cTransactionEndTime]);
+          : DateTime.fromMillisecondsSinceEpoch(map[cTransactionEndTime]);
   }
 
   @override

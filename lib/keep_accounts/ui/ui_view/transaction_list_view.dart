@@ -117,12 +117,12 @@ class MonthSection implements ExpandableListSection<ListItem> {
     //账单按月分组
     for (var transaction in transactions) {
       if (transaction.getMonth() != preMonth) {
-        if (section != null) sections.add(section);
         preMonth = transaction.getMonth();
         section = MonthSection()
           ..month = preMonth
           ..expanded = true
           ..items = List.empty(growable: true);
+        sections.add(section);
       }
       //每天第一个账单上添加时间
       var item = ListItem()..transactionData = transaction;

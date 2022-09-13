@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:live_life/generated/l10n.dart';
 import 'package:live_life/keep_accounts/models/mock_data.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
+import '../../control/middle_ware.dart';
 import '../accounts/accounts_manage_view.dart';
 import '../keep_accounts_them.dart';
 import '../transaction_calender/transaction_calender_view.dart';
@@ -35,7 +36,7 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: widget.animationController!,
-            curve: Interval(0, 0.5, curve: Curves.fastOutSlowIn)));
+            curve: const Interval(0, 0.5, curve: Curves.fastOutSlowIn)));
     addAllListData();
 
     scrollController.addListener(() {
@@ -131,11 +132,6 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
     // }
   }
 
-  Future<List<TransactionData>> getData() async {
-    var section = await MockData.getTransactions();
-    return section;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -155,39 +151,57 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
     );
   }
 
+  Widget _getTransactionList() {
+    return StreamBuilder<List<TransactionData>>(
+        stream: MiddleWare.instance.transaction.getLatestTransactionsStream(),
+        //
+        //initialData: ,// a Stream<int> or null
+        builder: (BuildContext context,
+            AsyncSnapshot<List<TransactionData>> snapshot) {
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return SliverToBoxAdapter(
+                child: Container(
+              alignment: Alignment.center,
+              height: 200,
+              child: const Text(
+                '目前还没有账单',
+                style: KeepAccountsTheme.subtitle,
+              ),
+            ));
+          } else {
+            var transactions = snapshot.data ?? List.empty();
+            print(transactions.first.toJson());
+            return SliverPadding(
+                padding: EdgeInsets.only(
+                  bottom: 62 + MediaQuery.of(context).padding.bottom,
+                ),
+                sliver: TransactionListView(
+                    sectionList: MonthSection.getMonthSections(transactions)));
+          }
+        });
+  }
+
+  List<Widget> _getAllSlivers() {
+    final List<Widget> allSlivers = List.empty(growable: true);
+    allSlivers.add(SliverPadding(
+        padding: EdgeInsets.only(
+            top: AppBar().preferredSize.height +
+                MediaQuery.of(context).padding.top +
+                24),
+        sliver: SliverList(
+            delegate: SliverChildBuilderDelegate((context, index) {
+          widget.animationController?.forward();
+          return listViews[index];
+        }, childCount: listViews.length))));
+
+    allSlivers.add(_getTransactionList());
+    return allSlivers;
+  }
+
   Widget getMainListViewUI() {
-    return FutureBuilder<List<TransactionData>>(
-      future: getData(),
-      builder: (BuildContext context,
-          AsyncSnapshot<List<TransactionData>> snapshot) {
-        if (!snapshot.hasData) {
-          return const SizedBox();
-        } else {
-          return CustomScrollView(
-            controller: scrollController,
-            slivers: <Widget>[
-              SliverPadding(
-                  padding: EdgeInsets.only(
-                      top: AppBar().preferredSize.height +
-                          MediaQuery.of(context).padding.top +
-                          24),
-                  sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate((context, index) {
-                    widget.animationController?.forward();
-                    return listViews[index];
-                  }, childCount: listViews.length))),
-              SliverPadding(
-                  padding: EdgeInsets.only(
-                    bottom: 62 + MediaQuery.of(context).padding.bottom,
-                  ),
-                  sliver: TransactionListView(
-                      sectionList:
-                          MonthSection.getMonthSections(snapshot.requireData)
-                              .sublist(0, 1)))
-            ],
-          );
-        }
-      },
+    return CustomScrollView(
+      controller: scrollController,
+      slivers: _getAllSlivers(),
     );
   }
 
