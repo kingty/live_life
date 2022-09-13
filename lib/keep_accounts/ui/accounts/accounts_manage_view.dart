@@ -38,7 +38,15 @@ class _AccountsManageViewState extends State<AccountsManageView>
               builder: (BuildContext context,
                   AsyncSnapshot<List<AccountData>> snapshot) {
                 if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return const SliverToBoxAdapter(child: Text("还没有添加账户哦 "));
+                  return SliverToBoxAdapter(
+                      child: Container(
+                    alignment: Alignment.center,
+                    height: 200,
+                    child: const Text(
+                      '目前还没有账户',
+                      style: KeepAccountsTheme.subtitle,
+                    ),
+                  ));
                 } else {
                   var accounts = snapshot.data ?? List.empty();
                   return SliverList(

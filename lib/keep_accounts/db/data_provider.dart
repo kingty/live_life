@@ -7,7 +7,7 @@ import 'db.dart';
 class TransactionProvider extends Provider {
   //获取所有账单
   Future<List<TransactionData>> pullAllTransactions() async {
-    var maps = await _db.query(tableAccountData);
+    var maps = await _db.query(tableTransactionData);
     if (maps.isNotEmpty) {
       return maps.map((e) => TransactionData().fromMap(e)).toList();
     }
@@ -46,7 +46,7 @@ class TransactionProvider extends Provider {
       whereArgs.add(tagId);
     }
 
-    var maps = await _db.query(tableAccountData,
+    var maps = await _db.query(tableTransactionData,
         where: where.join(' AND '), whereArgs: whereArgs);
     if (maps.isNotEmpty) {
       return maps.map((e) => TransactionData().fromMap(e)).toList();

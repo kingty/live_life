@@ -15,6 +15,7 @@ class MiddleWare {
 
   static MiddleWare instance = MiddleWare._();
   final AccountMiddleWare account = AccountMiddleWare();
+  final TransactionMiddleWare transaction = TransactionMiddleWare();
 }
 
 class TransactionMiddleWare {
@@ -25,36 +26,45 @@ class TransactionMiddleWare {
 
   Future<void> saveTransaction(TransactionData transactionData) async {
     await _provider.insertOrUpdate(transactionData);
+    _fetchLatestTransactions();
   }
 
-  fetchLatestTransactions() async {
+  Stream<List<TransactionData>> getLatestTransactionsStream() {
+    _fetchLatestTransactions();
+    return _latestTransactions.stream;
+  }
+
+  _fetchLatestTransactions() async {
     DateTime lastWeek =
         getDate(DateTime.now()).subtract(const Duration(days: 7));
     var result = await _provider.pullTransactionsByFilter(start: lastWeek);
     _latestTransactions.add(result);
   }
 
-  Future<List<TransactionData>> fetchTransactionsByDay(DateTime day) async {
+  Future<List<TransactionData>> fetchTransactionsByDay(DateTime day,
+      {int? categoryId, String? tagId}) async {
     var start = getDate(day);
     final end = getDate(DateTime.now()).add(const Duration(days: 1));
-    var result =
-        await _provider.pullTransactionsByFilter(start: start, end: end);
+    var result = await _provider.pullTransactionsByFilter(
+        start: start, end: end, categoryId: categoryId, tagId: tagId);
     return result;
   }
 
-  Future<List<TransactionData>> fetchTransactionsByMonth(DateTime day) async {
+  Future<List<TransactionData>> fetchTransactionsByMonth(DateTime day,
+      {int? categoryId, String? tagId}) async {
     final start = DateTime.utc(day.year, day.month, 1);
     final end = DateTime.utc(day.year, day.month + 1, 1);
-    var result =
-        await _provider.pullTransactionsByFilter(start: start, end: end);
+    var result = await _provider.pullTransactionsByFilter(
+        start: start, end: end, categoryId: categoryId, tagId: tagId);
     return result;
   }
 
-  Future<List<TransactionData>> fetchTransactionsByYear(DateTime day) async {
+  Future<List<TransactionData>> fetchTransactionsByYear(DateTime day,
+      {int? categoryId, String? tagId}) async {
     final start = DateTime.utc(day.year, 1, 1);
     final end = DateTime.utc(day.year + 1, 1, 1);
-    var result =
-        await _provider.pullTransactionsByFilter(start: start, end: end);
+    var result = await _provider.pullTransactionsByFilter(
+        start: start, end: end, categoryId: categoryId, tagId: tagId);
     return result;
   }
 }

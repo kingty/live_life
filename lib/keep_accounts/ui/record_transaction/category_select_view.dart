@@ -122,6 +122,7 @@ class _CategorySelectViewState extends State<CategorySelectView>
                   selectIndex = index;
                 });
                 if (parent.children.isNotEmpty) {
+                  widget.onSelectCategory?.call(categoryShow.id);
                   showBottomSheetPanel(
                       context,
                       SizedBox(

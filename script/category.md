@@ -5,13 +5,11 @@
     - 零食%food/donut%1001003
     - 水果%food/cherry%1001004
     - 烟酒%food/wine%1001005
-    - 其他%food/coffee%1001006
 - 穿戴%fashion/tshirt%1002
     - 衣服%fashion/tuxedo-vallet%1002001
     - 裤子%fashion/short-pants%1002002
     - 鞋子%fashion/sneakers%1002003
     - 包包%fashion/woman-bag-2%1002004
-    - 其他%fashion/socks%1002005
 - 房屋%interface/home%1003
     - 房租房贷%business_and_finance/coin%1003001
     - 水费%weather/humidity%1003002
@@ -19,25 +17,21 @@
     - 气费%kitchen/ulekan%1003004
     - 物业%building/apartment%1003005
     - 家具电器%kitchen/refrigerator%1003006
-    - 其他%furniture/drawer-3%1003007
 - 交通%transportation/train%1004
     - 公共交通%transportation/bus%1004001
     - 加油%transportation/gas-station%1004002
     - 停车费%transportation/parking%1004003
     - 保养%transportation/car-wheel-2%1004004
-    - 其他%transportation/street%1004005
 
 - 社交%users/groups%1005
     - 礼物%interface/gift%1005001
     - 人情%users/favorite-profile%1005002
-    - 其他%users/group-chat%1005003
 
 - 购物%ecommerce/shopping%1006
     - 美妆%fashion/lipstick%1006001
     - 饰品%fashion/necklace%1006002
     - 数码%technology/processor%1006003
     - 运动%sports/weightlifting%1006004
-    - 其他%ecommerce/price-tag%1006005
 - 学习%furniture/library%1007
 - 娱乐%game/game-console%1008
 - 医疗%medical/medical-supply%1010

@@ -26,11 +26,6 @@
                     "icon": "food_wine", 
                     "id": 1001005, 
                     "name": "烟酒"
-                }, 
-                {
-                    "icon": "food_coffee", 
-                    "id": 1001006, 
-                    "name": "其他"
                 }
             ], 
             "icon": "food_knife_fork", 
@@ -58,11 +53,6 @@
                     "icon": "fashion_woman_bag_2", 
                     "id": 1002004, 
                     "name": "包包"
-                }, 
-                {
-                    "icon": "fashion_socks", 
-                    "id": 1002005, 
-                    "name": "其他"
                 }
             ], 
             "icon": "fashion_tshirt", 
@@ -100,11 +90,6 @@
                     "icon": "kitchen_refrigerator", 
                     "id": 1003006, 
                     "name": "家具电器"
-                }, 
-                {
-                    "icon": "furniture_drawer_3", 
-                    "id": 1003007, 
-                    "name": "其他"
                 }
             ], 
             "icon": "interface_home", 
@@ -132,11 +117,6 @@
                     "icon": "transportation_car_wheel_2", 
                     "id": 1004004, 
                     "name": "保养"
-                }, 
-                {
-                    "icon": "transportation_street", 
-                    "id": 1004005, 
-                    "name": "其他"
                 }
             ], 
             "icon": "transportation_train", 
@@ -154,11 +134,6 @@
                     "icon": "users_favorite_profile", 
                     "id": 1005002, 
                     "name": "人情"
-                }, 
-                {
-                    "icon": "users_group_chat", 
-                    "id": 1005003, 
-                    "name": "其他"
                 }
             ], 
             "icon": "users_groups", 
@@ -186,11 +161,6 @@
                     "icon": "sports_weightlifting", 
                     "id": 1006004, 
                     "name": "运动"
-                }, 
-                {
-                    "icon": "ecommerce_price_tag", 
-                    "id": 1006005, 
-                    "name": "其他"
                 }
             ], 
             "icon": "ecommerce_shopping", 

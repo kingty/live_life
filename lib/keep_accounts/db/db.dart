@@ -101,9 +101,10 @@ class DB {
       ..sql = builder.sql
       ..args = _serializeArgs(builder.arguments);
 
-    print(log.sql);
-    print(log.args);
-
+    if (kDebugMode) {
+      print(log.sql);
+      print(log.args);
+    }
     txn.insert(tableLogData, log.toMap());
   }
 

@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:live_life/keep_accounts/control/middle_ware.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
 import 'package:live_life/keep_accounts/ui/record_transaction/select_account_and_input_view.dart';
 import '../../control/category_manager.dart';
@@ -245,9 +247,20 @@ class _TransactionInputViewState extends State<TransactionInputView>
                           _transactionData.amount = d;
                           _transactionData.note = _noteController.value.text;
                           _transactionData.recordTime = DateTime.now();
-
-                          print(_transactionData.toJson());
-                          _transactionData.check();
+                          if (kDebugMode) {
+                            print(_transactionData.toJson());
+                          }
+                          var msg = _transactionData.check();
+                          if (msg != null) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              backgroundColor: widget.mainColor,
+                              content: Text(msg),
+                            ));
+                          } else {
+                            MiddleWare.instance.transaction
+                                .saveTransaction(_transactionData)
+                                .then((value) => Navigator.pop(context));
+                          }
                         },
                       )
                     ],
