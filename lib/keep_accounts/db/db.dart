@@ -37,6 +37,7 @@ class DB {
     }
   }
 
+  /// fake delete row
   Future<int> delete(TableData data) async {
     int count = 0;
     await _database?.transaction((txn) async {
@@ -132,24 +133,26 @@ class DB {
       await db.execute(
           'CREATE TABLE IF NOT EXISTS $tableLogData (id INTEGER PRIMARY KEY, $cSql TEXT, $cArgs TEXT);');
       var sqlAccount = '''CREATE TABLE IF NOT EXISTS $tableAccountData (
-          $cId TEXT PRIMARY KEY, 
+          $cId TEXT PRIMARY KEY NOT NULL, 
           $cAccountBankDataKey TEXT, 
           $cAccountName TEXT, 
           $cAccountDes TEXT, 
           $cAccountCash REAL,
           $cAccountFinancial REAL,
           $cAccountDebt REAL,
-          $cAccountLend REAL);''';
+          $cAccountLend REAL,
+          $cIsDelete INTEGER NOT NULL DEFAULT 0);''';
       db.execute(sqlAccount);
 
       var sqlTag = '''CREATE TABLE IF NOT EXISTS $tableTagData (
-          $cId TEXT PRIMARY KEY, 
+          $cId TEXT PRIMARY KEY NOT NULL, 
           $cTagName TEXT, 
-          $cTagDes TEXT);''';
+          $cTagDes TEXT,
+          $cIsDelete INTEGER NOT NULL DEFAULT 0);''';
       db.execute(sqlTag);
 
       var sqlTransaction = '''CREATE TABLE IF NOT EXISTS $tableTransactionData (
-          $cId TEXT PRIMARY KEY, 
+          $cId TEXT PRIMARY KEY NOT NULL, 
           $cTransactionCategoryId INTEGER, 
           $cTransactionOutAccountId TEXT, 
           $cTransactionInAccountId TEXT, 
@@ -160,8 +163,13 @@ class DB {
           $cTransactionRecordTime INTEGER,
           $cTransactionInterest REAL,
           $cTransactionStartTime INTEGER,
-          $cTransactionEndTime INTEGER);''';
+          $cTransactionEndTime INTEGER,
+          $cIsDelete INTEGER NOT NULL DEFAULT 0);''';
       db.execute(sqlTransaction);
+      //时间作为索引
+      var index =
+          '''CREATE INDEX $indexTransactionTime ON $tableTransactionData ($cTransactionTranTime);''';
+      db.execute(index);
     }, onUpgrade: (Database db, int oldVersion, int newVersion) {});
     _database = database;
   }

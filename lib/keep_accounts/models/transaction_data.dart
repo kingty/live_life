@@ -3,6 +3,7 @@ import 'package:live_life/keep_accounts/control/category_manager.dart';
 import 'package:live_life/keep_accounts/models/table_data.dart';
 
 const tableTransactionData = 'transaction_data';
+const indexTransactionTime = 'transaction_time_index';
 
 const String cTransactionCategoryId = 'category_id';
 const String cTransactionOutAccountId = 'out_account_id';
