@@ -4,6 +4,7 @@ import 'package:live_life/keep_accounts/models/mock_data.dart';
 import '../../../common_view/date_picker_dialog.dart';
 import '../../../common_view/dot_line_border.dart';
 import '../../../helper.dart';
+import '../../control/middle_ware.dart';
 import '../accounts/account_item_view.dart';
 import '../keep_accounts_them.dart';
 import '../../models/bank_data.dart';
@@ -41,7 +42,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
   final TextEditingController _controller = TextEditingController();
   final FocusNode _focusNode = FocusNode();
 
-  final List<AccountData> _accounts = MockData.getAccounts();
+  late List<AccountData> _accounts;
   late AccountData _selectAccount;
   late AccountData _selectAccountBelow;
 
@@ -57,10 +58,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
 
   @override
   void initState() {
-    _selectAccount = _accounts.first;
-    _selectAccountBelow = _accounts.first;
     _startTime = DateTime.now();
-    _onChange();
     _textStyle = TextStyle(
       color: widget.color,
       letterSpacing: 0,
@@ -291,6 +289,24 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
 
   @override
   Widget build(BuildContext context) {
+    return StreamBuilder<List<AccountData>>(
+        stream: MiddleWare.instance.account.getAccountsStream(),
+        builder:
+            (BuildContext context, AsyncSnapshot<List<AccountData>> snapshot) {
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const SizedBox();
+          } else {
+            _accounts = snapshot.data!;
+            _selectAccount = _accounts.first;
+            _selectAccountBelow = _accounts.first;
+            _onChange();
+
+            return buildWhenGetData();
+          }
+        });
+  }
+
+  Widget buildWhenGetData() {
     return Container(
         decoration: BoxDecoration(
           color: KeepAccountsTheme.nearlyWhite,

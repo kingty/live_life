@@ -144,6 +144,13 @@ class DB {
           $cIsDelete INTEGER NOT NULL DEFAULT 0);''';
       db.execute(sqlAccount);
 
+      AccountData defaultAccount = AccountData()
+        ..id = defaultAccountId
+        ..bankDataKey = 'OTHERW'
+        ..name = '默认账户'
+        ..des = '不知道统计的账户，或者临时的账单记录使用';
+      db.insert(defaultAccount.getTableName(), defaultAccount.toMap());
+
       var sqlTag = '''CREATE TABLE IF NOT EXISTS $tableTagData (
           $cId TEXT PRIMARY KEY NOT NULL, 
           $cTagName TEXT, 

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/models/mock_data.dart';
+import 'package:live_life/keep_accounts/models/tag_data.dart';
 import 'package:live_life/keep_accounts/ui/record_transaction/tag_icon_view.dart';
 
 import '../../../common_view/date_picker_dialog.dart';
 import '../../../helper.dart';
+import '../../control/middle_ware.dart';
 import '../keep_accounts_them.dart';
 import '../../models/transaction_data.dart';
 
@@ -21,7 +23,7 @@ class IconTagListView extends StatefulWidget {
 class _IconTagListViewState extends State<IconTagListView> {
   var _tranTime = DateTime.now();
   int _selectTagIndex = -1;
-  final _tags = MockData.getTags();
+  late List<TagData> _tags;
 
   @override
   void initState() {
@@ -31,6 +33,19 @@ class _IconTagListViewState extends State<IconTagListView> {
 
   @override
   Widget build(BuildContext context) {
+    return StreamBuilder<List<TagData>>(
+        stream: MiddleWare.instance.tag.getTagsStream(),
+        builder: (BuildContext context, AsyncSnapshot<List<TagData>> snapshot) {
+          if (!snapshot.hasData) {
+            return const SizedBox();
+          } else {
+            _tags = snapshot.data!;
+            return buildWhenGetData();
+          }
+        });
+  }
+
+  Widget buildWhenGetData() {
     return Container(
       height: 40,
       color: KeepAccountsTheme.background,
@@ -77,6 +92,16 @@ class _IconTagListViewState extends State<IconTagListView> {
   }
 
   Widget _getTagsList() {
+    if (_tags.isEmpty) {
+      return Container(
+        alignment: Alignment.center,
+        height: 200,
+        child: const Text(
+          '还没有TAG,请添加自定义的TAG.',
+          style: KeepAccountsTheme.subtitle,
+        ),
+      );
+    }
     return ListView.separated(
       itemCount: _tags.length,
       itemBuilder: (BuildContext context, int index) {

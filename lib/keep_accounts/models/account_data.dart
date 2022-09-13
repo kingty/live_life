@@ -1,3 +1,4 @@
+import 'package:live_life/keep_accounts/models/bank_data.dart';
 import 'package:live_life/keep_accounts/models/table_data.dart';
 
 /// 账户
@@ -10,6 +11,8 @@ const String cAccountCash = 'cash';
 const String cAccountFinancial = 'financial';
 const String cAccountDebt = 'debt';
 const String cAccountLend = 'lend';
+
+String defaultAccountId = 'default_account_id';
 
 class AccountData extends TableData {
   @override

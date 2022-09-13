@@ -16,6 +16,7 @@ class MiddleWare {
   static MiddleWare instance = MiddleWare._();
   final AccountMiddleWare account = AccountMiddleWare();
   final TransactionMiddleWare transaction = TransactionMiddleWare();
+  final TagMiddleWare tag = TagMiddleWare();
 }
 
 class TransactionMiddleWare {
@@ -72,6 +73,15 @@ class TransactionMiddleWare {
 class TagMiddleWare {
   final BehaviorSubject<List<TagData>> _tags = BehaviorSubject();
   final TagProvider _provider = TagProvider();
+  bool _initTags = false;
+
+  Stream<List<TagData>> getTagsStream() {
+    if (!_initTags) {
+      _initTags = true;
+      _fetchAllTagsAndNotify();
+    }
+    return _tags.stream;
+  }
 
   Future<void> saveAccount(TagData tagData) async {
     await _provider.insertOrUpdate(tagData);

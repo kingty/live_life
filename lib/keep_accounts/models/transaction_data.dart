@@ -65,6 +65,7 @@ class TransactionData extends TableData {
       };
 
   String? check() {
+    if (id.isEmpty) return "未知错误，id错误";
     if (categoryId == 0) return "请选择类型";
     if (outAccountId.isEmpty && inAccountId.isEmpty) return "未知错误，账户错误";
     if (amount == 0) return "请输入金额";

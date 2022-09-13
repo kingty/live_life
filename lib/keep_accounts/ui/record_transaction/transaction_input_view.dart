@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:live_life/helper.dart';
 import 'package:live_life/keep_accounts/control/middle_ware.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
 import 'package:live_life/keep_accounts/ui/record_transaction/select_account_and_input_view.dart';
@@ -53,7 +54,8 @@ class _TransactionInputViewState extends State<TransactionInputView>
     _calculator = Calculator();
     WidgetsBinding.instance.addObserver(this);
 
-    _transactionData = widget.transactionData ?? TransactionData();
+    _transactionData = widget.transactionData ?? TransactionData()
+      ..id = uuid.v1();
     super.initState();
   }
 
