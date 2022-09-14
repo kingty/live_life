@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/ui/record_transaction/record_transaction_view.dart';
+import 'package:live_life/keep_accounts/ui/statistics/statistics_screen.dart';
 import 'accounts/accounts_manage_view.dart';
 import 'bottom_bar_view.dart';
 import '../models/tabIcon_data.dart';
@@ -23,9 +24,9 @@ class _KeepAccountsHomeScreenState extends State<KeepAccountsHomeScreen>
 
   @override
   void initState() {
-    tabIconsList.forEach((TabIconData tab) {
+    for (var tab in tabIconsList) {
       tab.isSelected = false;
-    });
+    }
     tabIconsList[0].isSelected = true;
 
     animationController = AnimationController(
@@ -108,13 +109,23 @@ class _KeepAccountsHomeScreenState extends State<KeepAccountsHomeScreen>
                       animationController: animationController);
                 });
               });
-            } else if (index == 2 || index == 3) {
+            } else if (index == 2) {
               animationController?.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
                 }
                 setState(() {
-                  tabBody = KeepAccountsOverviewScreen(
+                  tabBody = StatisticsScreen(
+                      animationController: animationController);
+                });
+              });
+            } else if (index == 3) {
+              animationController?.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody = StatisticsScreen(
                       animationController: animationController);
                 });
               });

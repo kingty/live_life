@@ -209,6 +209,16 @@ class S {
       args: [],
     );
   }
+
+  /// `统计`
+  String get KEEP_ACCOUNTS_STATISTICS {
+    return Intl.message(
+      '统计',
+      name: 'KEEP_ACCOUNTS_STATISTICS',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
