@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/ui/record_transaction/record_transaction_view.dart';
+import 'accounts/accounts_manage_view.dart';
 import 'bottom_bar_view.dart';
 import '../models/tabIcon_data.dart';
 import 'keep_accounts_them.dart';
@@ -87,7 +88,7 @@ class _KeepAccountsHomeScreenState extends State<KeepAccountsHomeScreen>
             );
           },
           changeIndex: (int index) {
-            if (index == 0 || index == 2) {
+            if (index == 0) {
               animationController?.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
@@ -97,7 +98,17 @@ class _KeepAccountsHomeScreenState extends State<KeepAccountsHomeScreen>
                       animationController: animationController);
                 });
               });
-            } else if (index == 1 || index == 3) {
+            } else if (index == 1) {
+              animationController?.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody = AccountsManageView(
+                      animationController: animationController);
+                });
+              });
+            } else if (index == 2 || index == 3) {
               animationController?.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;

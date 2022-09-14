@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 import '../keep_accounts_them.dart';
 
 class AssetManagementOverviewView extends StatefulWidget {
+  final AnimationController? animationController;
+  final Animation<double>? animation;
+
+  const AssetManagementOverviewView(
+      {Key? key, this.animationController, this.animation})
+      : super(key: key);
+
   @override
   _AssetManagementOverviewViewState createState() =>
       _AssetManagementOverviewViewState();
@@ -15,6 +22,19 @@ class _AssetManagementOverviewViewState
 
   @override
   Widget build(BuildContext context) {
+    return AnimatedBuilder(
+        animation: widget.animationController!,
+        builder: (BuildContext context, Widget? child) {
+          return FadeTransition(
+              opacity: widget.animation!,
+              child: Transform(
+                  transform: Matrix4.translationValues(
+                      0.0, 30 * (1.0 - widget.animation!.value), 0.0),
+                  child: _getMainUi()));
+        });
+  }
+
+  Widget _getMainUi() {
     return Padding(
         padding:
             const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
@@ -66,7 +86,8 @@ class _AssetManagementOverviewViewState
                                 ),
                                 Text(
                                   "¥ 109990.34",
-                                  style: TextStyle(fontSize: 20, color: Colors.green),
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.green),
                                 ),
                               ],
                             ))),
@@ -77,7 +98,9 @@ class _AssetManagementOverviewViewState
                           Text("理财", style: KeepAccountsTheme.caption),
                           Text(
                             "¥ 123445.22",
-                            style: TextStyle(fontSize: 20, color: KeepAccountsTheme.nearlyDarkBlue),
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: KeepAccountsTheme.nearlyDarkBlue),
                           ),
                         ]))
                   ])),
@@ -95,7 +118,9 @@ class _AssetManagementOverviewViewState
                             Text("负债", style: KeepAccountsTheme.caption),
                             Text(
                               "¥ 123445",
-                              style: TextStyle(fontSize: 20, color: KeepAccountsTheme.darkRed),
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: KeepAccountsTheme.darkRed),
                             ),
                           ],
                         ))),

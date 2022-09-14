@@ -97,7 +97,7 @@ class _IconTagListViewState extends State<IconTagListView> {
         alignment: Alignment.center,
         height: 200,
         child: const Text(
-          '还没有TAG,请添加自定义的TAG.',
+          '还没有标签,请添加自定义的标签.',
           style: KeepAccountsTheme.subtitle,
         ),
       );
