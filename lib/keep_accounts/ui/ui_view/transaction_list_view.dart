@@ -107,7 +107,7 @@ class MonthSection implements ExpandableListSection<ListItem> {
     if (transactions.isEmpty) return sections;
 
     transactions.sort((a, b) {
-      return a.recordTime.compareTo(b.recordTime);
+      return b.tranTime.compareTo(a.tranTime);
     });
 
     int preMonth = -1;

@@ -93,11 +93,11 @@ class TransactionData extends TableData {
   }
 
   int getMonth() {
-    return recordTime.month;
+    return tranTime.month;
   }
 
   int getDay() {
-    return recordTime.day;
+    return tranTime.day;
   }
 
   bool isExpense() {

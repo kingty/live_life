@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/generated/l10n.dart';
+import 'package:live_life/keep_accounts/ui/statistics/statistics_category_view.dart';
+import 'package:live_life/keep_accounts/ui/statistics/statistics_overview_view.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_time_select_view.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../keep_accounts_them.dart';
-import '../overview/month_overview_view.dart';
 import '../ui_view/tab_base_screen.dart';
 
 class StatisticsScreen extends StatefulWidget {
@@ -26,6 +27,16 @@ class _StatisticsScreenState extends State<StatisticsScreen>
       index: 1,
       animationController: widget.animationController!,
     ));
+    listViews.add(StatisticsOverviewView(
+      _mode,
+      index: 2,
+      animationController: widget.animationController!,
+    ));
+    listViews.add(StatisticsCategoryView(
+      index: 3,
+      animationController: widget.animationController!,
+    ));
+
     super.initState();
   }
 

@@ -58,14 +58,6 @@ class MagicTabIndicator extends Decoration {
     assert(rect != null);
     assert(textDirection != null);
 
-    /// DIY(1) step 2
-    // final Rect indicator = insets.resolve(textDirection).deflateRect(rect);
-    // return Rect.fromLTWH(
-    //   indicator.left,
-    //   indicator.bottom - borderSide.width,
-    //   indicator.width,
-    //   borderSide.width,
-    // );
 
     final Rect indicator = insets.resolve(textDirection).deflateRect(rect);
     double midValue = (indicator.right - indicator.left) / 2 + indicator.left;

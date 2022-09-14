@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../common_view/dot_line_border.dart';
 import '../keep_accounts_them.dart';
 
 class AssetManagementOverviewView extends StatefulWidget {
@@ -18,7 +19,7 @@ class AssetManagementOverviewView extends StatefulWidget {
 
 class _AssetManagementOverviewViewState
     extends State<AssetManagementOverviewView> with TickerProviderStateMixin {
-  var borderColor = Colors.black12.withOpacity(0.1);
+  var borderColor = Colors.black12.withOpacity(0.03);
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +88,9 @@ class _AssetManagementOverviewViewState
                                 Text(
                                   "¥ 109990.34",
                                   style: TextStyle(
-                                      fontSize: 20, color: Colors.green),
+                                      fontSize: 20,
+                                      color: Colors.green,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ],
                             ))),
@@ -100,7 +103,8 @@ class _AssetManagementOverviewViewState
                             "¥ 123445.22",
                             style: TextStyle(
                                 fontSize: 20,
-                                color: KeepAccountsTheme.nearlyDarkBlue),
+                                color: KeepAccountsTheme.nearlyDarkBlue,
+                                fontWeight: FontWeight.w500),
                           ),
                         ]))
                   ])),
@@ -120,7 +124,8 @@ class _AssetManagementOverviewViewState
                               "¥ 123445",
                               style: TextStyle(
                                   fontSize: 20,
-                                  color: KeepAccountsTheme.darkRed),
+                                  color: KeepAccountsTheme.darkRed,
+                                  fontWeight: FontWeight.w500),
                             ),
                           ],
                         ))),
@@ -131,7 +136,10 @@ class _AssetManagementOverviewViewState
                       Text("借出", style: KeepAccountsTheme.caption),
                       Text(
                         "¥ 123445",
-                        style: TextStyle(fontSize: 20, color: Colors.orange),
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.orange,
+                            fontWeight: FontWeight.w500),
                       ),
                     ]))
               ])
