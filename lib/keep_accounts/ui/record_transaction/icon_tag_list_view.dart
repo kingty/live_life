@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:live_life/keep_accounts/models/mock_data.dart';
 import 'package:live_life/keep_accounts/models/tag_data.dart';
 import 'package:live_life/keep_accounts/ui/record_transaction/tag_icon_view.dart';
 

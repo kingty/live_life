@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
-import 'package:live_life/keep_accounts/models/mock_data.dart';
 import '../../../common_view/date_picker_dialog.dart';
 import '../../../common_view/dot_line_border.dart';
 import '../../../helper.dart';

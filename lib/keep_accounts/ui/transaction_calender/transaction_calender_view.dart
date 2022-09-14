@@ -6,7 +6,6 @@ import '../../../common_view/common_app_bar.dart';
 import '../../../generated/l10n.dart';
 import '../../../helper.dart';
 import '../keep_accounts_them.dart';
-import '../../models/mock_data.dart';
 import '../../models/transaction_data.dart';
 import '../ui_view/transaction_list_view.dart';
 import 'custom_date_picker_view.dart';
@@ -29,11 +28,6 @@ class _TransactionCalenderViewState extends State<TransactionCalenderView>
   @override
   void initState() {
     super.initState();
-  }
-
-  Future<List<TransactionData>> getData() async {
-    var section = await MockData.getTransactions();
-    return section;
   }
 
   _setSpecialDates(PickerDateRange range) async {
