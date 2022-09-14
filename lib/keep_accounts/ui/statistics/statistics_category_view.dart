@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/ui/keep_accounts_them.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_base_animator_view.dart';
@@ -15,13 +17,18 @@ class StatisticsCategoryView extends StatisticsBaseAnimatorStatefulView {
 class _StatisticsCategoryViewState
     extends StatisticsBaseAnimatorStatefulViewState {
   late TabController _tabController;
+  final random = Random();
+  double? _height;
 
   @override
   void initState() {
     _tabController = TabController(length: 3, vsync: this);
     _tabController.addListener(() {
       if (_tabController.indexIsChanging) {
-        setState(() {});
+        var s = random.nextInt(400).toDouble();
+        setState(() {
+          _height = s < 200 ? 200 : s;
+        });
       }
     });
     super.initState();
@@ -39,7 +46,8 @@ class _StatisticsCategoryViewState
     return Padding(
         padding:
             const EdgeInsets.only(left: 24, right: 24, top: 15, bottom: 15),
-        child: Container(
+        child: AnimatedContainer(
+          height: _height,
           decoration: BoxDecoration(
             color: KeepAccountsTheme.white,
             borderRadius: const BorderRadius.all(Radius.circular(12.0)),
@@ -50,6 +58,8 @@ class _StatisticsCategoryViewState
                   blurRadius: 5.0),
             ],
           ),
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.fastOutSlowIn,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
