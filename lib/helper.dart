@@ -36,5 +36,11 @@ bool isNumeric(String s) {
   return numericRegex.hasMatch(s);
 }
 
-
 DateTime getDateBegin(DateTime d) => DateTime(d.year, d.month, d.day);
+
+bool isSameDay(DateTime x, DateTime y) {
+  if (x.year != y.year) return false;
+  if (x.month != y.month) return false;
+  if (x.day != y.day) return false;
+  return true;
+}

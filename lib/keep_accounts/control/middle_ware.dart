@@ -2,6 +2,7 @@ import 'package:live_life/keep_accounts/db/data_provider.dart';
 import 'package:live_life/keep_accounts/models/tag_data.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../helper.dart';
 import '../models/account_data.dart';
@@ -23,6 +24,9 @@ class TransactionMiddleWare {
   final BehaviorSubject<List<TransactionData>> _latestTransactions =
       BehaviorSubject();
 
+  final BehaviorSubject<List<TransactionData>> _calenderTransactions =
+      BehaviorSubject();
+
   final TransactionProvider _provider = TransactionProvider();
 
   Future<void> saveTransaction(TransactionData transactionData) async {
@@ -35,11 +39,33 @@ class TransactionMiddleWare {
     return _latestTransactions.stream;
   }
 
+  Stream<List<TransactionData>> getCalenderTransactionsStream() {
+    _fetchLatestTransactions();
+    return _calenderTransactions.stream;
+  }
+
   _fetchLatestTransactions() async {
     DateTime lastWeek =
         getDateBegin(DateTime.now()).subtract(const Duration(days: 7));
     var result = await _provider.pullTransactionsByFilter(start: lastWeek);
     _latestTransactions.add(result);
+  }
+
+  void fetchTransactionsForCalender(
+    DateRangePickerView mode,
+    DateTime day,
+  ) async {
+    List<TransactionData> ts = List.empty();
+    if (mode == DateRangePickerView.month) {
+      ts = await fetchTransactionsByMonth(day);
+    }
+    if (mode == DateRangePickerView.year) {
+      ts = await fetchTransactionsByMonth(day);
+    }
+    if (mode == DateRangePickerView.decade) {
+      ts = await fetchTransactionsByYear(day);
+    }
+    _calenderTransactions.add(ts);
   }
 
   Future<List<TransactionData>> fetchTransactionsByDay(DateTime day,
