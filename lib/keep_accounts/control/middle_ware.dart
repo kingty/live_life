@@ -37,15 +37,15 @@ class TransactionMiddleWare {
 
   _fetchLatestTransactions() async {
     DateTime lastWeek =
-        getDate(DateTime.now()).subtract(const Duration(days: 7));
+        getDateBegin(DateTime.now()).subtract(const Duration(days: 7));
     var result = await _provider.pullTransactionsByFilter(start: lastWeek);
     _latestTransactions.add(result);
   }
 
   Future<List<TransactionData>> fetchTransactionsByDay(DateTime day,
       {int? categoryId, String? tagId}) async {
-    var start = getDate(day);
-    final end = getDate(DateTime.now()).add(const Duration(days: 1));
+    var start = getDateBegin(day);
+    final end = getDateBegin(DateTime.now()).add(const Duration(days: 1));
     var result = await _provider.pullTransactionsByFilter(
         start: start, end: end, categoryId: categoryId, tagId: tagId);
     return result;

@@ -7,45 +7,30 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../keep_accounts_them.dart';
 
 class CustomDatePickerView extends StatefulWidget {
-  CustomDatePickerView({super.key, this.mode = 0});
+  const CustomDatePickerView(
+      {super.key,
+      required this.specialDates,
+      this.onViewChanged,
+      this.onSelectionChanged,
+      required this.controller});
 
   @override
   _CustomDatePickerViewState createState() => _CustomDatePickerViewState();
-  int mode = 0;
+  final List<DateTime> specialDates;
+  final DateRangePickerViewChangedCallback? onViewChanged;
+  final DateRangePickerSelectionChangedCallback? onSelectionChanged;
+  final DateRangePickerController controller;
 }
 
 class _CustomDatePickerViewState extends State<CustomDatePickerView>
     with TickerProviderStateMixin {
-  late List<DateTime> _specialDates;
-
-  List<DateTime> _getSpecialDates() {
-    final List<DateTime> dates = <DateTime>[];
-    final DateTime startDate =
-        DateTime.now().subtract(const Duration(days: 200));
-    final DateTime endDate = DateTime.now().add(const Duration(days: 500));
-    final Random random = Random();
-    for (DateTime date = startDate;
-        date.isBefore(endDate);
-        date = date.add(const Duration(days: 25))) {
-      for (int i = 0; i < 3; i++) {
-        dates.add(date.add(Duration(days: random.nextInt(i + 4))));
-      }
-    }
-
-    return dates;
-  }
-
-  final _states = [
-    DateRangePickerView.month,
-    DateRangePickerView.year,
-    DateRangePickerView.decade
-  ];
-  DateRangePickerView _view = DateRangePickerView.month;
+  final Color monthCellBackground = const Color(0xfff7f4ff);
+  final Color indicatorColor = const Color(0xFF1AC4C7);
+  final Color highlightColor = Colors.deepPurpleAccent;
+  final Color cellTextColor = const Color(0xFF130438);
 
   @override
   void initState() {
-    _view = _states[widget.mode];
-    _specialDates = _getSpecialDates();
     super.initState();
   }
 
@@ -63,7 +48,7 @@ class _CustomDatePickerViewState extends State<CustomDatePickerView>
           ],
         ),
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
-        child: _getCustomizedDatePicker(_specialDates));
+        child: _getCustomizedDatePicker());
     return Padding(
         padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
         child: Localizations(
@@ -78,27 +63,20 @@ class _CustomDatePickerViewState extends State<CustomDatePickerView>
   }
 
   /// Returns the date range picker based on the properties passed
-  SfDateRangePicker _getCustomizedDatePicker(List<DateTime> specialDates) {
-    final bool isDark = false;
-
-    final Color monthCellBackground =
-        isDark ? const Color(0xFF232731) : const Color(0xfff7f4ff);
-    final Color indicatorColor =
-        isDark ? const Color(0xFF5CFFB7) : const Color(0xFF1AC4C7);
-    final Color highlightColor =
-        isDark ? const Color(0xFF5CFFB7) : Colors.deepPurpleAccent;
-    final Color cellTextColor =
-        isDark ? const Color(0xFFDFD4FF) : const Color(0xFF130438);
-
+  SfDateRangePicker _getCustomizedDatePicker() {
     return SfDateRangePicker(
-      view: _view,
-      allowViewNavigation: _view == DateRangePickerView.month,
+      controller: widget.controller,
+      onViewChanged: (DateRangePickerViewChangedArgs args) {
+        widget.onViewChanged?.call(args);
+      },
+      onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
+        widget.onSelectionChanged?.call(args);
+      },
+      view: DateRangePickerView.month,
+      allowViewNavigation: widget.controller.view == DateRangePickerView.month,
       selectionShape: DateRangePickerSelectionShape.rectangle,
       selectionColor: highlightColor,
-      selectionTextStyle:
-          TextStyle(color: isDark ? Colors.black : Colors.white, fontSize: 14),
-      // minDate: DateTime.now().add(const Duration(days: -200)),
-      // maxDate: DateTime.now().add(const Duration(days: 500)),
+      selectionTextStyle: const TextStyle(color: Colors.white, fontSize: 14),
       headerStyle: DateRangePickerHeaderStyle(
           textAlign: TextAlign.center,
           textStyle: TextStyle(
@@ -106,10 +84,6 @@ class _CustomDatePickerViewState extends State<CustomDatePickerView>
             color: cellTextColor,
           )),
       monthCellStyle: DateRangePickerMonthCellStyle(
-          cellDecoration: _MonthCellDecoration(
-              backgroundColor: monthCellBackground,
-              showIndicator: false,
-              indicatorColor: indicatorColor),
           todayCellDecoration: _MonthCellDecoration(
               borderColor: highlightColor,
               backgroundColor: monthCellBackground,
@@ -119,20 +93,19 @@ class _CustomDatePickerViewState extends State<CustomDatePickerView>
               backgroundColor: monthCellBackground,
               showIndicator: true,
               indicatorColor: indicatorColor),
-          disabledDatesTextStyle: TextStyle(
-            color: isDark ? const Color(0xFF666479) : const Color(0xffe2d7fe),
+          disabledDatesTextStyle: const TextStyle(
+            color: Color(0xffe2d7fe),
           ),
           weekendTextStyle: TextStyle(
             color: highlightColor,
           ),
           textStyle: TextStyle(color: cellTextColor, fontSize: 14),
-          specialDatesTextStyle: TextStyle(color: cellTextColor, fontSize: 14),
+          // specialDatesTextStyle: TextStyle(color: cellTextColor, fontSize: 14),
           todayTextStyle: TextStyle(color: highlightColor, fontSize: 14)),
       yearCellStyle: DateRangePickerYearCellStyle(
         todayTextStyle: TextStyle(color: highlightColor, fontSize: 14),
         textStyle: TextStyle(color: cellTextColor, fontSize: 14),
-        disabledDatesTextStyle: TextStyle(
-            color: isDark ? const Color(0xFF666479) : const Color(0xffe2d7fe)),
+        disabledDatesTextStyle: TextStyle(color: const Color(0xffe2d7fe)),
         leadingDatesTextStyle:
             TextStyle(color: cellTextColor.withOpacity(0.5), fontSize: 14),
       ),
@@ -146,21 +119,12 @@ class _CustomDatePickerViewState extends State<CustomDatePickerView>
                 color: cellTextColor,
                 fontWeight: FontWeight.w600)),
         dayFormat: 'EEE',
-        specialDates: specialDates,
+        specialDates: widget.specialDates,
       ),
     );
   }
 }
 
-/// [_MonthCellDecoration] used to customize the month cell
-/// background of [SfDateRangePicker].
-/// [backgroundColor] property used to draw the fill color the month cell
-/// [borderColor] property used to draw the border to highlight the
-/// today month cell.
-/// [showIndicator] property used to decide whether the cell
-/// have indicator or not.
-/// it is enabled then draw the circle on right top corner
-/// with [indicatorColor].
 class _MonthCellDecoration extends Decoration {
   const _MonthCellDecoration(
       {this.borderColor,
@@ -183,7 +147,6 @@ class _MonthCellDecoration extends Decoration {
   }
 }
 
-/// [_MonthCellDecorationPainter] used to paint month cell decoration.
 class _MonthCellDecorationPainter extends BoxPainter {
   _MonthCellDecorationPainter(
       {this.borderColor,

@@ -37,4 +37,4 @@ bool isNumeric(String s) {
 }
 
 
-DateTime getDate(DateTime d) => DateTime(d.year, d.month, d.day);
+DateTime getDateBegin(DateTime d) => DateTime(d.year, d.month, d.day);

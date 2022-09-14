@@ -170,7 +170,6 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
             ));
           } else {
             var transactions = snapshot.data ?? List.empty();
-            print(transactions.first.toJson());
             return SliverPadding(
                 padding: EdgeInsets.only(
                   bottom: 62 + MediaQuery.of(context).padding.bottom,
