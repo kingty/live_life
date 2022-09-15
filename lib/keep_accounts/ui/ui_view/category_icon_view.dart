@@ -8,7 +8,8 @@ class CategoryIconView extends StatefulWidget {
       this.color = Colors.grey,
       this.size = 20,
       this.index = 0,
-      this.selectIndex = 0})
+      this.selectIndex = 0,
+      this.padding = const EdgeInsets.all(12)})
       : super(key: key);
 
   final IconData iconData;
@@ -16,6 +17,7 @@ class CategoryIconView extends StatefulWidget {
   final double size;
   final int index;
   final int selectIndex;
+  final EdgeInsetsGeometry padding;
 
   @override
   _CategoryIconViewState createState() => _CategoryIconViewState();
@@ -34,7 +36,7 @@ class _CategoryIconViewState extends State<CategoryIconView>
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: widget.padding,
         child: Icon(
           widget.iconData,
           color:

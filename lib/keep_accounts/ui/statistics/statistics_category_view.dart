@@ -6,6 +6,8 @@ import 'package:live_life/keep_accounts/ui/statistics/statistics_category_expens
 import '../../../common_view/tabbar/custom_tab_indicator.dart';
 import '../../../common_view/tabbar/custom_tabs.dart';
 import '../../../helper.dart';
+import '../../control/middle_ware.dart';
+import '../../models/transaction_data.dart';
 
 class StatisticsCategoryView extends StatisticsBaseAnimatorStatefulView {
   const StatisticsCategoryView(
@@ -26,14 +28,13 @@ class _StatisticsCategoryViewState
   late double _height;
   List<Pair<double, Widget>> tabviews = List.empty(growable: true);
 
+  final _duration = const Duration(milliseconds: 1000);
+
   @override
   void initState() {
-    tabviews.add(Pair(400, _getIndex1()));
-    tabviews.add(Pair(250, _getIndex2()));
-    tabviews.add(Pair(300, _getIndex3()));
     _height = 200;
-
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController =
+        TabController(length: 3, vsync: this, animationDuration: _duration);
     _tabController.addListener(() {
       setState(() {
         _height = tabviews[_tabController.index].first;
@@ -118,26 +119,59 @@ class _StatisticsCategoryViewState
   }
 
   Widget _getTabBarPages() {
-    if (tabviews.length != 3) throw Exception('size should be 3');
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.fastOutSlowIn,
-      height: _height,
-      child: TabBarView(
-          controller: _tabController,
-          children: tabviews.map((e) => e.second).toList()),
-    );
-  }
+        duration: _duration,
+        curve: Curves.fastOutSlowIn,
+        height: _height,
+        child: StreamBuilder<List<TransactionData>>(
+            stream: MiddleWare.instance.transaction
+                .getStatisticsTransactionsStream(),
+            builder: (BuildContext context,
+                AsyncSnapshot<List<TransactionData>> snapshot) {
+              if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return const SizedBox();
+              } else {
+                List<CircleChartData> all =
+                    CircleChartData.dealFromSources(snapshot.data!);
 
-  Widget _getIndex1() {
-    return StatisticsCategoryExpenseView(mode: widget.mode);
-  }
+                final List<CircleChartData> chartDataExpense = all
+                    .where((element) => element.categoryData.isExpense())
+                    .toList();
+                tabviews.clear();
+                tabviews.add(Pair(
+                    chartDataExpense.length * 50 + 250,
+                    StatisticsCategoryExpenseView(
+                      type: 0,
+                      mode: widget.mode,
+                      chartData: chartDataExpense,
+                    )));
+                final List<CircleChartData> chartDataIncome = all
+                    .where((element) => element.categoryData.isIncome())
+                    .toList();
+                tabviews.add(Pair(
+                    chartDataIncome.length * 50 + 250,
+                    StatisticsCategoryExpenseView(
+                      type: 1,
+                      mode: widget.mode,
+                      chartData: chartDataIncome,
+                    )));
 
-  Widget _getIndex2() {
-    return Text("2");
-  }
+                final List<CircleChartData> chartDataSpecial = all
+                    .where((element) => element.categoryData.isSpecial())
+                    .toList();
+                tabviews.add(Pair(
+                    chartDataSpecial.length * 50 + 250,
+                    StatisticsCategoryExpenseView(
+                      type: 2,
+                      mode: widget.mode,
+                      chartData: chartDataSpecial,
+                    )));
+                _height = chartDataExpense.length * 50 + 250;
 
-  Widget _getIndex3() {
-    return Text("3");
+                return TabBarView(
+                    controller: _tabController,
+                    children: tabviews.map((e) => e.second).toList());
+              }
+            }));
   }
 }

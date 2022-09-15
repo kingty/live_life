@@ -10,61 +10,61 @@ import '../../models/transaction_data.dart';
 import '../ui_view/category_icon_view.dart';
 
 class StatisticsCategoryExpenseView extends StatelessWidget {
-  StatisticsCategoryExpenseView({Key? key, required this.mode})
+  const StatisticsCategoryExpenseView(
+      {Key? key,
+      required this.mode,
+      required this.type,
+      required this.chartData})
       : super(key: key);
   final DateRangePickerView mode;
+  final int type;
+  final List<CircleChartData> chartData;
 
   @override
   Widget build(BuildContext context) {
-    return _getWidget();
-  }
-
-  Widget _getWidget() {
-    return StreamBuilder<List<TransactionData>>(
-        stream:
-            MiddleWare.instance.transaction.getStatisticsTransactionsStream(),
-        builder: (BuildContext context,
-            AsyncSnapshot<List<TransactionData>> snapshot) {
-          if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return SizedBox(
-                height: 240,
-                child: SfCircularChart(
-                  series: _getEmptyDoughnutSeries(),
-                ));
-          } else {
-            List<CircleChartData> chartData =
-                CircleChartData.dealFromSources(snapshot.data!)
-                    .where((element) => element.categoryData.isExpense())
-                    .toList();
-            chartData.sort((a, b) {
-              return b.amount.compareTo(a.amount);
-            });
-            return ListView.builder(
-              itemCount: chartData.length + 1,
-              itemBuilder: (BuildContext context, int index) {
-                if (index == 0) {
-                  return SizedBox(
-                      height: 240,
-                      child: SfCircularChart(
-                        series: _getDoughnutSeries(chartData),
-                        // tooltipBehavior: _tooltip,
-                      ));
-                } else {
-                  return StatisticsCategoryItemView(
-                    data: chartData[index - 1],
-                  );
-                }
-              },
-            );
-          }
-        });
+    if (chartData.isEmpty) {
+      return SizedBox(
+          height: 200,
+          child: SfCircularChart(
+            series: _getEmptyDoughnutSeries(),
+          ));
+    }
+    chartData.sort((a, b) {
+      return b.amount.compareTo(a.amount);
+    });
+    return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: chartData.length + 1,
+      itemBuilder: (BuildContext context, int index) {
+        if (index == 0) {
+          return SizedBox(
+              height: 200,
+              child: SfCircularChart(
+                series: _getDoughnutSeries(chartData),
+                // tooltipBehavior: _tooltip,
+              ));
+        } else {
+          return StatisticsCategoryItemView(
+            data: chartData[index - 1],
+          );
+        }
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return Divider(
+          height: 1.0,
+          color: Colors.black12.withOpacity(0.05),
+          indent: 12,
+          endIndent: 12,
+        );
+      },
+    );
   }
 
   List<DoughnutSeries<CircleChartData, String>> _getDoughnutSeries(
       List<CircleChartData> datas) {
     return <DoughnutSeries<CircleChartData, String>>[
       DoughnutSeries<CircleChartData, String>(
-          radius: '95%',
+          radius: '100%',
           innerRadius: '70%',
           dataSource: datas,
           xValueMapper: (CircleChartData data, _) => data.categoryData.name,
@@ -79,7 +79,7 @@ class StatisticsCategoryExpenseView extends StatelessWidget {
                   fontFamily: 'Roboto',
                   fontStyle: FontStyle.normal,
                   fontWeight: FontWeight.normal,
-                  color: KeepAccountsTheme.nearlyWhite,
+                  color: KeepAccountsTheme.nearlyBlack,
                   fontSize: 8)))
     ];
   }
@@ -112,18 +112,20 @@ class StatisticsCategoryItemView extends StatelessWidget {
     return SizedBox(
       height: 50,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           const SizedBox(
             width: 10,
           ),
           CategoryIconView(
-            size: 15,
+            size: 12,
+            padding: const EdgeInsets.all(10),
             iconData: CustomIcons.customIcons[category.icon] ?? Icons.image,
             color: color,
           ),
           Expanded(
               child: Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.only(left: 12.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,8 +137,8 @@ class StatisticsCategoryItemView extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: KeepAccountsTheme.fontName,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 13,
                       letterSpacing: -0.1,
                       color: KeepAccountsTheme.nearlyBlack.withOpacity(0.8),
                     ),
@@ -176,23 +178,22 @@ class StatisticsCategoryItemView extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 6,
-              ),
+              const Spacer(),
               Text(
                 "¥ ${category.isExpense() ? "-" : "+"}${data.amount.toString()}",
                 style: const TextStyle(
                   fontFamily: KeepAccountsTheme.fontName,
                   fontWeight: FontWeight.w400,
-                  fontSize: 16,
+                  fontSize: 12,
                   letterSpacing: -0.1,
                   color: KeepAccountsTheme.darkRed,
                 ),
               ),
               Text(
                 '共支出${data.transactions.length}笔',
-                style: KeepAccountsTheme.smallDetail,
-              )
+                style: KeepAccountsTheme.small,
+              ),
+              const Spacer(),
             ],
           ),
           const Padding(
