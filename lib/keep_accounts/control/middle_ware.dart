@@ -21,6 +21,7 @@ class MiddleWare {
 
   Future<void> init() async {
     await account.getDefaultAccount();
+    await account.fetchAllAccountsAndNotify();
   }
 }
 
@@ -166,6 +167,7 @@ class AccountMiddleWare {
   final BehaviorSubject<List<AccountData>> _accounts = BehaviorSubject();
   final AccountProvider _provider = AccountProvider();
   bool _initAccounts = false;
+  final Map<String, AccountData> _accountMap = {};
 
   Future<void> getDefaultAccount() async {
     defaultAccount = await _provider.getDefaultAccount();
@@ -174,23 +176,31 @@ class AccountMiddleWare {
   Stream<List<AccountData>> getAccountsStream() {
     if (!_initAccounts) {
       _initAccounts = true;
-      _fetchAllAccountsAndNotify();
+      fetchAllAccountsAndNotify();
     }
     return _accounts.stream;
   }
 
-  _fetchAllAccountsAndNotify() async {
+  AccountData? getAccountById(String id) {
+    return _accountMap[id];
+  }
+
+  Future<void> fetchAllAccountsAndNotify() async {
     var result = await _provider.pullAllAccounts();
+    _accountMap.clear();
+    for (var element in result) {
+      _accountMap[element.id] = element;
+    }
     _accounts.add(result);
   }
 
   Future<void> saveAccount(AccountData accountData) async {
     await _provider.insertOrUpdate(accountData);
-    _fetchAllAccountsAndNotify();
+    fetchAllAccountsAndNotify();
   }
 
   Future<void> deleteAccount(AccountData accountData) async {
     await _provider.delete(accountData);
-    _fetchAllAccountsAndNotify();
+    fetchAllAccountsAndNotify();
   }
 }

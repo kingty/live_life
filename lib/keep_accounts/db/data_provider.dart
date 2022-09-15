@@ -26,6 +26,7 @@ class TransactionProvider extends Provider {
   }) async {
     List<String> where = List.empty(growable: true);
     List<Object> whereArgs = List.empty(growable: true);
+    where.add('$cIsDelete != 1');
     if (start != null && end != null && start.isAfter(end)) {
       throw Exception('start should not after end!!!');
     }
@@ -67,7 +68,7 @@ class AccountProvider extends Provider {
   }
 
   Future<List<AccountData>> pullAllAccounts() async {
-    var maps = await _db.query(tableAccountData);
+    var maps = await _db.query(tableAccountData, where: '$cIsDelete != 1');
     if (maps.isNotEmpty) {
       return maps.map((e) => AccountData().fromMap(e)).toList();
     }
@@ -77,7 +78,7 @@ class AccountProvider extends Provider {
 
 class TagProvider extends Provider {
   Future<List<TagData>> pullAllTags() async {
-    var maps = await _db.query(tableTagData);
+    var maps = await _db.query(tableTagData, where: '$cIsDelete != 1');
     if (maps.isNotEmpty) {
       return maps.map((e) => TagData().fromMap(e)).toList();
     }

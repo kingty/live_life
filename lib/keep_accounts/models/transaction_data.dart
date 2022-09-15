@@ -122,6 +122,21 @@ class TransactionData extends TableData {
     }
   }
 
+  String? getRealAccountId() {
+    if (isIncome()) {
+      return inAccountId;
+    } else if (isExpense()) {
+      return outAccountId;
+    } else {
+      if (categoryId == CategoryManager.SPECIAL_RENT_IN) return inAccountId;
+      if (categoryId == CategoryManager.SPECIAL_RENT_OUT) return outAccountId;
+      if (categoryId == CategoryManager.SPECIAL_FINANCE) return outAccountId;
+      if (categoryId == CategoryManager.SPECIAL_TRANSFER) return inAccountId;
+    }
+
+    return null;
+  }
+
   @override
   TransactionData fromMap(Map<String, dynamic> map) {
     return TransactionData()
@@ -192,14 +207,12 @@ class CircleChartData {
     if (transactions.isEmpty) return chartData;
     Map<int, Pair<List<TransactionData>, double>> map = {};
     for (var element in transactions) {
-      if (map.containsKey(element.getRootCategoryId())) {
-        map[element.getRootCategoryId()]!.first.add(element);
-        map[element.getRootCategoryId()]!.second =
-            map[element.getRootCategoryId()]!.second + element.amount;
-      } else {
-        map[element.getRootCategoryId()] =
-            Pair(List.empty(growable: true), element.amount);
+      if (!map.containsKey(element.getRootCategoryId())) {
+        map[element.getRootCategoryId()] = Pair(List.empty(growable: true), 0);
       }
+      map[element.getRootCategoryId()]!.first.add(element);
+      map[element.getRootCategoryId()]!.second =
+          map[element.getRootCategoryId()]!.second + element.amount;
     }
     return map.keys
         .map((key) => CircleChartData()

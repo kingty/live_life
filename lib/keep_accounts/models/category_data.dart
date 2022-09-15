@@ -25,6 +25,18 @@ class CategoryData {
     }
   }
 
+  bool isExpense() {
+    return id.toString().startsWith("1");
+  }
+
+  bool isIncome() {
+    return id.toString().startsWith("2");
+  }
+
+  bool isSpecial() {
+    return id > 3000;
+  }
+
   CategoryData.fromJson(Map<String, dynamic> json)
       : name = json['name'],
         icon = json['icon'],
