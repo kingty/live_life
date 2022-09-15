@@ -22,10 +22,14 @@ class MiddleWare {
   Future<void> init() async {
     await account.getDefaultAccount();
     await account.fetchAllAccountsAndNotify();
+    transaction.fetchCurrentMonthTransactions();
   }
 }
 
 class TransactionMiddleWare {
+  final BehaviorSubject<List<TransactionData>> _currentMonthTransactions =
+      BehaviorSubject();
+
   final BehaviorSubject<List<TransactionData>> _latestTransactions =
       BehaviorSubject();
 
@@ -39,11 +43,19 @@ class TransactionMiddleWare {
   Future<void> saveTransaction(TransactionData transactionData) async {
     await _provider.insertOrUpdate(transactionData);
     _fetchLatestTransactions();
+    if (_statisticsTransactions.hasListener && _lastStatisticsMode != null) {
+      fetchTransactionsForStatistics(_lastStatisticsMode!, _lastStatisticsDay!);
+    }
+    fetchCurrentMonthTransactions();
   }
 
   Stream<List<TransactionData>> getLatestTransactionsStream() {
     _fetchLatestTransactions();
     return _latestTransactions.stream;
+  }
+
+  Stream<List<TransactionData>> getCurrentMonthTransactionsStream() {
+    return _currentMonthTransactions.stream;
   }
 
   Stream<List<TransactionData>> getCalenderTransactionsStream() {
@@ -69,10 +81,20 @@ class TransactionMiddleWare {
     _latestTransactions.add(result);
   }
 
+  fetchCurrentMonthTransactions() async {
+    var result = await _fetchTransactionsByMonth(DateTime.now());
+    _currentMonthTransactions.add(result);
+  }
+
+  DateRangePickerView? _lastStatisticsMode;
+  DateTime? _lastStatisticsDay;
+
   Future<void> fetchTransactionsForStatistics(
     DateRangePickerView mode,
     DateTime day,
   ) async {
+    _lastStatisticsMode = mode;
+    _lastStatisticsDay = day;
     List<TransactionData> ts = List.empty();
     if (mode == DateRangePickerView.year) {
       ts = await _fetchTransactionsByMonth(day);
