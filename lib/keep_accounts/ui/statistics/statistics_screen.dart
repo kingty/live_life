@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/generated/l10n.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_category_view.dart';
+import 'package:live_life/keep_accounts/ui/statistics/statistics_line_view.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_overview_view.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_time_select_view.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -39,6 +40,12 @@ class _StatisticsScreenState extends State<StatisticsScreen>
       index: 3,
       animationController: widget.animationController!,
     ));
+    // listViews.add(StatisticsLineView(
+    //   mode: _mode,
+    //   index: 4,
+    //   animationController: widget.animationController!,
+    // ));
+
     MiddleWare.instance.transaction
         .fetchTransactionsForStatistics(_mode, DateTime.now());
 

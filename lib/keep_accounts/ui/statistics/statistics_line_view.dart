@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/ui/keep_accounts_them.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_base_animator_view.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_category_expense_view.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../../../common_view/tabbar/custom_tab_indicator.dart';
 import '../../../common_view/tabbar/custom_tabs.dart';
 import '../../../helper.dart';
 import '../../control/middle_ware.dart';
 import '../../models/transaction_data.dart';
 
-class StatisticsCategoryView extends StatisticsBaseAnimatorStatefulView {
-  const StatisticsCategoryView(
+class StatisticsLineView extends StatisticsBaseAnimatorStatefulView {
+  const StatisticsLineView(
       {Key? key,
       required super.animationController,
       required super.index,
@@ -24,21 +25,13 @@ class StatisticsCategoryView extends StatisticsBaseAnimatorStatefulView {
 class _StatisticsCategoryViewState
     extends StatisticsBaseAnimatorStatefulViewState {
   late TabController _tabController;
-  late double _height;
-  List<Pair<double, Widget>> tabviews = List.empty(growable: true);
 
   final _duration = const Duration(milliseconds: 1000);
 
   @override
   void initState() {
-    _height = 200;
     _tabController =
-        TabController(length: 3, vsync: this, animationDuration: _duration);
-    _tabController.addListener(() {
-      setState(() {
-        _height = tabviews[_tabController.index].first;
-      });
-    });
+        TabController(length: 2, vsync: this, animationDuration: _duration);
 
     super.initState();
   }
@@ -69,10 +62,11 @@ class _StatisticsCategoryViewState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding:
-                    EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                child: Text("类型统计"),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 20, right: 20, top: 10, bottom: 10),
+                child: Text(
+                    widget.mode == DateRangePickerView.year ? "每日统计" : "每月统计"),
               ),
               Container(
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -113,15 +107,12 @@ class _StatisticsCategoryViewState
         tabs: const [
           CustomTab(text: "支出"),
           CustomTab(text: "收入"),
-          CustomTab(text: "其他"),
         ]);
   }
 
   Widget _getTabBarPages() {
-    return AnimatedContainer(
-        duration: _duration,
-        curve: Curves.fastOutSlowIn,
-        height: _height,
+    return Container(
+        height: 300,
         child: StreamBuilder<List<TransactionData>>(
             stream: MiddleWare.instance.transaction
                 .getStatisticsTransactionsStream(),
@@ -130,46 +121,10 @@ class _StatisticsCategoryViewState
               if (!snapshot.hasData || snapshot.data!.isEmpty) {
                 return const SizedBox();
               } else {
-                List<CircleChartData> all =
-                    CircleChartData.dealFromSources(snapshot.data!);
+                List<DayOverViewData> getDayOverViewDatas =
+                    DayOverViewData.getDayOverViewDatas(snapshot.data!);
 
-                final List<CircleChartData> chartDataExpense = all
-                    .where((element) => element.categoryData.isExpense())
-                    .toList();
-                tabviews.clear();
-                tabviews.add(Pair(
-                    chartDataExpense.length * 50 + 250,
-                    StatisticsCategoryTypeView(
-                      type: 0,
-                      mode: widget.mode,
-                      chartData: chartDataExpense,
-                    )));
-                final List<CircleChartData> chartDataIncome = all
-                    .where((element) => element.categoryData.isIncome())
-                    .toList();
-                tabviews.add(Pair(
-                    chartDataIncome.length * 50 + 250,
-                    StatisticsCategoryTypeView(
-                      type: 1,
-                      mode: widget.mode,
-                      chartData: chartDataIncome,
-                    )));
-
-                final List<CircleChartData> chartDataSpecial = all
-                    .where((element) => element.categoryData.isSpecial())
-                    .toList();
-                tabviews.add(Pair(
-                    chartDataSpecial.length * 50 + 250,
-                    StatisticsCategoryTypeView(
-                      type: 2,
-                      mode: widget.mode,
-                      chartData: chartDataSpecial,
-                    )));
-                _height = chartDataExpense.length * 50 + 250;
-
-                return TabBarView(
-                    controller: _tabController,
-                    children: tabviews.map((e) => e.second).toList());
+                return TabBarView(controller: _tabController, children: []);
               }
             }));
   }

@@ -138,11 +138,11 @@ class MonthSection implements ExpandableListSection<ListItem> {
           preDayOverViewData.countExpense = double.parse(
               (preDayOverViewData.countExpense + transaction.amount)
                   .toStringAsFixed(2));
-        } else {
+        } else if (transaction.isIncome()){
           preDayOverViewData.countIncome = double.parse(
               (preDayOverViewData.countIncome + transaction.amount)
                   .toStringAsFixed(2));
-          ;
+
         }
       }
       section!.items.add(item);

@@ -194,6 +194,39 @@ class DayOverViewData {
   String getDisplayDateString() {
     return "星期${weeks.elementAt(firstTransactionDate.weekday - 1)} ${firstTransactionDate.month}月${firstTransactionDate.day}日";
   }
+
+  //获取同一个月的每天汇总数据，必须保证是一个月数据
+  static List<DayOverViewData> getDayOverViewDatas(
+      List<TransactionData> transactions) {
+    List<DayOverViewData> datas = List.empty(growable: true);
+
+    transactions.sort((a, b) {
+      return b.tranTime.compareTo(a.tranTime);
+    });
+
+    int preDay = -1;
+    DayOverViewData? preDayOverViewData;
+    for (var transaction in transactions) {
+      if (transaction.getDay() != preDay) {
+        preDay = transaction.getDay();
+        preDayOverViewData = DayOverViewData(transaction.tranTime);
+        datas.add(preDayOverViewData);
+      }
+      if (preDayOverViewData != null) {
+        if (transaction.isExpense()) {
+          // 消费
+          preDayOverViewData.countExpense = double.parse(
+              (preDayOverViewData.countExpense + transaction.amount)
+                  .toStringAsFixed(2));
+        } else if (transaction.isIncome()) {
+          preDayOverViewData.countIncome = double.parse(
+              (preDayOverViewData.countIncome + transaction.amount)
+                  .toStringAsFixed(2));
+        }
+      }
+    }
+    return datas;
+  }
 }
 
 class CircleChartData {

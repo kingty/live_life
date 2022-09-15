@@ -9,8 +9,8 @@ import '../../control/middle_ware.dart';
 import '../../models/transaction_data.dart';
 import '../ui_view/category_icon_view.dart';
 
-class StatisticsCategoryExpenseView extends StatelessWidget {
-  const StatisticsCategoryExpenseView(
+class StatisticsCategoryTypeView extends StatelessWidget {
+  const StatisticsCategoryTypeView(
       {Key? key,
       required this.mode,
       required this.type,
