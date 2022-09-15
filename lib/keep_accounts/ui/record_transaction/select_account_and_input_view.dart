@@ -57,7 +57,10 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
 
   @override
   void initState() {
+    _selectAccount = MiddleWare.instance.account.defaultAccount;
+    _selectAccountBelow = MiddleWare.instance.account.defaultAccount;
     _startTime = DateTime.now();
+    _onChange();
     _textStyle = TextStyle(
       color: widget.color,
       letterSpacing: 0,
@@ -106,8 +109,8 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
             child: Container(
                 width: double.infinity,
                 decoration: (below
-                        ? _selectAccountBelow == account
-                        : _selectAccount == account)
+                        ? _selectAccountBelow.id == account.id
+                        : _selectAccount.id == account.id)
                     ? BoxDecoration(
                         color: widget.color.withOpacity(0.1),
                         borderRadius:
@@ -296,9 +299,6 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
             return const SizedBox();
           } else {
             _accounts = snapshot.data!;
-            _selectAccount = _accounts.first;
-            _selectAccountBelow = _accounts.first;
-            _onChange();
 
             return buildWhenGetData();
           }

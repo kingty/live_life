@@ -56,6 +56,16 @@ class TransactionProvider extends Provider {
 }
 
 class AccountProvider extends Provider {
+  Future<AccountData> getDefaultAccount() async {
+    var maps =
+        await _db.query(tableAccountData, where: "$cId = '$defaultAccountId'");
+    if (maps.isNotEmpty) {
+      return maps.map((e) => AccountData().fromMap(e)).toList().first;
+    } else {
+      throw Exception('there should be a defaultAccount!');
+    }
+  }
+
   Future<List<AccountData>> pullAllAccounts() async {
     var maps = await _db.query(tableAccountData);
     if (maps.isNotEmpty) {

@@ -18,6 +18,10 @@ class MiddleWare {
   final AccountMiddleWare account = AccountMiddleWare();
   final TransactionMiddleWare transaction = TransactionMiddleWare();
   final TagMiddleWare tag = TagMiddleWare();
+
+  Future<void> init() async {
+    await account.getDefaultAccount();
+  }
 }
 
 class TransactionMiddleWare {
@@ -131,9 +135,14 @@ class TagMiddleWare {
 }
 
 class AccountMiddleWare {
+  late AccountData defaultAccount;
   final BehaviorSubject<List<AccountData>> _accounts = BehaviorSubject();
   final AccountProvider _provider = AccountProvider();
   bool _initAccounts = false;
+
+  Future<void> getDefaultAccount() async {
+    defaultAccount = await _provider.getDefaultAccount();
+  }
 
   Stream<List<AccountData>> getAccountsStream() {
     if (!_initAccounts) {
