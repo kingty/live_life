@@ -129,7 +129,7 @@ class MonthSection implements ExpandableListSection<ListItem> {
       if (transaction.getDay() != preDay) {
         preDay = transaction.getDay();
         item.hasTimeHeader = true;
-        preDayOverViewData = DayOverViewData(transaction.recordTime);
+        preDayOverViewData = DayOverViewData(transaction.tranTime);
         item.dayOverViewData = preDayOverViewData;
       }
       if (preDayOverViewData != null) {

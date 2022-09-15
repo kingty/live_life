@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 abstract class StatisticsBaseAnimatorView extends StatelessWidget {
   final AnimationController animationController;
   final int index;
+  final DateRangePickerView mode;
 
   const StatisticsBaseAnimatorView(
-      {Key? key, required this.animationController, required this.index})
+      {Key? key, required this.animationController, required this.index, required this.mode})
       : super(key: key);
 
   @override
@@ -34,9 +36,10 @@ abstract class StatisticsBaseAnimatorView extends StatelessWidget {
 abstract class StatisticsBaseAnimatorStatefulView extends StatefulWidget {
   final AnimationController animationController;
   final int index;
+  final DateRangePickerView mode;
 
   const StatisticsBaseAnimatorStatefulView(
-      {Key? key, required this.animationController, required this.index})
+      {Key? key, required this.animationController, required this.index, required this.mode})
       : super(key: key);
 }
 

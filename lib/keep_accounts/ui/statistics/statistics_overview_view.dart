@@ -5,17 +5,20 @@ import 'package:live_life/keep_accounts/ui/statistics/statistics_base_animator_v
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class StatisticsOverviewView extends StatisticsBaseAnimatorView {
-  final DateRangePickerView mode;
-
-  const StatisticsOverviewView(this.mode,
-      {required super.animationController, required super.index});
+  const StatisticsOverviewView(
+      {Key? key,
+      required super.animationController,
+      required super.index,
+      required super.mode})
+      : super(key: key);
 
   @override
   Widget buildInnerWidget() {
     var borderColor = Colors.black12.withOpacity(0.03);
     var isYearMode = mode == DateRangePickerView.decade;
     return Padding(
-        padding: const EdgeInsets.only(left: 24, right: 24, top: 15, bottom: 15),
+        padding:
+            const EdgeInsets.only(left: 24, right: 24, top: 15, bottom: 15),
         child: Container(
           decoration: BoxDecoration(
             color: KeepAccountsTheme.white,
@@ -45,8 +48,8 @@ class StatisticsOverviewView extends StatisticsBaseAnimatorView {
               Container(
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
                   decoration: BoxDecoration(
-                    border: Border(
-                        top: BorderSide(color: borderColor, width: 1)),
+                    border:
+                        Border(top: BorderSide(color: borderColor, width: 1)),
                   ),
                   child: Row(children: [
                     Expanded(

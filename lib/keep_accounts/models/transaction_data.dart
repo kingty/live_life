@@ -2,6 +2,8 @@ import 'package:live_life/helper.dart';
 import 'package:live_life/keep_accounts/control/category_manager.dart';
 import 'package:live_life/keep_accounts/models/table_data.dart';
 
+import 'category_data.dart';
+
 const tableTransactionData = 'transaction_data';
 const indexTransactionTime = 'transaction_time_index';
 
@@ -112,6 +114,14 @@ class TransactionData extends TableData {
     return categoryId > 3000;
   }
 
+  int getRootCategoryId() {
+    if (categoryId < 10000) {
+      return categoryId;
+    } else {
+      return categoryId ~/ 1000;
+    }
+  }
+
   @override
   TransactionData fromMap(Map<String, dynamic> map) {
     return TransactionData()
@@ -168,5 +178,34 @@ class DayOverViewData {
 
   String getDisplayDateString() {
     return "星期${weeks.elementAt(firstTransactionDate.weekday - 1)} ${firstTransactionDate.month}月${firstTransactionDate.day}日";
+  }
+}
+
+class CircleChartData {
+  late CategoryData categoryData;
+  late List<TransactionData> transactions;
+  late double amount;
+
+  static List<CircleChartData> dealFromSources(
+      List<TransactionData> transactions) {
+    final List<CircleChartData> chartData = List.empty(growable: true);
+    if (transactions.isEmpty) return chartData;
+    Map<int, Pair<List<TransactionData>, double>> map = {};
+    for (var element in transactions) {
+      if (map.containsKey(element.getRootCategoryId())) {
+        map[element.getRootCategoryId()]!.first.add(element);
+        map[element.getRootCategoryId()]!.second =
+            map[element.getRootCategoryId()]!.second + element.amount;
+      } else {
+        map[element.getRootCategoryId()] =
+            Pair(List.empty(growable: true), element.amount);
+      }
+    }
+    return map.keys
+        .map((key) => CircleChartData()
+          ..categoryData = CategoryManager.instance.getById(key)!
+          ..transactions = map[key]!.first
+          ..amount = map[key]!.second)
+        .toList();
   }
 }

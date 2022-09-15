@@ -30,6 +30,13 @@ class _TransactionCalenderViewState extends State<TransactionCalenderView>
     super.initState();
   }
 
+  @override
+  void dispose() {
+    _controller.dispose();
+    MiddleWare.instance.transaction.flashCalenderTransactionsStream();
+    super.dispose();
+  }
+
   _setSpecialDates(PickerDateRange range) async {
     if (range.startDate == null) return List.empty();
     if (range.endDate == null) return List.empty();
@@ -37,7 +44,6 @@ class _TransactionCalenderViewState extends State<TransactionCalenderView>
     var transactions = await MiddleWare.instance.transaction
         .getCalenderTransactionsStream()
         .first;
-
     for (var transaction in transactions) {
       dates.add(getDateBegin(transaction.tranTime).millisecondsSinceEpoch);
     }
@@ -95,10 +101,10 @@ class _TransactionCalenderViewState extends State<TransactionCalenderView>
             onViewChanged: (DateRangePickerViewChangedArgs args) {
               final PickerDateRange visibleDateRange = args.visibleDateRange;
               if (args.view == DateRangePickerView.month) {
-                MiddleWare.instance.transaction.fetchTransactionsForCalender(
-                    DateRangePickerView.month,
-                    visibleDateRange.startDate ?? DateTime.now());
-                _setSpecialDates(visibleDateRange);
+                MiddleWare.instance.transaction
+                    .fetchTransactionsForCalender(DateRangePickerView.month,
+                        visibleDateRange.startDate ?? DateTime.now())
+                    .then((value) => {_setSpecialDates(visibleDateRange)});
               }
             },
             onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
@@ -115,9 +121,6 @@ class _TransactionCalenderViewState extends State<TransactionCalenderView>
                             DateRangePickerView.decade, _selectedDate);
                   }
                 });
-                if (kDebugMode) {
-                  print(_selectedDate);
-                }
               } else {
                 throw Exception('error return ');
               }

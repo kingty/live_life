@@ -1,14 +1,19 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/ui/keep_accounts_them.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_base_animator_view.dart';
+import 'package:live_life/keep_accounts/ui/statistics/statistics_category_expense_view.dart';
 import '../../../common_view/tabbar/custom_tab_indicator.dart';
 import '../../../common_view/tabbar/custom_tabs.dart';
+import '../../../helper.dart';
 
 class StatisticsCategoryView extends StatisticsBaseAnimatorStatefulView {
   const StatisticsCategoryView(
-      {required super.animationController, required super.index});
+      {Key? key,
+      required super.animationController,
+      required super.index,
+      required super.mode})
+      : super(key: key);
 
   @override
   _StatisticsCategoryViewState createState() => _StatisticsCategoryViewState();
@@ -18,19 +23,23 @@ class _StatisticsCategoryViewState
     extends StatisticsBaseAnimatorStatefulViewState {
   late TabController _tabController;
   final random = Random();
-  double? _height;
+  late double _height;
+  List<Pair<double, Widget>> tabviews = List.empty(growable: true);
 
   @override
   void initState() {
+    tabviews.add(Pair(400, _getIndex1()));
+    tabviews.add(Pair(250, _getIndex2()));
+    tabviews.add(Pair(300, _getIndex3()));
+    _height = 200;
+
     _tabController = TabController(length: 3, vsync: this);
     _tabController.addListener(() {
-      if (_tabController.indexIsChanging) {
-        var s = random.nextInt(400).toDouble();
-        setState(() {
-          _height = s < 200 ? 200 : s;
-        });
-      }
+      setState(() {
+        _height = tabviews[_tabController.index].first;
+      });
     });
+
     super.initState();
   }
 
@@ -46,8 +55,7 @@ class _StatisticsCategoryViewState
     return Padding(
         padding:
             const EdgeInsets.only(left: 24, right: 24, top: 15, bottom: 15),
-        child: AnimatedContainer(
-          height: _height,
+        child: Container(
           decoration: BoxDecoration(
             color: KeepAccountsTheme.white,
             borderRadius: const BorderRadius.all(Radius.circular(12.0)),
@@ -58,8 +66,6 @@ class _StatisticsCategoryViewState
                   blurRadius: 5.0),
             ],
           ),
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.fastOutSlowIn,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -83,13 +89,13 @@ class _StatisticsCategoryViewState
   Widget _getContent() {
     return Column(
       children: [
-        getTabBar(),
-        getTabBarPages(),
+        _getTabBar(),
+        _getTabBarPages(),
       ],
     );
   }
 
-  Widget getTabBar() {
+  Widget _getTabBar() {
     var colors = [
       KeepAccountsTheme.darkRed,
       Colors.green,
@@ -111,12 +117,27 @@ class _StatisticsCategoryViewState
         ]);
   }
 
-  Widget getTabBarPages() {
-    return Center(
-        child: [
-      Text("1"),
-      Text("2"),
-      Text("3"),
-    ][_tabController.index]);
+  Widget _getTabBarPages() {
+    if (tabviews.length != 3) throw Exception('size should be 3');
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.fastOutSlowIn,
+      height: _height,
+      child: TabBarView(
+          controller: _tabController,
+          children: tabviews.map((e) => e.second).toList()),
+    );
+  }
+
+  Widget _getIndex1() {
+    return StatisticsCategoryExpenseView(mode: widget.mode);
+  }
+
+  Widget _getIndex2() {
+    return Text("2");
+  }
+
+  Widget _getIndex3() {
+    return Text("3");
   }
 }

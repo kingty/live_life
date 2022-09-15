@@ -4,6 +4,7 @@ import 'package:live_life/keep_accounts/ui/statistics/statistics_category_view.d
 import 'package:live_life/keep_accounts/ui/statistics/statistics_overview_view.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_time_select_view.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import '../../control/middle_ware.dart';
 import '../keep_accounts_them.dart';
 import '../ui_view/tab_base_screen.dart';
 
@@ -24,20 +25,30 @@ class _StatisticsScreenState extends State<StatisticsScreen>
   @override
   void initState() {
     listViews.add(StatisticsTimeSelectView(
+      mode: _mode,
       index: 1,
       animationController: widget.animationController!,
     ));
     listViews.add(StatisticsOverviewView(
-      _mode,
+      mode: _mode,
       index: 2,
       animationController: widget.animationController!,
     ));
     listViews.add(StatisticsCategoryView(
+      mode: _mode,
       index: 3,
       animationController: widget.animationController!,
     ));
+    MiddleWare.instance.transaction
+        .fetchTransactionsForStatistics(_mode, DateTime.now());
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    MiddleWare.instance.transaction.flashStatisticsTransactionsStream();
+    super.dispose();
   }
 
   @override

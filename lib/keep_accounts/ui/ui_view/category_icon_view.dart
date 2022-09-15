@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../icons/custom_icons.dart';
 
 class CategoryIconView extends StatefulWidget {
-  CategoryIconView(
+  const CategoryIconView(
       {Key? key,
       this.iconData = CustomIcons.food_knife_fork,
       this.color = Colors.grey,
@@ -14,8 +14,8 @@ class CategoryIconView extends StatefulWidget {
   final IconData iconData;
   final Color color;
   final double size;
-  int index;
-  int selectIndex;
+  final int index;
+  final int selectIndex;
 
   @override
   _CategoryIconViewState createState() => _CategoryIconViewState();

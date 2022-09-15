@@ -4,6 +4,16 @@ import 'package:uuid/uuid.dart';
 
 import 'common_view/bottom_sheet.dart';
 
+class Pair<T, V> {
+  Pair(this.first, this.second);
+
+  late T first;
+  late V second;
+
+  @override
+  String toString() => 'Pair[$first, $second]';
+}
+
 ///To show the  panel content in the bottom sheet
 void showBottomSheetPanel(BuildContext context, Widget propertyWidget) {
   showRoundedModalBottomSheet<dynamic>(
@@ -43,4 +53,8 @@ bool isSameDay(DateTime x, DateTime y) {
   if (x.month != y.month) return false;
   if (x.day != y.day) return false;
   return true;
+}
+
+Color hexToColor(String hexString, {String alphaChannel = 'FF'}) {
+  return Color(int.parse(hexString.replaceFirst('#', '0x$alphaChannel')));
 }

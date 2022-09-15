@@ -1,12 +1,29 @@
+import 'package:flutter/material.dart';
+
+import '../../helper.dart';
+
 class CategoryData {
   CategoryData(
-      {this.id = 0, this.name = '', this.icon = '', this.priority = 0});
+      {this.id = 0,
+      this.name = '',
+      this.icon = '',
+      this.priority = 0,
+      this.color = Colors.black});
 
   int id;
   String name;
   int priority = 0;
   String icon;
+  Color color;
   List<CategoryData> children = <CategoryData>[];
+
+  int getRootId() {
+    if (id < 10000) {
+      return id;
+    } else {
+      return id ~/ 1000;
+    }
+  }
 
   CategoryData.fromJson(Map<String, dynamic> json)
       : name = json['name'],
@@ -17,6 +34,7 @@ class CategoryData {
             : List<dynamic>.from(json['children'])
                 .map((i) => CategoryData.fromJson(i))
                 .toList(),
+        color = hexToColor(json['color']),
         id = json['id'];
 
   Map<String, dynamic> toJson() => {

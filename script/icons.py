@@ -38,7 +38,8 @@ def getDetails(ca):
     obj = {
       "name": pair[0],
       "icon": pair[1].replace('/', '_').replace('-', '_'),
-      "id": int(pair[2])
+      "id": int(pair[2]),
+      "color": pair[3]
     }
     return obj
 

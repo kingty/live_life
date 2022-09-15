@@ -4,7 +4,9 @@ import 'package:live_life/keep_accounts/ui/statistics/statistics_base_animator_v
 
 class StatisticsTimeSelectView extends StatisticsBaseAnimatorView {
   const StatisticsTimeSelectView(
-      {required super.animationController, required super.index});
+      {required super.animationController,
+      required super.index,
+      required super.mode});
 
   @override
   Widget buildInnerWidget() {

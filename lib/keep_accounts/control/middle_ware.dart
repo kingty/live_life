@@ -30,6 +30,8 @@ class TransactionMiddleWare {
 
   final BehaviorSubject<List<TransactionData>> _calenderTransactions =
       BehaviorSubject();
+  final BehaviorSubject<List<TransactionData>> _statisticsTransactions =
+      BehaviorSubject();
 
   final TransactionProvider _provider = TransactionProvider();
 
@@ -44,8 +46,19 @@ class TransactionMiddleWare {
   }
 
   Stream<List<TransactionData>> getCalenderTransactionsStream() {
-    _fetchLatestTransactions();
     return _calenderTransactions.stream;
+  }
+
+  void flashCalenderTransactionsStream() {
+    _calenderTransactions.add(List.empty());
+  }
+
+  Stream<List<TransactionData>> getStatisticsTransactionsStream() {
+    return _statisticsTransactions.stream;
+  }
+
+  void flashStatisticsTransactionsStream() {
+    _statisticsTransactions.add(List.empty());
   }
 
   _fetchLatestTransactions() async {
@@ -55,24 +68,38 @@ class TransactionMiddleWare {
     _latestTransactions.add(result);
   }
 
-  void fetchTransactionsForCalender(
+  Future<void> fetchTransactionsForStatistics(
+    DateRangePickerView mode,
+    DateTime day,
+  ) async {
+    List<TransactionData> ts = List.empty();
+    if (mode == DateRangePickerView.year) {
+      ts = await _fetchTransactionsByMonth(day);
+    }
+    if (mode == DateRangePickerView.decade) {
+      ts = await _fetchTransactionsByYear(day);
+    }
+    _statisticsTransactions.add(ts);
+  }
+
+  Future<void> fetchTransactionsForCalender(
     DateRangePickerView mode,
     DateTime day,
   ) async {
     List<TransactionData> ts = List.empty();
     if (mode == DateRangePickerView.month) {
-      ts = await fetchTransactionsByMonth(day);
+      ts = await _fetchTransactionsByMonth(day);
     }
     if (mode == DateRangePickerView.year) {
-      ts = await fetchTransactionsByMonth(day);
+      ts = await _fetchTransactionsByMonth(day);
     }
     if (mode == DateRangePickerView.decade) {
-      ts = await fetchTransactionsByYear(day);
+      ts = await _fetchTransactionsByYear(day);
     }
     _calenderTransactions.add(ts);
   }
 
-  Future<List<TransactionData>> fetchTransactionsByDay(DateTime day,
+  Future<List<TransactionData>> _fetchTransactionsByDay(DateTime day,
       {int? categoryId, String? tagId}) async {
     var start = getDateBegin(day);
     final end = getDateBegin(DateTime.now()).add(const Duration(days: 1));
@@ -81,7 +108,7 @@ class TransactionMiddleWare {
     return result;
   }
 
-  Future<List<TransactionData>> fetchTransactionsByMonth(DateTime day,
+  Future<List<TransactionData>> _fetchTransactionsByMonth(DateTime day,
       {int? categoryId, String? tagId}) async {
     final start = DateTime.utc(day.year, day.month, 1);
     final end = DateTime.utc(day.year, day.month + 1, 1);
@@ -90,7 +117,7 @@ class TransactionMiddleWare {
     return result;
   }
 
-  Future<List<TransactionData>> fetchTransactionsByYear(DateTime day,
+  Future<List<TransactionData>> _fetchTransactionsByYear(DateTime day,
       {int? categoryId, String? tagId}) async {
     final start = DateTime.utc(day.year, 1, 1);
     final end = DateTime.utc(day.year + 1, 1, 1);

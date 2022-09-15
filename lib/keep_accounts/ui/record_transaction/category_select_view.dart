@@ -65,7 +65,7 @@ class _CategorySelectViewState extends State<CategorySelectView>
                   CategoryIconView(
                     iconData: CustomIcons.customIcons[categoryItem.icon] ??
                         Icons.image,
-                    color: widget.color,
+                    color: categoryItem.color,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -142,7 +142,7 @@ class _CategorySelectViewState extends State<CategorySelectView>
                           child: CategoryIconView(
                               index: index,
                               selectIndex: selectIndex,
-                              color: widget.color,
+                              color: categoryShow.color,
                               iconData:
                                   CustomIcons.customIcons[categoryShow.icon]!)),
                       Visibility(
