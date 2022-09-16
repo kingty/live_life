@@ -15,6 +15,7 @@ class MiddleWare {
     return instance;
   }
 
+  double budget = 5000;
   static MiddleWare instance = MiddleWare._();
   final AccountMiddleWare account = AccountMiddleWare();
   final TransactionMiddleWare transaction = TransactionMiddleWare();

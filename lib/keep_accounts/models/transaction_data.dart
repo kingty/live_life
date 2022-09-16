@@ -1,5 +1,6 @@
 import 'package:live_life/helper.dart';
 import 'package:live_life/keep_accounts/control/category_manager.dart';
+import 'package:live_life/keep_accounts/control/middle_ware.dart';
 import 'package:live_life/keep_accounts/models/table_data.dart';
 
 const tableTransactionData = 'transaction_data';
@@ -70,6 +71,10 @@ class TransactionData extends TableData {
     if (outAccountId.isEmpty && inAccountId.isEmpty) return "未知错误，账户错误";
     if (amount == 0) return "请输入金额";
     if (isSpecial()) {
+      if (inAccountId == MiddleWare.instance.account.defaultAccount.id ||
+          outAccountId == MiddleWare.instance.account.defaultAccount.id) {
+        return "此类型不能选择默认账户";
+      }
       if (categoryId == CategoryManager.SPECIAL_RENT_IN &&
           (inAccountId.isEmpty || outAccountId.isNotEmpty)) return "未知错误，账户错误";
       if (categoryId == CategoryManager.SPECIAL_RENT_OUT &&
@@ -111,12 +116,15 @@ class TransactionData extends TableData {
   bool isSpecial() {
     return categoryId > 3000;
   }
+
   bool isCurrentWeek() {
     var d = DateTime.now();
     var weekDay = d.weekday;
     var firstDayOfWeek = d.subtract(Duration(days: weekDay - 1));
-    firstDayOfWeek = DateTime(firstDayOfWeek.year, firstDayOfWeek.month, firstDayOfWeek.day);
-    return tranTime.millisecondsSinceEpoch >= firstDayOfWeek.millisecondsSinceEpoch;
+    firstDayOfWeek =
+        DateTime(firstDayOfWeek.year, firstDayOfWeek.month, firstDayOfWeek.day);
+    return tranTime.millisecondsSinceEpoch >=
+        firstDayOfWeek.millisecondsSinceEpoch;
   }
 
   int getRootCategoryId() {

@@ -77,6 +77,9 @@ class MonthOverviewView extends StatelessWidget {
             .map((e) => e.amount)
             .reduce((value, element) => value + element);
 
+    int angleExpense = (sumExpense / MiddleWare.instance.budget * 360).toInt();
+    if (angleExpense > 360) angleExpense = 360;
+
     return Padding(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
       child: Container(
@@ -305,14 +308,11 @@ class MonthOverviewView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: CustomPaint(
-                              painter: CurvePainter(
-                                  colors: [
-                                    KeepAccountsTheme.nearlyDarkBlue,
-                                    HexColor("#8A98E8"),
-                                    HexColor("#8A98E8")
-                                  ],
-                                  angle: 140 +
-                                      (360 - 140) * (1.0 - animation!.value)),
+                              painter: CurvePainter(colors: [
+                                HexColor("#8A98E8"),
+                                KeepAccountsTheme.nearlyDarkBlue,
+                                HexColor("#8A98E8"),
+                              ], angle: angleExpense * (animation!.value)),
                               child: const SizedBox(
                                 width: 108,
                                 height: 108,
