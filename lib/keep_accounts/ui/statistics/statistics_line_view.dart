@@ -9,6 +9,7 @@ import '../../../common_view/tabbar/custom_tabs.dart';
 import '../../../helper.dart';
 import '../../control/middle_ware.dart';
 import '../../models/transaction_data.dart';
+import '../../models/ui_data.dart';
 
 class StatisticsLineView extends StatisticsBaseAnimatorStatefulView {
   const StatisticsLineView(
@@ -113,16 +114,16 @@ class _StatisticsCategoryViewState
   Widget _getTabBarPages() {
     return Container(
         height: 300,
-        child: StreamBuilder<List<TransactionData>>(
+        child: StreamBuilder<StatisticsViewData>(
             stream: MiddleWare.instance.transaction
                 .getStatisticsTransactionsStream(),
             builder: (BuildContext context,
-                AsyncSnapshot<List<TransactionData>> snapshot) {
-              if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                AsyncSnapshot<StatisticsViewData> snapshot) {
+              if (!snapshot.hasData ) {
                 return const SizedBox();
               } else {
-                List<DayOverViewData> getDayOverViewDatas =
-                    DayOverViewData.getDayOverViewDatas(snapshot.data!);
+                // List<DayOverViewData> getDayOverViewDatas =
+                //     DayOverViewData.getDayOverViewDatas(snapshot.data!);
 
                 return TabBarView(controller: _tabController, children: []);
               }

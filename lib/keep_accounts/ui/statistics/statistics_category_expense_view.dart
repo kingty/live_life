@@ -1,33 +1,32 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/ui/keep_accounts_them.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../../../icons/custom_icons.dart';
-import '../../../main.dart';
-import '../../control/middle_ware.dart';
-import '../../models/transaction_data.dart';
+import '../../models/ui_data.dart';
 import '../ui_view/category_icon_view.dart';
 
 class StatisticsCategoryTypeView extends StatelessWidget {
-  const StatisticsCategoryTypeView(
+  StatisticsCategoryTypeView(
       {Key? key,
       required this.mode,
       required this.type,
-      required this.chartData})
+      required this.statisticsViewData})
       : super(key: key);
   final DateRangePickerView mode;
   final int type;
-  final List<CircleChartData> chartData;
+  final StatisticsViewData statisticsViewData;
+  final double _duration = 1000;
 
   @override
   Widget build(BuildContext context) {
-    if (chartData.isEmpty) {
-      return SizedBox(
-          height: 200,
-          child: SfCircularChart(
-            series: _getEmptyDoughnutSeries(),
-          ));
+    List<CircleChartData> chartData = statisticsViewData.expenses;
+    if (type == 0) {
+      chartData = statisticsViewData.expenses;
+    } else if (type == 1) {
+      chartData = statisticsViewData.incomes;
+    } else if (type == 2) {
+      chartData = statisticsViewData.special;
     }
     chartData.sort((a, b) {
       return b.amount.compareTo(a.amount);
@@ -37,12 +36,7 @@ class StatisticsCategoryTypeView extends StatelessWidget {
       itemCount: chartData.length + 1,
       itemBuilder: (BuildContext context, int index) {
         if (index == 0) {
-          return SizedBox(
-              height: 200,
-              child: SfCircularChart(
-                series: _getDoughnutSeries(chartData),
-                // tooltipBehavior: _tooltip,
-              ));
+          return _getChartView(chartData);
         } else {
           return StatisticsCategoryItemView(
             data: chartData[index - 1],
@@ -60,12 +54,61 @@ class StatisticsCategoryTypeView extends StatelessWidget {
     );
   }
 
+  String _getTitle() {
+    if (type == 0) {
+      return mode == DateRangePickerView.year ? "本月支出" : "本年支出";
+    } else if (type == 1) {
+      return mode == DateRangePickerView.year ? "本月收入" : "本年收入";
+    } else {
+      return "";
+    }
+  }
+
+  String _getAccount() {
+    if (type == 0) {
+      return '¥${statisticsViewData.sumExpense.toStringAsFixed(2)}';
+    } else if (type == 1) {
+      return '¥${statisticsViewData.sumIncome.toStringAsFixed(2)}';
+    } else {
+      return "";
+    }
+  }
+
+  Widget _getChartView(List<CircleChartData> datas) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        SizedBox(
+            height: 200,
+            child: SfCircularChart(
+              series: datas.isEmpty
+                  ? _getEmptyDoughnutSeries()
+                  : _getDoughnutSeries(datas),
+              // tooltipBehavior: _tooltip,
+            )),
+        Column(
+          children: [
+            Text(
+              _getTitle(),
+              style: KeepAccountsTheme.smallDetail,
+            ),
+            Text(
+              _getAccount(),
+              style: KeepAccountsTheme.title,
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
   List<DoughnutSeries<CircleChartData, String>> _getDoughnutSeries(
       List<CircleChartData> datas) {
     return <DoughnutSeries<CircleChartData, String>>[
       DoughnutSeries<CircleChartData, String>(
+          animationDuration: _duration,
           radius: '100%',
-          innerRadius: '70%',
+          innerRadius: '60%',
           dataSource: datas,
           xValueMapper: (CircleChartData data, _) => data.categoryData.name,
           yValueMapper: (CircleChartData data, _) => data.amount,
@@ -87,16 +130,25 @@ class StatisticsCategoryTypeView extends StatelessWidget {
   List<DoughnutSeries<CircleChartData, String>> _getEmptyDoughnutSeries() {
     return <DoughnutSeries<CircleChartData, String>>[
       DoughnutSeries<CircleChartData, String>(
-          radius: '95%',
-          innerRadius: '70%',
+          animationDuration: _duration,
+          radius: '100%',
+          innerRadius: '60%',
           dataSource: [
             CircleChartData(),
           ],
           xValueMapper: (CircleChartData data, _) => '',
           yValueMapper: (CircleChartData data, _) => 100,
           pointColorMapper: (CircleChartData data, _) => Colors.grey,
-          dataLabelMapper: (CircleChartData data, _) => '',
-          dataLabelSettings: const DataLabelSettings(isVisible: true))
+          dataLabelMapper: (CircleChartData data, _) => ' ',
+          dataLabelSettings: const DataLabelSettings(
+              isVisible: true,
+              labelPosition: ChartDataLabelPosition.inside,
+              textStyle: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.normal,
+                  color: KeepAccountsTheme.nearlyBlack,
+                  fontSize: 8)))
     ];
   }
 }

@@ -2,8 +2,6 @@ import 'package:live_life/helper.dart';
 import 'package:live_life/keep_accounts/control/category_manager.dart';
 import 'package:live_life/keep_accounts/models/table_data.dart';
 
-import 'category_data.dart';
-
 const tableTransactionData = 'transaction_data';
 const indexTransactionTime = 'transaction_time_index';
 
@@ -179,79 +177,5 @@ class TransactionData extends TableData {
           endTime != null ? endTime?.millisecondsSinceEpoch : 0,
     };
     return map;
-  }
-}
-
-class DayOverViewData {
-  final DateTime firstTransactionDate;
-  double countIncome = 0;
-  double countExpense = 0;
-
-  DayOverViewData(this.firstTransactionDate);
-
-  static List<String> weeks = ["一", "二", "三", "四", "五", "六", "日"];
-
-  String getDisplayDateString() {
-    return "星期${weeks.elementAt(firstTransactionDate.weekday - 1)} ${firstTransactionDate.month}月${firstTransactionDate.day}日";
-  }
-
-  //获取同一个月的每天汇总数据，必须保证是一个月数据
-  static List<DayOverViewData> getDayOverViewDatas(
-      List<TransactionData> transactions) {
-    List<DayOverViewData> datas = List.empty(growable: true);
-
-    transactions.sort((a, b) {
-      return b.tranTime.compareTo(a.tranTime);
-    });
-
-    int preDay = -1;
-    DayOverViewData? preDayOverViewData;
-    for (var transaction in transactions) {
-      if (transaction.getDay() != preDay) {
-        preDay = transaction.getDay();
-        preDayOverViewData = DayOverViewData(transaction.tranTime);
-        datas.add(preDayOverViewData);
-      }
-      if (preDayOverViewData != null) {
-        if (transaction.isExpense()) {
-          // 消费
-          preDayOverViewData.countExpense = double.parse(
-              (preDayOverViewData.countExpense + transaction.amount)
-                  .toStringAsFixed(2));
-        } else if (transaction.isIncome()) {
-          preDayOverViewData.countIncome = double.parse(
-              (preDayOverViewData.countIncome + transaction.amount)
-                  .toStringAsFixed(2));
-        }
-      }
-    }
-    return datas;
-  }
-}
-
-class CircleChartData {
-  late CategoryData categoryData;
-  late List<TransactionData> transactions;
-  late double amount;
-
-  static List<CircleChartData> dealFromSources(
-      List<TransactionData> transactions) {
-    final List<CircleChartData> chartData = List.empty(growable: true);
-    if (transactions.isEmpty) return chartData;
-    Map<int, Pair<List<TransactionData>, double>> map = {};
-    for (var element in transactions) {
-      if (!map.containsKey(element.getRootCategoryId())) {
-        map[element.getRootCategoryId()] = Pair(List.empty(growable: true), 0);
-      }
-      map[element.getRootCategoryId()]!.first.add(element);
-      map[element.getRootCategoryId()]!.second =
-          map[element.getRootCategoryId()]!.second + element.amount;
-    }
-    return map.keys
-        .map((key) => CircleChartData()
-          ..categoryData = CategoryManager.instance.getById(key)!
-          ..transactions = map[key]!.first
-          ..amount = map[key]!.second)
-        .toList();
   }
 }

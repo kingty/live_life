@@ -6,6 +6,7 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../helper.dart';
 import '../models/account_data.dart';
+import '../models/ui_data.dart';
 
 class MiddleWare {
   MiddleWare._();
@@ -35,7 +36,7 @@ class TransactionMiddleWare {
 
   final BehaviorSubject<List<TransactionData>> _calenderTransactions =
       BehaviorSubject();
-  final BehaviorSubject<List<TransactionData>> _statisticsTransactions =
+  final BehaviorSubject<StatisticsViewData> _statisticsTransactions =
       BehaviorSubject();
 
   final TransactionProvider _provider = TransactionProvider();
@@ -66,12 +67,12 @@ class TransactionMiddleWare {
     _calenderTransactions.add(List.empty());
   }
 
-  Stream<List<TransactionData>> getStatisticsTransactionsStream() {
+  Stream<StatisticsViewData> getStatisticsTransactionsStream() {
     return _statisticsTransactions.stream;
   }
 
   void flashStatisticsTransactionsStream() {
-    _statisticsTransactions.add(List.empty());
+    _statisticsTransactions.add(StatisticsViewData.empty());
   }
 
   _fetchLatestTransactions() async {
@@ -102,7 +103,7 @@ class TransactionMiddleWare {
     if (mode == DateRangePickerView.decade) {
       ts = await _fetchTransactionsByYear(day);
     }
-    _statisticsTransactions.add(ts);
+    _statisticsTransactions.add(StatisticsViewData(ts));
   }
 
   Future<void> fetchTransactionsForCalender(

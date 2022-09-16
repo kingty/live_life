@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/ui/keep_accounts_them.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_base_animator_view.dart';
@@ -8,6 +7,7 @@ import '../../../common_view/tabbar/custom_tabs.dart';
 import '../../../helper.dart';
 import '../../control/middle_ware.dart';
 import '../../models/transaction_data.dart';
+import '../../models/ui_data.dart';
 
 class StatisticsCategoryView extends StatisticsBaseAnimatorStatefulView {
   const StatisticsCategoryView(
@@ -122,50 +122,47 @@ class _StatisticsCategoryViewState
         duration: _duration,
         curve: Curves.fastOutSlowIn,
         height: _height,
-        child: StreamBuilder<List<TransactionData>>(
+        child: StreamBuilder<StatisticsViewData>(
             stream: MiddleWare.instance.transaction
                 .getStatisticsTransactionsStream(),
             builder: (BuildContext context,
-                AsyncSnapshot<List<TransactionData>> snapshot) {
-              if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                AsyncSnapshot<StatisticsViewData> snapshot) {
+              if (!snapshot.hasData) {
                 return const SizedBox();
               } else {
-                List<CircleChartData> all =
-                    CircleChartData.dealFromSources(snapshot.data!);
+                StatisticsViewData statisticsViewData = snapshot.data!;
 
-                final List<CircleChartData> chartDataExpense = all
-                    .where((element) => element.categoryData.isExpense())
-                    .toList();
                 tabviews.clear();
                 tabviews.add(Pair(
-                    chartDataExpense.length * 50 + 250,
+                    statisticsViewData.expenses.length * 50 + 250,
                     StatisticsCategoryTypeView(
                       type: 0,
                       mode: widget.mode,
-                      chartData: chartDataExpense,
+                      statisticsViewData: statisticsViewData,
                     )));
-                final List<CircleChartData> chartDataIncome = all
-                    .where((element) => element.categoryData.isIncome())
-                    .toList();
+
                 tabviews.add(Pair(
-                    chartDataIncome.length * 50 + 250,
+                    statisticsViewData.incomes.length * 50 + 250,
                     StatisticsCategoryTypeView(
                       type: 1,
                       mode: widget.mode,
-                      chartData: chartDataIncome,
+                      statisticsViewData: statisticsViewData,
                     )));
 
-                final List<CircleChartData> chartDataSpecial = all
-                    .where((element) => element.categoryData.isSpecial())
-                    .toList();
                 tabviews.add(Pair(
-                    chartDataSpecial.length * 50 + 250,
+                    statisticsViewData.special.length * 50 + 250,
                     StatisticsCategoryTypeView(
                       type: 2,
                       mode: widget.mode,
-                      chartData: chartDataSpecial,
+                      statisticsViewData: statisticsViewData,
                     )));
-                _height = chartDataExpense.length * 50 + 250;
+                if (_tabController.index == 0) {
+                  _height = statisticsViewData.expenses.length * 50 + 250;
+                } else if (_tabController.index == 1) {
+                  _height = statisticsViewData.incomes.length * 50 + 250;
+                } else if (_tabController.index == 2) {
+                  _height = statisticsViewData.special.length * 50 + 250;
+                }
 
                 return TabBarView(
                     controller: _tabController,
