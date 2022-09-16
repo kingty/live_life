@@ -40,11 +40,11 @@ class _StatisticsScreenState extends State<StatisticsScreen>
       index: 3,
       animationController: widget.animationController!,
     ));
-    // listViews.add(StatisticsLineView(
-    //   mode: _mode,
-    //   index: 4,
-    //   animationController: widget.animationController!,
-    // ));
+    listViews.add(StatisticsLineView(
+      mode: _mode,
+      index: 4,
+      animationController: widget.animationController!,
+    ));
 
     MiddleWare.instance.transaction
         .fetchTransactionsForStatistics(_mode, DateTime.now());

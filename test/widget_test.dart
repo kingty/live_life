@@ -35,4 +35,12 @@ void main() {
       }
     });
   });
+  test("description",() {
+    DateTime firstDayOfMonth = DateTime.now();
+      // 年份，随便哪一年
+      var year = firstDayOfMonth.year;
+      // 计算下个月1号的前一天是几号，得出结果
+      var dayCount = DateTime(year, 2 + 1, 0).day;
+      print(dayCount);
+  });
 }

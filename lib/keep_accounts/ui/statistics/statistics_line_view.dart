@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/ui/keep_accounts_them.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_base_animator_view.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_category_expense_view.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../../../common_view/tabbar/custom_tab_indicator.dart';
 import '../../../common_view/tabbar/custom_tabs.dart';
@@ -75,57 +76,79 @@ class _StatisticsCategoryViewState
                     border:
                         Border(top: BorderSide(color: borderColor, width: 1)),
                   ),
-                  child: _getContent()),
+                  child: _getLineChart()),
             ],
           ),
         ));
   }
 
-  Widget _getContent() {
-    return Column(
-      children: [
-        _getTabBar(),
-        _getTabBarPages(),
-      ],
-    );
-  }
-
-  Widget _getTabBar() {
-    var colors = [
-      KeepAccountsTheme.darkRed,
-      Colors.green,
-      KeepAccountsTheme.nearlyDarkBlue
+  /// Returns the list of chart series which need to render on the spline chart.
+  List<SplineSeries<DayOverViewData, String>> _getDefaultSplineSeries(
+      List<DayOverViewData> datas) {
+    return <SplineSeries<DayOverViewData, String>>[
+      SplineSeries<DayOverViewData, String>(
+        dataSource: datas,
+        xValueMapper: (DayOverViewData day, _) =>
+            day.firstTransactionDate.day.toString(),
+        yValueMapper: (DayOverViewData day, _) => day.countExpense,
+        // markerSettings: const MarkerSettings(isVisible: true),
+        name: '支出',
+      ),
+      SplineSeries<DayOverViewData, String>(
+        dataSource: datas,
+        name: '收入',
+        // markerSettings: const MarkerSettings(isVisible: true),
+        xValueMapper: (DayOverViewData day, _) =>
+            day.firstTransactionDate.day.toString(),
+        yValueMapper: (DayOverViewData day, _) => day.countIncome,
+      )
     ];
-    return CustomTabBar(
-        indicator: MagicTabIndicator(
-            borderSide: const BorderSide(width: 6),
-            width: 6,
-            labelColors: colors,
-            pageController: _tabController),
-        labelColors: colors,
-        unselectedLabelColor: Colors.grey,
-        controller: _tabController,
-        tabs: const [
-          CustomTab(text: "支出"),
-          CustomTab(text: "收入"),
-        ]);
   }
 
-  Widget _getTabBarPages() {
-    return Container(
+  Widget _getLineChart() {
+    return SizedBox(
         height: 300,
         child: StreamBuilder<StatisticsViewData>(
             stream: MiddleWare.instance.transaction
                 .getStatisticsTransactionsStream(),
             builder: (BuildContext context,
                 AsyncSnapshot<StatisticsViewData> snapshot) {
-              if (!snapshot.hasData ) {
+              if (!snapshot.hasData) {
                 return const SizedBox();
               } else {
-                // List<DayOverViewData> getDayOverViewDatas =
-                //     DayOverViewData.getDayOverViewDatas(snapshot.data!);
+                //todo replace DateTime.now()
+                List<DayOverViewData> getDayOverViewDatas =
+                    DayOverViewData.getDayOverViewDatas(
+                        DateTime.now(), snapshot.data!.transactions);
+                double maxCount = 0;
+                double maximum = 0;
+                for (var element in getDayOverViewDatas) {
+                  if (element.countIncome > maxCount ||
+                      element.countExpense > maxCount) {
+                    maxCount = max(element.countIncome, element.countExpense);
+                  }
+                }
+                for (int i = 1; i* 500 <maxCount ; i++ ) {
+                  maximum = 500 * (i+1);
+                }
 
-                return TabBarView(controller: _tabController, children: []);
+                return SfCartesianChart(
+                  plotAreaBorderWidth: 0,
+                  title: ChartTitle(text: ''),
+                  legend: Legend(isVisible: false),
+                  primaryXAxis: CategoryAxis(
+                      majorGridLines: const MajorGridLines(width: 0),
+                      labelPlacement: LabelPlacement.onTicks),
+                  primaryYAxis: NumericAxis(
+                      minimum: 0,
+                      maximum: maximum,
+                      axisLine: const AxisLine(width: 0),
+                      edgeLabelPlacement: EdgeLabelPlacement.shift,
+                      labelFormat: '¥{value}',
+                      majorTickLines: const MajorTickLines(size: 0)),
+                  series: _getDefaultSplineSeries(getDayOverViewDatas),
+                  tooltipBehavior: TooltipBehavior(enable: true),
+                );
               }
             }));
   }

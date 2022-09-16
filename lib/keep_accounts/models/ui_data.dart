@@ -4,10 +4,19 @@ import '../../helper.dart';
 import '../control/category_manager.dart';
 import 'category_data.dart';
 
+class MonthOverviewData {
+  late int month;
+  double countIncome = 0;
+  double countExpense = 0;
+}
+
 class DayOverViewData {
   final DateTime firstTransactionDate;
   double countIncome = 0;
   double countExpense = 0;
+  List<TransactionData>? transactionsExpense;
+  List<TransactionData>? transactionsIncome;
+  List<TransactionData>? transactionsSpecial;
 
   DayOverViewData(this.firstTransactionDate);
 
@@ -19,35 +28,41 @@ class DayOverViewData {
 
   //获取同一个月的每天汇总数据，必须保证是一个月数据
   static List<DayOverViewData> getDayOverViewDatas(
-      List<TransactionData> transactions) {
-    List<DayOverViewData> datas = List.empty(growable: true);
+      DateTime firstDayOfMonth, List<TransactionData> transactions) {
+    // 本月有多少天
+    var dayCount =
+        DateTime(firstDayOfMonth.year, firstDayOfMonth.month + 1, 0).day;
+
+    Map<int, DayOverViewData> kvs = {};
+    for (int index = 1; index <= dayCount; index++) {
+      kvs[index] = DayOverViewData(
+          DateTime(firstDayOfMonth.year, firstDayOfMonth.month, index))
+        ..transactionsExpense = List.empty(growable: true)
+        ..transactionsIncome = List.empty(growable: true)
+        ..transactionsSpecial = List.empty(growable: true);
+    }
 
     transactions.sort((a, b) {
       return b.tranTime.compareTo(a.tranTime);
     });
-
-    int preDay = -1;
-    DayOverViewData? preDayOverViewData;
     for (var transaction in transactions) {
-      if (transaction.getDay() != preDay) {
-        preDay = transaction.getDay();
-        preDayOverViewData = DayOverViewData(transaction.tranTime);
-        datas.add(preDayOverViewData);
-      }
-      if (preDayOverViewData != null) {
-        if (transaction.isExpense()) {
-          // 消费
-          preDayOverViewData.countExpense = double.parse(
-              (preDayOverViewData.countExpense + transaction.amount)
-                  .toStringAsFixed(2));
-        } else if (transaction.isIncome()) {
-          preDayOverViewData.countIncome = double.parse(
-              (preDayOverViewData.countIncome + transaction.amount)
-                  .toStringAsFixed(2));
-        }
+      DayOverViewData current = kvs[transaction.getDay()]!;
+      if (transaction.isExpense()) {
+        // 消费
+        current.countExpense = current.countExpense + transaction.amount;
+        current.transactionsExpense!.add(transaction);
+      } else if (transaction.isIncome()) {
+        current.countIncome = current.countIncome + transaction.amount;
+        current.transactionsIncome!.add(transaction);
+      } else {
+        current.transactionsSpecial!.add(transaction);
       }
     }
-    return datas;
+    List<DayOverViewData> result = kvs.values.toList();
+    result.sort((a, b) {
+      return a.firstTransactionDate.compareTo(b.firstTransactionDate);
+    });
+    return result;
   }
 }
 
@@ -80,15 +95,17 @@ class CircleChartData {
 
 class StatisticsViewData {
   StatisticsViewData.empty()
-      : expenses = List.empty(),
+      : transactions = List.empty(),
+        expenses = List.empty(),
         incomes = List.empty(),
         special = List.empty(),
         sumExpense = 0,
         sumIncome = 0,
         sumBalance = 0;
 
-  StatisticsViewData(List<TransactionData> transactions) {
-    List<CircleChartData> all = CircleChartData.dealFromSources(transactions);
+  StatisticsViewData(List<TransactionData> source) {
+    transactions = source;
+    List<CircleChartData> all = CircleChartData.dealFromSources(source);
     expenses =
         all.where((element) => element.categoryData.isExpense()).toList();
     incomes = all.where((element) => element.categoryData.isIncome()).toList();
@@ -104,6 +121,7 @@ class StatisticsViewData {
   }
 
   late List<CircleChartData> expenses;
+  late List<TransactionData> transactions;
   late List<CircleChartData> incomes;
   late List<CircleChartData> special;
   late double sumExpense;
