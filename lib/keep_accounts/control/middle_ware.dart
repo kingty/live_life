@@ -7,6 +7,7 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../../helper.dart';
 import '../models/account_data.dart';
 import '../models/ui_data.dart';
+import 'category_manager.dart';
 
 class MiddleWare {
   MiddleWare._();
@@ -43,7 +44,71 @@ class TransactionMiddleWare {
   final TransactionProvider _provider = TransactionProvider();
 
   Future<void> saveTransaction(TransactionData transactionData) async {
-    await _provider.insertOrUpdate(transactionData);
+    double amountDiff = 0;
+    _provider.transaction((txn) async {
+      TransactionData? old = await _provider.getOldTransaction(transactionData);
+      if (old != null) {
+        //存在
+        await _provider.update(txn, transactionData);
+        amountDiff = transactionData.amount - old.amount;
+      } else {
+        await _provider.insert(txn, transactionData);
+        amountDiff = transactionData.amount;
+      }
+      if (amountDiff != 0) {
+        if (transactionData.isSpecial() &&
+            transactionData.categoryId == CategoryManager.SPECIAL_TRANSFER) {
+          //转账，处理两个账户
+
+          AccountData inAccountData = MiddleWare.instance.account
+              .getAccountById(transactionData.inAccountId);
+          AccountData outAccountData = MiddleWare.instance.account
+              .getAccountById(transactionData.outAccountId);
+          if (!inAccountData.isDefaultAccount()) {
+            inAccountData.cash = inAccountData.cash + amountDiff;
+            _provider.update(txn, inAccountData);
+          }
+          if (!outAccountData.isDefaultAccount()) {
+            outAccountData.cash = outAccountData.cash - amountDiff;
+            _provider.update(txn, outAccountData);
+          }
+        } else {
+          String? accountId = transactionData.getRealAccountId();
+          if (accountId == null) {
+            throw Exception('accountId should not null here');
+          }
+          AccountData accountData =
+              MiddleWare.instance.account.getAccountById(accountId);
+          //如果是默认账户，或者删除了的账户直接跳过
+          if (!accountData.isDefaultAccount()) {
+            if (transactionData.isSpecial()) {
+              if (transactionData.categoryId ==
+                  CategoryManager.SPECIAL_RENT_IN) {
+                accountData.debt = accountData.debt + amountDiff;
+              } else if (transactionData.categoryId ==
+                  CategoryManager.SPECIAL_RENT_OUT) {
+                accountData.lend = accountData.lend + amountDiff;
+              } else if (transactionData.categoryId ==
+                  CategoryManager.SPECIAL_FINANCE) {
+                //理财，更新两项
+                accountData.financial = accountData.financial + amountDiff;
+                accountData.cash = accountData.cash - amountDiff;
+              }
+            } else {
+              if (transactionData.isExpense()) {
+                accountData.cash = accountData.cash - amountDiff;
+              } else {
+                accountData.cash = accountData.cash + amountDiff;
+              }
+            }
+            _provider.update(txn, accountData);
+          }
+        }
+        MiddleWare.instance.account.fetchAllAccountsAndNotify();
+      }
+    });
+
+    //notify other collection
     _fetchLatestTransactions();
     if (_statisticsTransactions.hasListener && _lastStatisticsMode != null) {
       fetchTransactionsForStatistics(_lastStatisticsMode!, _lastStatisticsDay!);

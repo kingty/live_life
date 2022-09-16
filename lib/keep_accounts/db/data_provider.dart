@@ -2,9 +2,25 @@ import 'package:live_life/keep_accounts/models/account_data.dart';
 import 'package:live_life/keep_accounts/models/table_data.dart';
 import 'package:live_life/keep_accounts/models/tag_data.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
+import 'package:sqflite/sqflite.dart';
+import '../control/category_manager.dart';
 import 'db.dart';
 
 class TransactionProvider extends Provider {
+  Future<TransactionData?> getOldTransaction(TransactionData data) async {
+    var maps = await _db.query(
+      data.getTableName(),
+      columns: null, // null=all
+      where: '${data.getPrimaryKey()} = ?',
+      whereArgs: [data.id],
+    );
+    if (maps.isNotEmpty) {
+      return TransactionData().fromMap(maps.first);
+    } else {
+      return null;
+    }
+  }
+
   //获取所有账单
   Future<List<TransactionData>> pullAllTransactions() async {
     var maps = await _db.query(tableTransactionData);
@@ -101,5 +117,20 @@ class Provider<T extends TableData> {
 
   Future<void> delete(T data) async {
     await _db.delete(data);
+  }
+
+  Future<void> transaction(Function(Transaction txn) action) async {
+    _db.transaction((txn) async {
+      action.call(txn);
+    });
+  }
+
+  Future<int> insert(Transaction txn, TableData data) async {
+    return txn.insert(data.getTableName(), data.toMap());
+  }
+
+  Future<int> update(Transaction txn, TableData data) async {
+    return txn.update(data.getTableName(), data.toMap(),
+        where: '${data.getPrimaryKey()} = ?', whereArgs: [data.id]);
   }
 }

@@ -30,6 +30,11 @@ class AccountData extends TableData {
   double debt = 0.0; // 负债
   double lend = 0.0; // 借出
 
+  bool isDefaultAccount() {
+    //默认账户不计算入资产统计，只记收支账单
+    return id == defaultAccountId;
+  }
+
   @override
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{

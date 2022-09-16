@@ -17,6 +17,7 @@ const String cTransactionRecordTime = 'record_time';
 const String cTransactionInterest = 'interest';
 const String cTransactionStartTime = 'start_time';
 const String cTransactionEndTime = 'end_time';
+const String cTransactionIsEnd = 'is_end';
 
 class TransactionData extends TableData {
   @override
@@ -36,9 +37,10 @@ class TransactionData extends TableData {
   late DateTime tranTime; // 账单产生时间
   late DateTime recordTime; // 记录时间
 
-  double interest = 0.0; // 理财收益
+  double interest = 0.0; // 理财收益,
   DateTime? startTime; // 理财 开始时间
   DateTime? endTime; // 理财 结束时间, 可能为空
+  int isEnd = 0; //特殊类型是否结束
 
   TransactionData.fromJson(Map<String, dynamic> json)
       : categoryId = json['categoryId'],
@@ -135,6 +137,7 @@ class TransactionData extends TableData {
     }
   }
 
+  /// return null only with SPECIAL_TRANSFER type
   String? getRealAccountId() {
     if (isIncome()) {
       return inAccountId;
@@ -144,7 +147,7 @@ class TransactionData extends TableData {
       if (categoryId == CategoryManager.SPECIAL_RENT_IN) return inAccountId;
       if (categoryId == CategoryManager.SPECIAL_RENT_OUT) return outAccountId;
       if (categoryId == CategoryManager.SPECIAL_FINANCE) return outAccountId;
-      if (categoryId == CategoryManager.SPECIAL_TRANSFER) return inAccountId;
+      if (categoryId == CategoryManager.SPECIAL_TRANSFER) return null;
     }
 
     return null;
@@ -170,7 +173,8 @@ class TransactionData extends TableData {
           : DateTime.fromMillisecondsSinceEpoch(map[cTransactionStartTime])
       ..endTime = map[cTransactionEndTime] == 0
           ? null
-          : DateTime.fromMillisecondsSinceEpoch(map[cTransactionEndTime]);
+          : DateTime.fromMillisecondsSinceEpoch(map[cTransactionEndTime])
+      ..isEnd = map[cTransactionIsEnd]?? 0;
   }
 
   @override
@@ -190,6 +194,7 @@ class TransactionData extends TableData {
           startTime != null ? startTime?.millisecondsSinceEpoch : 0,
       cTransactionEndTime:
           endTime != null ? endTime?.millisecondsSinceEpoch : 0,
+      cTransactionIsEnd: isEnd
     };
     return map;
   }

@@ -63,13 +63,19 @@ class DB {
     return count;
   }
 
+  Future<void> transaction(Function(Transaction txn) action) async {
+    _database?.transaction((txn) async {
+      action.call(txn);
+    });
+  }
+
   Future<int> update(TableData data) async {
     final builder = SqlBuilder.update(data.getTableName(), data.toMap(),
-        where: data.getPrimaryKey(), whereArgs: [data.id]);
+        where: '${data.getPrimaryKey()} = ?', whereArgs: [data.id]);
     int count = 0;
     await _database?.transaction((txn) async {
       count = await txn.update(data.getTableName(), data.toMap(),
-          where: data.getPrimaryKey(), whereArgs: [data.id]);
+          where: '${data.getPrimaryKey()} = ?', whereArgs: [data.id]);
       processWriteSql(builder, txn);
     });
     return count;
@@ -127,7 +133,7 @@ class DB {
       print(path);
     }
     // open the database
-    Database database = await openDatabase(path, version: 1,
+    Database database = await openDatabase(path, version: 2,
         onCreate: (Database db, int version) async {
       // When creating the db, create the table
       await db.execute(
@@ -171,13 +177,20 @@ class DB {
           $cTransactionInterest REAL,
           $cTransactionStartTime INTEGER,
           $cTransactionEndTime INTEGER,
+          $cTransactionIsEnd INTEGER,
           $cIsDelete INTEGER NOT NULL DEFAULT 0);''';
       db.execute(sqlTransaction);
       //时间作为索引
       var index =
           '''CREATE INDEX $indexTransactionTime ON $tableTransactionData ($cTransactionTranTime);''';
       db.execute(index);
-    }, onUpgrade: (Database db, int oldVersion, int newVersion) {});
+    }, onUpgrade: (Database db, int oldVersion, int newVersion) {
+      if (oldVersion == 1) {
+        var addColumnIsEnd =
+        '''ALTER TABLE $tableTransactionData ADD COLUMN $cTransactionIsEnd INTEGER;''';
+        db.execute(addColumnIsEnd);
+      }
+        });
     _database = database;
   }
 
