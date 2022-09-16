@@ -111,6 +111,13 @@ class TransactionData extends TableData {
   bool isSpecial() {
     return categoryId > 3000;
   }
+  bool isCurrentWeek() {
+    var d = DateTime.now();
+    var weekDay = d.weekday;
+    var firstDayOfWeek = d.subtract(Duration(days: weekDay - 1));
+    firstDayOfWeek = DateTime(firstDayOfWeek.year, firstDayOfWeek.month, firstDayOfWeek.day);
+    return tranTime.millisecondsSinceEpoch >= firstDayOfWeek.millisecondsSinceEpoch;
+  }
 
   int getRootCategoryId() {
     if (categoryId < 10000) {

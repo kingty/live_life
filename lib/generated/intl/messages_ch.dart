@@ -38,8 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "KEEP_ACCOUNTS_STATISTICS": MessageLookupByLibrary.simpleMessage("统计"),
         "KEEP_ACCOUNTS_THIS_EDIT": MessageLookupByLibrary.simpleMessage("管理"),
         "KEEP_ACCOUNTS_THIS_MORE": MessageLookupByLibrary.simpleMessage("更多"),
-        "KEEP_ACCOUNTS_THIS_WEEK": MessageLookupByLibrary.simpleMessage("本周"),
-        "KEEP_ACCOUNTS_TODAY": MessageLookupByLibrary.simpleMessage("今天"),
+        "KEEP_ACCOUNTS_THIS_WEEK": MessageLookupByLibrary.simpleMessage("本周支出"),
+        "KEEP_ACCOUNTS_TODAY": MessageLookupByLibrary.simpleMessage("今天支出"),
         "KEEP_ACCOUNTS_TRANSACTION":
             MessageLookupByLibrary.simpleMessage("近期账单"),
         "KEEP_ACCOUNTS_TRANSACTION_CALENDER":

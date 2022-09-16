@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../../common_view/dot_line_border.dart';
+import '../../control/middle_ware.dart';
+import '../../models/account_data.dart';
 import '../keep_accounts_them.dart';
 
 class AssetManagementOverviewView extends StatefulWidget {
@@ -31,11 +30,47 @@ class _AssetManagementOverviewViewState
               child: Transform(
                   transform: Matrix4.translationValues(
                       0.0, 30 * (1.0 - widget.animation!.value), 0.0),
-                  child: _getMainUi()));
+                  child: wrapStreamBuilder()));
         });
   }
 
-  Widget _getMainUi() {
+  Widget wrapStreamBuilder() {
+    return StreamBuilder<List<AccountData>>(
+        stream: MiddleWare.instance.account.getAccountsStream(), //
+        //initialData: ,// a Stream<int> or null
+        builder:
+            (BuildContext context, AsyncSnapshot<List<AccountData>> snapshot) {
+          List<AccountData> accounts = List.empty();
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          } else {
+            accounts = snapshot.data ?? List.empty();
+          }
+          return _getMainUi(accounts);
+        });
+  }
+
+  Widget _getMainUi(List<AccountData> accounts) {
+    double sumCash = accounts.isEmpty
+        ? 0
+        : accounts
+            .map((e) => e.cash)
+            .reduce((value, element) => value + element);
+    double sumFinancial = accounts.isEmpty
+        ? 0
+        : accounts
+            .map((e) => e.financial)
+            .reduce((value, element) => value + element);
+    double sumLend = accounts.isEmpty
+        ? 0
+        : accounts
+            .map((e) => e.lend)
+            .reduce((value, element) => value + element);
+    double sumDebt = accounts.isEmpty
+        ? 0
+        : accounts
+            .map((e) => e.debt)
+            .reduce((value, element) => value + element);
+    double sum = sumCash + sumFinancial + sumLend - sumDebt;
     return Padding(
         padding:
             const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
@@ -57,11 +92,11 @@ class _AssetManagementOverviewViewState
                   padding:
                       EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
                   child: Text("净资产")),
-              const Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
+              Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Text(
-                    "¥ 201110.34",
-                    style: TextStyle(fontSize: 30),
+                    "¥ ${(widget.animation!.value * sum).toStringAsFixed(2)}",
+                    style: const TextStyle(fontSize: 30),
                   )),
               Container(
                   margin: const EdgeInsets.only(top: 20),
@@ -73,21 +108,21 @@ class _AssetManagementOverviewViewState
                   child: Row(children: [
                     Expanded(
                         child: Container(
-                            padding: EdgeInsets.only(top: 20, bottom: 20),
+                            padding: const EdgeInsets.only(top: 20, bottom: 20),
                             decoration: BoxDecoration(
                                 border: Border(
                                     right: BorderSide(
                                         color: borderColor, width: 1))),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const [
-                                Text(
+                              children: [
+                                const Text(
                                   "现金",
                                   style: KeepAccountsTheme.caption,
                                 ),
                                 Text(
-                                  "¥ 109990.34",
-                                  style: TextStyle(
+                                  "¥ ${(widget.animation!.value * sumCash).toStringAsFixed(2)}",
+                                  style: const TextStyle(
                                       fontSize: 20,
                                       color: Colors.green,
                                       fontWeight: FontWeight.w500),
@@ -97,11 +132,11 @@ class _AssetManagementOverviewViewState
                     Expanded(
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const [
-                          Text("理财", style: KeepAccountsTheme.caption),
+                            children: [
+                          const Text("理财", style: KeepAccountsTheme.caption),
                           Text(
-                            "¥ 123445.22",
-                            style: TextStyle(
+                            "¥ ${(widget.animation!.value * sumFinancial).toStringAsFixed(2)}",
+                            style: const TextStyle(
                                 fontSize: 20,
                                 color: KeepAccountsTheme.nearlyDarkBlue,
                                 fontWeight: FontWeight.w500),
@@ -111,18 +146,18 @@ class _AssetManagementOverviewViewState
               Row(children: [
                 Expanded(
                     child: Container(
-                        padding: EdgeInsets.only(top: 20, bottom: 20),
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
                         decoration: BoxDecoration(
                             border: Border(
                                 right:
                                     BorderSide(color: borderColor, width: 1))),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
-                            Text("负债", style: KeepAccountsTheme.caption),
+                          children: [
+                            const Text("负债", style: KeepAccountsTheme.caption),
                             Text(
-                              "¥ 123445",
-                              style: TextStyle(
+                              "¥ ${(widget.animation!.value * sumDebt).toStringAsFixed(2)}",
+                              style: const TextStyle(
                                   fontSize: 20,
                                   color: KeepAccountsTheme.darkRed,
                                   fontWeight: FontWeight.w500),
@@ -132,11 +167,11 @@ class _AssetManagementOverviewViewState
                 Expanded(
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: const [
-                      Text("借出", style: KeepAccountsTheme.caption),
+                        children: [
+                      const Text("借出", style: KeepAccountsTheme.caption),
                       Text(
-                        "¥ 123445",
-                        style: TextStyle(
+                        "¥ ${(widget.animation!.value * sumLend).toStringAsFixed(2)}",
+                        style: const TextStyle(
                             fontSize: 20,
                             color: Colors.orange,
                             fontWeight: FontWeight.w500),

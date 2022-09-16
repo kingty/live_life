@@ -81,7 +81,6 @@ class _StatisticsScreenState extends State<StatisticsScreen>
   }
 
   List<Widget> _getAllSlivers() {
-    print('sssssss' + _mode.toString());
     List<Widget> listViews = <Widget>[];
     listViews.add(StatisticsTimeSelectView(
       (d) {

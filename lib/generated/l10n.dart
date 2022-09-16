@@ -120,20 +120,20 @@ class S {
     );
   }
 
-  /// `今天`
+  /// `今天支出`
   String get KEEP_ACCOUNTS_TODAY {
     return Intl.message(
-      '今天',
+      '今天支出',
       name: 'KEEP_ACCOUNTS_TODAY',
       desc: '',
       args: [],
     );
   }
 
-  /// `本周`
+  /// `本周支出`
   String get KEEP_ACCOUNTS_THIS_WEEK {
     return Intl.message(
-      '本周',
+      '本周支出',
       name: 'KEEP_ACCOUNTS_THIS_WEEK',
       desc: '',
       args: [],

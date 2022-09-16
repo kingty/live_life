@@ -22,7 +22,7 @@ class _TransactionItemViewState extends State<TransactionItemView>
   String _getName() {
     if (widget.data.getRealAccountId() == null) return '未知';
     return BankData.getByKey(MiddleWare.instance.account
-            .getAccountById(widget.data.getRealAccountId()!)!
+            .getAccountById(widget.data.getRealAccountId()!)
             .bankDataKey)!
         .name;
   }
@@ -30,7 +30,7 @@ class _TransactionItemViewState extends State<TransactionItemView>
   String _getDes() {
     if (widget.data.getRealAccountId() == null) return '';
     return MiddleWare.instance.account
-        .getAccountById(widget.data.getRealAccountId()!)!
+        .getAccountById(widget.data.getRealAccountId()!)
         .name;
   }
 

@@ -22,7 +22,6 @@ class _StatisticsTimeSelectViewState
 
   @override
   Widget buildInnerWidget() {
-    print('StatisticsTimeSelectView:' + widget.mode.toString());
     return Container(
       height: 50,
       padding: const EdgeInsets.only(left: 40, right: 40),

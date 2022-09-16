@@ -31,7 +31,7 @@ class TransactionProvider extends Provider {
       throw Exception('start should not after end!!!');
     }
     if (start != null) {
-      where.add('$cTransactionTranTime > ?');
+      where.add('$cTransactionTranTime >= ?');
       whereArgs.add(start.millisecondsSinceEpoch);
     }
     if (end != null) {

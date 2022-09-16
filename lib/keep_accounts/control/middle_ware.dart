@@ -204,8 +204,13 @@ class AccountMiddleWare {
     return _accounts.stream;
   }
 
-  AccountData? getAccountById(String id) {
-    return _accountMap[id];
+  AccountData getAccountById(String id) {
+    if (_accountMap.containsKey(id)) {
+      return _accountMap[id]!;
+    } else {
+      // 删除了的account，对应的transaction，直接为defaultAccount
+      return defaultAccount;
+    }
   }
 
   Future<void> fetchAllAccountsAndNotify() async {
