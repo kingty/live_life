@@ -22,7 +22,7 @@ class StatisticsCategoryView extends StatisticsBaseAnimatorStatefulView {
 }
 
 class _StatisticsCategoryViewState
-    extends StatisticsBaseAnimatorStatefulViewState {
+    extends StatisticsBaseAnimatorStatefulViewState<StatisticsCategoryView> {
   late TabController _tabController;
   late double _height;
   List<Pair<double, Widget>> tabviews = List.empty(growable: true);
@@ -51,6 +51,13 @@ class _StatisticsCategoryViewState
 
   @override
   Widget buildInnerWidget() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        if (tabviews.length == 3) {
+          _height = tabviews[_tabController.index].first;
+        }
+      });
+    });
     var borderColor = Colors.black12.withOpacity(0.03);
     return Padding(
         padding:
@@ -156,13 +163,6 @@ class _StatisticsCategoryViewState
                       mode: widget.mode,
                       statisticsViewData: statisticsViewData,
                     )));
-                if (_tabController.index == 0) {
-                  _height = statisticsViewData.expenses.length * 50 + 250;
-                } else if (_tabController.index == 1) {
-                  _height = statisticsViewData.incomes.length * 50 + 250;
-                } else if (_tabController.index == 2) {
-                  _height = statisticsViewData.special.length * 50 + 250;
-                }
 
                 return TabBarView(
                     controller: _tabController,

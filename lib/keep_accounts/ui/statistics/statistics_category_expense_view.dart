@@ -21,10 +21,13 @@ class StatisticsCategoryTypeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<CircleChartData> chartData = statisticsViewData.expenses;
+    double sum = 0;
     if (type == 0) {
       chartData = statisticsViewData.expenses;
+      sum = statisticsViewData.sumExpense;
     } else if (type == 1) {
       chartData = statisticsViewData.incomes;
+      sum = statisticsViewData.sumIncome;
     } else if (type == 2) {
       chartData = statisticsViewData.special;
     }
@@ -39,6 +42,8 @@ class StatisticsCategoryTypeView extends StatelessWidget {
           return _getChartView(chartData);
         } else {
           return StatisticsCategoryItemView(
+            sum: sum,
+            type: type,
             data: chartData[index - 1],
           );
         }
@@ -154,13 +159,21 @@ class StatisticsCategoryTypeView extends StatelessWidget {
 }
 
 class StatisticsCategoryItemView extends StatelessWidget {
-  StatisticsCategoryItemView({Key? key, required this.data}) : super(key: key);
+  StatisticsCategoryItemView(
+      {Key? key, required this.data, required this.sum, required this.type})
+      : super(key: key);
+  final int type;
   final CircleChartData data;
+  final double sum;
 
   @override
   Widget build(BuildContext context) {
     var category = data.categoryData;
     var color = data.categoryData.color;
+    double rate = 1;
+    if (type != 2) {
+      rate = data.amount / sum;
+    }
     return SizedBox(
       height: 50,
       child: Row(
@@ -185,7 +198,10 @@ class StatisticsCategoryItemView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 4, bottom: 4),
                   child: Text(
-                    category.name,
+                    category.name +
+                        ((type != 2)
+                            ? ' ${(rate * 100).toStringAsFixed(2)}%'
+                            : ''),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: KeepAccountsTheme.fontName,
@@ -209,7 +225,7 @@ class StatisticsCategoryItemView extends StatelessWidget {
                     child: Row(
                       children: <Widget>[
                         Container(
-                          width: (120 * 0.5),
+                          width: (120 * rate),
                           height: 4,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(colors: [

@@ -43,8 +43,8 @@ abstract class StatisticsBaseAnimatorStatefulView extends StatefulWidget {
       : super(key: key);
 }
 
-abstract class StatisticsBaseAnimatorStatefulViewState
-    extends State<StatisticsBaseAnimatorStatefulView>
+abstract class StatisticsBaseAnimatorStatefulViewState<T extends StatisticsBaseAnimatorStatefulView>
+    extends State<T>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {

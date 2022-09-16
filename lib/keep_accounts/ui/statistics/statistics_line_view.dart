@@ -2,30 +2,27 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/ui/keep_accounts_them.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_base_animator_view.dart';
-import 'package:live_life/keep_accounts/ui/statistics/statistics_category_expense_view.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import '../../../common_view/tabbar/custom_tab_indicator.dart';
-import '../../../common_view/tabbar/custom_tabs.dart';
-import '../../../helper.dart';
 import '../../control/middle_ware.dart';
-import '../../models/transaction_data.dart';
 import '../../models/ui_data.dart';
 
 class StatisticsLineView extends StatisticsBaseAnimatorStatefulView {
-  const StatisticsLineView(
+  const StatisticsLineView(this.dateTime,
       {Key? key,
       required super.animationController,
       required super.index,
       required super.mode})
       : super(key: key);
 
+  final DateTime dateTime;
+
   @override
   _StatisticsCategoryViewState createState() => _StatisticsCategoryViewState();
 }
 
 class _StatisticsCategoryViewState
-    extends StatisticsBaseAnimatorStatefulViewState {
+    extends StatisticsBaseAnimatorStatefulViewState<StatisticsLineView> {
   late TabController _tabController;
 
   final _duration = const Duration(milliseconds: 1000);
@@ -76,28 +73,31 @@ class _StatisticsCategoryViewState
                     border:
                         Border(top: BorderSide(color: borderColor, width: 1)),
                   ),
-                  child: _getLineChart()),
+                  child: widget.mode == DateRangePickerView.year
+                      ? _getLineChartForDay()
+                      : _getLineChartForMonth()),
             ],
           ),
         ));
   }
 
-  /// Returns the list of chart series which need to render on the spline chart.
-  List<SplineSeries<DayOverViewData, String>> _getDefaultSplineSeries(
+  List<LineSeries<DayOverViewData, String>> _getDaySplineSeries(
       List<DayOverViewData> datas) {
-    return <SplineSeries<DayOverViewData, String>>[
-      SplineSeries<DayOverViewData, String>(
+    return <LineSeries<DayOverViewData, String>>[
+      LineSeries<DayOverViewData, String>(
+        color: KeepAccountsTheme.darkRed,
         dataSource: datas,
         xValueMapper: (DayOverViewData day, _) =>
             day.firstTransactionDate.day.toString(),
         yValueMapper: (DayOverViewData day, _) => day.countExpense,
-        // markerSettings: const MarkerSettings(isVisible: true),
+        markerSettings: const MarkerSettings(isVisible: true),
         name: '支出',
       ),
-      SplineSeries<DayOverViewData, String>(
+      LineSeries<DayOverViewData, String>(
+        color: KeepAccountsTheme.green,
         dataSource: datas,
         name: '收入',
-        // markerSettings: const MarkerSettings(isVisible: true),
+        markerSettings: const MarkerSettings(isVisible: true),
         xValueMapper: (DayOverViewData day, _) =>
             day.firstTransactionDate.day.toString(),
         yValueMapper: (DayOverViewData day, _) => day.countIncome,
@@ -105,7 +105,7 @@ class _StatisticsCategoryViewState
     ];
   }
 
-  Widget _getLineChart() {
+  Widget _getLineChartForDay() {
     return SizedBox(
         height: 300,
         child: StreamBuilder<StatisticsViewData>(
@@ -116,10 +116,9 @@ class _StatisticsCategoryViewState
               if (!snapshot.hasData) {
                 return const SizedBox();
               } else {
-                //todo replace DateTime.now()
                 List<DayOverViewData> getDayOverViewDatas =
                     DayOverViewData.getDayOverViewDatas(
-                        DateTime.now(), snapshot.data!.transactions);
+                        widget.dateTime, snapshot.data!.transactions);
                 double maxCount = 0;
                 double maximum = 0;
                 for (var element in getDayOverViewDatas) {
@@ -128,8 +127,8 @@ class _StatisticsCategoryViewState
                     maxCount = max(element.countIncome, element.countExpense);
                   }
                 }
-                for (int i = 1; i* 500 <maxCount ; i++ ) {
-                  maximum = 500 * (i+1);
+                for (int i = 1; i * 200 < maxCount; i++) {
+                  maximum = 200 * (i + 1);
                 }
 
                 return SfCartesianChart(
@@ -146,7 +145,76 @@ class _StatisticsCategoryViewState
                       edgeLabelPlacement: EdgeLabelPlacement.shift,
                       labelFormat: '¥{value}',
                       majorTickLines: const MajorTickLines(size: 0)),
-                  series: _getDefaultSplineSeries(getDayOverViewDatas),
+                  series: _getDaySplineSeries(getDayOverViewDatas),
+                  tooltipBehavior: TooltipBehavior(enable: true),
+                );
+              }
+            }));
+  }
+
+  List<LineSeries<MonthOverviewData, String>> _getMonthSplineSeries(
+      List<MonthOverviewData> datas) {
+    return <LineSeries<MonthOverviewData, String>>[
+      LineSeries<MonthOverviewData, String>(
+        color: KeepAccountsTheme.darkRed,
+        dataSource: datas,
+        xValueMapper: (MonthOverviewData day, _) => '${day.month}月',
+        yValueMapper: (MonthOverviewData day, _) => day.countExpense,
+        markerSettings: const MarkerSettings(isVisible: true),
+        name: '支出',
+      ),
+      LineSeries<MonthOverviewData, String>(
+        color: KeepAccountsTheme.green,
+        dataSource: datas,
+        name: '收入',
+        markerSettings: const MarkerSettings(isVisible: true),
+        xValueMapper: (MonthOverviewData day, _) => '${day.month}月',
+        yValueMapper: (MonthOverviewData day, _) => day.countIncome,
+      )
+    ];
+  }
+
+  Widget _getLineChartForMonth() {
+    return SizedBox(
+        height: 300,
+        child: StreamBuilder<StatisticsViewData>(
+            stream: MiddleWare.instance.transaction
+                .getStatisticsTransactionsStream(),
+            builder: (BuildContext context,
+                AsyncSnapshot<StatisticsViewData> snapshot) {
+              if (!snapshot.hasData) {
+                return const SizedBox();
+              } else {
+                List<MonthOverviewData> getMonthOverViewDatas =
+                    MonthOverviewData.getMonthOverviewDatas(
+                        widget.dateTime, snapshot.data!.transactions);
+                double maxCount = 0;
+                double maximum = 0;
+                for (var element in getMonthOverViewDatas) {
+                  if (element.countIncome > maxCount ||
+                      element.countExpense > maxCount) {
+                    maxCount = max(element.countIncome, element.countExpense);
+                  }
+                }
+                for (int i = 1; i * 500 < maxCount; i++) {
+                  maximum = 500 * (i + 1);
+                }
+
+                return SfCartesianChart(
+                  plotAreaBorderWidth: 0,
+                  title: ChartTitle(text: ''),
+                  legend: Legend(isVisible: false),
+                  primaryXAxis: CategoryAxis(
+                      majorGridLines: const MajorGridLines(width: 0),
+                      labelPlacement: LabelPlacement.onTicks),
+                  primaryYAxis: NumericAxis(
+                      minimum: 0,
+                      maximum: maximum,
+                      axisLine: const AxisLine(width: 0),
+                      edgeLabelPlacement: EdgeLabelPlacement.shift,
+                      labelFormat: '¥{value}',
+                      majorTickLines: const MajorTickLines(size: 0)),
+                  series: _getMonthSplineSeries(getMonthOverViewDatas),
                   tooltipBehavior: TooltipBehavior(enable: true),
                 );
               }

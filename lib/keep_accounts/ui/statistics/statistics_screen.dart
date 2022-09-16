@@ -20,34 +20,15 @@ class StatisticsScreen extends StatefulWidget {
 
 class _StatisticsScreenState extends State<StatisticsScreen>
     with TickerProviderStateMixin {
-  List<Widget> listViews = <Widget>[];
-  DateRangePickerView _mode = DateRangePickerView.year;
+  late DateRangePickerView _mode;
+
+  DateTime _dateTime = DateTime.now();
 
   @override
   void initState() {
-    listViews.add(StatisticsTimeSelectView(
-      mode: _mode,
-      index: 1,
-      animationController: widget.animationController!,
-    ));
-    listViews.add(StatisticsOverviewView(
-      mode: _mode,
-      index: 2,
-      animationController: widget.animationController!,
-    ));
-    listViews.add(StatisticsCategoryView(
-      mode: _mode,
-      index: 3,
-      animationController: widget.animationController!,
-    ));
-    listViews.add(StatisticsLineView(
-      mode: _mode,
-      index: 4,
-      animationController: widget.animationController!,
-    ));
-
+    _mode = DateRangePickerView.year;
     MiddleWare.instance.transaction
-        .fetchTransactionsForStatistics(_mode, DateTime.now());
+        .fetchTransactionsForStatistics(_mode, _dateTime);
 
     super.initState();
   }
@@ -87,6 +68,9 @@ class _StatisticsScreenState extends State<StatisticsScreen>
                 onSelected: (DateRangePickerView value) {
                   setState(() {
                     _mode = value;
+                    MiddleWare.instance.transaction
+                        .fetchTransactionsForStatistics(_mode, _dateTime);
+                    print('change mode' + _mode.toString());
                   });
                 }),
             const SizedBox(
@@ -97,6 +81,35 @@ class _StatisticsScreenState extends State<StatisticsScreen>
   }
 
   List<Widget> _getAllSlivers() {
+    print('sssssss' + _mode.toString());
+    List<Widget> listViews = <Widget>[];
+    listViews.add(StatisticsTimeSelectView(
+      (d) {
+        _dateTime = d;
+        MiddleWare.instance.transaction
+            .fetchTransactionsForStatistics(_mode, _dateTime);
+      },
+      mode: _mode,
+      index: 1,
+      animationController: widget.animationController!,
+    ));
+    listViews.add(StatisticsOverviewView(
+      mode: _mode,
+      index: 2,
+      animationController: widget.animationController!,
+    ));
+    listViews.add(StatisticsCategoryView(
+      mode: _mode,
+      index: 3,
+      animationController: widget.animationController!,
+    ));
+    listViews.add(StatisticsLineView(
+      _dateTime,
+      mode: _mode,
+      index: 4,
+      animationController: widget.animationController!,
+    ));
+
     final List<Widget> allSlivers = List.empty(growable: true);
     allSlivers.add(SliverList(
         delegate: SliverChildBuilderDelegate((context, index) {

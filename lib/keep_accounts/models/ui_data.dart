@@ -8,6 +8,44 @@ class MonthOverviewData {
   late int month;
   double countIncome = 0;
   double countExpense = 0;
+  List<TransactionData>? transactionsExpense;
+  List<TransactionData>? transactionsIncome;
+  List<TransactionData>? transactionsSpecial;
+
+  //获取同一个月的每天汇总数据，必须保证是一个月数据
+  static List<MonthOverviewData> getMonthOverviewDatas(
+      DateTime firstDayOfYear, List<TransactionData> transactions) {
+    Map<int, MonthOverviewData> kvs = {};
+    for (int index = 1; index <= 12; index++) {
+      kvs[index] = MonthOverviewData()
+        ..month = index
+        ..transactionsExpense = List.empty(growable: true)
+        ..transactionsIncome = List.empty(growable: true)
+        ..transactionsSpecial = List.empty(growable: true);
+    }
+
+    transactions.sort((a, b) {
+      return b.tranTime.compareTo(a.tranTime);
+    });
+    for (var transaction in transactions) {
+      MonthOverviewData current = kvs[transaction.getMonth()]!;
+      if (transaction.isExpense()) {
+        // 消费
+        current.countExpense = current.countExpense + transaction.amount;
+        current.transactionsExpense!.add(transaction);
+      } else if (transaction.isIncome()) {
+        current.countIncome = current.countIncome + transaction.amount;
+        current.transactionsIncome!.add(transaction);
+      } else {
+        current.transactionsSpecial!.add(transaction);
+      }
+    }
+    List<MonthOverviewData> result = kvs.values.toList();
+    result.sort((a, b) {
+      return a.month.compareTo(b.month);
+    });
+    return result;
+  }
 }
 
 class DayOverViewData {
@@ -111,12 +149,16 @@ class StatisticsViewData {
     incomes = all.where((element) => element.categoryData.isIncome()).toList();
     special = all.where((element) => element.categoryData.isSpecial()).toList();
 
-    sumExpense = expenses
-        .map((e) => e.amount)
-        .reduce((value, element) => value = value + element);
-    sumIncome = incomes
-        .map((e) => e.amount)
-        .reduce((value, element) => value = value + element);
+    sumExpense = expenses.isEmpty
+        ? 0
+        : expenses
+            .map((e) => e.amount)
+            .reduce((value, element) => value = value + element);
+    sumIncome = incomes.isEmpty
+        ? 0
+        : incomes
+            .map((e) => e.amount)
+            .reduce((value, element) => value = value + element);
     sumBalance = sumIncome - sumExpense;
   }
 

@@ -4,6 +4,9 @@ import 'package:live_life/keep_accounts/ui/keep_accounts_them.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_base_animator_view.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
+import '../../control/middle_ware.dart';
+import '../../models/ui_data.dart';
+
 class StatisticsOverviewView extends StatisticsBaseAnimatorView {
   const StatisticsOverviewView(
       {Key? key,
@@ -14,6 +17,21 @@ class StatisticsOverviewView extends StatisticsBaseAnimatorView {
 
   @override
   Widget buildInnerWidget() {
+    return StreamBuilder<StatisticsViewData>(
+        stream:
+            MiddleWare.instance.transaction.getStatisticsTransactionsStream(),
+        builder:
+            (BuildContext context, AsyncSnapshot<StatisticsViewData> snapshot) {
+          if (!snapshot.hasData) {
+            return const SizedBox();
+          } else {
+            return _buildDisplayWidget(snapshot.data!);
+          }
+        });
+  }
+
+  @override
+  Widget _buildDisplayWidget(StatisticsViewData data) {
     var borderColor = Colors.black12.withOpacity(0.03);
     var isYearMode = mode == DateRangePickerView.decade;
     return Padding(
@@ -38,11 +56,11 @@ class StatisticsOverviewView extends StatisticsBaseAnimatorView {
                       left: 20, right: 20, top: 10, bottom: 10),
                   child: Row(
                     children: [
-                      Text(isYearMode ? "月度收支预览" : "年度收支预览"),
+                      Text(isYearMode ? "年度收支预览" : "月度收支预览"),
                       const Spacer(),
-                      const Icon(
-                        Icons.keyboard_arrow_right,
-                      )
+                      // const Icon(
+                      //   Icons.keyboard_arrow_right,
+                      // )
                     ],
                   )),
               Container(
@@ -60,9 +78,9 @@ class StatisticsOverviewView extends StatisticsBaseAnimatorView {
                             isYearMode ? "本年结余" : "本月结余",
                             style: KeepAccountsTheme.caption,
                           ),
-                          const Text(
-                            "¥ 109990.34",
-                            style: TextStyle(
+                          Text(
+                            "¥ ${data.sumBalance.toStringAsFixed(2)}",
+                            style: const TextStyle(
                               fontSize: 14,
                               color: KeepAccountsTheme.nearlyDarkBlue,
                               fontWeight: FontWeight.w500,
@@ -79,9 +97,9 @@ class StatisticsOverviewView extends StatisticsBaseAnimatorView {
                             isYearMode ? "本年收入" : "本月收入",
                             style: KeepAccountsTheme.caption,
                           ),
-                          const Text(
-                            "¥ 109990.34",
-                            style: TextStyle(
+                          Text(
+                            "¥ ${data.sumIncome.toStringAsFixed(2)}",
+                            style: const TextStyle(
                               fontSize: 14,
                               color: KeepAccountsTheme.green,
                               fontWeight: FontWeight.w500,
@@ -96,9 +114,9 @@ class StatisticsOverviewView extends StatisticsBaseAnimatorView {
                             children: [
                           Text(isYearMode ? "本年支出" : "本月支出",
                               style: KeepAccountsTheme.caption),
-                          const Text(
-                            "¥ 123445.22",
-                            style: TextStyle(
+                          Text(
+                            "¥ ${data.sumExpense.toStringAsFixed(2)}",
+                            style: const TextStyle(
                               fontSize: 14,
                               color: KeepAccountsTheme.darkRed,
                               fontWeight: FontWeight.w500,
