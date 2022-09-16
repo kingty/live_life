@@ -68,9 +68,9 @@ class _StatisticsScreenState extends State<StatisticsScreen>
                 onSelected: (DateRangePickerView value) {
                   setState(() {
                     _mode = value;
+                    _dateTime = DateTime.now();
                     MiddleWare.instance.transaction
                         .fetchTransactionsForStatistics(_mode, _dateTime);
-                    print('change mode' + _mode.toString());
                   });
                 }),
             const SizedBox(
