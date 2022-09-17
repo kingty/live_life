@@ -74,7 +74,7 @@ class _TransactionItemViewState extends State<TransactionItemView>
         children: <Widget>[
           CategoryIconView(
             iconData: CustomIcons.customIcons[category.icon] ?? Icons.image,
-            color: color,
+            color: category.color,
           ),
           Expanded(
               child: Padding(
@@ -227,7 +227,7 @@ class _TransactionItemViewState extends State<TransactionItemView>
                 size: 14,
                 padding: const EdgeInsets.all(8),
                 iconData: CustomIcons.customIcons[category.icon] ?? Icons.image,
-                color: color,
+                color: category.color,
               ),
             ],
           ),
