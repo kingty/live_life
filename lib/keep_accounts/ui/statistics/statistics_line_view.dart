@@ -120,7 +120,7 @@ class _StatisticsCategoryViewState
                     DayOverViewData.getDayOverViewDatas(
                         widget.dateTime, snapshot.data!.transactions);
                 double maxCount = 0;
-                double maximum = 0;
+                double maximum = 200;
                 for (var element in getDayOverViewDatas) {
                   if (element.countIncome > maxCount ||
                       element.countExpense > maxCount) {
@@ -189,7 +189,7 @@ class _StatisticsCategoryViewState
                     MonthOverviewData.getMonthOverviewDatas(
                         widget.dateTime, snapshot.data!.transactions);
                 double maxCount = 0;
-                double maximum = 0;
+                double maximum = 500;
                 for (var element in getMonthOverViewDatas) {
                   if (element.countIncome > maxCount ||
                       element.countExpense > maxCount) {

@@ -228,6 +228,7 @@ class TagMiddleWare {
   final BehaviorSubject<List<TagData>> _tags = BehaviorSubject();
   final TagProvider _provider = TagProvider();
   bool _initTags = false;
+  final Map<String, TagData> _tagMap = {};
 
   Stream<List<TagData>> getTagsStream() {
     if (!_initTags) {
@@ -239,7 +240,21 @@ class TagMiddleWare {
 
   _fetchAllTagsAndNotify() async {
     var result = await _provider.pullAllTags();
+    _tagMap.clear();
+    for (var element in result) {
+      _tagMap[element.id] = element;
+    }
+
     _tags.add(result);
+  }
+
+  TagData? getTagById(String id) {
+    if (_tagMap.containsKey(id)) {
+      return _tagMap[id]!;
+    } else {
+      // 删除了的tag，返回null
+      return null;
+    }
   }
 
   Future<void> saveTag(TagData tagData) async {

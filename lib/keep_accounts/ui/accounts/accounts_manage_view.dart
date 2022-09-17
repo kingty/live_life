@@ -4,6 +4,7 @@ import 'package:live_life/keep_accounts/control/middle_ware.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
 import 'package:live_life/keep_accounts/ui/accounts/select_account_list_view.dart';
 import '../keep_accounts_them.dart';
+import '../ui_view/gesture_wrapper.dart';
 import '../ui_view/tab_base_screen.dart';
 import 'account_item_view.dart';
 import 'asset_management_overview_view.dart';
@@ -41,21 +42,18 @@ class _AccountsManageViewState extends State<AccountsManageView>
         title: S.current.KEEP_ACCOUNTS_ASSET_MANAGEMENT,
         rightWidget: Row(
           children: <Widget>[
-            IconButton(
-              onPressed: () {
-                Navigator.push<dynamic>(
-                  context,
-                  MaterialPageRoute<dynamic>(
-                    builder: (BuildContext context) => SelectAccountListView(),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.add),
-              color: KeepAccountsTheme.nearlyDarkBlue,
-            ),
-            const SizedBox(
-              width: 10,
-            )
+            IconButtonWithInk(
+                onTap: () {
+                  Navigator.push<dynamic>(
+                    context,
+                    MaterialPageRoute<dynamic>(
+                      builder: (BuildContext context) =>
+                          const SelectAccountListView(),
+                    ),
+                  );
+                },
+                child: const Icon(Icons.add,
+                    color: KeepAccountsTheme.nearlyDarkBlue)),
           ],
         ));
   }

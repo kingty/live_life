@@ -33,7 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("编辑账户"),
         "KEEP_ACCOUNTS_EXPENSES": MessageLookupByLibrary.simpleMessage("支出"),
         "KEEP_ACCOUNTS_INCOME": MessageLookupByLibrary.simpleMessage("收入"),
-        "KEEP_ACCOUNTS_OVERVIEW": MessageLookupByLibrary.simpleMessage("总览"),
+        "KEEP_ACCOUNTS_OVERVIEW": MessageLookupByLibrary.simpleMessage("本月"),
         "KEEP_ACCOUNTS_RMB": MessageLookupByLibrary.simpleMessage("元"),
         "KEEP_ACCOUNTS_STATISTICS": MessageLookupByLibrary.simpleMessage("统计"),
         "KEEP_ACCOUNTS_THIS_EDIT": MessageLookupByLibrary.simpleMessage("管理"),

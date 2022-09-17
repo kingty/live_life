@@ -49,7 +49,7 @@ class _StatisticsTimeSelectViewState
                 ? '${dateTime.year} 年 ${dateTime.month}月'
                 : '${dateTime.year} 年',
             textAlign: TextAlign.center,
-            style: KeepAccountsTheme.subtitle,
+            style: KeepAccountsTheme.title,
           )),
           IconButton(
               onPressed: () {

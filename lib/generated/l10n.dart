@@ -60,10 +60,10 @@ class S {
     );
   }
 
-  /// `总览`
+  /// `本月`
   String get KEEP_ACCOUNTS_OVERVIEW {
     return Intl.message(
-      '总览',
+      '本月',
       name: 'KEEP_ACCOUNTS_OVERVIEW',
       desc: '',
       args: [],
