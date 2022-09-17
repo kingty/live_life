@@ -22,4 +22,6 @@ abstract class TableData {
   Map<String, dynamic> toMap();
 
   TableData fromMap(Map<String, dynamic> map);
+
+  TableData copy();
 }

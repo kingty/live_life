@@ -7,8 +7,9 @@ import '../control/category_manager.dart';
 import 'db.dart';
 
 class TransactionProvider extends Provider {
-  Future<TransactionData?> getOldTransaction(TransactionData data) async {
-    var maps = await _db.query(
+  Future<TransactionData?> txnGetOldTransaction(
+      Transaction txn, TransactionData data) async {
+    var maps = await txn.query(
       data.getTableName(),
       columns: null, // null=all
       where: '${data.getPrimaryKey()} = ?',
@@ -119,10 +120,9 @@ class Provider<T extends TableData> {
     await _db.delete(data);
   }
 
-  Future<void> transaction(Function(Transaction txn) action) async {
-    await _db.transaction((txn) async {
-      action.call(txn);
-    });
+  Future<void> transaction(
+      Future<void> Function(Transaction txn) action) async {
+    return _db.transaction(action);
   }
 
   Future<int> txnInsert(Transaction txn, TableData data) async {

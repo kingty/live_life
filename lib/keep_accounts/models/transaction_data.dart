@@ -174,7 +174,7 @@ class TransactionData extends TableData {
       ..endTime = map[cTransactionEndTime] == 0
           ? null
           : DateTime.fromMillisecondsSinceEpoch(map[cTransactionEndTime])
-      ..isEnd = map[cTransactionIsEnd]?? 0;
+      ..isEnd = map[cTransactionIsEnd] ?? 0;
   }
 
   @override
@@ -197,5 +197,10 @@ class TransactionData extends TableData {
       cTransactionIsEnd: isEnd
     };
     return map;
+  }
+
+  @override
+  TransactionData copy() {
+    return TransactionData().fromMap(toMap());
   }
 }

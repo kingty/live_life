@@ -32,4 +32,9 @@ class TagData extends TableData {
       ..name = map[cTagName]
       ..des = map[cTagDes];
   }
+
+  @override
+  TagData copy() {
+    return TagData().fromMap(toMap());
+  }
 }

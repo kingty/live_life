@@ -62,4 +62,9 @@ class AccountData extends TableData {
       ..debt = map[cAccountDebt]
       ..lend = map[cAccountLend];
   }
+
+  @override
+  AccountData copy() {
+    return AccountData().fromMap(toMap());
+  }
 }

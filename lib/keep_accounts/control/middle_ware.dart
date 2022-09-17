@@ -46,7 +46,8 @@ class TransactionMiddleWare {
   Future<void> saveTransaction(TransactionData transactionData) async {
     double amountDiff = 0;
     await _provider.transaction((txn) async {
-      TransactionData? old = await _provider.getOldTransaction(transactionData);
+      TransactionData? old =
+          await _provider.txnGetOldTransaction(txn, transactionData);
       if (old != null) {
         //存在
         await _provider.txnUpdate(txn, transactionData);
@@ -61,9 +62,11 @@ class TransactionMiddleWare {
           //转账，处理两个账户
 
           AccountData inAccountData = MiddleWare.instance.account
-              .getAccountById(transactionData.inAccountId);
+              .getAccountById(transactionData.inAccountId)
+              .copy();
           AccountData outAccountData = MiddleWare.instance.account
-              .getAccountById(transactionData.outAccountId);
+              .getAccountById(transactionData.outAccountId)
+              .copy();
           if (!inAccountData.isDefaultAccount()) {
             inAccountData.cash = inAccountData.cash + amountDiff;
             await _provider.txnUpdate(txn, inAccountData);
@@ -78,7 +81,7 @@ class TransactionMiddleWare {
             throw Exception('accountId should not null here');
           }
           AccountData accountData =
-              MiddleWare.instance.account.getAccountById(accountId);
+              MiddleWare.instance.account.getAccountById(accountId).copy();
           //如果是默认账户，或者删除了的账户直接跳过
           if (!accountData.isDefaultAccount()) {
             if (transactionData.isSpecial()) {
@@ -106,16 +109,18 @@ class TransactionMiddleWare {
             await _provider.txnUpdate(txn, accountData);
           }
         }
-        MiddleWare.instance.account.fetchAllAccountsAndNotify();
       }
-
-      //notify other collection,必须在transaction内，不然数据可能同步不及时
-      _fetchLatestTransactions();
-      if (_statisticsTransactions.hasListener && _lastStatisticsMode != null) {
-        fetchTransactionsForStatistics(_lastStatisticsMode!, _lastStatisticsDay!);
-      }
-      fetchCurrentMonthTransactions();
     });
+
+    //notify other collection
+    if (amountDiff != 0) {
+      MiddleWare.instance.account.fetchAllAccountsAndNotify();
+    }
+    _fetchLatestTransactions();
+    if (_statisticsTransactions.hasListener && _lastStatisticsMode != null) {
+      fetchTransactionsForStatistics(_lastStatisticsMode!, _lastStatisticsDay!);
+    }
+    fetchCurrentMonthTransactions();
   }
 
   Stream<List<TransactionData>> getLatestTransactionsStream() {
@@ -232,23 +237,18 @@ class TagMiddleWare {
     return _tags.stream;
   }
 
-  Future<void> saveAccount(TagData tagData) async {
-    await _provider.insertOrUpdate(tagData);
-    _fetchAllTagsAndNotify();
-  }
-
   _fetchAllTagsAndNotify() async {
     var result = await _provider.pullAllTags();
     _tags.add(result);
   }
 
-  Future<void> saveTag(TagData accountData) async {
-    await _provider.insertOrUpdate(accountData);
+  Future<void> saveTag(TagData tagData) async {
+    await _provider.insertOrUpdate(tagData);
     _fetchAllTagsAndNotify();
   }
 
-  Future<void> deleteAccount(TagData accountData) async {
-    await _provider.delete(accountData);
+  Future<void> deleteTag(TagData tagData) async {
+    await _provider.delete(tagData);
     _fetchAllTagsAndNotify();
   }
 }

@@ -55,16 +55,18 @@ class DB {
 
   Future<int> txnInsert(Transaction txn, TableData data) async {
     final builder = SqlBuilder.insert(data.getTableName(), data.toMap());
-    processWriteSql(builder, txn);
-    return txn.insert(data.getTableName(), data.toMap());
+    int count = await txn.insert(data.getTableName(), data.toMap());
+    await processWriteSql(builder, txn);
+    return count;
   }
 
   Future<int> txnUpdate(Transaction txn, TableData data) async {
     final builder = SqlBuilder.update(data.getTableName(), data.toMap(),
         where: '${data.getPrimaryKey()} = ?', whereArgs: [data.id]);
-    processWriteSql(builder, txn);
-    return txn.update(data.getTableName(), data.toMap(),
+    int count = await txn.update(data.getTableName(), data.toMap(),
         where: '${data.getPrimaryKey()} = ?', whereArgs: [data.id]);
+    await processWriteSql(builder, txn);
+    return count;
   }
 
   Future<int> insert(TableData data) async {
@@ -72,15 +74,14 @@ class DB {
     int count = 0;
     await _database?.transaction((txn) async {
       count = await txn.insert(data.getTableName(), data.toMap());
-      processWriteSql(builder, txn);
+      await processWriteSql(builder, txn);
     });
     return count;
   }
 
-  Future<void> transaction(Function(Transaction txn) action) async {
-    await _database?.transaction((txn) async {
-      action.call(txn);
-    });
+  Future<void> transaction(
+      Future<void> Function(Transaction txn) action) async {
+    return _database?.transaction(action);
   }
 
   Future<int> update(TableData data) async {
@@ -90,7 +91,7 @@ class DB {
     await _database?.transaction((txn) async {
       count = await txn.update(data.getTableName(), data.toMap(),
           where: '${data.getPrimaryKey()} = ?', whereArgs: [data.id]);
-      processWriteSql(builder, txn);
+      await processWriteSql(builder, txn);
     });
     return count;
   }
@@ -117,7 +118,7 @@ class DB {
         offset: offset);
   }
 
-  void processWriteSql(SqlBuilder builder, Transaction txn) {
+  Future<void> processWriteSql(SqlBuilder builder, Transaction txn) async {
     var log = LogData()
       ..sql = builder.sql
       ..args = _serializeArgs(builder.arguments);
@@ -126,7 +127,7 @@ class DB {
       print(log.sql);
       print(log.args);
     }
-    txn.insert(tableLogData, log.toMap());
+    await txn.insert(tableLogData, log.toMap());
   }
 
   String _serializeArgs(List<Object?>? arguments) {
@@ -201,10 +202,10 @@ class DB {
     }, onUpgrade: (Database db, int oldVersion, int newVersion) {
       if (oldVersion == 1) {
         var addColumnIsEnd =
-        '''ALTER TABLE $tableTransactionData ADD COLUMN $cTransactionIsEnd INTEGER;''';
+            '''ALTER TABLE $tableTransactionData ADD COLUMN $cTransactionIsEnd INTEGER;''';
         db.execute(addColumnIsEnd);
       }
-        });
+    });
     _database = database;
   }
 
