@@ -53,6 +53,20 @@ class DB {
     return count;
   }
 
+  Future<int> txnInsert(Transaction txn, TableData data) async {
+    final builder = SqlBuilder.insert(data.getTableName(), data.toMap());
+    processWriteSql(builder, txn);
+    return txn.insert(data.getTableName(), data.toMap());
+  }
+
+  Future<int> txnUpdate(Transaction txn, TableData data) async {
+    final builder = SqlBuilder.update(data.getTableName(), data.toMap(),
+        where: '${data.getPrimaryKey()} = ?', whereArgs: [data.id]);
+    processWriteSql(builder, txn);
+    return txn.update(data.getTableName(), data.toMap(),
+        where: '${data.getPrimaryKey()} = ?', whereArgs: [data.id]);
+  }
+
   Future<int> insert(TableData data) async {
     final builder = SqlBuilder.insert(data.getTableName(), data.toMap());
     int count = 0;
@@ -64,7 +78,7 @@ class DB {
   }
 
   Future<void> transaction(Function(Transaction txn) action) async {
-    _database?.transaction((txn) async {
+    await _database?.transaction((txn) async {
       action.call(txn);
     });
   }

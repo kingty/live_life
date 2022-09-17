@@ -120,17 +120,16 @@ class Provider<T extends TableData> {
   }
 
   Future<void> transaction(Function(Transaction txn) action) async {
-    _db.transaction((txn) async {
+    await _db.transaction((txn) async {
       action.call(txn);
     });
   }
 
-  Future<int> insert(Transaction txn, TableData data) async {
-    return txn.insert(data.getTableName(), data.toMap());
+  Future<int> txnInsert(Transaction txn, TableData data) async {
+    return _db.txnInsert(txn, data);
   }
 
-  Future<int> update(Transaction txn, TableData data) async {
-    return txn.update(data.getTableName(), data.toMap(),
-        where: '${data.getPrimaryKey()} = ?', whereArgs: [data.id]);
+  Future<int> txnUpdate(Transaction txn, TableData data) async {
+    return _db.txnUpdate(txn, data);
   }
 }

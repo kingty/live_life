@@ -45,14 +45,14 @@ class TransactionMiddleWare {
 
   Future<void> saveTransaction(TransactionData transactionData) async {
     double amountDiff = 0;
-    _provider.transaction((txn) async {
+    await _provider.transaction((txn) async {
       TransactionData? old = await _provider.getOldTransaction(transactionData);
       if (old != null) {
         //存在
-        await _provider.update(txn, transactionData);
+        await _provider.txnUpdate(txn, transactionData);
         amountDiff = transactionData.amount - old.amount;
       } else {
-        await _provider.insert(txn, transactionData);
+        await _provider.txnInsert(txn, transactionData);
         amountDiff = transactionData.amount;
       }
       if (amountDiff != 0) {
@@ -66,11 +66,11 @@ class TransactionMiddleWare {
               .getAccountById(transactionData.outAccountId);
           if (!inAccountData.isDefaultAccount()) {
             inAccountData.cash = inAccountData.cash + amountDiff;
-            _provider.update(txn, inAccountData);
+            await _provider.txnUpdate(txn, inAccountData);
           }
           if (!outAccountData.isDefaultAccount()) {
             outAccountData.cash = outAccountData.cash - amountDiff;
-            _provider.update(txn, outAccountData);
+            await _provider.txnUpdate(txn, outAccountData);
           }
         } else {
           String? accountId = transactionData.getRealAccountId();
@@ -85,9 +85,11 @@ class TransactionMiddleWare {
               if (transactionData.categoryId ==
                   CategoryManager.SPECIAL_RENT_IN) {
                 accountData.debt = accountData.debt + amountDiff;
+                accountData.cash = accountData.cash + amountDiff;
               } else if (transactionData.categoryId ==
                   CategoryManager.SPECIAL_RENT_OUT) {
                 accountData.lend = accountData.lend + amountDiff;
+                accountData.cash = accountData.cash - amountDiff;
               } else if (transactionData.categoryId ==
                   CategoryManager.SPECIAL_FINANCE) {
                 //理财，更新两项
@@ -101,19 +103,19 @@ class TransactionMiddleWare {
                 accountData.cash = accountData.cash + amountDiff;
               }
             }
-            _provider.update(txn, accountData);
+            await _provider.txnUpdate(txn, accountData);
           }
         }
         MiddleWare.instance.account.fetchAllAccountsAndNotify();
       }
-    });
 
-    //notify other collection
-    _fetchLatestTransactions();
-    if (_statisticsTransactions.hasListener && _lastStatisticsMode != null) {
-      fetchTransactionsForStatistics(_lastStatisticsMode!, _lastStatisticsDay!);
-    }
-    fetchCurrentMonthTransactions();
+      //notify other collection,必须在transaction内，不然数据可能同步不及时
+      _fetchLatestTransactions();
+      if (_statisticsTransactions.hasListener && _lastStatisticsMode != null) {
+        fetchTransactionsForStatistics(_lastStatisticsMode!, _lastStatisticsDay!);
+      }
+      fetchCurrentMonthTransactions();
+    });
   }
 
   Stream<List<TransactionData>> getLatestTransactionsStream() {

@@ -116,7 +116,7 @@ class TransactionData extends TableData {
   }
 
   bool isSpecial() {
-    return categoryId > 3000;
+    return categoryId.toString().startsWith("3");
   }
 
   bool isCurrentWeek() {
