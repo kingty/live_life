@@ -8,7 +8,10 @@ import '../keep_accounts_them.dart';
 
 class NumberKeyboardView extends StatelessWidget {
   const NumberKeyboardView(
-      {Key? key, required this.mainColor, required this.calculator, this.onSubmit})
+      {Key? key,
+      required this.mainColor,
+      required this.calculator,
+      this.onSubmit})
       : super(key: key);
   final Color mainColor;
   final Calculator calculator;
@@ -187,10 +190,12 @@ class DoneView extends StatefulWidget {
   final Color color;
   final Calculator calculator;
   final ValueChanged<double>? onSubmit;
+
   const DoneView(
       {super.key,
       this.color = KeepAccountsTheme.grey,
-      required this.calculator, this.onSubmit});
+      required this.calculator,
+      this.onSubmit});
 
   @override
   _DoneViewState createState() => _DoneViewState();
@@ -198,6 +203,7 @@ class DoneView extends StatefulWidget {
 
 class _DoneViewState extends State<DoneView> {
   bool hasCalculateOperator = false;
+
   @override
   void initState() {
     widget.calculator.stream().listen((event) {
@@ -207,6 +213,7 @@ class _DoneViewState extends State<DoneView> {
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -222,10 +229,11 @@ class _DoneViewState extends State<DoneView> {
                     // highlightColor: Colors.transparent,
                     borderRadius: const BorderRadius.all(Radius.circular(6.0)),
                     onTap: () {
-                      if(hasCalculateOperator) {
+                      if (hasCalculateOperator) {
                         widget.calculator.whenClick(Button.Done);
                       } else {
-                        widget.onSubmit?.call(widget.calculator.getLastResult());
+                        widget.onSubmit
+                            ?.call(widget.calculator.getLastResult());
                       }
                     },
                     child: Container(
@@ -282,7 +290,7 @@ class DeleteView extends StatelessWidget {
   }
 }
 
-enum Button{
+enum Button {
   Zero(label: "0", isOperator: false),
   One(label: "1", isOperator: false),
   Two(label: "2", isOperator: false),
@@ -307,7 +315,7 @@ enum Button{
     required this.isOperator,
   });
 
-static Button parse(String lable) {
+  static Button parse(String lable) {
     Button btn = Button.Done;
     switch (lable) {
       case "0":
@@ -355,6 +363,11 @@ class Calculator {
     _result.add("");
   }
 
+  void setValue(double value) {
+    _inputBtns.addAll(value.toString().characters.map((e) => Button.parse(e)));
+    _result.add(_inputBtns.map((e) => e.label).toList().join());
+  }
+
   double _calculate() {
     double x = 0;
     double y = 0;
@@ -393,25 +406,23 @@ class Calculator {
       if (op == Button.Minus) x = double.parse((x - y).toStringAsFixed(2));
     }
     _inputBtns.clear();
-    _inputBtns.addAll(x.toStringAsFixed(2).characters.map((e) => Button.parse(e)));
+    _inputBtns
+        .addAll(x.toStringAsFixed(2).characters.map((e) => Button.parse(e)));
     _lastResult = x;
     return x;
   }
 
-
   bool _hasDotInLastDigit() {
     for (var element in _inputBtns.reversed) {
       if (element == Button.Dot) return true;
-      if (element ==  Button.Plus ||
-          element == Button.Minus) return false;
+      if (element == Button.Plus || element == Button.Minus) return false;
     }
     return false;
   }
 
   bool hasCalculateOperator() {
     for (var element in _inputBtns.reversed) {
-      if (element ==  Button.Plus ||
-          element == Button.Minus) return true;
+      if (element == Button.Plus || element == Button.Minus) return true;
     }
     return false;
   }
@@ -445,8 +456,9 @@ class Calculator {
         // 如果是. ，会有几种情况
         // 1是在符号后面接 . 或者直接输入 . ,转换成0.xxx
         if ((_inputBtns.isNotEmpty &&
-            (_inputBtns.last == Button.Plus ||
-                _inputBtns.last == Button.Minus)) || _inputBtns.isEmpty) {
+                (_inputBtns.last == Button.Plus ||
+                    _inputBtns.last == Button.Minus)) ||
+            _inputBtns.isEmpty) {
           _inputBtns.add(Button.Zero);
           _inputBtns.add(Button.Dot);
         }
@@ -475,7 +487,7 @@ class Calculator {
     if (_inputBtns.isNotEmpty && _inputBtns.last == Button.Dot) {
       _inputBtns.removeLast();
     }
-    if (_inputBtns.isEmpty)  return 0;
+    if (_inputBtns.isEmpty) return 0;
     var d = double.parse(_inputBtns.map((e) => e.label).toList().join());
     return double.parse(d.toStringAsFixed(2));
   }

@@ -4,6 +4,7 @@ import '../../../common_view/date_picker_dialog.dart';
 import '../../../common_view/dot_line_border.dart';
 import '../../../helper.dart';
 import '../../control/middle_ware.dart';
+import '../../models/transaction_data.dart';
 import '../accounts/account_item_view.dart';
 import '../keep_accounts_them.dart';
 import '../../models/bank_data.dart';
@@ -23,7 +24,8 @@ class SelectAccountAndInputView extends StatefulWidget {
       this.withSelectTime = false,
       this.withTransfer = false,
       required this.calculator,
-      this.onSelectChanged});
+      this.onSelectChanged,
+      this.editTransactionData});
 
   @override
   _SelectAccountAndInputViewState createState() =>
@@ -33,6 +35,7 @@ class SelectAccountAndInputView extends StatefulWidget {
   final bool withTransfer;
   final Calculator calculator;
   final ValueChanged<SelectAccountAndTimeData>? onSelectChanged;
+  final TransactionData? editTransactionData;
 }
 
 class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
@@ -57,10 +60,27 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
 
   @override
   void initState() {
-    _selectAccount = MiddleWare.instance.account.defaultAccount;
-    _selectAccountBelow = MiddleWare.instance.account.defaultAccount;
-    _startTime = DateTime.now();
-    _onChange();
+    if (widget.editTransactionData != null) {
+      _selectAccount = MiddleWare.instance.account
+          .getAccountById(widget.editTransactionData!.outAccountId);
+
+      if (widget.editTransactionData!.getRealAccountId() == null) {
+        //转账类型
+        _selectAccountBelow = MiddleWare.instance.account
+            .getAccountById(widget.editTransactionData!.inAccountId);
+      } else {
+        _selectAccountBelow = MiddleWare.instance.account
+            .getAccountById(widget.editTransactionData!.getRealAccountId()!);
+      }
+      _startTime = widget.editTransactionData!.startTime ?? DateTime.now();
+      _endTime = widget.editTransactionData!.endTime;
+    } else {
+      _selectAccount = MiddleWare.instance.account.defaultAccount;
+      _selectAccountBelow = MiddleWare.instance.account.defaultAccount;
+      _startTime = DateTime.now();
+      _onChange();
+    }
+
     _textStyle = TextStyle(
       color: widget.color,
       letterSpacing: 0,

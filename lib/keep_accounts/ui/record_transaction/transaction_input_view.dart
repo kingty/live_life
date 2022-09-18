@@ -18,14 +18,14 @@ class TransactionInputView extends StatefulWidget {
       required this.mainColor,
       required this.type,
       required this.focusNode,
-      this.transactionData});
+      this.editTransactionData});
 
   @override
   _TransactionInputViewState createState() => _TransactionInputViewState();
   final Color mainColor;
   final int type;
   final FocusNode focusNode;
-  final TransactionData? transactionData;
+  final TransactionData? editTransactionData;
 }
 
 class _TransactionInputViewState extends State<TransactionInputView>
@@ -35,7 +35,8 @@ class _TransactionInputViewState extends State<TransactionInputView>
   bool _special = false;
   late TabController _tabController;
   late Calculator _calculator;
-  late TransactionData _transactionData;
+  late TransactionData _saveTransactionData;
+  late TransactionData? _editTransactionData;
   final TextEditingController _noteController = TextEditingController();
 
   @override
@@ -54,8 +55,17 @@ class _TransactionInputViewState extends State<TransactionInputView>
     _calculator = Calculator();
     WidgetsBinding.instance.addObserver(this);
 
-    _transactionData = widget.transactionData ?? TransactionData()
-      ..id = uuid.v1();
+    _saveTransactionData = widget.editTransactionData == null
+        ? TransactionData()
+        : widget.editTransactionData!.copy();
+    _editTransactionData = widget.editTransactionData;
+
+    if (widget.editTransactionData != null) {
+      Future.delayed(Duration.zero).then((_) async {
+        _noteController.text = widget.editTransactionData!.note;
+        _calculator.setValue(widget.editTransactionData!.amount);
+      });
+    }
     super.initState();
   }
 
@@ -77,12 +87,29 @@ class _TransactionInputViewState extends State<TransactionInputView>
 
   @override
   void setState(fn) {
+    _editTransactionData = null;
     if (mounted) {
       super.setState(fn);
     }
   }
 
   Widget _getSpecialInputView() {
+    if (widget.editTransactionData != null) {
+      switch (widget.editTransactionData!.categoryId) {
+        case CategoryManager.SPECIAL_RENT_IN:
+          _tabController.index = 1;
+          break;
+        case CategoryManager.SPECIAL_RENT_OUT:
+          _tabController.index = 2;
+          break;
+        case CategoryManager.SPECIAL_FINANCE:
+          _tabController.index = 3;
+          break;
+        case CategoryManager.SPECIAL_TRANSFER:
+          _tabController.index = 4;
+          break;
+      }
+    }
     List<Widget> specialWidgets = List.empty(growable: true);
     specialWidgets.add(const SizedBox());
     specialWidgets.add(_getRentView(CategoryManager.SPECIAL_RENT_IN));
@@ -99,11 +126,12 @@ class _TransactionInputViewState extends State<TransactionInputView>
           child: Padding(
               padding: const EdgeInsets.only(top: 10),
               child: CategorySelectView(
+                editTransactionData: _editTransactionData,
                 color: widget.mainColor,
                 categories: categories,
                 onSelectCategory: (cid) {
                   setState(() {
-                    _transactionData.categoryId = cid;
+                    _saveTransactionData.categoryId = cid;
                     int pageIndex = 0;
                     switch (cid) {
                       case CategoryManager.SPECIAL_RENT_IN:
@@ -142,31 +170,32 @@ class _TransactionInputViewState extends State<TransactionInputView>
         padding:
             const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
         child: SelectAccountAndInputView(
+          editTransactionData: _editTransactionData,
           calculator: _calculator,
           color: widget.mainColor,
           withSelectTime: categoryId == CategoryManager.SPECIAL_FINANCE,
           withTransfer: categoryId == CategoryManager.SPECIAL_TRANSFER,
           onSelectChanged: (data) {
             //reset
-            _transactionData.inAccountId = '';
-            _transactionData.outAccountId = '';
-            _transactionData.startTime = null;
-            _transactionData.endTime = null;
+            _saveTransactionData.inAccountId = '';
+            _saveTransactionData.outAccountId = '';
+            _saveTransactionData.startTime = null;
+            _saveTransactionData.endTime = null;
             // use new value
             if (categoryId == CategoryManager.SPECIAL_RENT_IN) {
-              _transactionData.inAccountId = data.selectAccountBelow.id;
+              _saveTransactionData.inAccountId = data.selectAccountBelow.id;
             }
             if (categoryId == CategoryManager.SPECIAL_RENT_OUT) {
-              _transactionData.outAccountId = data.selectAccountBelow.id;
+              _saveTransactionData.outAccountId = data.selectAccountBelow.id;
             }
             if (categoryId == CategoryManager.SPECIAL_FINANCE) {
-              _transactionData.outAccountId = data.selectAccountBelow.id;
-              _transactionData.startTime = data.startTime ?? DateTime.now();
-              _transactionData.endTime = data.endTime;
+              _saveTransactionData.outAccountId = data.selectAccountBelow.id;
+              _saveTransactionData.startTime = data.startTime ?? DateTime.now();
+              _saveTransactionData.endTime = data.endTime;
             }
             if (categoryId == CategoryManager.SPECIAL_TRANSFER) {
-              _transactionData.inAccountId = data.selectAccountBelow.id;
-              _transactionData.outAccountId = data.selectAccount.id;
+              _saveTransactionData.inAccountId = data.selectAccountBelow.id;
+              _saveTransactionData.outAccountId = data.selectAccount.id;
             }
           },
         ),
@@ -183,13 +212,14 @@ class _TransactionInputViewState extends State<TransactionInputView>
           padding:
               const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
           child: SelectAccountAndInputView(
+            editTransactionData: _editTransactionData,
             calculator: _calculator,
             color: widget.mainColor,
             onSelectChanged: (data) {
               if (widget.type == 0) {
-                _transactionData.outAccountId = data.selectAccountBelow.id;
+                _saveTransactionData.outAccountId = data.selectAccountBelow.id;
               } else if (widget.type == 1) {
-                _transactionData.inAccountId = data.selectAccountBelow.id;
+                _saveTransactionData.inAccountId = data.selectAccountBelow.id;
               } else {
                 throw Exception("should not come here!");
               }
@@ -200,10 +230,11 @@ class _TransactionInputViewState extends State<TransactionInputView>
             child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: CategorySelectView(
+                  editTransactionData: _editTransactionData,
                   color: widget.mainColor,
                   categories: categories,
                   onSelectCategory: (cid) {
-                    _transactionData.categoryId = cid;
+                    _saveTransactionData.categoryId = cid;
                   },
                 ))),
         const SizedBox(height: 340)
@@ -240,27 +271,32 @@ class _TransactionInputViewState extends State<TransactionInputView>
                       ),
                       IconTagListView(
                         mainColor: widget.mainColor,
-                        transactionData: _transactionData,
+                        savetransactionData: _saveTransactionData,
+                        editTransactionData: _editTransactionData,
                       ),
                       NumberKeyboardView(
                         mainColor: widget.mainColor,
                         calculator: _calculator,
                         onSubmit: (d) {
-                          _transactionData.amount = d;
-                          _transactionData.note = _noteController.value.text;
-                          _transactionData.recordTime = DateTime.now();
+                          _saveTransactionData.amount = d;
+                          _saveTransactionData.note =
+                              _noteController.value.text;
+                          _saveTransactionData.recordTime = DateTime.now();
                           if (kDebugMode) {
-                            print(_transactionData.toJson());
+                            print(_saveTransactionData.toJson());
                           }
-                          var msg = _transactionData.check();
+                          var msg = _saveTransactionData.check();
                           if (msg != null) {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               backgroundColor: widget.mainColor,
                               content: Text(msg),
                             ));
                           } else {
+                            if (_saveTransactionData.id.isEmpty) {
+                              _saveTransactionData.id = uuid.v1();//新账单
+                            }
                             MiddleWare.instance.transaction
-                                .saveTransaction(_transactionData)
+                                .saveTransaction(_saveTransactionData)
                                 .then((value) => Navigator.pop(context));
                           }
                         },

@@ -10,10 +10,11 @@ import '../../models/transaction_data.dart';
 
 class IconTagListView extends StatefulWidget {
   const IconTagListView(
-      {super.key, required this.mainColor, required this.transactionData});
+      {super.key, required this.mainColor, required this.savetransactionData, this.editTransactionData});
 
   final Color mainColor;
-  final TransactionData transactionData;
+  final TransactionData savetransactionData;
+  final TransactionData? editTransactionData;
 
   @override
   _IconTagListViewState createState() => _IconTagListViewState();
@@ -26,7 +27,11 @@ class _IconTagListViewState extends State<IconTagListView> {
 
   @override
   void initState() {
-    widget.transactionData.tranTime = _tranTime;
+    if (widget.editTransactionData != null) {
+      _tranTime = widget.editTransactionData!.tranTime;
+    } else {
+      widget.savetransactionData.tranTime = _tranTime;
+    }
     super.initState();
   }
 
@@ -39,6 +44,16 @@ class _IconTagListViewState extends State<IconTagListView> {
             return const SizedBox();
           } else {
             _tags = snapshot.data!;
+            if (widget.editTransactionData != null) {
+              int i = 0;
+              for (var tag in _tags) {
+                if (tag.id == widget.editTransactionData!.tagId) {
+                  _selectTagIndex = i;
+                  break;
+                }
+                i++;
+              }
+            }
             return buildWhenGetData();
           }
         });
@@ -69,7 +84,7 @@ class _IconTagListViewState extends State<IconTagListView> {
               if (date != null) {
                 setState(() {
                   _tranTime = date;
-                  widget.transactionData.tranTime = _tranTime;
+                  widget.savetransactionData.tranTime = _tranTime;
                 });
               }
             },
@@ -110,7 +125,7 @@ class _IconTagListViewState extends State<IconTagListView> {
             Navigator.pop(context);
             setState(() {
               _selectTagIndex = index;
-              widget.transactionData.tagId = tag.id;
+              widget.savetransactionData.tagId = tag.id;
             });
           },
           child: Container(

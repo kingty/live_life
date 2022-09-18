@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../helper.dart';
 import '../../../icons/custom_icons.dart';
+import '../../models/transaction_data.dart';
 import '../keep_accounts_them.dart';
 import '../../models/category_data.dart';
 import '../ui_view/category_icon_view.dart';
@@ -11,24 +12,53 @@ class CategorySelectView extends StatefulWidget {
       {super.key,
       required this.categories,
       this.onSelectCategory,
-      required this.color});
+      required this.color,
+      this.editTransactionData});
 
   @override
   _CategorySelectViewState createState() => _CategorySelectViewState();
   final List<CategoryData> categories;
   final ValueChanged<int>? onSelectCategory;
   final Color color;
+  final TransactionData? editTransactionData;
 }
 
 class _CategorySelectViewState extends State<CategorySelectView>
     with TickerProviderStateMixin {
-  int selectIndex = -1;
-  int selectSecondIndex = -1;
-  int crossAxisCount = 5;
+  int _selectIndex = -1;
+  int _selectSecondIndex = -1;
+  int _crossAxisCount = 5;
+  bool _canSelect = true;
 
   @override
   void initState() {
-    crossAxisCount =
+    if (widget.editTransactionData != null) {
+      int i = 0;
+      for (var rc in widget.categories) {
+        if (rc.id == widget.editTransactionData!.categoryId) {
+          _selectIndex = i;
+        }
+
+        if (rc.children.isNotEmpty) {
+          int j = 0;
+          for (var lc in rc.children) {
+            if (lc.id == widget.editTransactionData!.categoryId) {
+              _selectIndex = i;
+              _selectSecondIndex = j;
+            }
+            j++;
+          }
+        }
+        if (_selectIndex != -1) {
+          break;
+        }
+        i++;
+      }
+      if (widget.editTransactionData!.isSpecial()) {
+        _canSelect = false;
+      }
+    }
+    _crossAxisCount =
         widget.categories.length > 5 ? 5 : widget.categories.length;
     super.initState();
   }
@@ -44,13 +74,13 @@ class _CategorySelectViewState extends State<CategorySelectView>
               Navigator.pop(context);
               onSelectCategory?.call(categoryItem.id);
               setState(() {
-                selectSecondIndex = index;
+                _selectSecondIndex = index;
               });
             },
             child: Container(
               height: 70,
               width: double.infinity,
-              decoration: (selectSecondIndex == index)
+              decoration: (_selectSecondIndex == index)
                   ? BoxDecoration(
                       color: widget.color.withOpacity(0.1),
                       borderRadius:
@@ -103,23 +133,25 @@ class _CategorySelectViewState extends State<CategorySelectView>
     return GridView.builder(
         itemCount: widget.categories.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: crossAxisCount),
+            crossAxisCount: _crossAxisCount),
         itemBuilder: (context, index) {
           CategoryData parent = widget.categories[index];
           CategoryData categoryShow;
-          if (selectSecondIndex >= 0 && selectIndex == index) {
-            categoryShow = widget.categories[index].children[selectSecondIndex];
+          if (_selectSecondIndex >= 0 && _selectIndex == index) {
+            categoryShow =
+                widget.categories[index].children[_selectSecondIndex];
           } else {
             categoryShow = widget.categories[index];
           }
 
           return GestureDetector(
               onTap: () {
+                if (!_canSelect) return;
                 setState(() {
-                  if (index != selectIndex) {
-                    selectSecondIndex = -1;
+                  if (index != _selectIndex) {
+                    _selectSecondIndex = -1;
                   }
-                  selectIndex = index;
+                  _selectIndex = index;
                 });
                 if (parent.children.isNotEmpty) {
                   widget.onSelectCategory?.call(categoryShow.id);
@@ -141,7 +173,7 @@ class _CategorySelectViewState extends State<CategorySelectView>
                           padding: const EdgeInsets.all(7),
                           child: CategoryIconView(
                               index: index,
-                              selectIndex: selectIndex,
+                              selectIndex: _selectIndex,
                               color: categoryShow.color,
                               iconData:
                                   CustomIcons.customIcons[categoryShow.icon]!)),
@@ -152,8 +184,8 @@ class _CategorySelectViewState extends State<CategorySelectView>
                             top: 40,
                             child: CircleAvatar(
                               radius: 7,
-                              backgroundColor: selectIndex == index
-                                  ? widget.color
+                              backgroundColor: _selectIndex == index
+                                  ? categoryShow.color
                                   : Colors.grey,
                               child: const Icon(
                                 Icons.more_horiz,

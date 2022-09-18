@@ -28,16 +28,6 @@ class _TransactionItemViewState extends State<TransactionItemView>
 
   @override
   void initState() {
-    category = CategoryManager.instance.getById(widget.data.categoryId)!;
-
-    if (widget.data.isExpense()) {
-      color = KeepAccountsTheme.darkRed;
-    } else if (widget.data.isIncome()) {
-      color = KeepAccountsTheme.green;
-    } else {
-      color = category.color;
-    }
-
     super.initState();
   }
 
@@ -60,6 +50,15 @@ class _TransactionItemViewState extends State<TransactionItemView>
 
   @override
   Widget build(BuildContext context) {
+    category = CategoryManager.instance.getById(widget.data.categoryId)!;
+
+    if (widget.data.isExpense()) {
+      color = KeepAccountsTheme.darkRed;
+    } else if (widget.data.isIncome()) {
+      color = KeepAccountsTheme.green;
+    } else {
+      color = category.color;
+    }
     return GestureWrapper(
         onTap: () {
           showBottomSheetPanel(context, _getDetail());

@@ -207,8 +207,8 @@ class TransactionMiddleWare {
 
   Future<List<TransactionData>> _fetchTransactionsByMonth(DateTime day,
       {int? categoryId, String? tagId}) async {
-    final start = DateTime.utc(day.year, day.month, 1);
-    final end = DateTime.utc(day.year, day.month + 1, 1);
+    final start = DateTime(day.year, day.month, 1);
+    final end = DateTime(day.year, day.month + 1, 1);
     var result = await _provider.pullTransactionsByFilter(
         start: start, end: end, categoryId: categoryId, tagId: tagId);
     return result;
@@ -216,8 +216,8 @@ class TransactionMiddleWare {
 
   Future<List<TransactionData>> _fetchTransactionsByYear(DateTime day,
       {int? categoryId, String? tagId}) async {
-    final start = DateTime.utc(day.year, 1, 1);
-    final end = DateTime.utc(day.year + 1, 1, 1);
+    final start = DateTime(day.year, 1, 1);
+    final end = DateTime(day.year + 1, 1, 1);
     var result = await _provider.pullTransactionsByFilter(
         start: start, end: end, categoryId: categoryId, tagId: tagId);
     return result;

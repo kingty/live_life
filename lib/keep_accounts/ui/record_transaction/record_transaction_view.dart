@@ -103,19 +103,19 @@ class _RecordTransactionViewState extends State<RecordTransactionView>
         controller: _tabController,
         children: <Widget>[
           TransactionInputView(
-            transactionData: _theIndex == 0 ? widget.transactionData : null,
+            editTransactionData: _theIndex == 0 ? widget.transactionData : null,
             focusNode: _focusNode,
             mainColor: KeepAccountsTheme.darkRed,
             type: 0,
           ),
           TransactionInputView(
-            transactionData: _theIndex == 1 ? widget.transactionData : null,
+            editTransactionData: _theIndex == 1 ? widget.transactionData : null,
             focusNode: _focusNode,
             mainColor: KeepAccountsTheme.green,
             type: 1,
           ),
           TransactionInputView(
-            transactionData: _theIndex == 2 ? widget.transactionData : null,
+            editTransactionData: _theIndex == 2 ? widget.transactionData : null,
             focusNode: _focusNode,
             mainColor: KeepAccountsTheme.nearlyDarkBlue,
             type: 2,
