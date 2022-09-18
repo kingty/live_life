@@ -178,7 +178,12 @@ class _TransactionItemViewState extends State<TransactionItemView>
                   )),
               IconButtonWithInk(
                   onTap: () {
-                    Navigator.pop(context);
+                    showAlertDialog(context, '确定删除当前账单？', onSure: () {
+                      MiddleWare.instance.transaction
+                          .deleteTransaction(widget.data);
+                    }).then((value) => {
+                          if (value != null && value) {Navigator.pop(context)}
+                        });
                   },
                   child: const Icon(
                     Icons.delete_outline,

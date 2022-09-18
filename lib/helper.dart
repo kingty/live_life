@@ -27,6 +27,43 @@ void showBottomSheetPanel(BuildContext context, Widget propertyWidget) {
           ));
 }
 
+Future<bool?> showAlertDialog(BuildContext context, String content,
+    {String title = '提示', VoidCallback? onSure, VoidCallback? onCancel}) async {
+  // set up the buttons
+  Widget cancelButton = TextButton(
+    onPressed:  () {
+      onCancel?.call();
+      Navigator.pop(context, false);
+    },
+    child: const Text("取消"),
+  );
+  Widget continueButton = TextButton(
+    onPressed: () {
+      onSure?.call();
+      Navigator.pop(context, true);
+    },
+    child: const Text("确定"),
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text(title),
+    content: Text(content),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  return await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
 String formatTime(DateTime time) {
   return ("${time.year}-${time.month}-${time.day}");
 }

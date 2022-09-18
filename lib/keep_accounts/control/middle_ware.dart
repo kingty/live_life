@@ -2,8 +2,8 @@ import 'package:live_life/keep_accounts/db/data_provider.dart';
 import 'package:live_life/keep_accounts/models/tag_data.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:sqflite/sqflite.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-
 import '../../helper.dart';
 import '../models/account_data.dart';
 import '../models/ui_data.dart';
@@ -42,80 +42,132 @@ class TransactionMiddleWare {
       BehaviorSubject();
 
   final TransactionProvider _provider = TransactionProvider();
+  final AccountProvider _accountProvider = AccountProvider();
+
+  Future<void> _triggerAccountChange(
+      Transaction txn, TransactionData transactionData,
+      {bool reverse = false}) async {
+    double amountDiff = transactionData.amount;
+    if (amountDiff != 0) {
+      if (transactionData.isSpecial() &&
+          transactionData.categoryId == CategoryManager.SPECIAL_TRANSFER) {
+        //转账，处理两个账户
+        AccountData inAccountData = await _accountProvider.txnGetDBAccount(
+                txn, transactionData.inAccountId) ??
+            MiddleWare.instance.account.defaultAccount;
+        AccountData outAccountData = await _accountProvider.txnGetDBAccount(
+                txn, transactionData.outAccountId) ??
+            MiddleWare.instance.account.defaultAccount;
+        if (!inAccountData.isDefaultAccount()) {
+          reverse
+              ? (inAccountData.cash = inAccountData.cash - amountDiff)
+              : (inAccountData.cash = inAccountData.cash + amountDiff);
+          await _provider.txnUpdate(txn, inAccountData);
+        }
+        if (!outAccountData.isDefaultAccount()) {
+          reverse
+              ? (outAccountData.cash = outAccountData.cash + amountDiff)
+              : (outAccountData.cash = outAccountData.cash - amountDiff);
+          await _provider.txnUpdate(txn, outAccountData);
+        }
+      } else {
+        String? accountId = transactionData.getRealAccountId();
+        if (accountId == null) {
+          throw Exception('accountId should not null here');
+        }
+        // 因为存在多次更改的情况，所以需要咋统一个txn里从DB取最新的
+        AccountData accountData =
+            await _accountProvider.txnGetDBAccount(txn, accountId) ??
+                MiddleWare.instance.account.defaultAccount;
+        //如果是默认账户，或者删除了的账户直接跳过
+        if (!accountData.isDefaultAccount()) {
+          if (transactionData.isSpecial()) {
+            if (transactionData.categoryId == CategoryManager.SPECIAL_RENT_IN) {
+              reverse
+                  ? (accountData.debt = accountData.debt - amountDiff)
+                  : (accountData.debt = accountData.debt + amountDiff);
+              reverse
+                  ? (accountData.cash = accountData.cash - amountDiff)
+                  : (accountData.cash = accountData.cash + amountDiff);
+            } else if (transactionData.categoryId ==
+                CategoryManager.SPECIAL_RENT_OUT) {
+              reverse
+                  ? (accountData.lend = accountData.lend - amountDiff)
+                  : (accountData.lend = accountData.lend + amountDiff);
+              reverse
+                  ? (accountData.cash = accountData.cash + amountDiff)
+                  : (accountData.cash = accountData.cash - amountDiff);
+            } else if (transactionData.categoryId ==
+                CategoryManager.SPECIAL_FINANCE) {
+              //理财，更新两项
+              reverse
+                  ? (accountData.financial = accountData.financial - amountDiff)
+                  : (accountData.financial =
+                      accountData.financial + amountDiff);
+              reverse
+                  ? (accountData.cash = accountData.cash + amountDiff)
+                  : (accountData.cash = accountData.cash - amountDiff);
+            }
+          } else {
+            if (transactionData.isExpense()) {
+              reverse
+                  ? (accountData.cash = accountData.cash + amountDiff)
+                  : (accountData.cash = accountData.cash - amountDiff);
+            } else {
+              reverse
+                  ? (accountData.cash = accountData.cash - amountDiff)
+                  : (accountData.cash = accountData.cash + amountDiff);
+            }
+          }
+          await _provider.txnUpdate(txn, accountData);
+        }
+      }
+    }
+  }
 
   Future<void> saveTransaction(TransactionData transactionData) async {
-    double amountDiff = 0;
+    bool hasChangeAccount = false;
     await _provider.transaction((txn) async {
       TransactionData? old =
           await _provider.txnGetOldTransaction(txn, transactionData);
       if (old != null) {
         //存在
         await _provider.txnUpdate(txn, transactionData);
-        amountDiff = transactionData.amount - old.amount;
+
+        if (transactionData.inAccountId != old.inAccountId ||
+            transactionData.outAccountId != old.outAccountId ||
+            transactionData.amount != old.amount) {
+          await _triggerAccountChange(txn, old, reverse: true);
+          await _triggerAccountChange(txn, transactionData);
+          hasChangeAccount = true;
+        }
       } else {
         await _provider.txnInsert(txn, transactionData);
-        amountDiff = transactionData.amount;
-      }
-      if (amountDiff != 0) {
-        if (transactionData.isSpecial() &&
-            transactionData.categoryId == CategoryManager.SPECIAL_TRANSFER) {
-          //转账，处理两个账户
-
-          AccountData inAccountData = MiddleWare.instance.account
-              .getAccountById(transactionData.inAccountId)
-              .copy();
-          AccountData outAccountData = MiddleWare.instance.account
-              .getAccountById(transactionData.outAccountId)
-              .copy();
-          if (!inAccountData.isDefaultAccount()) {
-            inAccountData.cash = inAccountData.cash + amountDiff;
-            await _provider.txnUpdate(txn, inAccountData);
-          }
-          if (!outAccountData.isDefaultAccount()) {
-            outAccountData.cash = outAccountData.cash - amountDiff;
-            await _provider.txnUpdate(txn, outAccountData);
-          }
-        } else {
-          String? accountId = transactionData.getRealAccountId();
-          if (accountId == null) {
-            throw Exception('accountId should not null here');
-          }
-          AccountData accountData =
-              MiddleWare.instance.account.getAccountById(accountId).copy();
-          //如果是默认账户，或者删除了的账户直接跳过
-          if (!accountData.isDefaultAccount()) {
-            if (transactionData.isSpecial()) {
-              if (transactionData.categoryId ==
-                  CategoryManager.SPECIAL_RENT_IN) {
-                accountData.debt = accountData.debt + amountDiff;
-                accountData.cash = accountData.cash + amountDiff;
-              } else if (transactionData.categoryId ==
-                  CategoryManager.SPECIAL_RENT_OUT) {
-                accountData.lend = accountData.lend + amountDiff;
-                accountData.cash = accountData.cash - amountDiff;
-              } else if (transactionData.categoryId ==
-                  CategoryManager.SPECIAL_FINANCE) {
-                //理财，更新两项
-                accountData.financial = accountData.financial + amountDiff;
-                accountData.cash = accountData.cash - amountDiff;
-              }
-            } else {
-              if (transactionData.isExpense()) {
-                accountData.cash = accountData.cash - amountDiff;
-              } else {
-                accountData.cash = accountData.cash + amountDiff;
-              }
-            }
-            await _provider.txnUpdate(txn, accountData);
-          }
-        }
+        await _triggerAccountChange(txn, transactionData);
+        hasChangeAccount = true;
       }
     });
 
     //notify other collection
-    if (amountDiff != 0) {
+    if (hasChangeAccount) {
       MiddleWare.instance.account.fetchAllAccountsAndNotify();
     }
+    _fetchLatestTransactions();
+    if (_statisticsTransactions.hasListener && _lastStatisticsMode != null) {
+      fetchTransactionsForStatistics(_lastStatisticsMode!, _lastStatisticsDay!);
+    }
+    fetchCurrentMonthTransactions();
+  }
+
+  Future<void> deleteTransaction(TransactionData transactionData) async {
+    await _provider.transaction((txn) async {
+      await _provider.txnDelete(txn, transactionData);
+      await _triggerAccountChange(txn, transactionData, reverse: true);
+    });
+    //notify other collection
+
+    MiddleWare.instance.account.fetchAllAccountsAndNotify();
+
     _fetchLatestTransactions();
     if (_statisticsTransactions.hasListener && _lastStatisticsMode != null) {
       fetchTransactionsForStatistics(_lastStatisticsMode!, _lastStatisticsDay!);

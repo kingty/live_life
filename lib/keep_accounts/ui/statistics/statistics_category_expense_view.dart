@@ -248,13 +248,17 @@ class StatisticsCategoryItemView extends StatelessWidget {
             children: [
               const Spacer(),
               Text(
-                "¥ ${category.isExpense() ? "-" : "+"}${data.amount.toString()}",
-                style: const TextStyle(
+                "¥ ${category.isIncome() ? "+" : category.isExpense() ? "-" : ""}${data.amount.toString()}",
+                style: TextStyle(
                   fontFamily: KeepAccountsTheme.fontName,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                   letterSpacing: -0.1,
-                  color: KeepAccountsTheme.darkRed,
+                  color: category.isIncome()
+                      ? KeepAccountsTheme.green
+                      : category.isExpense()
+                          ? KeepAccountsTheme.darkRed
+                          : category.color,
                 ),
               ),
               Text(

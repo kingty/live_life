@@ -69,6 +69,19 @@ class DB {
     return count;
   }
 
+  Future<int> txnDelete(Transaction txn, TableData data) async {
+    String sql =
+        'UPDATE ${data.getTableName()} SET ${data.getIsDeleteKey()} = 1 WHERE ${data.getPrimaryKey()} = ?';
+    int count = await txn.rawUpdate(sql, [data.id]);
+
+    var log = LogData()
+      ..sql = sql
+      ..args = _serializeArgs([data.id]);
+    txn.insert(tableLogData, log.toMap());
+    return count;
+  }
+
+
   Future<int> insert(TableData data) async {
     final builder = SqlBuilder.insert(data.getTableName(), data.toMap());
     int count = 0;

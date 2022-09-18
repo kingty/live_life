@@ -74,6 +74,20 @@ class TransactionProvider extends Provider {
 }
 
 class AccountProvider extends Provider {
+  Future<AccountData?> txnGetDBAccount(Transaction txn, String id) async {
+    var maps = await txn.query(
+      tableAccountData,
+      columns: null, // null=all
+      where: '$cId = ? AND $cIsDelete != 1',
+      whereArgs: [id],
+    );
+    if (maps.isNotEmpty) {
+      return AccountData().fromMap(maps.first);
+    } else {
+      return null;
+    }
+  }
+
   Future<AccountData> getDefaultAccount() async {
     var maps =
         await _db.query(tableAccountData, where: "$cId = '$defaultAccountId'");
@@ -131,5 +145,8 @@ class Provider<T extends TableData> {
 
   Future<int> txnUpdate(Transaction txn, TableData data) async {
     return _db.txnUpdate(txn, data);
+  }
+  Future<int> txnDelete(Transaction txn, TableData data) async {
+    return _db.txnDelete(txn, data);
   }
 }
