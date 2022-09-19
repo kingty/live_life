@@ -27,7 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "KEEP_ACCOUNTS_ADD_ACCOUNT":
             MessageLookupByLibrary.simpleMessage("添加账户"),
         "KEEP_ACCOUNTS_ASSET_MANAGEMENT":
-            MessageLookupByLibrary.simpleMessage("资产管理"),
+            MessageLookupByLibrary.simpleMessage("资产"),
         "KEEP_ACCOUNTS_BALANCE": MessageLookupByLibrary.simpleMessage("结余"),
         "KEEP_ACCOUNTS_EDIT_ACCOUNT":
             MessageLookupByLibrary.simpleMessage("编辑账户"),

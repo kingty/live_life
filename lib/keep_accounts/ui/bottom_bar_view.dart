@@ -247,16 +247,19 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
               alignment: AlignmentDirectional.center,
               children: <Widget>[
                 ScaleTransition(
-                  alignment: Alignment.center,
-                  scale: Tween<double>(begin: 0.88, end: 1.0).animate(
-                      CurvedAnimation(
-                          parent: widget.tabIconData!.animationController!,
-                          curve:
-                              Interval(0.1, 1.0, curve: Curves.fastOutSlowIn))),
-                  child: Image.asset(widget.tabIconData!.isSelected
-                      ? widget.tabIconData!.selectedImagePath
-                      : widget.tabIconData!.imagePath),
-                ),
+                    alignment: Alignment.center,
+                    scale: Tween<double>(begin: 0.88, end: 1.0).animate(
+                        CurvedAnimation(
+                            parent: widget.tabIconData!.animationController!,
+                            curve: const Interval(0.1, 1.0,
+                                curve: Curves.fastOutSlowIn))),
+                    child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Icon(widget.tabIconData!.iconData,
+                            size: 30,
+                            color: widget.tabIconData!.isSelected
+                                ? KeepAccountsTheme.nearlyDarkBlue
+                                : Colors.grey))),
                 Positioned(
                   top: 4,
                   left: 6,
@@ -266,12 +269,12 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
                     scale: Tween<double>(begin: 0.0, end: 1.0).animate(
                         CurvedAnimation(
                             parent: widget.tabIconData!.animationController!,
-                            curve: Interval(0.2, 1.0,
+                            curve: const Interval(0.2, 1.0,
                                 curve: Curves.fastOutSlowIn))),
                     child: Container(
                       width: 8,
                       height: 8,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: KeepAccountsTheme.nearlyDarkBlue,
                         shape: BoxShape.circle,
                       ),
@@ -287,12 +290,12 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
                     scale: Tween<double>(begin: 0.0, end: 1.0).animate(
                         CurvedAnimation(
                             parent: widget.tabIconData!.animationController!,
-                            curve: Interval(0.5, 0.8,
+                            curve: const Interval(0.5, 0.8,
                                 curve: Curves.fastOutSlowIn))),
                     child: Container(
                       width: 4,
                       height: 4,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: KeepAccountsTheme.nearlyDarkBlue,
                         shape: BoxShape.circle,
                       ),
@@ -308,12 +311,12 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
                     scale: Tween<double>(begin: 0.0, end: 1.0).animate(
                         CurvedAnimation(
                             parent: widget.tabIconData!.animationController!,
-                            curve: Interval(0.5, 0.6,
+                            curve: const Interval(0.5, 0.6,
                                 curve: Curves.fastOutSlowIn))),
                     child: Container(
                       width: 6,
                       height: 6,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: KeepAccountsTheme.nearlyDarkBlue,
                         shape: BoxShape.circle,
                       ),

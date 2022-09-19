@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 
 class TabIconData {
   TabIconData({
-    this.imagePath = '',
+    this.iconData = Icons.image,
     this.index = 0,
-    this.selectedImagePath = '',
     this.isSelected = false,
     this.animationController,
   });
 
-  String imagePath;
-  String selectedImagePath;
+  IconData iconData;
   bool isSelected;
   int index;
 
@@ -18,29 +16,25 @@ class TabIconData {
 
   static List<TabIconData> tabIconsList = <TabIconData>[
     TabIconData(
-      imagePath: 'assets/keep_accounts/tab_1.png',
-      selectedImagePath: 'assets/keep_accounts/tab_1s.png',
+      iconData: Icons.calendar_month_outlined,
       index: 0,
       isSelected: true,
       animationController: null,
     ),
     TabIconData(
-      imagePath: 'assets/keep_accounts/tab_2.png',
-      selectedImagePath: 'assets/keep_accounts/tab_2s.png',
+      iconData: Icons.account_balance_wallet_outlined,
       index: 1,
       isSelected: false,
       animationController: null,
     ),
     TabIconData(
-      imagePath: 'assets/keep_accounts/tab_3.png',
-      selectedImagePath: 'assets/keep_accounts/tab_3s.png',
+      iconData: Icons.bar_chart_outlined,
       index: 2,
       isSelected: false,
       animationController: null,
     ),
     TabIconData(
-      imagePath: 'assets/keep_accounts/tab_4.png',
-      selectedImagePath: 'assets/keep_accounts/tab_4s.png',
+      iconData: Icons.settings_suggest_outlined,
       index: 3,
       isSelected: false,
       animationController: null,

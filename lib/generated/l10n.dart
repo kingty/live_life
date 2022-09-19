@@ -170,10 +170,10 @@ class S {
     );
   }
 
-  /// `资产管理`
+  /// `资产`
   String get KEEP_ACCOUNTS_ASSET_MANAGEMENT {
     return Intl.message(
-      '资产管理',
+      '资产',
       name: 'KEEP_ACCOUNTS_ASSET_MANAGEMENT',
       desc: '',
       args: [],
