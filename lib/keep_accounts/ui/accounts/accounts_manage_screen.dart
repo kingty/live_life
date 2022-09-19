@@ -9,16 +9,16 @@ import '../ui_view/tab_base_screen.dart';
 import 'account_item_view.dart';
 import 'asset_management_overview_view.dart';
 
-class AccountsManageView extends StatefulWidget {
-  const AccountsManageView({Key? key, this.animationController})
+class AccountsManageScreen extends StatefulWidget {
+  const AccountsManageScreen({Key? key, this.animationController})
       : super(key: key);
 
   @override
-  _AccountsManageViewState createState() => _AccountsManageViewState();
+  _AccountsManageScreenState createState() => _AccountsManageScreenState();
   final AnimationController? animationController;
 }
 
-class _AccountsManageViewState extends State<AccountsManageView>
+class _AccountsManageScreenState extends State<AccountsManageScreen>
     with TickerProviderStateMixin {
   List<Widget> listViews = <Widget>[];
   final int _count = 9;

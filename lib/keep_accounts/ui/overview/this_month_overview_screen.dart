@@ -3,27 +3,27 @@ import 'package:live_life/generated/l10n.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
 import '../../control/middle_ware.dart';
 import '../keep_accounts_them.dart';
-import '../transaction_calender/transaction_calender_view.dart';
+import '../transaction_calender/transaction_calender_screen.dart';
 import '../ui_view/tab_base_screen.dart';
 import '../ui_view/transaction_list_view.dart';
 import 'month_overview_view.dart';
 import 'title_view.dart';
 
-class KeepAccountsOverviewScreen extends StatefulWidget {
-  const KeepAccountsOverviewScreen({Key? key, this.animationController})
+class ThisMonthOverviewScreen extends StatefulWidget {
+  const ThisMonthOverviewScreen({Key? key, this.animationController})
       : super(key: key);
 
   final AnimationController? animationController;
 
   @override
   // ignore: library_private_types_in_public_api
-  _KeepAccountsOverviewScreenState createState() =>
-      _KeepAccountsOverviewScreenState();
+  _ThisMonthOverviewScreenState createState() =>
+      _ThisMonthOverviewScreenState();
 }
 
-class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
+class _ThisMonthOverviewScreenState extends State<ThisMonthOverviewScreen>
     with TickerProviderStateMixin {
-  List<Widget> listViews = <Widget>[];
+  List<Widget> _listViews = <Widget>[];
   final int _count = 9;
 
   @override
@@ -34,7 +34,7 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
   }
 
   void addAllListData() {
-    listViews.add(
+    _listViews.add(
       MonthOverviewView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
@@ -44,7 +44,7 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
       ),
     );
 
-    listViews.add(
+    _listViews.add(
       TitleView(
         titleTxt: S.current.KEEP_ACCOUNTS_TRANSACTION,
         subTxt: S.current.KEEP_ACCOUNTS_THIS_MORE,
@@ -57,7 +57,7 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
           Navigator.push<dynamic>(
             context,
             MaterialPageRoute<dynamic>(
-              builder: (BuildContext context) => TransactionCalenderView(),
+              builder: (BuildContext context) => TransactionCalenderScreen(),
             ),
           );
         },
@@ -135,8 +135,8 @@ class _KeepAccountsOverviewScreenState extends State<KeepAccountsOverviewScreen>
     allSlivers.add(SliverList(
         delegate: SliverChildBuilderDelegate((context, index) {
       widget.animationController?.forward();
-      return listViews[index];
-    }, childCount: listViews.length)));
+      return _listViews[index];
+    }, childCount: _listViews.length)));
 
     allSlivers.add(_getTransactionListWithAnimator());
     return allSlivers;

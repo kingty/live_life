@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/control/middle_ware.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -10,15 +9,15 @@ import '../../models/transaction_data.dart';
 import '../ui_view/transaction_list_view.dart';
 import 'custom_date_picker_view.dart';
 
-class TransactionCalenderView extends StatefulWidget {
-  const TransactionCalenderView({Key? key}) : super(key: key);
+class TransactionCalenderScreen extends StatefulWidget {
+  const TransactionCalenderScreen({Key? key}) : super(key: key);
 
   @override
-  _TransactionCalenderViewState createState() =>
-      _TransactionCalenderViewState();
+  _TransactionCalenderScreenState createState() =>
+      _TransactionCalenderScreenState();
 }
 
-class _TransactionCalenderViewState extends State<TransactionCalenderView>
+class _TransactionCalenderScreenState extends State<TransactionCalenderScreen>
     with TickerProviderStateMixin {
   DateRangePickerView _mode = DateRangePickerView.month;
   final DateRangePickerController _controller = DateRangePickerController();

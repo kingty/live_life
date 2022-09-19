@@ -20,15 +20,15 @@ class BottomBarView extends StatefulWidget {
 
 class _BottomBarViewState extends State<BottomBarView>
     with TickerProviderStateMixin {
-  AnimationController? animationController;
+  AnimationController? _animationController;
 
   @override
   void initState() {
-    animationController = AnimationController(
+    _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1000),
     );
-    animationController?.forward();
+    _animationController?.forward();
     super.initState();
   }
 
@@ -38,7 +38,7 @@ class _BottomBarViewState extends State<BottomBarView>
       alignment: AlignmentDirectional.bottomCenter,
       children: <Widget>[
         AnimatedBuilder(
-          animation: animationController!,
+          animation: _animationController!,
           builder: (BuildContext context, Widget? child) {
             return Transform(
               transform: Matrix4.translationValues(0.0, 0.0, 0.0),
@@ -48,7 +48,7 @@ class _BottomBarViewState extends State<BottomBarView>
                 clipper: TabClipper(
                     radius: Tween<double>(begin: 0.0, end: 1.0)
                             .animate(CurvedAnimation(
-                                parent: animationController!,
+                                parent: _animationController!,
                                 curve: Curves.fastOutSlowIn))
                             .value *
                         38.0),
@@ -82,7 +82,7 @@ class _BottomBarViewState extends State<BottomBarView>
                             SizedBox(
                               width: Tween<double>(begin: 0.0, end: 1.0)
                                       .animate(CurvedAnimation(
-                                          parent: animationController!,
+                                          parent: _animationController!,
                                           curve: Curves.fastOutSlowIn))
                                       .value *
                                   64.0,
@@ -136,7 +136,7 @@ class _BottomBarViewState extends State<BottomBarView>
                     alignment: Alignment.center,
                     scale: Tween<double>(begin: 0.0, end: 1.0).animate(
                         CurvedAnimation(
-                            parent: animationController!,
+                            parent: _animationController!,
                             curve: Curves.fastOutSlowIn)),
                     child: Container(
                       // alignment: Alignment.center,s

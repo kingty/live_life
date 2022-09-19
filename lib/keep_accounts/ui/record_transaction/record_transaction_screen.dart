@@ -6,16 +6,16 @@ import '../../../common_view/tabbar/custom_tabs.dart';
 import '../../models/transaction_data.dart';
 import '../keep_accounts_them.dart';
 
-class RecordTransactionView extends StatefulWidget {
-  const RecordTransactionView({Key? key, this.transactionData})
+class RecordTransactionScreen extends StatefulWidget {
+  const RecordTransactionScreen({Key? key, this.transactionData})
       : super(key: key);
   final TransactionData? transactionData;
 
   @override
-  _RecordTransactionViewState createState() => _RecordTransactionViewState();
+  _RecordTransactionScreenState createState() => _RecordTransactionScreenState();
 }
 
-class _RecordTransactionViewState extends State<RecordTransactionView>
+class _RecordTransactionScreenState extends State<RecordTransactionScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
   final FocusNode _focusNode = FocusNode();

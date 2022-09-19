@@ -1,44 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:live_life/keep_accounts/ui/record_transaction/record_transaction_view.dart';
+import 'package:live_life/keep_accounts/ui/record_transaction/record_transaction_screen.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_screen.dart';
-import 'accounts/accounts_manage_view.dart';
+import 'accounts/accounts_manage_screen.dart';
 import 'bottom_bar_view.dart';
 import '../models/tabIcon_data.dart';
 import 'keep_accounts_them.dart';
-import 'overview/keep_accounts_overview_screen.dart';
+import 'overview/this_month_overview_screen.dart';
 
 class KeepAccountsHomeScreen extends StatefulWidget {
+  const KeepAccountsHomeScreen({Key? key}) : super(key: key);
+
   @override
   _KeepAccountsHomeScreenState createState() => _KeepAccountsHomeScreenState();
 }
 
 class _KeepAccountsHomeScreenState extends State<KeepAccountsHomeScreen>
     with TickerProviderStateMixin {
-  AnimationController? animationController;
+  AnimationController? _animationController;
 
-  List<TabIconData> tabIconsList = TabIconData.tabIconsList;
+  final List<TabIconData> _tabIconsList = TabIconData.tabIconsList;
 
-  Widget tabBody = Container(
+  Widget _tabBody = Container(
     color: KeepAccountsTheme.background,
   );
 
   @override
   void initState() {
-    for (var tab in tabIconsList) {
+    for (var tab in _tabIconsList) {
       tab.isSelected = false;
     }
-    tabIconsList[0].isSelected = true;
+    _tabIconsList[0].isSelected = true;
 
-    animationController = AnimationController(
+    _animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    tabBody =
-        KeepAccountsOverviewScreen(animationController: animationController);
+    _tabBody =
+        ThisMonthOverviewScreen(animationController: _animationController);
     super.initState();
   }
 
   @override
   void dispose() {
-    animationController?.dispose();
+    _animationController?.dispose();
     super.dispose();
   }
 
@@ -56,7 +58,7 @@ class _KeepAccountsHomeScreenState extends State<KeepAccountsHomeScreen>
             } else {
               return Stack(
                 children: <Widget>[
-                  tabBody,
+                  _tabBody,
                   bottomBar(),
                 ],
               );
@@ -79,54 +81,54 @@ class _KeepAccountsHomeScreenState extends State<KeepAccountsHomeScreen>
           child: SizedBox(),
         ),
         BottomBarView(
-          tabIconsList: tabIconsList,
+          tabIconsList: _tabIconsList,
           addClick: () {
             Navigator.push<dynamic>(
               context,
               MaterialPageRoute<dynamic>(
-                builder: (BuildContext context) => RecordTransactionView(),
+                builder: (BuildContext context) => RecordTransactionScreen(),
               ),
             );
           },
           changeIndex: (int index) {
             if (index == 0) {
-              animationController?.reverse().then<dynamic>((data) {
+              _animationController?.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
                 }
                 setState(() {
-                  tabBody = KeepAccountsOverviewScreen(
-                      animationController: animationController);
+                  _tabBody = ThisMonthOverviewScreen(
+                      animationController: _animationController);
                 });
               });
             } else if (index == 1) {
-              animationController?.reverse().then<dynamic>((data) {
+              _animationController?.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
                 }
                 setState(() {
-                  tabBody = AccountsManageView(
-                      animationController: animationController);
+                  _tabBody = AccountsManageScreen(
+                      animationController: _animationController);
                 });
               });
             } else if (index == 2) {
-              animationController?.reverse().then<dynamic>((data) {
+              _animationController?.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
                 }
                 setState(() {
-                  tabBody = StatisticsScreen(
-                      animationController: animationController);
+                  _tabBody = StatisticsScreen(
+                      animationController: _animationController);
                 });
               });
             } else if (index == 3) {
-              animationController?.reverse().then<dynamic>((data) {
+              _animationController?.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
                 }
                 setState(() {
-                  tabBody = StatisticsScreen(
-                      animationController: animationController);
+                  _tabBody = StatisticsScreen(
+                      animationController: _animationController);
                 });
               });
             }

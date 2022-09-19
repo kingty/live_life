@@ -7,7 +7,7 @@ import '../../../helper.dart';
 import '../../control/category_manager.dart';
 import '../../models/transaction_data.dart';
 import '../keep_accounts_them.dart';
-import '../record_transaction/record_transaction_view.dart';
+import '../record_transaction/record_transaction_screen.dart';
 import 'category_icon_view.dart';
 import 'gesture_wrapper.dart';
 
@@ -168,7 +168,7 @@ class _TransactionItemViewState extends State<TransactionItemView>
                       context,
                       MaterialPageRoute<dynamic>(
                           builder: (BuildContext context) =>
-                              RecordTransactionView(
+                              RecordTransactionScreen(
                                   transactionData: widget.data.copy())),
                     );
                   },

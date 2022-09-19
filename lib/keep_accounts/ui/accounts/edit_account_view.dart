@@ -10,17 +10,17 @@ import '../../../generated/l10n.dart';
 import '../../../helper.dart';
 import '../keep_accounts_them.dart';
 
-class EditAccountView extends StatefulWidget {
+class EditAccountScreen extends StatefulWidget {
   final BankData? bankData;
   final AccountData? accountData;
 
-  const EditAccountView({super.key, this.bankData, this.accountData});
+  const EditAccountScreen({super.key, this.bankData, this.accountData});
 
   @override
-  _EditAccountViewState createState() => _EditAccountViewState();
+  _EditAccountScreenState createState() => _EditAccountScreenState();
 }
 
-class _EditAccountViewState extends State<EditAccountView>
+class _EditAccountScreenState extends State<EditAccountScreen>
     with TickerProviderStateMixin {
   late BankData bank;
   bool _checkboxListChecked = true;

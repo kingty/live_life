@@ -45,7 +45,7 @@ class _SelectAccountListViewState extends State<SelectAccountListView>
                     context,
                     MaterialPageRoute<dynamic>(
                         builder: (BuildContext context) =>
-                            EditAccountView(bankData: item)),
+                            EditAccountScreen(bankData: item)),
                   );
                 },
                 child: (SelectAccountItemView(data: item)));
