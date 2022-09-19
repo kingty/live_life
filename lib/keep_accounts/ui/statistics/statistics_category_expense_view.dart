@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/ui/keep_accounts_them.dart';
+import 'package:live_life/keep_accounts/ui/ui_view/gesture_wrapper.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../../../icons/custom_icons.dart';
 import '../../models/ui_data.dart';
 import '../ui_view/category_icon_view.dart';
+import '../ui_view/transaction_list_screen.dart';
 
 class StatisticsCategoryTypeView extends StatelessWidget {
   StatisticsCategoryTypeView(
@@ -174,112 +176,122 @@ class StatisticsCategoryItemView extends StatelessWidget {
     if (type != 2) {
       rate = data.amount / sum;
     }
-    return SizedBox(
-      height: 50,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(
-            width: 10,
-          ),
-          CategoryIconView(
-            size: 12,
-            padding: const EdgeInsets.all(10),
-            iconData: CustomIcons.customIcons[category.icon] ?? Icons.image,
-            color: color,
-          ),
-          Expanded(
-              child: Padding(
-            padding: const EdgeInsets.only(left: 12.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 4, bottom: 4),
-                  child: Text(
-                    category.name +
-                        ((type != 2)
-                            ? ' ${(rate * 100).toStringAsFixed(2)}%'
-                            : ''),
-                    textAlign: TextAlign.center,
+    return GestureWrapper(
+        onTap: () {
+          Navigator.push<dynamic>(
+            context,
+            MaterialPageRoute<dynamic>(
+              builder: (BuildContext context) => TransactionListScreen(
+                  title: category.name, transactions: data.transactions),
+            ),
+          );
+        },
+        child: SizedBox(
+          height: 50,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              const SizedBox(
+                width: 10,
+              ),
+              CategoryIconView(
+                size: 12,
+                padding: const EdgeInsets.all(10),
+                iconData: CustomIcons.customIcons[category.icon] ?? Icons.image,
+                color: color,
+              ),
+              Expanded(
+                  child: Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 4, bottom: 4),
+                      child: Text(
+                        category.name +
+                            ((type != 2)
+                                ? ' ${(rate * 100).toStringAsFixed(2)}%'
+                                : ''),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: KeepAccountsTheme.fontName,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 13,
+                          letterSpacing: -0.1,
+                          color: KeepAccountsTheme.nearlyBlack.withOpacity(0.8),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Container(
+                        height: 4,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          color: category.color.withOpacity(0.1),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(4.0)),
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              width: (120 * rate),
+                              height: 4,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(colors: [
+                                  category.color.withOpacity(0.4),
+                                  category.color,
+                                ]),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(4.0)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Spacer(),
+                  Text(
+                    "¥ ${category.isIncome() ? "+" : category.isExpense() ? "-" : ""}${data.amount.toString()}",
                     style: TextStyle(
                       fontFamily: KeepAccountsTheme.fontName,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
                       letterSpacing: -0.1,
-                      color: KeepAccountsTheme.nearlyBlack.withOpacity(0.8),
+                      color: category.isIncome()
+                          ? KeepAccountsTheme.green
+                          : category.isExpense()
+                              ? KeepAccountsTheme.darkRed
+                              : category.color,
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Container(
-                    height: 4,
-                    width: 120,
-                    decoration: BoxDecoration(
-                      color: category.color.withOpacity(0.1),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(4.0)),
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          width: (120 * rate),
-                          height: 4,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [
-                              category.color.withOpacity(0.4),
-                              category.color,
-                            ]),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(4.0)),
-                          ),
-                        ),
-                      ],
-                    ),
+                  Text(
+                    '共支出${data.transactions.length}笔',
+                    style: KeepAccountsTheme.small,
                   ),
-                ),
-              ],
-            ),
-          )),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Spacer(),
-              Text(
-                "¥ ${category.isIncome() ? "+" : category.isExpense() ? "-" : ""}${data.amount.toString()}",
-                style: TextStyle(
-                  fontFamily: KeepAccountsTheme.fontName,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 12,
-                  letterSpacing: -0.1,
-                  color: category.isIncome()
-                      ? KeepAccountsTheme.green
-                      : category.isExpense()
-                          ? KeepAccountsTheme.darkRed
-                          : category.color,
+                  const Spacer(),
+                ],
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 4),
+                child: Icon(
+                  Icons.keyboard_arrow_right_sharp,
+                  color: Colors.grey,
                 ),
               ),
-              Text(
-                '共支出${data.transactions.length}笔',
-                style: KeepAccountsTheme.small,
-              ),
-              const Spacer(),
+              const SizedBox(
+                width: 10,
+              )
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 4),
-            child: Icon(
-              Icons.keyboard_arrow_right_sharp,
-              color: Colors.grey,
-            ),
-          ),
-          const SizedBox(
-            width: 10,
-          )
-        ],
-      ),
-    );
+        ));
   }
 }

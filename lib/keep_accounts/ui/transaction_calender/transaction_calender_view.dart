@@ -157,6 +157,13 @@ class _TransactionCalenderViewState extends State<TransactionCalenderView>
                 setState(() {
                   _mode = value;
                   _controller.view = value;
+                  _controller.selectedDate = DateTime.now();
+                  if (_mode == DateRangePickerView.year ||
+                      _mode == DateRangePickerView.decade) {
+                    // 切换时，年和月度查看，主动拉取一下更新数据
+                    MiddleWare.instance.transaction
+                        .fetchTransactionsForCalender(_mode, _selectedDate);
+                  }
                 });
               }),
           const SizedBox(

@@ -41,6 +41,7 @@ class _TransactionListViewState extends State<TransactionListView>
   }
 
   Widget _buildHeader(BuildContext context, int sectionIndex, int index) {
+    if (widget.sectionList.length == 1) return const SizedBox();
     MonthSection section = widget.sectionList[sectionIndex];
     return InkWell(
         child: Container(
