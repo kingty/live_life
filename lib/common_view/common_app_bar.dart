@@ -59,7 +59,7 @@ class _CommonAppBarState extends State<CommonAppBar>
         Visibility(
             visible: widget.subTitle != null,
             child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 8, 0, 5),
+                padding: const EdgeInsets.fromLTRB(24, 8, 0, 5),
                 child: Text(widget.subTitle ?? "",
                     style: TextStyle(
                         color: color.withOpacity(0.7),

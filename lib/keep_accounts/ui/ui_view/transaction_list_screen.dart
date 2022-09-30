@@ -16,8 +16,12 @@ class TransactionListScreen extends StatelessWidget {
     return CommonAppBar(
       title: title,
       slivers: [
-        TransactionListView(
-            sectionList: MonthSection.getMonthSections(transactions))
+        SliverPadding(
+            padding: EdgeInsets.only(
+              bottom: 62 + MediaQuery.of(context).padding.bottom,
+            ),
+            sliver: TransactionListView(
+                sectionList: MonthSection.getMonthSections(transactions)))
       ],
     );
   }

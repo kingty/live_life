@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
+import 'package:live_life/keep_accounts/ui/ui_view/gesture_wrapper.dart';
 import '../../../common_view/date_picker_dialog.dart';
 import '../../../common_view/dot_line_border.dart';
 import '../../../helper.dart';
@@ -113,7 +114,7 @@ class _SelectAccountAndInputViewState extends State<SelectAccountAndInputView>
       itemCount: accounts.length,
       itemBuilder: (BuildContext context, int index) {
         var account = accounts[index];
-        return InkWell(
+        return GestureWrapper(
             onTap: () {
               setState(() {
                 if (below) {

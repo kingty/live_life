@@ -280,6 +280,13 @@ class TransactionMiddleWare {
         start: start, end: end, categoryId: categoryId, tagId: tagId);
     return result;
   }
+
+  Future<List<TransactionData>> fetchTransactionsByAccount(
+      AccountData accountData) async {
+    var result =
+        await _provider.pullTransactionsByFilter(accountId: accountData.id);
+    return result;
+  }
 }
 
 class TagMiddleWare {

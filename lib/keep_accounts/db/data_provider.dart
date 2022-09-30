@@ -40,6 +40,7 @@ class TransactionProvider extends Provider {
     DateTime? end,
     int? categoryId,
     String? tagId,
+    String? accountId,
   }) async {
     List<String> where = List.empty(growable: true);
     List<Object> whereArgs = List.empty(growable: true);
@@ -62,6 +63,11 @@ class TransactionProvider extends Provider {
     if (tagId != null) {
       where.add('$cTransactionTagId = ?');
       whereArgs.add(tagId);
+    }
+    if (accountId != null) {
+      where.add('($cTransactionInAccountId = ? OR $cTransactionOutAccountId = ?)');
+      whereArgs.add(accountId);
+      whereArgs.add(accountId);
     }
 
     var maps = await _db.query(tableTransactionData,
