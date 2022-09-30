@@ -31,7 +31,7 @@ Future<bool?> showAlertDialog(BuildContext context, String content,
     {String title = '提示', VoidCallback? onSure, VoidCallback? onCancel}) async {
   // set up the buttons
   Widget cancelButton = TextButton(
-    onPressed:  () {
+    onPressed: () {
       onCancel?.call();
       Navigator.pop(context, false);
     },
@@ -94,4 +94,8 @@ bool isSameDay(DateTime x, DateTime y) {
 
 Color hexToColor(String hexString, {String alphaChannel = 'FF'}) {
   return Color(int.parse(hexString.replaceFirst('#', '0x$alphaChannel')));
+}
+
+String displayMoneyStr(double count) {
+  return '¥ ${count.toStringAsFixed(2)}';
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/keep_accounts/models/account_data.dart';
 import 'package:live_life/keep_accounts/models/bank_data.dart';
+import '../../../helper.dart';
 import '../keep_accounts_them.dart';
 
 class AccountItemView extends StatefulWidget {
@@ -86,7 +87,7 @@ class _AccountItemViewState extends State<AccountItemView>
           child: Text(
             widget.data.isDefaultAccount()
                 ? ""
-                : "¥ ${double.parse((widget.data.cash + widget.data.financial).toStringAsFixed(2))}",
+                : displayMoneyStr(widget.data.cash + widget.data.financial),
             textAlign: TextAlign.center,
             style: TextStyle(
               fontFamily: KeepAccountsTheme.fontName,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:live_life/helper.dart';
 import 'package:live_life/keep_accounts/ui/keep_accounts_them.dart';
 import 'package:live_life/keep_accounts/ui/ui_view/gesture_wrapper.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -73,9 +74,9 @@ class StatisticsCategoryTypeView extends StatelessWidget {
 
   String _getAccount() {
     if (type == 0) {
-      return '¥${statisticsViewData.sumExpense.toStringAsFixed(2)}';
+      return displayMoneyStr(statisticsViewData.sumExpense);
     } else if (type == 1) {
-      return '¥${statisticsViewData.sumIncome.toStringAsFixed(2)}';
+      return displayMoneyStr(statisticsViewData.sumIncome);
     } else {
       return "";
     }
@@ -260,7 +261,7 @@ class StatisticsCategoryItemView extends StatelessWidget {
                 children: [
                   const Spacer(),
                   Text(
-                    "¥ ${category.isIncome() ? "+" : category.isExpense() ? "-" : ""}${data.amount.toString()}",
+                    "${category.isIncome() ? "+ " : category.isExpense() ? "- " : ""} ${displayMoneyStr(data.amount)}",
                     style: TextStyle(
                       fontFamily: KeepAccountsTheme.fontName,
                       fontWeight: FontWeight.w400,

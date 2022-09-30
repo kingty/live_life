@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../helper.dart';
 import '../../control/middle_ware.dart';
 import '../../models/account_data.dart';
 import '../keep_accounts_them.dart';
@@ -95,7 +96,7 @@ class _AssetManagementOverviewViewState
               Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Text(
-                    "¥ ${(widget.animation!.value * sum).toStringAsFixed(2)}",
+                    displayMoneyStr(widget.animation!.value * sum),
                     style: const TextStyle(fontSize: 30),
                   )),
               Container(
@@ -121,7 +122,8 @@ class _AssetManagementOverviewViewState
                                   style: KeepAccountsTheme.caption,
                                 ),
                                 Text(
-                                  "¥ ${(widget.animation!.value * sumCash).toStringAsFixed(2)}",
+                                  displayMoneyStr(
+                                      widget.animation!.value * sumCash),
                                   style: const TextStyle(
                                       fontSize: 20,
                                       color: Colors.green,
@@ -135,7 +137,8 @@ class _AssetManagementOverviewViewState
                             children: [
                           const Text("理财", style: KeepAccountsTheme.caption),
                           Text(
-                            "¥ ${(widget.animation!.value * sumFinancial).toStringAsFixed(2)}",
+                            displayMoneyStr(
+                                widget.animation!.value * sumFinancial),
                             style: const TextStyle(
                                 fontSize: 20,
                                 color: KeepAccountsTheme.nearlyDarkBlue,
@@ -156,7 +159,8 @@ class _AssetManagementOverviewViewState
                           children: [
                             const Text("负债", style: KeepAccountsTheme.caption),
                             Text(
-                              "¥ ${(widget.animation!.value * sumDebt).toStringAsFixed(2)}",
+                              displayMoneyStr(
+                                  widget.animation!.value * sumDebt),
                               style: const TextStyle(
                                   fontSize: 20,
                                   color: KeepAccountsTheme.darkRed,
@@ -170,7 +174,7 @@ class _AssetManagementOverviewViewState
                         children: [
                       const Text("借出", style: KeepAccountsTheme.caption),
                       Text(
-                        "¥ ${(widget.animation!.value * sumLend).toStringAsFixed(2)}",
+                        displayMoneyStr(widget.animation!.value * sumLend),
                         style: const TextStyle(
                             fontSize: 20,
                             color: Colors.orange,

@@ -1,4 +1,5 @@
 import 'package:live_life/generated/l10n.dart';
+import 'package:live_life/helper.dart';
 import 'package:live_life/icons/custom_icons.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
 import 'package:live_life/main.dart';
@@ -159,7 +160,8 @@ class MonthOverviewView extends StatelessWidget {
                                           padding:
                                               const EdgeInsets.only(left: 8),
                                           child: Text(
-                                            '¥${(sumIncome * animation!.value).toStringAsFixed(2)}',
+                                            displayMoneyStr(
+                                                sumIncome * animation!.value),
                                             textAlign: TextAlign.center,
                                             style: const TextStyle(
                                               fontFamily:
@@ -231,7 +233,8 @@ class MonthOverviewView extends StatelessWidget {
                                           padding:
                                               const EdgeInsets.only(left: 8),
                                           child: Text(
-                                            '¥ ${(sumBalance * animation!.value).toStringAsFixed(2)}',
+                                            displayMoneyStr(
+                                                sumBalance * animation!.value),
                                             textAlign: TextAlign.center,
                                             style: const TextStyle(
                                               fontFamily:
@@ -279,7 +282,8 @@ class MonthOverviewView extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Text(
-                                    '¥ ${(sumExpense * animation!.value).toStringAsFixed(2)}',
+                                    displayMoneyStr(
+                                        sumExpense * animation!.value),
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       fontFamily: KeepAccountsTheme.fontName,
@@ -389,7 +393,7 @@ class MonthOverviewView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 6),
                           child: Text(
-                            '¥ ${(sumToady * animation!.value).toStringAsFixed(2)}',
+                            displayMoneyStr(sumToady * animation!.value),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: KeepAccountsTheme.fontName,
@@ -453,7 +457,7 @@ class MonthOverviewView extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 6),
                               child: Text(
-                                '¥ ${(sumWeek * animation!.value).toStringAsFixed(2)}',
+                                displayMoneyStr(sumWeek * animation!.value),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontFamily: KeepAccountsTheme.fontName,
@@ -469,7 +473,7 @@ class MonthOverviewView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Spacer()
+                  const Spacer()
                 ],
               ),
             )

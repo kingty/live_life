@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:live_life/common_view/dot_line_border.dart';
+import 'package:live_life/helper.dart';
 import 'package:live_life/keep_accounts/ui/keep_accounts_them.dart';
 import 'package:live_life/keep_accounts/ui/statistics/statistics_base_animator_view.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -79,7 +80,7 @@ class StatisticsOverviewView extends StatisticsBaseAnimatorView {
                             style: KeepAccountsTheme.caption,
                           ),
                           Text(
-                            "¥ ${data.sumBalance.toStringAsFixed(2)}",
+                            displayMoneyStr(data.sumBalance),
                             style: const TextStyle(
                               fontSize: 14,
                               color: KeepAccountsTheme.nearlyDarkBlue,
@@ -98,7 +99,7 @@ class StatisticsOverviewView extends StatisticsBaseAnimatorView {
                             style: KeepAccountsTheme.caption,
                           ),
                           Text(
-                            "¥ ${data.sumIncome.toStringAsFixed(2)}",
+                            displayMoneyStr(data.sumIncome),
                             style: const TextStyle(
                               fontSize: 14,
                               color: KeepAccountsTheme.green,
@@ -115,7 +116,7 @@ class StatisticsOverviewView extends StatisticsBaseAnimatorView {
                           Text(isYearMode ? "本年支出" : "本月支出",
                               style: KeepAccountsTheme.caption),
                           Text(
-                            "¥ ${data.sumExpense.toStringAsFixed(2)}",
+                            displayMoneyStr(data.sumExpense),
                             style: const TextStyle(
                               fontSize: 14,
                               color: KeepAccountsTheme.darkRed,

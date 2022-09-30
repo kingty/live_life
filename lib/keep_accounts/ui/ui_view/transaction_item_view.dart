@@ -135,7 +135,7 @@ class _TransactionItemViewState extends State<TransactionItemView>
           Padding(
             padding: const EdgeInsets.only(left: 4, bottom: 3),
             child: Text(
-              "¥ ${widget.data.isExpense() ? "-" : widget.data.isIncome() ? "+" : ""}${widget.data.amount.toStringAsFixed(2)}",
+              "${widget.data.isExpense() ? "- " : widget.data.isIncome() ? "+ " : ""}${displayMoneyStr(widget.data.amount)}",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: KeepAccountsTheme.fontName,
@@ -205,7 +205,7 @@ class _TransactionItemViewState extends State<TransactionItemView>
               const Spacer(),
               const SizedBox(height: height),
               Text(
-                "¥ ${widget.data.isExpense() ? "-" : widget.data.isIncome() ? "+" : ""}${widget.data.amount.toStringAsFixed(2)}",
+                "${widget.data.isExpense() ? "- " : widget.data.isIncome() ? "+ " : ""}${displayMoneyStr(widget.data.amount)}",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: KeepAccountsTheme.fontName,
