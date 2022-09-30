@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:live_life/keep_accounts/db/data_provider.dart';
 import 'package:live_life/keep_accounts/models/tag_data.dart';
 import 'package:live_life/keep_accounts/models/transaction_data.dart';
@@ -46,7 +47,8 @@ class TransactionMiddleWare {
 
   Future<void> _triggerAccountChange(
       Transaction txn, TransactionData transactionData,
-      {bool reverse = false}) async {
+      {bool reverse = false, bool ignoreAccountChange = false}) async {
+    if (ignoreAccountChange) return;
     double amountDiff = transactionData.amount;
     if (amountDiff != 0) {
       if (transactionData.isSpecial() &&
@@ -125,7 +127,8 @@ class TransactionMiddleWare {
     }
   }
 
-  Future<void> saveTransaction(TransactionData transactionData) async {
+  Future<void> saveTransaction(TransactionData transactionData,
+      {bool ignoreAccountChange = false}) async {
     bool hasChangeAccount = false;
     await _provider.transaction((txn) async {
       TransactionData? old =
@@ -137,13 +140,16 @@ class TransactionMiddleWare {
         if (transactionData.inAccountId != old.inAccountId ||
             transactionData.outAccountId != old.outAccountId ||
             transactionData.amount != old.amount) {
-          await _triggerAccountChange(txn, old, reverse: true);
-          await _triggerAccountChange(txn, transactionData);
+          await _triggerAccountChange(txn, old,
+              reverse: true, ignoreAccountChange: ignoreAccountChange);
+          await _triggerAccountChange(txn, transactionData,
+              ignoreAccountChange: ignoreAccountChange);
           hasChangeAccount = true;
         }
       } else {
         await _provider.txnInsert(txn, transactionData);
-        await _triggerAccountChange(txn, transactionData);
+        await _triggerAccountChange(txn, transactionData,
+            ignoreAccountChange: ignoreAccountChange);
         hasChangeAccount = true;
       }
     });
@@ -357,8 +363,40 @@ class AccountMiddleWare {
     _accounts.add(result);
   }
 
-  Future<void> saveAccount(AccountData accountData) async {
+  Future<void> saveAccount(AccountData accountData,
+      {bool needTransaction = false, double gap = 0}) async {
     await _provider.insertOrUpdate(accountData);
+
+    if (needTransaction && gap != 0) {
+      var now = DateTime.now();
+      TransactionData transactionData;
+      if (gap > 0) {
+        transactionData = TransactionData()
+          ..id = uuid.v1()
+          ..inAccountId = accountData.id
+          ..amount = gap
+          ..tranTime = now
+          ..categoryId = CategoryManager.MODIFY_INCOME
+          ..recordTime = now
+          ..note = '账户余额调整产生账单';
+      } else {
+        transactionData = TransactionData()
+          ..id = uuid.v1()
+          ..outAccountId = accountData.id
+          ..amount = -gap
+          ..tranTime = now
+          ..categoryId = CategoryManager.MODIFY_EXPENSE
+          ..recordTime = now
+          ..note = '账户余额调整产生账单';
+      }
+      await MiddleWare.instance.transaction
+          .saveTransaction(transactionData, ignoreAccountChange: true);
+    } else {
+      if (kDebugMode) {
+        print('needTransaction:$needTransaction');
+        print('gap:$gap');
+      }
+    }
     fetchAllAccountsAndNotify();
   }
 

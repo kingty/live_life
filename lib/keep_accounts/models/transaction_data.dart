@@ -106,6 +106,11 @@ class TransactionData extends TableData {
     return tranTime.day;
   }
 
+  bool isAccountModify() {
+    return categoryId == CategoryManager.MODIFY_EXPENSE ||
+        categoryId == CategoryManager.MODIFY_INCOME;
+  }
+
   bool isExpense() {
     return categoryId.toString().startsWith("1");
   }

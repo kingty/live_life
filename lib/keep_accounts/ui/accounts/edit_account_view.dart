@@ -40,6 +40,9 @@ class _EditAccountScreenState extends State<EditAccountScreen>
     }
     if (widget.accountData != null) {
       _accountData = widget.accountData!;
+      _inputAccountController.text = _accountData.name;
+      _inputDesController.text = _accountData.des;
+      _inputAmountController.text = _accountData.cash.toStringAsFixed(2);
     } else {
       _accountData = AccountData();
     }
@@ -284,6 +287,9 @@ class _EditAccountScreenState extends State<EditAccountScreen>
       _error = "";
     });
 
+    double gap = double.parse(double.parse(_inputAmountController.value.text)
+            .toStringAsFixed(2)) -
+        _accountData.cash;
     _accountData
       ..bankDataKey = bank.key
       ..name = _inputAccountController.value.text
@@ -295,11 +301,9 @@ class _EditAccountScreenState extends State<EditAccountScreen>
     if (kDebugMode) {
       print(_accountData.toMap());
     }
-    if(_checkboxListChecked) {
-      /// Todo
-    }
     MiddleWare.instance.account
-        .saveAccount(_accountData)
+        .saveAccount(_accountData,
+            needTransaction: _checkboxListChecked, gap: gap)
         .then((value) => Navigator.pop(context));
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 import '../models/category_data.dart';
@@ -16,6 +17,7 @@ class CategoryManager {
   static List<CategoryData> incomeCategories = List.empty();
   static List<CategoryData> expenseCategories = List.empty();
   static List<CategoryData> specialCategories = List.empty();
+  static List<CategoryData> unSelectableCategories = List.empty(growable: true);
   Map<int, CategoryData> categoriesMap = <int, CategoryData>{};
   static bool _isInit = false;
 
@@ -24,8 +26,26 @@ class CategoryManager {
   static const int SPECIAL_FINANCE = 3003;
   static const int SPECIAL_TRANSFER = 3004;
 
+  static const int MODIFY_EXPENSE = 1000;
+  static const int MODIFY_INCOME = 2000;
+
   Future<void> init() async {
     await fetchCategories();
+
+    var modifyOut = CategoryData()
+      ..name = '余额调整'
+      ..id = MODIFY_EXPENSE
+      ..color = Colors.blueAccent
+      ..icon = 'ecommerce_remove_price';
+    unSelectableCategories.add(modifyOut);
+    categoriesMap[modifyOut.id] = modifyOut;
+    var modifyIn = CategoryData()
+      ..name = '余额调整'
+      ..id = MODIFY_INCOME
+      ..color = Colors.blueAccent
+      ..icon = 'ecommerce_remove_price';
+    unSelectableCategories.add(modifyIn);
+    categoriesMap[modifyIn.id] = modifyIn;
   }
 
   CategoryData? getById(int id) {

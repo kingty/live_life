@@ -162,19 +162,23 @@ class _TransactionItemViewState extends State<TransactionItemView>
             children: [
               const Spacer(),
               IconButtonWithInk(
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push<dynamic>(
-                      context,
-                      MaterialPageRoute<dynamic>(
-                          builder: (BuildContext context) =>
-                              RecordTransactionScreen(
-                                  transactionData: widget.data.copy())),
-                    );
-                  },
-                  child: const Icon(
+                  onTap: widget.data.isAccountModify()
+                      ? null
+                      : () {
+                          Navigator.pop(context);
+                          Navigator.push<dynamic>(
+                            context,
+                            MaterialPageRoute<dynamic>(
+                                builder: (BuildContext context) =>
+                                    RecordTransactionScreen(
+                                        transactionData: widget.data.copy())),
+                          );
+                        },
+                  child: Icon(
                     Icons.edit_note_outlined,
-                    color: KeepAccountsTheme.nearlyDarkBlue,
+                    color: widget.data.isAccountModify()
+                        ? Colors.grey
+                        : KeepAccountsTheme.nearlyDarkBlue,
                   )),
               IconButtonWithInk(
                   onTap: () {
