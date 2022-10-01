@@ -30,6 +30,7 @@ class AccountDetailListScreen extends StatelessWidget {
       actions: [
         IconButtonWithInk(
             onTap: () {
+              if (accountData.isDefaultAccount()) return;
               Navigator.push<dynamic>(
                 context,
                 MaterialPageRoute<dynamic>(
@@ -38,8 +39,10 @@ class AccountDetailListScreen extends StatelessWidget {
                 ),
               );
             },
-            child:
-                const Icon(Icons.edit, color: KeepAccountsTheme.nearlyDarkBlue))
+            child: Icon(Icons.edit,
+                color: accountData.isDefaultAccount()
+                    ? Colors.grey
+                    : KeepAccountsTheme.nearlyDarkBlue))
       ],
     );
   }
